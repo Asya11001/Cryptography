@@ -1,0 +1,667 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title>Лабораторная работа</title>
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:1.0cm 70.9pt 2.0cm 1.0cm;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+
+</head>
+
+<body lang=RU>
+
+<div class=Section1>
+
+<p class=MsoNormal align=center style='text-align:center'><a name="Цель_работы"><b><span
+style='font-size:14.0pt'>Лабораторная работа</span></b></a></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span
+style='font-size:14.0pt'>Алгоритм Евклида нахождения НОД</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><u><span style='font-size:14.0pt'>Цель работы</span></u><span
+style='font-size:14.0pt'>:</span> <span style='font-size:14.0pt'>освоение алгоритма
+Евклида нахождения НОД на основе реализации алгоритма с помощью языка
+программирования.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name="Описание_работы"><u><span style='font-size:
+14.0pt'>Описание работы</span></u></a><span style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Алгоритм
+Эвклида предназначен для вычисления наибольшего общего делителя двух
+натуральных чисел.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name=НОД><i><span style='font-size:14.0pt;
+color:black'>Наибольший общий делитель</span></i></a><span style='font-size:
+14.0pt;color:black'> </span><span style='font-size:14.0pt;color:black'>(НОД) чисел
+<i>а </i>и </span><i><span lang=EN-US style='font-size:14.0pt;color:black'>b</span></i><i><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span></i><span
+style='font-size:14.0pt;color:black'>- это наибольшее целое число </span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>d</span></i><i><span
+style='font-size:14.0pt;color:black'>, </span></i><span style='font-size:14.0pt;
+color:black'>на которое и <i>а</i>, и </span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>b</span></i><i><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span></i><span style='font-size:14.0pt;
+color:black'>делятся: </span><i><span lang=EN-US style='font-size:14.0pt;
+color:black'>d</span></i><i><span style='font-size:14.0pt;color:black'> = </span></i><span
+style='font-size:14.0pt;color:black'>НОД(<i>а</i>, </span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>b</span></i><span style='font-size:14.0pt;
+color:black'>)<i>. </i></span><span style='font-size:14.0pt;color:black'>Если
+НОД(<i>а</i>, </span><i><span lang=EN-US style='font-size:14.0pt;color:black'>b</span></i><span
+style='font-size:14.0pt;color:black'>)<i> - </i></span><span style='font-size:
+14.0pt;color:black'>1, то числа <i>а </i>и </span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>b</span></i><i><span style='font-size:
+14.0pt;color:black'> взаимно простые</span></i><span style='font-size:14.0pt;
+color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><i><span style='font-size:14.0pt'>Наименьшим общим
+кратным</span></i><span style='font-size:14.0pt'> (НОК) нескольких натуральных
+чисел называется наименьшее натуральное число, которое делится без остатка на
+каждое из данных чисел. НОК двух чисел </span><i><span lang=EN-US
+style='font-size:14.0pt'>a</span></i><span lang=EN-US style='font-size:14.0pt'>
+</span><span style='font-size:14.0pt'>и </span><i><span lang=EN-US
+style='font-size:14.0pt'>b</span></i><span lang=EN-US style='font-size:14.0pt'>
+</span><span style='font-size:14.0pt'>можно вычислить на знании НОД(</span><i><span
+lang=EN-US style='font-size:14.0pt'>a</span></i><span style='font-size:14.0pt'>,
+</span><i><span lang=EN-US style='font-size:14.0pt'>b</span></i><span
+style='font-size:14.0pt'>) по формуле: </span><span lang=EN-US
+style='font-size:14.0pt'><sub><img width=216 height=40
+src="Evklid.files/image001.gif"></sub></span><span style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name="Методы_вычисления_НОД"><span
+style='font-size:14.0pt;color:black'>Можно <i>вычислять</i> <i>НОД</i>
+различными <i>методами</i>.</span></a></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>1. Если
+числа <i>а</i> и </span><i><span lang=EN-US style='font-size:14.0pt;color:black'>b</span></i><i><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span></i><span
+style='font-size:14.0pt;color:black'>заданы, то можно найти все положительные
+делители числа <i>а </i>и все положительные делители числа </span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>b</span></i><span
+style='font-size:14.0pt;color:black'>. </span><span style='font-size:14.0pt;
+color:black'>Входящий в оба множества наибольший делитель будет наибольшим
+общим делителем. Данная процедура проста, но из-за отсутствия простого
+алгоритма разложения целых чисел на множители она неэффективна при больших <i>а
+</i>и </span><i><span lang=EN-US style='font-size:14.0pt;color:black'>b</span></i><span
+style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>2. Наибольший
+общий делитель можно вычислить и с помощью <i>алгоритма Эвклида.</i> Разделим <i>а
+</i>на </span><i><span lang=EN-US style='font-size:14.0pt;color:black'>b</span></i><i><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span></i><span
+style='font-size:14.0pt;color:black'>с остатком; назовем этот остаток </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>r</span><sub><span
+style='font-size:14.0pt;color:black'>1</span></sub><i><span style='font-size:
+14.0pt;color:black'>. </span></i><span style='font-size:14.0pt;color:black'>Если
+</span><i><span lang=EN-US style='font-size:14.0pt;color:black'>r</span></i><sub><span
+style='font-size:14.0pt;color:black'>1</span></sub><span style='font-size:14.0pt;
+color:black'>&#8800;0, то разделим </span><i><span lang=EN-US style='font-size:
+14.0pt;color:black'>b</span></i><i><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span></i><span style='font-size:14.0pt;color:black'>на </span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>r</span></i><sub><span
+style='font-size:14.0pt;color:black'>1</span></sub><span style='font-size:14.0pt;
+color:black'> с остатком; пусть </span><i><span lang=EN-US style='font-size:
+14.0pt;color:black'>r</span></i><sub><span style='font-size:14.0pt;color:black'>2</span></sub><span
+style='font-size:14.0pt;color:black'> - остаток второго деления. Аналогично,
+если </span><i><span lang=EN-US style='font-size:14.0pt;color:black'>r</span></i><sub><span
+style='font-size:14.0pt;color:black'>2</span></sub><span style='font-size:14.0pt;
+color:black'> &#8800;<i> </i>0, то разделим </span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>r</span></i><sub><span style='font-size:
+14.0pt;color:black'>1</span></sub><i><span style='font-size:14.0pt;color:black'>
+</span></i><span style='font-size:14.0pt;color:black'>на </span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>r</span></i><sub><span
+style='font-size:14.0pt;color:black'>2</span></sub><span style='font-size:14.0pt;
+color:black'> и получим новый остаток </span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>r</span></i><sub><span style='font-size:
+14.0pt;color:black'>3</span></sub><span style='font-size:14.0pt;color:black'>.
+Таким образом, </span><i><span lang=EN-US style='font-size:14.0pt;color:black'>i</span></i><span
+style='font-size:14.0pt;color:black'>-ый цикл алгоритма состоит из одного
+деления с остатком, причем делимое равно остатку, полученному в (</span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>i</span></i><span
+style='font-size:14.0pt;color:black'>-2)-ом цикле, а делитель - остатку,
+полученному в (</span><i><span lang=EN-US style='font-size:14.0pt;color:black'>i</span></i><span
+style='font-size:14.0pt;color:black'>-1)-ом цикле. Цикл повторяется до тех пор,
+пока не получим нулевого остатка; <i>наименьший ненулевой </i>остаток является
+наибольшим общим делителем чисел </span><i><span lang=EN-US style='font-size:
+14.0pt;color:black'>a</span></i><span style='font-size:14.0pt;color:black'> и </span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>b</span></i><span
+style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Таким
+образом, для вычисления наибольшего общего делителя необходимо лишь выполнить
+несколько делений с остатком.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name="Конечность_алгоритма"><i><span
+style='font-size:14.0pt;color:black'>Алгоритм конечен</span></i></a><span
+style='font-size:14.0pt;color:black'> (в последовательности остатков всегда
+появится нуль), так как: </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>-
+наибольшее возможное значение остатка в каждом делении по крайней мере на
+единицу меньше значения остатка на предыдущем делении;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>- значения
+остатков стремятся к нулю;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>- ряд
+остатков состоит из целых чисел в диапазоне [0..</span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>b</span></i><span style='font-size:14.0pt;
+color:black'>] – ряд конечен.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name="Особенности_алгоритма"><i><span
+style='font-size:14.0pt;color:black'>Алгоритм Евклида обладает</span></i></a><span
+style='font-size:14.0pt;color:black'> следующими <i>особенностями</i>:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>-
+снижение продолжительности вычислений;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>- максимальное
+число шагов – </span><span lang=EN-US style='font-size:14.0pt;color:black'>min</span><span
+style='font-size:14.0pt;color:black'>(</span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>a</span></i><span style='font-size:14.0pt;
+color:black'>, </span><i><span lang=EN-US style='font-size:14.0pt;color:black'>b</span></i><span
+style='font-size:14.0pt;color:black'>);</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>- используются
+только операции деления с остатком;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>- применим
+для больших чисел </span><i><span lang=EN-US style='font-size:14.0pt;
+color:black'>a</span></i><span lang=EN-US style='font-size:14.0pt;color:black'>
+</span><span style='font-size:14.0pt;color:black'>и </span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>b</span></i><span style='font-size:14.0pt;
+color:black'>;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>-
+отсутствует необходимость хранения больших массивов промежуточных результатов.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Алгоритм_работы"><u><span style='font-size:14.0pt'>Алгоритм работы</span></u></a><span
+style='font-size:14.0pt'>. </span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt'><span style='font-size:14.0pt'>Представим
+шаги алгоритма Евклида.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>1. Ввод натуральных чисел <i>a</i> и <i>b</i>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>2. Если параметры <i>a</i> и <i>b</i> не являются
+натуральными числами, то выход.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>3. Нахождение среди <i>a</i> и <i>b</i> наибольшего
+max и наименьшего min чисел (для исключения возможности деления меньшего числа
+на большее).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:14.0pt'>4. </span><span style='font-size:14.0pt'>а</span><span
+lang=EN-US style='font-size:14.0pt'>) ost=max mod min.</span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt;text-align:justify'><span
+lang=EN-US style='font-size:14.0pt'> </span><span style='font-size:14.0pt'>б</span><span
+lang=FI style='font-size:14.0pt'>) max=min; min=ost.</span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt;text-align:justify'><span lang=FI
+style='font-size:14.0pt'> </span><span style='font-size:14.0pt'>в) если </span><span
+lang=EN-US style='font-size:14.0pt'>ost</span><span style='font-size:14.0pt'>
+&lt;&gt; 0, то переход к шагу 4.а. Иначе к шагу 5.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>5. Вывод </span><span lang=EN-US style='font-size:
+14.0pt'>max</span><span style='font-size:14.0pt'> – значение НОД чисел </span><i><span
+lang=EN-US style='font-size:14.0pt'>a</span></i><span lang=EN-US
+style='font-size:14.0pt'> </span><span style='font-size:14.0pt'>и </span><i><span
+lang=EN-US style='font-size:14.0pt'>b</span></i><span style='font-size:14.0pt'>.
+Выход.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Пример_работы"><u><span style='font-size:14.0pt'>Пример работы
+вышеописанного алгоритма</span></u></a><span style='font-size:14.0pt'>. <span
+style='color:black'>Вычислить НОД для 1234 и 54. </span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Решение. Произведем
+деления с остатком:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>1234 = 54
+* 22 + 46;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>54 = 46 *
+1 + 8;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>46 = 8 *
+5 + 6;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>8 = 6*1 +
+2;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>6 = 2*3 +
+0.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Представим
+решение с помощью </span><span style='font-size:14.0pt'>трассировочной таблицы
+(табл. 1):</span></p>
+
+<p class=MsoNormal align=center style='margin-left:354.0pt;text-align:center;
+text-indent:35.4pt'><span style='font-size:14.0pt'>Таблица 1</span></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='margin-left:32.4pt;border-collapse:collapse'>
+ <tr style='height:16.5pt'>
+  <td width=116 style='width:87.25pt;border:solid windowtext 1.5pt;padding:
+  0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Шаги в цикле</p>
+  </td>
+  <td width=106 style='width:79.15pt;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Условие остаток <span
+  lang=EN-US>&lt;&gt;0?</span></p>
+  </td>
+  <td width=140 style='width:104.95pt;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Остаток</p>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>(A
+  mod B)</span></p>
+  </td>
+  <td width=107 style='width:80.35pt;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>A&#8592;B</span></p>
+  </td>
+  <td width=101 style='width:75.8pt;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>B&#8592;</span>остаток</p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=116 style='width:87.25pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>0</span></p>
+  </td>
+  <td width=106 style='width:79.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>-</span></p>
+  </td>
+  <td width=140 style='width:104.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>46 = 1234 <span
+  lang=EN-US>mod 54</span></p>
+  </td>
+  <td width=107 style='width:80.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>54</span></p>
+  </td>
+  <td width=101 style='width:75.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>46</p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=116 style='width:87.25pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>1</span></p>
+  </td>
+  <td width=106 style='width:79.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Да: 46<span
+  lang=EN-US>&lt;&gt;0</span></p>
+  </td>
+  <td width=140 style='width:104.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>8
+  = 54 mod 46</span></p>
+  </td>
+  <td width=107 style='width:80.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>46</span></p>
+  </td>
+  <td width=101 style='width:75.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>8</p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=116 style='width:87.25pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>2</span></p>
+  </td>
+  <td width=106 style='width:79.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Да: <span
+  lang=EN-US>8&lt;&gt;0</span></p>
+  </td>
+  <td width=140 style='width:104.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>6
+  = 46 mod 8</span></p>
+  </td>
+  <td width=107 style='width:80.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>8</span></p>
+  </td>
+  <td width=101 style='width:75.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>6</p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=116 style='width:87.25pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>3</span></p>
+  </td>
+  <td width=106 style='width:79.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Да: <span
+  lang=EN-US>6&lt;&gt;0</span></p>
+  </td>
+  <td width=140 style='width:104.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>2
+  = 8 mod 6</span></p>
+  </td>
+  <td width=107 style='width:80.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>6</span></p>
+  </td>
+  <td width=101 style='width:75.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>2</p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=116 style='width:87.25pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>4</span></p>
+  </td>
+  <td width=106 style='width:79.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Да: <span
+  lang=EN-US>2&lt;&gt;0</span></p>
+  </td>
+  <td width=140 style='width:104.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>0
+  = 6 mod 2</span></p>
+  </td>
+  <td width=107 style='width:80.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>2</span></p>
+  </td>
+  <td width=101 style='width:75.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>0</p>
+  </td>
+ </tr>
+ <tr style='height:16.5pt'>
+  <td width=116 style='width:87.25pt;border:solid windowtext 1.5pt;border-top:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Итог:</p>
+  </td>
+  <td width=106 style='width:79.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Нет</p>
+  </td>
+  <td width=140 style='width:104.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>-</p>
+  </td>
+  <td width=107 style='width:80.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>НОД = 2</p>
+  </td>
+  <td width=101 style='width:75.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>-</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Последний
+ненулевой остаток равен 2, поэтому НОД(1234,54) = 2.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Дополнительные_примеры"><u><span style='font-size:14.0pt'>Дополнительные
+примеры для решения</span></u></a><span style='font-size:14.0pt'>:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>1) НОД(878,24)=?   
+(2)</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>2) НОД(352,
+341)=? (11)</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>3) НОД(105,
+91)=?    (7)</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Задание><u><span style='font-size:14.0pt'>Задание.</span></u></a></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>В данной лабораторной работе требуется освоить работу
+алгоритма Евклида. Для этого необходимо выполнить следующее (каждый студент
+индивидуально выполняет задание и оформляет отчет).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>1. Выполнить на бумаге расчет одного из примеров
+(ранее не рассмотренного).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>2. Программно реализовать данный алгоритм в виде
+программы на любом из следующих языков программирования: </span><span
+lang=EN-US style='font-size:14.0pt'>C</span><span style='font-size:14.0pt'>,
+С++, </span><span lang=EN-US style='font-size:14.0pt'>Pascal</span><span
+style='font-size:14.0pt'>. Текст программы должен содержать комментарии к
+каждой строке кода.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>3. Оформить отчет о выполненной работе, с приведением
+расчета из пункта 1, листингов программ и двух-трех тестов (в виде трассировочных
+таблиц, как в таблице 1).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>4. Выполнить сдачу работы руководителю лабораторного
+занятия (при этом существует возможность задания дополнительных вопросов).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Примечания><u><span style='font-size:14.0pt'>Примечания</span></u></a><span
+style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Типы_операций"><span style='font-size:14.0pt'>В <u>языках “</u></span></a><u><span
+lang=EN-US style='font-size:14.0pt'>C</span></u><u><span style='font-size:14.0pt'>”
+и “</span></u><u><span lang=EN-US style='font-size:14.0pt'>Pascal</span></u><u><span
+style='font-size:14.0pt'>”</span></u><span style='font-size:14.0pt'>
+используются следующие <u>команды и знаки операций</u>, которые можно применить
+в работе (табл. 2):</span></p>
+
+<p class=MsoNormal align=center style='margin-left:318.6pt;text-align:center;
+text-indent:35.4pt'><span style='font-size:14.0pt'>Таблица 2</span></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='margin-left:14.4pt;border-collapse:collapse'>
+ <tr style='height:16.5pt'>
+  <td width=440 style='width:330.0pt;border:solid windowtext 1.5pt;padding:
+  0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Тип операции</p>
+  </td>
+  <td width=77 style='width:57.75pt;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Языки C, С++</p>
+  </td>
+  <td width=72 style='width:54.25pt;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Язык Pascal</p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=440 valign=bottom style='width:330.0pt;border-top:none;border-left:
+  solid windowtext 1.5pt;border-bottom:solid windowtext 2.25pt;border-right:
+  solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal>Операция взятия остатка от деления x на y</p>
+  </td>
+  <td width=77 valign=bottom style='width:57.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>x % y</p>
+  </td>
+  <td width=72 valign=bottom style='width:54.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>x mod y</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=ДопВопросы><u><span style='font-size:14.0pt'>Вопросы для самопроверки</span></u></a><u><span
+style='font-size:14.0pt'>.</span></u></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>1. Какого предназначение алгоритма Евклида?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>2. Что такое НОД и НОК? Какая связь между ними?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>3. Каким образом можно вычислять НОД?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>4. Поясните работу алгоритма Евклида?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>5. Какое рекуррентное соотношение существует между
+остатками, полученными на смежных шагах алгоритма Евклида?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>6. Почему алгоритм конечен?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>7. Какими особенностями обладает алгоритм Евклида?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>8. При каких условиях происходит выход из алгоритма?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>9. Какие математические операции используются в
+алгоритме Евклида?</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Литература><u><span style='font-size:14.0pt'>Литература для
+самостоятельной подготовки</span></u></a><span style='font-size:14.0pt'>:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>1. С. Коутинхо. Введение в теорию чисел. Алгоритм </span><span
+lang=EN-US style='font-size:14.0pt'>RSA</span><span style='font-size:14.0pt'>.
+– М.: Постмаркет, 2001. – 328 с.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>2. Уэйт М., Прата С., Мартин Д. Язык Си. Руководство
+для начинающих: Пер. с англ. – М.: Мир, 1988. – 512 с., ил.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>3. Прайс Д. Программирование на языке Паскаль:
+Практическое руководство. Пер. с англ. – М.: Мир, 1987. – 232 с., ил.</span></p>
+
+</div>
+
+</body>
+
+</html>

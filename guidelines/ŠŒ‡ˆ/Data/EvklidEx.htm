@@ -1,0 +1,1420 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title>Лабораторная работа</title>
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:14.0pt;
+	font-family:"Times New Roman";
+	color:black;}
+p.Referat, li.Referat, div.Referat
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:27.0pt;
+	font-size:14.0pt;
+	font-family:"Times New Roman";
+	color:black;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:1.0cm 70.9pt 3.0cm 2.0cm;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=RU>
+
+<div class=Section1>
+
+<p class=MsoNormal align=center style='text-align:center'><a name="Цель_работы"><b>Лабораторная
+работа</b></a></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b>&nbsp;</b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b>Программная
+реализация расширенного алгоритма Евклида</b></p>
+
+<p class=MsoNormal align=center style='text-align:center'>&nbsp;</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><u>Цель работы</u>:
+освоение практических методов реализации на языке программирования операции
+модулярной арифметики получения обратных элементов на основе расширенного
+алгоритма Евклида. </p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>&nbsp;</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Описание_работы"><u>Описание работы</u></a>.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>Пусть задано
+целое число <b><i><span lang=EN-US>a</span></i></b>, <b><i><span lang=EN-US>a</span></i></b>
+є <i><span lang=EN-US>Z</span></i>,</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>и числовой
+модуль <i><span lang=EN-US>n</span></i> для нормирования результата, <b><i><span
+lang=EN-US>n</span></i></b> є <i><span lang=EN-US>N</span></i>,</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><i><span
+lang=EN-US>N</span></i> – множество натуральных чисел;</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><i><span
+lang=EN-US>Z</span></i> – множество целых чисел.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>Поясним
+используемые обозначения. Все операции производятся над целыми числами. Под формулой
+<sub><img width=53 height=26 src="EvklidEx.files/image001.gif"></sub> будет
+пониматься весь ряд целых чисел, лежащих в диапазоне от <b><i><span lang=EN-US>r</span></i></b>
+до <b><i><span lang=EN-US>k</span></i></b> включительно, и который может
+принимать переменная <b><i><span lang=EN-US>i</span></i></b>. ]<i><span
+lang=EN-US>k</span></i>[ - взятие от дробного числа <i><span lang=EN-US>k</span></i>
+только целой части, без округления.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><i>Взаимнопростыми</i>
+называются два числа, если их наибольший общий делитель (НОД) равен единице.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>Тогда, если
+числа <b><i><span lang=EN-US>a</span></i></b> и <b><i><span lang=EN-US>n</span></i></b>
+взаимнопросты, то для числа <b><i><span lang=EN-US>a</span></i></b> существует
+единственный <i>обратный элемент</i> <b><i><span lang=EN-US>a</span></i></b><sup>-1</sup>,
+при этом числа <b><i><span lang=EN-US>a</span></i></b> и <b><i><span
+lang=EN-US>a</span></i></b><sup>-1</sup> удовлетворяют условию (<b><i><span
+lang=EN-US>a</span><span lang=EN-US> </span></i></b>* <b><i><span lang=EN-US>a</span></i></b><sup>-1</sup>)<span
+lang=EN-US> mod</span><span lang=EN-US> </span><b><i><span lang=EN-US>n</span></i></b><sup><span
+lang=EN-US> </span></sup>=1.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>Обратный
+элемент ищется в диапазоне <sub><img width=81 height=25
+src="EvklidEx.files/image002.gif"></sub>. Для нахождения обратного элемента
+числа <b><i><span lang=EN-US>a</span></i></b> и <b><i><span lang=EN-US>n</span></i></b>
+должны быть взаимнопросты.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>&nbsp;</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Алгоритм_работы"><u>Алгоритм работы</u></a>.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>Расширенный
+алгоритм Евклида можно представить в виде следующих шагов.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>1. Ввод числа <span
+lang=EN-US>a</span>, для которого необходимо найти обратный элемент <span
+lang=EN-US>a</span><sup>-1</sup>.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>2. Ввод модуля
+<span lang=EN-US>n</span>, нормирующего результат.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>3. Если <i><span
+lang=EN-US>a</span></i>=0 или <i><span lang=EN-US>n</span></i>=0 или <i><span
+lang=EN-US>n</span></i>=1, то некорректные параметры, выход (пояснение: при <i><span
+lang=EN-US>a</span></i>=0 не существует обратного элемента, при <i><span
+lang=EN-US>n</span></i>=0 возникает ситуация деления на нуль; а при <i><span
+lang=EN-US>n</span></i>=1 всегда будет получаться результат, равный нулю, так
+как во множестве результатов будет существовать только один элемент).</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>4. Задаются
+вектора <i><span lang=EN-US>U</span><span lang=EN-US> </span></i>= {<i><span
+lang=EN-US>u</span></i><sub>1</sub>, <i><span lang=EN-US>u</span></i><sub>2</sub>,
+<i><span lang=EN-US>u</span></i><sub>3</sub>}, <i><span lang=EN-US>V</span></i><span
+lang=EN-US> </span>= {<i><span lang=EN-US>v</span></i><sub>1</sub>, <i><span
+lang=EN-US>v</span></i><sub>2</sub>, <i><span lang=EN-US>v</span></i><sub>3</sub>}.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.4pt'>Производится
+начальная установка параметров.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.4pt'>Вектор <i><span
+lang=EN-US>U</span></i><span lang=EN-US> </span>= {0; 1; <i><span lang=EN-US>n</span></i>};
+вектор <i><span lang=EN-US>V</span></i><span lang=EN-US> </span>= {1, 0, <i><span
+lang=EN-US>a</span></i>}.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>5. Пока <i><span
+lang=EN-US>u</span></i><sub>3</sub><span lang=EN-US style='font-family:Symbol'>&sup1;</span>1
+и <i><span lang=EN-US>u</span></i><sub>3</sub><span lang=EN-US
+style='font-family:Symbol'>&sup1;</span>0 и <i><span lang=EN-US>v</span></i><sub>3</sub><span
+lang=EN-US style='font-family:Symbol'>&sup1;</span>0 выполняются следующие
+действия (пояснение: при <i><span lang=EN-US>u</span></i><sub>3</sub>=1 результат
+будет получен в <i><span lang=EN-US>u</span></i><sub>1</sub>; при <i><span
+lang=EN-US>v</span></i><sub>3</sub>=0 будет деление на нуль в пункте 5.а; при <i><span
+lang=EN-US>u</span></i><sub>3</sub>=0 доказывается, что два числа – <i><span
+lang=EN-US>a</span></i><span lang=EN-US> </span>и <i><span lang=EN-US>n</span></i>
+– не являются взаимнопростыми).</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>а) найти
+результат целочисленного деления числа <i><span lang=EN-US>u</span></i><sub>3</sub>
+на <i><span lang=EN-US>v</span></i><sub>3</sub>: <i><span lang=EN-US>q</span></i>=]<i><span
+lang=EN-US>u</span></i><sub>3</sub>/<i><span lang=EN-US>v</span></i><sub>3</sub>[;</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>б) для <span
+style='font-family:Symbol'>&quot;</span><sub><img width=45 height=25
+src="EvklidEx.files/image003.gif"></sub> </p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.4pt'>- находится
+значение выражения <i><span lang=EN-US>t</span></i><span lang=EN-US> </span>= <i><span
+lang=EN-US>u</span></i><sub><span lang=EN-US>i</span></sub>-<i><span
+lang=EN-US>v</span></i><sub><span lang=EN-US>i</span></sub>*<i><span
+lang=EN-US>q</span></i>;</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.4pt'>- <i><span
+lang=EN-US>u</span></i><sub><span lang=EN-US>i</span></sub> присваивается
+значение <i><span lang=EN-US>v</span></i><sub><span lang=EN-US>i</span></sub>
+:  <i><span lang=EN-US>u</span></i><sub><span lang=EN-US>i</span><span
+lang=EN-US> </span></sub>= <i><span lang=EN-US>v</span></i><sub><span
+lang=EN-US>i</span></sub>;</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.4pt'>- <i><span
+lang=EN-US>v</span></i><sub><span lang=EN-US>i</span></sub> присваивается
+значение <i><span lang=EN-US>t</span></i>  : <i><span lang=EN-US>v</span></i><sub><span
+lang=EN-US>i</span></sub> = <i><span lang=EN-US>t</span></i>;</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>в) переход к
+пункту 5.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>6. Если <i><span
+lang=EN-US>u</span></i><sub>3</sub><span lang=EN-US style='font-family:Symbol'>&sup1;</span>1,
+то обратный элемент не существует, выход.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>7. Если <i><span
+lang=EN-US>u</span></i><sub>3</sub>=1, то в переменной <i><span lang=EN-US>u</span></i><sub>1</sub>
+хранится значение обратного элемента <i><span lang=EN-US>a</span></i><sup>-1</sup>.
+Если <i><span lang=EN-US>u</span></i><sub>1</sub>&lt;0, то осуществляется
+приведение результата к положительному числу: <i><span lang=EN-US>u</span></i><sub>1</sub>=<i><span
+lang=EN-US>n</span></i> + <i><span lang=EN-US>u</span></i><sub>1</sub>. Далее
+осуществляем вывод значения <i><span lang=EN-US>u</span></i><sub>1</sub>.
+Выход.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>&nbsp;</p>
+
+<p class=MsoNormal style='text-indent:27.0pt'><a name="Пример_работы_алгоритма"><u>Примеры
+работы вышеописанного алгоритма</u></a>.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Пример1><u>Пример 1</u>. Необходимо для числа </a><b><i><span lang=EN-US>a</span></i></b>=5
+найти обратный элемент <b><i><span lang=EN-US>a</span></i></b><sup>-1</sup> и
+нормировать результат числовым модулем <b><i><span lang=EN-US>n</span></i></b>=
+23.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>Инициализируем
+вектора <i><span lang=EN-US>U</span></i> и <i><span lang=EN-US>V</span></i>: <i><span
+lang=EN-US>U</span></i><span lang=EN-US> </span>= {0, 1, <i><span lang=EN-US>n</span></i>=23},
+<i><span lang=EN-US>V</span></i>={1, 0, <i><span lang=EN-US>a</span></i>=5}.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>Далее
+представим следующие шаги алгоритма на примере трассировочной таблицы (табл.
+1):</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>                                                                                                 Таблица
+1</p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=637
+ style='width:477.95pt;margin-left:14.4pt;border-collapse:collapse'>
+ <tr style='height:16.5pt'>
+  <td width=67 style='width:50.4pt;border:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>Шаг, </span><i><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>i</span></i></p>
+  </td>
+  <td width=48 style='width:36.0pt;border:solid windowtext 2.25pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><i><span
+  lang=EN-US style='font-size:10.0pt;color:windowtext'>u</span></i><sub><span
+  lang=EN-US style='font-size:10.0pt;color:windowtext'>3</span></sub><span
+  lang=EN-US style='font-size:10.0pt;color:windowtext'>&lt;&gt;1</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border:solid windowtext 2.25pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><i><span
+  lang=EN-US style='font-size:10.0pt;color:windowtext'>u</span></i><sub><span
+  lang=EN-US style='font-size:10.0pt;color:windowtext'>3</span></sub><span
+  lang=EN-US style='font-size:10.0pt;color:windowtext'>&lt;&gt;0</span></p>
+  </td>
+  <td width=55 style='width:41.35pt;border:solid windowtext 2.25pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><i><span
+  lang=EN-US style='font-size:10.0pt;color:windowtext'>v</span></i><sub><span
+  lang=EN-US style='font-size:10.0pt;color:windowtext'>3</span></sub><span
+  lang=EN-US style='font-size:10.0pt;color:windowtext'>&lt;&gt;0</span></p>
+  </td>
+  <td width=75 style='width:56.3pt;border:solid windowtext 2.25pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>Выход?</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border:solid windowtext 2.25pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><i><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>q</span></i></p>
+  </td>
+  <td width=79 style='width:59.4pt;border:solid windowtext 2.25pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><i><span
+  style='font-size:12.0pt;color:windowtext'>u</span></i><sub><span
+  style='font-size:12.0pt;color:windowtext'>1</span></sub></p>
+  </td>
+  <td width=48 style='width:36.0pt;border:solid windowtext 2.25pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><i><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>u</span></i><sub><span
+  style='font-size:12.0pt;color:windowtext'>2</span></sub></p>
+  </td>
+  <td width=48 style='width:36.0pt;border:solid windowtext 2.25pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><i><span
+  style='font-size:12.0pt;color:windowtext'>u</span></i><sub><span
+  style='font-size:12.0pt;color:windowtext'>3</span></sub></p>
+  </td>
+  <td width=38 style='width:28.8pt;border:solid windowtext 2.25pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><i><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>v</span></i><sub><span
+  style='font-size:12.0pt;color:windowtext'>1</span></sub></p>
+  </td>
+  <td width=36 style='width:26.8pt;border:solid windowtext 2.25pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><i><span
+  style='font-size:12.0pt;color:windowtext'>v</span></i><sub><span
+  style='font-size:12.0pt;color:windowtext'>2</span></sub></p>
+  </td>
+  <td width=47 style='width:34.9pt;border:solid windowtext 2.25pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><i><span
+  style='font-size:12.0pt;color:windowtext'>v</span></i><sub><span
+  style='font-size:12.0pt;color:windowtext'>3</span></sub></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=67 style='width:50.4pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>До цикла</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=55 style='width:41.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=75 style='width:56.3pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>нет</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>-</span></p>
+  </td>
+  <td width=79 style='width:59.4pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>0</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>1</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>n=23</span></p>
+  </td>
+  <td width=38 style='width:28.8pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>1</span></p>
+  </td>
+  <td width=36 style='width:26.8pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>0</span></p>
+  </td>
+  <td width=47 style='width:34.9pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>a=5</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=67 style='width:50.4pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>1</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=55 style='width:41.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=75 style='width:56.3pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>нет</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>4</span></p>
+  </td>
+  <td width=79 style='width:59.4pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>1</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>0</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>5</span></p>
+  </td>
+  <td width=38 style='width:28.8pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>-4</span></p>
+  </td>
+  <td width=36 style='width:26.8pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>1</span></p>
+  </td>
+  <td width=47 style='width:34.9pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>3</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=67 style='width:50.4pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>2</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=55 style='width:41.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=75 style='width:56.3pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>нет</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>1</span></p>
+  </td>
+  <td width=79 style='width:59.4pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>-4</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>1</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>3</span></p>
+  </td>
+  <td width=38 style='width:28.8pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>5</span></p>
+  </td>
+  <td width=36 style='width:26.8pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>-1</span></p>
+  </td>
+  <td width=47 style='width:34.9pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>2</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=67 style='width:50.4pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>3</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=55 style='width:41.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=75 style='width:56.3pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>нет</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>1</span></p>
+  </td>
+  <td width=79 style='width:59.4pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>5</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>-1</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>2</span></p>
+  </td>
+  <td width=38 style='width:28.8pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>-9</span></p>
+  </td>
+  <td width=36 style='width:26.8pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>2</span></p>
+  </td>
+  <td width=47 style='width:34.9pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>1</span></p>
+  </td>
+ </tr>
+ <tr style='height:16.5pt'>
+  <td width=67 style='width:50.4pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>4</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=55 style='width:41.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=75 style='width:56.3pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>нет</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>2</span></p>
+  </td>
+  <td width=79 style='width:59.4pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>-9</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>2</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>1</span></p>
+  </td>
+  <td width=38 style='width:28.8pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>23</span></p>
+  </td>
+  <td width=36 style='width:26.8pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>-5</span></p>
+  </td>
+  <td width=47 style='width:34.9pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>0</span></p>
+  </td>
+ </tr>
+ <tr style='height:16.5pt'>
+  <td width=67 style='width:50.4pt;border:solid windowtext 2.25pt;border-top:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>Итог:</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>нет</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=55 style='width:41.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>нет</span></p>
+  </td>
+  <td width=75 style='width:56.3pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>-</span></p>
+  </td>
+  <td width=79 style='width:59.4pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>N+u<sub>1</sub>=14</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>-</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>-</span></p>
+  </td>
+  <td width=38 style='width:28.8pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>-</span></p>
+  </td>
+  <td width=36 style='width:26.8pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>-</span></p>
+  </td>
+  <td width=47 style='width:34.9pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>-</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>На четвертом
+шаге значение <i><span lang=EN-US>u</span></i><sub>3</sub> стало равным 1.
+Тогда в <i><span lang=EN-US>u</span></i><sub>1</sub> находится результат: <i><span
+lang=EN-US>u</span></i><sub>1 </sub>= -9. Нормируем результат: <i><span
+lang=EN-US>u</span></i><sub>1</sub>=<i><span lang=EN-US>n</span></i> + <i><span
+lang=EN-US>u</span></i><sub>1</sub> = 23 – 9 = 14.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>Проверка.
+(5*14) <span lang=EN-US>mod</span> 23 должно быть равно 1.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>(5*14) <span
+lang=EN-US>mod</span> 23 = 70 <span lang=EN-US>mod</span> 23 равно 1.
+Правильно.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>&nbsp;</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Пример2><u>Пример 2</u>. Необходимо для числа </a><b><i><span lang=EN-US>a</span></i></b>=6
+найти обратный элемент <b><i><span lang=EN-US>a</span></i></b><sup>-1</sup> и
+нормировать результат числовым модулем <b><i><span lang=EN-US>n</span><span
+lang=EN-US> </span></i></b>= 28.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>Отметим, что
+числа <b><i><span lang=EN-US>a</span></i></b>=6 и <b><i><span lang=EN-US>n</span><span
+lang=EN-US> </span></i></b>= 28 не взаимнопросты.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>Инициализируем
+вектора <i><span lang=EN-US>U</span></i> и <i><span lang=EN-US>V</span></i>: <i><span
+lang=EN-US>U</span></i>={0, 1, <i><span lang=EN-US>n</span></i>=28}, <i><span
+lang=EN-US>V</span></i>={1, 0, <i><span lang=EN-US>a</span></i>=6}.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>Далее
+представим следующие шаги алгоритма на примере трассировочной таблицы (табл.
+2):</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>                                                                                                Таблица
+2</p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=637
+ style='width:477.95pt;margin-left:14.4pt;border-collapse:collapse'>
+ <tr style='height:16.5pt'>
+  <td width=67 style='width:50.4pt;border:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>Шаг, </span><i><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>i</span></i></p>
+  </td>
+  <td width=48 style='width:36.0pt;border:solid windowtext 2.25pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><i><span
+  lang=EN-US style='font-size:10.0pt;color:windowtext'>u</span></i><sub><span
+  lang=EN-US style='font-size:10.0pt;color:windowtext'>3</span></sub><span
+  lang=EN-US style='font-size:10.0pt;color:windowtext'>&lt;&gt;1</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border:solid windowtext 2.25pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><i><span
+  lang=EN-US style='font-size:10.0pt;color:windowtext'>u</span></i><sub><span
+  lang=EN-US style='font-size:10.0pt;color:windowtext'>3</span></sub><span
+  lang=EN-US style='font-size:10.0pt;color:windowtext'>&lt;&gt;0</span></p>
+  </td>
+  <td width=55 style='width:41.35pt;border:solid windowtext 2.25pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><i><span
+  lang=EN-US style='font-size:10.0pt;color:windowtext'>v</span></i><sub><span
+  lang=EN-US style='font-size:10.0pt;color:windowtext'>3</span></sub><span
+  lang=EN-US style='font-size:10.0pt;color:windowtext'>&lt;&gt;0</span></p>
+  </td>
+  <td width=75 style='width:56.3pt;border:solid windowtext 2.25pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>Выход?</span></p>
+  </td>
+  <td width=67 style='width:49.95pt;border:solid windowtext 2.25pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><i><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>q</span></i></p>
+  </td>
+  <td width=61 style='width:45.45pt;border:solid windowtext 2.25pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><i><span
+  style='font-size:12.0pt;color:windowtext'>u</span></i><sub><span
+  style='font-size:12.0pt;color:windowtext'>1</span></sub></p>
+  </td>
+  <td width=48 style='width:36.0pt;border:solid windowtext 2.25pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><i><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>u</span></i><sub><span
+  style='font-size:12.0pt;color:windowtext'>2</span></sub></p>
+  </td>
+  <td width=48 style='width:36.0pt;border:solid windowtext 2.25pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><i><span
+  style='font-size:12.0pt;color:windowtext'>u</span></i><sub><span
+  style='font-size:12.0pt;color:windowtext'>3</span></sub></p>
+  </td>
+  <td width=38 style='width:28.8pt;border:solid windowtext 2.25pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><i><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>v</span></i><sub><span
+  style='font-size:12.0pt;color:windowtext'>1</span></sub></p>
+  </td>
+  <td width=36 style='width:26.8pt;border:solid windowtext 2.25pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><i><span
+  style='font-size:12.0pt;color:windowtext'>v</span></i><sub><span
+  style='font-size:12.0pt;color:windowtext'>2</span></sub></p>
+  </td>
+  <td width=47 style='width:34.9pt;border:solid windowtext 2.25pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><i><span
+  style='font-size:12.0pt;color:windowtext'>v</span></i><sub><span
+  style='font-size:12.0pt;color:windowtext'>3</span></sub></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=67 style='width:50.4pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>До цикла</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=55 style='width:41.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=75 style='width:56.3pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>нет</span></p>
+  </td>
+  <td width=67 style='width:49.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>-</span></p>
+  </td>
+  <td width=61 style='width:45.45pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>0</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>1</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><i><span
+  style='font-size:12.0pt;color:windowtext'>n</span></i><span style='font-size:
+  12.0pt;color:windowtext'>=28</span></p>
+  </td>
+  <td width=38 style='width:28.8pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>1</span></p>
+  </td>
+  <td width=36 style='width:26.8pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>0</span></p>
+  </td>
+  <td width=47 style='width:34.9pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><i><span
+  style='font-size:12.0pt;color:windowtext'>a</span></i><span style='font-size:
+  12.0pt;color:windowtext'>=6</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=67 style='width:50.4pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>1</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=55 style='width:41.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=75 style='width:56.3pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>нет</span></p>
+  </td>
+  <td width=67 style='width:49.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>4</span></p>
+  </td>
+  <td width=61 style='width:45.45pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>1</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>0</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>6</span></p>
+  </td>
+  <td width=38 style='width:28.8pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>-4</span></p>
+  </td>
+  <td width=36 style='width:26.8pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>1</span></p>
+  </td>
+  <td width=47 style='width:34.9pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>4</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=67 style='width:50.4pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>2</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=55 style='width:41.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=75 style='width:56.3pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>нет</span></p>
+  </td>
+  <td width=67 style='width:49.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>1</span></p>
+  </td>
+  <td width=61 style='width:45.45pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>-4</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>1</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>4</span></p>
+  </td>
+  <td width=38 style='width:28.8pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>5</span></p>
+  </td>
+  <td width=36 style='width:26.8pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>-1</span></p>
+  </td>
+  <td width=47 style='width:34.9pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>2</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=67 style='width:50.4pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>3</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=55 style='width:41.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=75 style='width:56.3pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>нет</span></p>
+  </td>
+  <td width=67 style='width:49.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>2</span></p>
+  </td>
+  <td width=61 style='width:45.45pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>5</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>-1</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>2</span></p>
+  </td>
+  <td width=38 style='width:28.8pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>-14</span></p>
+  </td>
+  <td width=36 style='width:26.8pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>3</span></p>
+  </td>
+  <td width=47 style='width:34.9pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>0</span></p>
+  </td>
+ </tr>
+ <tr style='height:16.5pt'>
+  <td width=67 style='width:50.4pt;border:solid windowtext 2.25pt;border-top:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>Итог:</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=55 style='width:41.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>нет</span></p>
+  </td>
+  <td width=75 style='width:56.3pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>да</span></p>
+  </td>
+  <td width=67 style='width:49.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-US style='font-size:11.0pt;color:windowtext'>2 / 0 = ?</span></b></p>
+  </td>
+  <td width=277 colspan=6 style='width:207.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>значение<b><i> </i></b><b><i><span
+  lang=EN-US>a</span></i></b><sup>-1</sup> не определено</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>На третьем
+шаге значение переменной <i><span lang=EN-US>v</span></i><sub>3</sub> стало
+равным 0. Далее производится вычисление переменной <i><span lang=EN-US>q</span></i>=]<i><span
+lang=EN-US>u</span></i><sub>3</sub>/<i><span lang=EN-US>v</span></i><sub>3</sub>[,
+что невозможно из-за деления на нуль. Тогда работа алгоритма завершается с
+выдачей уведомления, что для числа <b><i><span lang=EN-US>a</span></i></b>=6 не
+существует обратного элемент <b><i><span lang=EN-US>a</span></i></b><sup>-1</sup>
+при нормировании результата по модулю <b><i><span lang=EN-US>n</span><span
+lang=EN-US> </span></i></b>= 28.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>&nbsp;</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Дополнительные_примеры_решения"><u>Дополнительные примеры для решения</u></a>:</p>
+
+<p class=MsoNormal style='margin-left:45.0pt;text-align:justify;text-indent:
+-18.0pt'>1)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+lang=EN-US>a</span>=7, <span lang=EN-US>n</span>=31. Найти <b><i><span
+lang=EN-US>a</span></i></b><sup>-1</sup>? (<b><i><span lang=EN-US>a</span></i></b><sup>-1</sup>=9)</p>
+
+<p class=MsoNormal style='margin-left:45.0pt;text-align:justify;text-indent:
+-18.0pt'>2)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+lang=EN-US>a</span>=6, <span lang=EN-US>n</span>=29. Найти <b><i><span
+lang=EN-US>a</span></i></b><sup>-1</sup>? (<b><i><span lang=EN-US>a</span></i></b><sup>-1</sup>=5)</p>
+
+<p class=MsoNormal style='margin-left:45.0pt;text-align:justify;text-indent:
+-18.0pt'>3)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+lang=EN-US>a</span>=4, <span lang=EN-US>n</span>=28. Найти <b><i><span
+lang=EN-US>a</span></i></b><sup>-1</sup>? (неопределенно – деление на нуль)</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Задание>&nbsp;</a></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><u>Задание</u><u>.</u></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>В данной
+лабораторной работе требуется освоить работу расширенного алгоритма Евклида.
+Для этого необходимо выполнить следующее (каждый студент индивидуально
+выполняет задание и оформляет отчет).</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>1. Выполнить
+на бумаге расчет одного из примеров (ранее не рассмотренного).</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>2. Программно
+реализовать данный алгоритм в виде программы на любом из следующих языков
+программирования: <span lang=EN-US>C</span>, С++, <span lang=EN-US>Pascal</span>.
+Текст программы должен содержать комментарии к каждой строке кода.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>3. Оформить
+отчет о выполненной работе, с приведением расчета из пункта 1, листингов
+программ и двух-трех тестов (в виде трассировочных таблиц, как в таблицах 1 и
+2).</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>4. Выполнить
+сдачу работы руководителю лабораторного занятия (при этом существует
+возможность задания дополнительных вопросов).</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>&nbsp;</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Примечания><u>Примечания</u></a>.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>Если число
+заключается в квадратные скобки, то данное число округляется к наименьшему
+целому.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Типы_операций">В <u>языках “</u></a><u><span lang=EN-US>C</span>” и “</u><u><span
+lang=EN-US>Pascal</span>”</u> используются следующие <u>команды и знаки
+операций</u>, которые можно применить в работе (табл. 3):</p>
+
+<p class=MsoNormal align=center style='margin-left:318.6pt;text-align:center;
+text-indent:35.4pt'>Таблица 3</p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='margin-left:14.4pt;border-collapse:collapse'>
+ <tr style='height:16.5pt'>
+  <td width=440 style='width:330.0pt;border:solid windowtext 1.5pt;padding:
+  0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt'>Тип операции</span></p>
+  </td>
+  <td width=77 style='width:57.75pt;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt'>Языки C, С++</span></p>
+  </td>
+  <td width=72 style='width:54.25pt;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt'>Язык Pascal</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=440 valign=bottom style='width:330.0pt;border-top:none;border-left:
+  solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;border-right:
+  solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal><span style='font-size:12.0pt'>Округление числа </span><i><span
+  lang=EN-US style='font-size:12.0pt'>x</span></i><span style='font-size:12.0pt'>
+  к наименьшему целому числу (без учета дробной части)</span></p>
+  </td>
+  <td width=77 style='width:57.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt'>(int)</span><i><span style='font-size:12.0pt'>x</span></i></p>
+  </td>
+  <td width=72 style='width:54.25pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt'>Int(</span><i><span style='font-size:12.0pt'>x</span></i><span
+  lang=EN-US style='font-size:12.0pt'>)</span></p>
+  </td>
+ </tr>
+ <tr style='height:16.5pt'>
+  <td width=440 valign=bottom style='width:330.0pt;border-top:none;border-left:
+  solid windowtext 1.5pt;border-bottom:none;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal><span style='font-size:12.0pt'>Взятие квадратного корня из
+  числа <i>x</i></span></p>
+  </td>
+  <td width=77 valign=bottom style='width:57.75pt;border:none;border-right:
+  solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt'>sqrt(</span><i><span style='font-size:12.0pt'>x</span></i><span
+  lang=EN-US style='font-size:12.0pt'>)</span></p>
+  </td>
+  <td width=72 valign=bottom style='width:54.25pt;border:none;border-right:
+  solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt'>sqrt(</span><i><span style='font-size:12.0pt'>x</span></i><span
+  lang=EN-US style='font-size:12.0pt'>)</span></p>
+  </td>
+ </tr>
+ <tr style='height:16.5pt'>
+  <td width=440 valign=bottom style='width:330.0pt;border:solid windowtext 1.5pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal><span style='font-size:12.0pt'>Операция взятия остатка от
+  деления x на y</span></p>
+  </td>
+  <td width=77 valign=bottom style='width:57.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt'>x % y</span></p>
+  </td>
+  <td width=72 valign=bottom style='width:54.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt'>x mod y</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>&nbsp;</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=ДопВопросы><u>Вопросы для самопроверки</u></a><u>.</u></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>1. Какого предназначение
+расширенного алгоритма Евклида?</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>2. Что такое
+взаимнопростые числа?</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>3. Как
+находится обратный элемент для некоторого числа?</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>4. Поясните
+работу алгоритма Евклида?</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>5. Какие
+ограничения накладываются на входные данные алгоритма?</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>6. При каких
+условиях происходит выполнение алгоритма?</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>7. При каких
+условиях происходит выход из алгоритма?</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>8. При каких
+условиях, в конце работы алгоритма, определяется, что был найден обратный
+элемент? Что необходимо сделать, если обратный элемент оказался отрицательным числом?
+</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>9. Какие
+математические операции используются в алгоритме Евклида?</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Литература><u>Литература для самостоятельной подготовки</u>: </a></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>1. Ю.В.
+Романец, П.А. Тимофеев, В.Ф. Шаньгин. Защита информации в компьютерных системах
+и сетях / Под ред. В.Ф. Шаньгина. – М.: Радио и связь, 1999. – 328 с.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>2. Р. Лидл, Г.
+Нидеррайтер. Конечные поля: В 2 т. / Перевод с англ. А.Е.Жукова, В.И.Петрова;
+Под ред. В.И.Нечаева. – М.: Мир, 1988.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>3. В.П.
+Сигорский. Математический аппарат инженера. – Киев: «Техника», 1975. - 768 с.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>4. Уэйт М.,
+Прата С., Мартин Д. Язык Си. Руководство для начинающих: Пер. с англ. – М.:
+Мир, 1988. – 512 с., ил.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>5. Прайс Д.
+Программирование на языке Паскаль: Практическое руководство. Пер. с англ. – М.:
+Мир, 1987. – 232 с., ил.</p>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,786 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title>Лабораторная работа</title>
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:14.0pt;
+	font-family:"Times New Roman";
+	color:black;}
+p.Referat, li.Referat, div.Referat
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:27.0pt;
+	font-size:14.0pt;
+	font-family:"Times New Roman";
+	color:black;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:1.0cm 70.9pt 3.0cm 2.0cm;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=RU>
+
+<div class=Section1>
+
+<p class=MsoNormal align=center style='text-align:center'><a name="Цель_работы"><b>Лабораторная
+работа</b></a></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b>&nbsp;</b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b>Программная
+реализация схемы Горнера</b></p>
+
+<p class=MsoNormal align=center style='text-align:center'>&nbsp;</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><u>Цель работы</u>:
+освоение практических методов реализации на языке программирования операций
+модулярной арифметики возведения целых чисел в большие степени, сравнимые с
+размерностью машинного слова, на основе использования схемы Горнера. </p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>&nbsp;</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Описание_работы"><u>Описание работы</u></a>.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>Пусть задано
+выражение вида <a name="Задача_схемы_Горнера"><sub><img width=107 height=25
+src="Gorner.files/image001.gif"></sub></a>,                                  (
+1 )</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>где <b><i><span
+lang=EN-US>a</span></i></b> є <i><span lang=EN-US>N</span></i> – основание
+степени,</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><b><i><span
+lang=EN-US>x</span></i></b>  є <i><span lang=EN-US>N</span></i> – степень
+выражения,</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><b><i><span
+lang=EN-US>m</span></i></b> є <i><span lang=EN-US>N</span></i> – число,
+нормирующее выражение в диапазоне [0..<b><i><span lang=EN-US>m</span></i></b>-1],</p>
+
+<p class=MsoNormal style='margin-right:-18.25pt;text-align:justify;text-indent:
+27.0pt'><span lang=EN-US style='font-size:12.0pt'>mod</span> – знак операции взятия
+остатка от деления делимого <b><i><span lang=EN-US>a</span><span lang=EN-US> </span></i></b><b><i><sup><span
+lang=EN-US>x</span></sup></i></b>  на делитель <b><i><span lang=EN-US>m</span></i></b>,</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><b><i><span
+lang=EN-US>y</span></i></b> є <span lang=EN-US>N</span>-результат вычисленного
+выражения, лежащий в диапазоне [0..<b><i><span lang=EN-US>m</span></i></b>-1],</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><i><span
+lang=EN-US>N</span></i> – множество натуральных чисел.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>Поясним
+используемые обозначения. Все операции производятся над целыми числами. Под
+формулой <sub><img width=53 height=26 src="Gorner.files/image002.gif"></sub> будет
+пониматься весь ряд целых чисел, лежащих в диапазоне от <b><i><span lang=EN-US>r</span></i></b>
+до <b><i><span lang=EN-US>k</span></i></b> включительно, и который может
+принимать переменная <b><i><span lang=EN-US>i</span></i></b>.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>Так как
+вычисления производятся на ПЭВМ, то результаты всех операций должны лежать в
+рамках машинного слова (двойного машинного слова для машин фирмы <span
+lang=EN-US>Intel</span>) - [0.. 2<sup>32</sup>-1]  , где   2<sup>32</sup>-1<sup>
+</sup>= 4 294 967&nbsp;295.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>При
+непосредственном вычислении значение выражения <b><i><span lang=EN-US>a<sup>x</sup></span></i></b>
+может выйти за размеры машинного слова уже при малых значениях <b><i><span
+lang=EN-US>a</span></i></b> и <b><i><span lang=EN-US>x</span></i></b>, например
+при <b><i><span lang=EN-US>a</span></i></b>=3 и <b><i><span lang=EN-US>x</span></i></b>=21.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>Поэтому
+необходимы другие механизмы получения результата, полагая, что будет
+использоваться модулярная арифметика.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>Особенности<i>
+схемы Горнера</i> следующие:</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>- вычисление
+выражения вида ( 1 ) при ограничениях на диапазон натуральных чисел для ПЭВМ
+(взятие результатов по модулю);</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>- разбиение
+одной операции на подмножество эквивалентных;</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>- используется
+меньше операций умножения из-за разложения степени выражения (1) на степени
+двойки, по сравнению с последовательным возведением числа <b><i><span
+lang=EN-US>a</span></i></b><span lang=EN-US> </span>в степень <b><i><span
+lang=EN-US>x</span></i></b>.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>Представим
+десятичное число <b><i><span lang=EN-US>x</span></i></b> в виде суммы единиц,
+десятков, сотен, тысяч и т.д., то есть в виде десятичного полинома:</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><b><i><span
+lang=EN-US>x</span>= </i></b><b><i><span lang=EN-US>x</span><sub>0</sub>*</i></b>10<b><i><sup>0</sup>
+</i></b>+<b><i> </i></b><b><i><span lang=EN-US>x</span><sub>1</sub>*</i></b>10<b><i><sup>1</sup>
+</i></b>+<b><i> </i></b><b><i><span lang=EN-US>x</span><sub>2</sub>*</i></b>10<b><i><sup>2</sup>
+</i></b>+ . . .+  <b><i><span lang=EN-US>x<sub>k</sub></span><sub>-1</sub>*</i></b>10<b><i><sup><span
+lang=EN-US>k</span>-1</sup></i></b>,</p>
+
+<p class=MsoNormal style='text-align:justify'>где  <b><i><span lang=EN-US>x<sub>i</sub></span></i></b>=
+[0..9] – является десятичным числом, <sub><img width=69 height=25
+src="Gorner.files/image003.gif"></sub>, <span lang=EN-US>k</span> є <span
+lang=EN-US>N</span> – число, такое, что <b><i><span lang=EN-US>x</span></i></b>
+&#8804; 10<sup><span lang=EN-US>k</span></sup>. Например, десятичное число
+50921 можно записать в виде полинома: 50921<sub>10</sub> = 5*10<sup>4</sup> +
+0*10<sup>3</sup> + 9*10<sup>2</sup> + 2*10<sup>1</sup> + 1*10<sup>0</sup> (5 в
+разряде десятков тысяч, 0 – в разряде тысяч, 9 – в разряде сотен, 2 – в разряде
+десятков, а 1 – в разряде единиц).</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>Аналогично,
+можно число <b><i><span lang=EN-US>x</span></i></b> представить в виде
+двоичного числа, двоичного полинома:</p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><i><span
+lang=EN-US>x</span>= </i></b><b><i><span lang=EN-US>x</span><sub>0</sub>*</i></b>2<b><i><sup>0</sup>
+</i></b>+<b><i> </i></b><b><i><span lang=EN-US>x</span><sub>1</sub>*</i></b>2<b><i><sup>1</sup>
+</i></b>+<b><i> </i></b><b><i><span lang=EN-US>x</span><sub>2</sub>*</i></b>2<b><i><sup>2</sup>
+</i></b>+ . . .+  <b><i><span lang=EN-US>x<sub>k</sub></span><sub>-1</sub>*</i></b>2<b><i><sup><span
+lang=EN-US>k</span>-1</sup></i></b>   или <sub><img width=80 height=45
+src="Gorner.files/image004.gif"></sub>,   ( 2 )</p>
+
+<p class=MsoNormal style='text-align:justify'>где  <b><i><span lang=EN-US>x<sub>i</sub></span></i></b>=
+{0;1} – является двоичным числом, <sub><img width=69 height=25
+src="Gorner.files/image003.gif"></sub>, <i><span lang=EN-US>k</span></i> є <i><span
+lang=EN-US>N</span></i> – число, такое, что <b><i><span lang=EN-US>x</span></i></b>
+&#8804; 2<sup><span lang=EN-US>k</span></sup>.  Например, двоичное число 10111
+можно записать в виде полинома: 10111<sub>2</sub> = 1*10<sup>4</sup> + 0*10<sup>3</sup>
++ 1*10<sup>2</sup> + 1*10<sup>1</sup> + 1*10<sup>0</sup> (1 в разряде десятков
+тысяч, 0 – в разряде тысяч, 1 – в разряде сотен, 1 – в разряде десятков, а 1 –
+в разряде единиц).</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>Тогда из
+формул ( 1 ) и  ( 2 ), при использовании модулярной арифметики, следует, что:</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'> <a
+name="Формула_вычисления_схемы_Горнера"><sub><img width=501 height=80
+src="Gorner.files/image005.gif"></sub></a>    ( 3 )</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>Здесь <b><i><span
+lang=EN-US>x<sub>i</sub></span></i></b><span lang=EN-US> </span>задают <span
+lang=EN-US>i</span>-ые биты числа (степени) <span lang=EN-US>X</span>.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>Для упрощения
+счета удобнее вычислять выражение <b><i><span lang=EN-US>y</span></i></b> с
+меньших степеней, в сторону возрастания степени <b><i><span lang=EN-US>i</span></i></b>.
+Член <b><i><span lang=EN-US>r</span></i></b>=<sub><img width=99 height=43
+src="Gorner.files/image006.gif"></sub>,<sub><img width=69 height=25
+src="Gorner.files/image003.gif"></sub>, из (3), при <b><i><span lang=EN-US>x<sub>i</sub></span></i></b>=1
+не требуется вычислять заново, с самого начала, так как его можно получить
+следующим образом: <sub><img width=256 height=49 src="Gorner.files/image007.gif"></sub></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>&nbsp;</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Алгоритм_работы"><u>Алгоритм работы</u></a>.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>Опишем
+итеративный алгоритм <i>схемы Горнера</i> по шагам.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>1. Ввод с
+консоли значения основания степени <b><i><span lang=EN-US>a</span></i></b>,
+степени <b><i><span lang=EN-US>x</span></i></b> и модуля <b><i><span
+lang=EN-US>m</span></i></b>.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>2. Если <b><i><span
+lang=EN-US>m</span></i></b>=0, то деление на ноль, выход.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>3. Если <b><i><span
+lang=EN-US>a</span></i></b>=0, то результат равен <b><i><span lang=EN-US>y</span></i></b>=0,
+переход к пункту 9.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>4. Если<b><i> </i></b><b><i><span
+lang=EN-US>a</span></i></b>=1 или <b><i><span lang=EN-US>x</span></i></b>=0, то
+результат равен <b><i><span lang=EN-US>y</span></i></b>=1, переход к пункту 9.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>5. Производим
+поиск для числа <span lang=EN-US>x</span><span lang=EN-US> </span>верхней
+границы, являющейся степенью двойки: число <b><i><span lang=EN-US>k</span></i></b>
+є <span lang=EN-US>N</span> такое, что <b><i><span lang=EN-US>x</span></i></b>
+&#8804; 2<sup><span lang=EN-US>k</span></sup>, то есть <b><i><span lang=EN-US>k</span></i></b>
+&#8805; <span lang=EN-US>log</span><sub>2 </sub><b><i><span lang=EN-US>x</span></i></b>.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:63.0pt'>5.а) Пусть <span
+lang=EN-US>r</span> = 2<sup>0</sup> и<b><i> </i></b><b><i><span lang=EN-US>k</span></i></b>
+= 0; пока <b><i><span lang=EN-US>k</span></i></b> &lt; 32 (максимальное число
+разрядов в машинном слове) и <b><i><span lang=EN-US>r</span></i></b><span
+lang=EN-US> </span>&#8804; <b><i><span lang=EN-US>x</span></i></b>, то возводим
+2 в степень <b><i><span lang=EN-US>k</span></i></b>:<span style='text-transform:
+uppercase'> </span><b><i><span lang=EN-US>r</span></i></b> = 2<i><sup><span
+lang=EN-US>k</span></sup></i> (смотрите раздел примечания) и увеличиваем <b><i><span
+lang=EN-US>k</span></i></b><span lang=EN-US> </span>на единицу.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:63.0pt'>Иначе переход
+к пункту 5.б).</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:63.0pt'>5.б) Если <b><i><span
+lang=EN-US>k</span></i></b> = 0 или <b><i><span lang=EN-US>k</span></i></b>
+&gt; 32, то задача не решается в установленных условиях, выход. Число 32
+обозначает максимальную степень двойки для машинного слова – число 2<sup>32</sup>
+задает максимальное число различных значений, которые можно сохранить в
+машинном слове. Иначе пункт 6.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>6. Пусть <b><i><span
+lang=EN-US>r</span><span lang=EN-US> </span></i></b>= <b><i><span lang=EN-US>a</span></i></b>.
+Если степень <b><i><span lang=EN-US>x</span></i></b> нечетна (остаток от
+деления на 2 равен единице), то <b><i><span lang=EN-US>y</span><span
+lang=EN-US> </span></i></b>= <b><i><span lang=EN-US>a</span></i></b>, иначе <b><i><span
+lang=EN-US>y</span><span lang=EN-US> </span></i></b>= 1.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>7. Для всех <sub><img
+width=69 height=25 src="Gorner.files/image008.gif"></sub> выполняем следующие
+действия:</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:63.0pt'><span
+lang=EN-US>7.</span>а<span lang=EN-US>) <b><i>r</i></b> = [(<b><i>r</i></b><sup>
+</sup>mod <b><i>m</i></b>)*(<b><i>r</i></b><sup> </sup>mod <b><i>m</i></b>)]
+mod <b><i>m</i></b> = <b><i>r</i></b><sup>2 </sup>mod <b><i>m</i></b>;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:63.0pt'>7.б) если <b><i><span
+lang=EN-US>i</span></i></b>-ый бит числа <i><span lang=EN-US>X</span></i><span
+lang=EN-US> </span>(смотрите раздел примечаний) равен единице: <b><i><span
+lang=EN-US>x<sub>i</sub></span></i></b> = 1, то <b><i><span lang=EN-US>y</span></i></b>
+= (<b><i><span lang=EN-US>y</span></i></b> * <b><i><span lang=EN-US>r</span></i></b>)
+<span lang=EN-US>mod</span><span lang=EN-US> </span><b><i><span lang=EN-US>m</span></i></b>.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>8. Вывод
+результата <b><i><span lang=EN-US>y</span></i></b>. Окончание работы алгоритма.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>&nbsp;</p>
+
+<p class=MsoNormal style='text-indent:27.0pt'><a
+name="Пример_работы_вышеописанного_алгоритма"><u>Пример работы вышеописанного
+алгоритма</u></a>.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>Необходимо
+число <b><i><span lang=EN-US>a</span></i></b>=2 возвести в степень <b><i><span
+lang=EN-US>x</span></i></b>=25 и нормировать результат числовым модулем <b><i><span
+lang=EN-US>m</span></i></b>=29.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>Тогда <b><i><span
+lang=EN-US>k</span></i></b>, удовлетворяющее неравенству <b><i><span
+lang=EN-US>k</span></i></b> &gt; <span lang=EN-US>log</span><sub>2 </sub><b><i><span
+lang=EN-US>x</span></i></b>,  равно 5.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>Число <b><i><span
+lang=EN-US>x</span></i></b> представимо в двоичной форме как <b><i><span
+lang=EN-US>x</span></i></b>=25<sub>10</sub>=11 001<sub>2</sub>. Это число
+является нечетным.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>На шаге 6
+получаем, что <b><i><span lang=EN-US>r</span></i></b>=<b><i><span lang=EN-US>a</span></i></b>=<b><i><span
+lang=EN-US>y</span></i></b>=2.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>Далее на шаге 7
+можно получить следующие шаги цикла по переменной <sub><img width=69 height=25
+src="Gorner.files/image008.gif"></sub> на примере трассировочной таблицы (табл.
+1):</p>
+
+<p class=MsoNormal align=right style='text-align:right;text-indent:27.0pt'>                                                                             Таблица
+1</p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='margin-left:36.0pt;border-collapse:collapse'>
+ <tr style='height:16.5pt'>
+  <td width=116 style='width:87.25pt;border:solid windowtext 1.5pt;padding:
+  0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>Шаги в цикле</span></p>
+  </td>
+  <td width=106 style='width:79.15pt;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>Условие <b><i>i</i></b>&lt;<b><i>k</i></b></span></p>
+  </td>
+  <td width=106 style='width:79.15pt;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>Значение </span><b><i><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>x<sub>i</sub></span></i></b></p>
+  </td>
+  <td width=128 style='width:95.8pt;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><i><span
+  style='font-size:12.0pt;color:windowtext'>R</span></i></b></p>
+  </td>
+  <td width=93 style='width:69.6pt;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><i><span
+  style='font-size:12.0pt;color:windowtext'>Y</span></i></b></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=116 style='width:87.25pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>до цикла</span></p>
+  </td>
+  <td width=106 style='width:79.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>-</span></p>
+  </td>
+  <td width=106 style='width:79.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>1</span></p>
+  </td>
+  <td width=128 style='width:95.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>2</span></p>
+  </td>
+  <td width=93 style='width:69.6pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>2</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=116 style='width:87.25pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>шаг i=1</span></p>
+  </td>
+  <td width=106 style='width:79.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>Да</span></p>
+  </td>
+  <td width=106 style='width:79.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>0</span></p>
+  </td>
+  <td width=128 style='width:95.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>4</span></p>
+  </td>
+  <td width=93 style='width:69.6pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>2</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=116 style='width:87.25pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>шаг i=2</span></p>
+  </td>
+  <td width=106 style='width:79.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>Да</span></p>
+  </td>
+  <td width=106 style='width:79.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>0</span></p>
+  </td>
+  <td width=128 style='width:95.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>16</span></p>
+  </td>
+  <td width=93 style='width:69.6pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>2</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=116 style='width:87.25pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>шаг i=3</span></p>
+  </td>
+  <td width=106 style='width:79.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>Да</span></p>
+  </td>
+  <td width=106 style='width:79.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>1</span></p>
+  </td>
+  <td width=128 style='width:95.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>256%29=24</span></p>
+  </td>
+  <td width=93 style='width:69.6pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>48%29=19</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=116 style='width:87.25pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>шаг i=4</span></p>
+  </td>
+  <td width=106 style='width:79.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>Да</span></p>
+  </td>
+  <td width=106 style='width:79.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>1</span></p>
+  </td>
+  <td width=128 style='width:95.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>576%29=25</span></p>
+  </td>
+  <td width=93 style='width:69.6pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>475%29=11</span></p>
+  </td>
+ </tr>
+ <tr style='height:16.5pt'>
+  <td width=116 style='width:87.25pt;border:solid windowtext 1.5pt;border-top:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>шаг i=5</span></p>
+  </td>
+  <td width=106 style='width:79.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>Нет</span></p>
+  </td>
+  <td width=106 style='width:79.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>-</span></p>
+  </td>
+  <td width=128 style='width:95.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>выход из цикла</span></p>
+  </td>
+  <td width=93 style='width:69.6pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.5pt;border-right:solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Дополнительные_примеры_решения">&nbsp;</a></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><u>Дополнительные
+примеры для решения</u>:</p>
+
+<p class=MsoNormal style='margin-left:45.0pt;text-align:justify;text-indent:
+-18.0pt'>1)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span><i><span
+lang=EN-US>a</span></i>=7, <i><span lang=EN-US>x</span></i>=5, <i><span
+lang=EN-US>m</span></i>=31. Найти <sub><img width=107 height=25
+src="Gorner.files/image001.gif"></sub>? (5)</p>
+
+<p class=MsoNormal style='margin-left:45.0pt;text-align:justify;text-indent:
+-18.0pt'>2)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span><i><span
+lang=EN-US>a</span></i>=3, <i><span lang=EN-US>x</span></i>=7, <i><span
+lang=EN-US>m</span></i>=29. Найти <sub><img width=107 height=25
+src="Gorner.files/image001.gif"></sub>? (12)</p>
+
+<p class=MsoNormal style='margin-left:45.0pt;text-align:justify;text-indent:
+-18.0pt'>3)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span><i><span
+lang=EN-US>a</span></i>=5, <i><span lang=EN-US>x</span></i>=11, <i><span
+lang=EN-US>m</span></i>=14. Найти <sub><img width=107 height=25
+src="Gorner.files/image001.gif"></sub>? (3)</p>
+
+<p class=MsoNormal style='text-align:justify'>&nbsp;</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Задание><u>Задание</u></a><u>.</u></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>В данной лабораторной
+работе требуется освоить работу алгоритма схемы Горнера. Для этого необходимо
+выполнить следующее (каждый студент индивидуально выполняет задание и оформляет
+отчет).</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>1. Выполнить
+на бумаге расчет одного из примеров (ранее не рассмотренного).</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>2. Программно
+реализовать данный алгоритм в виде программы на любом из следующих языков
+программирования: <span lang=EN-US>C</span>, С++, <span lang=EN-US>Pascal</span>.
+Текст программы должен содержать комментарии к каждой строке кода.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>3. Оформить
+отчет о выполненной работе, с приведением расчета из пункта 1, листингов
+программ и двух-трех тестов (в виде трассировочных таблиц, как в таблице 1).</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>4. Выполнить
+сдачу работы руководителю лабораторного занятия (при этом существует
+возможность задания дополнительных вопросов).</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>&nbsp;</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Примечания><u>Примечания</u></a>.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Перевод_в_системы_счисления">Для реализации описанного алгоритма
+требуется осуществлять <u>перевод</u> степени выражения </a><b><i><span
+lang=EN-US>x</span></i></b><span lang=EN-US> </span><u>из десятичной формы</u>
+представления в <u>двоичную</u>. При вводе числа <b><i><span lang=EN-US>x</span></i></b>
+и его сохранении в машинной переменной, оно уже будет представлено в двоичной
+форме. Поэтому для работы с отдельными разрядами (битами) двоичного числа можно
+использовать следующие программные методики:</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>- для
+получения значения <span lang=EN-US>j</span>-ого бита машинного слова <b><i><span
+lang=EN-US>x</span></i></b>,  <sub><img width=54 height=25
+src="Gorner.files/image009.gif"></sub>, необходимо <b><i><span lang=EN-US>x</span></i></b>
+сдвинуть на <span lang=EN-US>j</span><span lang=EN-US> </span>бит (позиций)
+вправо, и полученное выражение логически (а не арифметически) умножить на
+единицу; в стандарте языка “<span lang=EN-US>C</span>” - (<b><i><span
+lang=EN-US>x</span></i></b>&gt;&gt;<span lang=EN-US>j</span>)&amp;1, а в <span
+lang=EN-US>Pascal</span><span lang=EN-US> </span>– (<b><i><span lang=EN-US>x</span></i></b><span
+lang=EN-US> </span><span lang=EN-US>shl</span><span lang=EN-US> </span><b><i><span
+lang=EN-US>j</span></i></b>) <span lang=EN-US>AND</span> 1;</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>- для
+возведения двойки в <span lang=EN-US>j</span>-ую степень (2 <b><i><sup><span
+lang=EN-US style='font-size:16.0pt'>j</span></sup></i></b><b><i><sup><span
+lang=EN-US style='font-size:16.0pt'> </span></sup></i></b>), <sub><img
+width=54 height=25 src="Gorner.files/image009.gif"></sub>, единицу можно сдвинуть
+на <span lang=EN-US>j</span> позиций влево; в стандарте языка “<span
+lang=EN-US>C</span>” это вычисляется с помощью операции  (1 &lt;&lt; <b><i><span
+lang=EN-US>j</span></i></b>), а в <span lang=EN-US>Pascal</span><span
+lang=EN-US> </span>– (1 <span lang=EN-US>shl</span><span lang=EN-US> </span><b><i><span
+lang=EN-US>j</span></i></b>).</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Типы_операций">В <u>языках “</u></a><u><span lang=EN-US>C</span>” и “</u><u><span
+lang=EN-US>Pascal</span>”</u> используются следующие <u>команды и знаки
+операций</u>, которые можно использовать в данной работе (табл. 2):</p>
+
+<p class=MsoNormal align=right style='margin-left:247.8pt;text-align:right;
+text-indent:35.4pt'>Таблица 2</p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='margin-left:25.9pt;border-collapse:collapse'>
+ <tr style='height:16.5pt'>
+  <td width=440 style='width:330.0pt;border:solid windowtext 1.5pt;padding:
+  0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>Тип операции</span></p>
+  </td>
+  <td width=77 style='width:57.75pt;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>Языки C, С++</span></p>
+  </td>
+  <td width=72 style='width:54.25pt;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>Язык Pascal</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=440 valign=bottom style='width:330.0pt;border-top:none;border-left:
+  solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;border-right:
+  solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal><span style='font-size:12.0pt;color:windowtext'>Логическое
+  умножение числа x на y</span></p>
+  </td>
+  <td width=77 valign=bottom style='width:57.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>x &amp; y</span></p>
+  </td>
+  <td width=72 valign=bottom style='width:54.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>x and y</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=440 valign=bottom style='width:330.0pt;border-top:none;border-left:
+  solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;border-right:
+  solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal><span style='font-size:12.0pt;color:windowtext'>Сдвиг
+  числа x на y позиций влево с потерей значащих битов</span></p>
+  </td>
+  <td width=77 valign=bottom style='width:57.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>x &lt;&lt; y</span></p>
+  </td>
+  <td width=72 valign=bottom style='width:54.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>x shl y</span></p>
+  </td>
+ </tr>
+ <tr style='height:16.5pt'>
+  <td width=440 valign=bottom style='width:330.0pt;border-top:none;border-left:
+  solid windowtext 1.5pt;border-bottom:none;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal><span style='font-size:12.0pt;color:windowtext'>Сдвиг
+  числа x на y позиций вправо с потерей значащих битов</span></p>
+  </td>
+  <td width=77 valign=bottom style='width:57.75pt;border:none;border-right:
+  solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>x &gt;&gt; y</span></p>
+  </td>
+  <td width=72 valign=bottom style='width:54.25pt;border:none;border-right:
+  solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>x shr y</span></p>
+  </td>
+ </tr>
+ <tr style='height:16.5pt'>
+  <td width=440 valign=bottom style='width:330.0pt;border:solid windowtext 1.5pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal><span style='font-size:12.0pt'>Операция взятия остатка от
+  деления x на y</span></p>
+  </td>
+  <td width=77 valign=bottom style='width:57.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt'>x % y</span></p>
+  </td>
+  <td width=72 valign=bottom style='width:54.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt'>x mod y</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=ДопВопросы><u>Вопросы для самопроверки</u></a><u>.</u></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US>1. Для чего нужна схема Горнера?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US>2. Как работает схема Горнера?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US>3. Какими особенностями обладает схема Горнера?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US>4. Как можно представить число в виде степеней основания счисления?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US>5. Что дает разложение степени в схеме Горнера в двоичное
+представление?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US>6. Какие ограничения накладываются на входные значения схемы
+Горнера?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US>7. Как с помощью машинного слова можно выполнить перевод числа из
+десятичной в двоичную систему счисления?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US>8. Как с помощью машинного слова можно выполнить возведение двойки в
+степень?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US>9. Какие математические операции используются в алгоритме Евклида?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Литература><u>Литература для самостоятельной подготовки</u>: </a></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>1. Ю.В.
+Романец, П.А. Тимофеев, В.Ф. Шаньгин. Защита информации в компьютерных системах
+и сетях / Под ред. В.Ф. Шаньгина. – М.: Радио и связь, 1999. – 328 с.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>2. Р. Лидл, Г.
+Нидеррайтер. Конечные поля: В 2 т. / Перевод с англ. А.Е.Жукова, В.И.Петрова;
+Под ред. В.И.Нечаева. – М.: Мир, 1988.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>3. В.П.
+Сигорский. Математический аппарат инженера. – Киев: «Техника», 1975. - 768 с.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>4. Уэйт М.,
+Прата С., Мартин Д. Язык Си. Руководство для начинающих: Пер. с англ. – М.:
+Мир, 1988. – 512 с., ил.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>5. Прайс Д.
+Программирование на языке Паскаль: Практическое руководство. Пер. с англ. – М.:
+Мир, 1987. – 232 с., ил.</p>
+
+</div>
+
+</body>
+
+</html>

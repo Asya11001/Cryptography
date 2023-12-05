@@ -1,0 +1,963 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title>Числа Мерсенна</title>
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:2.0cm 42.55pt 2.0cm 3.0cm;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+
+</head>
+
+<body lang=RU>
+
+<div class=Section1>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><a name="Цель_работы"><b><span style='font-size:14.0pt;
+color:black'>Лабораторная работа</span></b></a></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><b><span style='font-size:14.0pt;color:black'>&nbsp;</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><b><span style='font-size:14.0pt;color:black'>Тестирование
+чисел Мерсенна на простоту</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span style='font-size:14.0pt;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><u><span
+style='font-size:14.0pt'>Цель работы</span></u><span style='font-size:14.0pt'>:</span><span
+style='font-size:14.0pt'> освоение практических методов вычисления простых
+чисел Мерсенна с помощью языка программирования. </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name="Описание_работы"><u><span style='font-size:
+14.0pt;color:black'>Описание работы</span></u></a><span style='font-size:14.0pt;
+color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>Поясним используемые обозначения. </span><span
+lang=EN-US style='font-size:14.0pt'>N</span><span style='font-size:14.0pt'> –
+множество натуральных чисел. Все операции производятся над целыми числами. Под
+формулой <sub><img width=53 height=26 src="Mersen.files/image001.gif"></sub> будет
+пониматься весь ряд целых чисел, лежащих в диапазоне от </span><b><i><span
+lang=EN-US style='font-size:14.0pt'>r</span></i></b><span style='font-size:
+14.0pt'> до </span><b><i><span lang=EN-US style='font-size:14.0pt'>k</span></i></b><span
+style='font-size:14.0pt'> включительно, и который может принимать переменная </span><b><i><span
+lang=EN-US style='font-size:14.0pt'>i</span></i></b><span style='font-size:
+14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><i><span
+style='font-size:14.0pt'>Простыми</span></i><span style='font-size:14.0pt'>
+называются <i>числа</i>, которые могут делится только на единицу и на себя.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name="Понятие_чисел"><i><span style='font-size:
+14.0pt;color:black'>Числами Мерсенна</span></i></a><span style='font-size:14.0pt;
+color:black'> называются числа вида </span><i><span style='font-size:14.0pt;
+color:black'>М(</span></i><i><span lang=EN-US style='font-size:14.0pt;
+color:black'>p</span></i><i><span style='font-size:14.0pt;color:black'>) = 2</span></i><sup><span
+lang=EN-US style='font-size:14.0pt;color:black'>p</span></sup><i><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span></i><span
+style='font-size:14.0pt;color:black'>- 1, </span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>p</span></i><span lang=EN-US
+style='font-size:14.0pt;font-family:Symbol;color:black'>&Icirc;</span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>N</span></i><span
+style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name="Задача_чисел_Мерсенна"><i><span
+style='font-size:14.0pt;color:black'>Задача для чисел Мерсенна</span></i></a><span
+style='font-size:14.0pt;color:black'> – определение среди этих чисел ряда
+простых чисел.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Мерсенн
+рассматривал значения функции 2</span><sup><span lang=EN-US style='font-size:
+14.0pt;color:black'>p</span></sup><span style='font-size:14.0pt;color:black'> -
+1 только при простых </span><i><span lang=EN-US style='font-size:14.0pt;
+color:black'>p</span></i><i><span style='font-size:14.0pt;color:black'>. </span></i><span
+style='font-size:14.0pt;color:black'>Действительно, если </span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>p</span></i><i><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span></i><i><span
+style='font-size:14.0pt;color:black'>-</span></i><span style='font-size:14.0pt;
+color:black'> составное, то такое же и <i>М(</i></span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>p</span></i><i><span style='font-size:
+14.0pt;color:black'>). </span></i><span style='font-size:14.0pt;color:black'>Предположим,
+что </span><i><span lang=EN-US style='font-size:14.0pt;color:black'>p</span></i><i><span
+style='font-size:14.0pt;color:black'>=</span></i><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>rs</span></i><i><span style='font-size:
+14.0pt;color:black'>, </span></i><span style='font-size:14.0pt;color:black'>1
+&lt; </span><i><span lang=EN-US style='font-size:14.0pt;color:black'>r</span></i><span
+style='font-size:14.0pt;color:black'> и </span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>s</span></i><i><span style='font-size:
+14.0pt;color:black'> &lt; </span></i><i><span lang=EN-US style='font-size:14.0pt;
+color:black'>p</span></i><i><span style='font-size:14.0pt;color:black'>, </span></i><span
+style='font-size:14.0pt;color:black'>тогда </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>М</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>(p)<i> = </i></span><span
+lang=EN-US style='font-size:14.0pt;color:black'>2<sup>p</sup><i> -</i>1 = 2<sup>rs</sup>
+- 1 = (2<sup>r</sup> - l)(2<sup>r(s-1)</sup> + 2<sup>r(s-2)</sup> + . . . </span><span
+style='font-size:14.0pt;color:black'>+ 2</span><sup><span lang=EN-US
+style='font-size:14.0pt;color:black'>r</span></sup><span style='font-size:14.0pt;
+color:black'> +1).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Следовательно,
+если </span><span lang=EN-US style='font-size:14.0pt;color:black'>r</span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span></i><span
+style='font-size:14.0pt;color:black'>делит </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>p</span><span style='font-size:14.0pt;
+color:black'>, то и <i>М(</i></span><i><span lang=EN-US style='font-size:14.0pt;
+color:black'>r</span></i><i><span style='font-size:14.0pt;color:black'>) </span></i><span
+style='font-size:14.0pt;color:black'>делит <i>М(</i></span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>p</span></i><i><span style='font-size:
+14.0pt;color:black'>). </span></i></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>В то же
+время</span><span style='font-size:14.0pt;color:black'>, если </span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>p</span></i><i><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span></i><span
+style='font-size:14.0pt;color:black'>- простое, то <i>М(</i></span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>p</span></i><i><span
+style='font-size:14.0pt;color:black'>) </span></i><span style='font-size:14.0pt;
+color:black'>не обязательно является простым. Например, для простого числа </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>p</span><span style='font-size:
+14.0pt;color:black'>=11 число Мерсенна <i>М</i>(</span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>p</span></i><span style='font-size:14.0pt;
+color:black'>)=2<sup>11</sup>-1=2047=23*89 получается составным.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>При доказательстве простоты чисел
+Мерсенна, Ферма использовал метод разложения на множители. Более эффективен <i>тест
+Люка-Лемера</i>. </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name="тест_Люка_Лемера"><b><span
+style='font-size:14.0pt;color:black'>Описание теста Люка - Лемера.</span></b></a></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Тест создает
+последовательность натуральных чисел: </span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>S</span></i><i><sub><span
+style='font-size:14.0pt;color:black'>0</span></sub></i><i><span
+style='font-size:14.0pt;color:black'>, </span></i><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>S</span></i><i><sub><span
+style='font-size:14.0pt;color:black'>1</span></sub></i><i><span
+style='font-size:14.0pt;color:black'>, </span></i><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>S</span></i><i><sub><span
+style='font-size:14.0pt;color:black'>2</span></sub></i><i><span
+style='font-size:14.0pt;color:black'>, ...</span></i><span style='font-size:
+14.0pt;color:black'>, определяемую рекуррентной формулой </span><b><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>S<sub>o</sub></span></i></b><b><i><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span></i></b><b><span
+style='font-size:14.0pt;color:black'>= </span></b><span style='font-size:14.0pt;
+color:black'>4<b> </b></span><span style='font-size:14.0pt;color:black'>и </span><b><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>S<sub>k</sub></span></i></b><b><i><sub><span
+style='font-size:14.0pt;color:black'>+1</span></sub></i></b><b><i><span
+style='font-size:14.0pt;color:black'> = </span></i></b><b><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>S</span></i></b><b><i><sup><span
+style='font-size:14.0pt;color:black'>2</span></sup></i></b><b><i><sub><span
+lang=EN-US style='font-size:14.0pt;color:black'>k</span></sub></i></b><sub><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span></sub><span
+style='font-size:14.0pt;color:black'>- 2.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Члены
+последовательности можно записать в виде сумм степеней некоторых иррациональных
+чисел. Пусть </span><span style='font-size:14.0pt'><sub><img width=76
+height=24 src="Mersen.files/image002.gif"></sub><i><span style='color:black'> </span></i><span
+style='color:black'>и </span><sub><img width=76 height=24
+src="Mersen.files/image003.gif"></sub><span style='color:black'>. Докажем
+индукцией по </span></span><span lang=EN-US style='font-size:14.0pt;color:black'>n</span><span
+style='font-size:14.0pt;color:black'>, что </span><span style='font-size:14.0pt'><sub><img
+width=128 height=37 src="Mersen.files/image004.gif"></sub>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Очевидно,
+</span><span style='font-size:14.0pt'><sub><img width=95 height=30
+src="Mersen.files/image005.gif"></sub><span style='color:black'>. Предположим,
+что </span><sub><img width=178 height=41 src="Mersen.files/image006.gif"></sub><span
+style='color:black'>. Возводя в квадрат обе части равенства, получаем </span><sub><img
+width=253 height=35 src="Mersen.files/image007.gif"></sub>. <span
+style='color:black'>Поскольку </span><sub><img width=64 height=24
+src="Mersen.files/image008.gif"></sub><span style='color:black'>, отсюда
+следует соотношение </span><sub><img width=183 height=31
+src="Mersen.files/image009.gif"></sub>, <span style='color:black'>что, по
+определению, дает </span></span><i><span lang=EN-US style='font-size:14.0pt;
+color:black'>S<sub>n</sub></span></i><i><span style='font-size:14.0pt;
+color:black'>.</span></i></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>Тогда пусть <i>р</i> </span><span
+style='font-size:14.0pt;color:black'>- простое число. Число Мерсенна <i>М</i>(<i>р</i>)
+является простым тогда и только тогда, когда </span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>S</span></i><sub><span lang=EN-US
+style='font-size:14.0pt;color:black'>p</span></sub><sub><span style='font-size:
+14.0pt;color:black'>-2</span></sub><span style='font-size:14.0pt;color:black'> &#8801;
+</span><span style='font-size:14.0pt;color:black'>0 (</span><span lang=EN-US
+style='font-size:14.0pt;color:black'>mod</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>M</span><span style='font-size:14.0pt;color:black'>(</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>p</span><span style='font-size:
+14.0pt;color:black'>)).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name="Ряд_простых_чисел_Мерсенна"><i><span
+style='font-size:14.0pt;color:black'>Ряд простых чисел Мерсенна</span></i></a><span
+style='font-size:14.0pt;color:black'> </span><span style='font-size:14.0pt;
+color:black'>до 258 следующий:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><i><span style='font-size:14.0pt;color:black'>п = </span></i><span
+style='font-size:14.0pt;color:black'>2, 3, 5, 7, 13, 17, 19, 31, 41, 47, 61,
+89, 107, 127.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Например,
+простое число Мерсенна М(3021377) состоит из 909526 знаков.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Описание_алгоритма"><u><span style='font-size:14.0pt;color:black'>Описание
+алгоритма</span></u></a><span style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>1. Ввод </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>p</span><span style='font-size:14.0pt;
+color:black'>. Если </span><i><span lang=EN-US style='font-size:14.0pt;
+color:black'>p</span></i><span style='font-size:14.0pt;color:black'>&lt;3, то
+выход (не удовлетворяет условиям алгоритма).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>2. Вычисление </span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>M</span></i><span style='font-size:14.0pt;
+color:black'>(</span><i><span lang=EN-US style='font-size:14.0pt;color:black'>p</span></i><span
+style='font-size:14.0pt;color:black'>)=2</span><i><sup><span lang=EN-US
+style='font-size:14.0pt;color:black'>p</span></sup></i><i><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span></i><span style='font-size:14.0pt;
+color:black'>- 1 (смотрите раздел примечаний).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>3. Установить </span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>S</span></i><span style='font-size:14.0pt;
+color:black'>=4.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>4. Для <sub><img width=81 height=25
+src="Mersen.files/image010.gif"></sub></span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt;text-align:justify;text-indent:
+35.4pt'><span style='font-size:14.0pt;color:black'>вычислить </span><b><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>S</span></i></b><b><i><span
+style='font-size:14.0pt;color:black'> = </span></i></b><span style='font-size:
+14.0pt;color:black'>(</span><b><i><span lang=EN-US style='font-size:14.0pt;
+color:black'>S</span></i></b><b><i><sup><span style='font-size:14.0pt;
+color:black'>2</span></sup></i></b><span style='font-size:14.0pt;color:black'> </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>M</span></i><span style='font-size:14.0pt;
+color:black'>(</span><i><span lang=EN-US style='font-size:14.0pt;color:black'>p</span></i><span
+style='font-size:14.0pt;color:black'>)) – 2 (под операцией «</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span
+style='font-size:14.0pt;color:black'>» подразумевается взятие остатка от
+деления левого параметра правым).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>5. Если (</span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>S</span></i><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>mod</span><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span style='font-size:14.0pt;color:black'>(</span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>M</span></i><span
+style='font-size:14.0pt;color:black'>(</span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>p</span></i><span style='font-size:14.0pt;
+color:black'>)-1))=0, то </span><i><span lang=EN-US style='font-size:14.0pt;
+color:black'>M</span></i><span style='font-size:14.0pt;color:black'>(</span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>p</span></i><span
+style='font-size:14.0pt;color:black'>) является простым, иначе составным.
+Выход.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt'><a
+name="Пример_работы_вышеописанного_алгоритма"><u><span style='font-size:14.0pt'>Пример
+работы вышеописанного алгоритма</span></u></a><span style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>Необходимо число </span><i><span lang=EN-US
+style='font-size:14.0pt'>M</span></i><span style='font-size:14.0pt'>(</span><i><span
+lang=EN-US style='font-size:14.0pt'>p</span></i><span style='font-size:14.0pt'>)
+= 2</span><i><sup><span lang=EN-US style='font-size:14.0pt'>p</span></sup></i><span
+style='font-size:14.0pt'> -1, где </span><i><span lang=EN-US style='font-size:
+14.0pt'>p</span></i><span style='font-size:14.0pt'> = 13, проверить на простоту.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>Число Мерсенна равно </span><i><span lang=EN-US
+style='font-size:14.0pt'>M</span></i><span style='font-size:14.0pt'>(</span><i><span
+lang=EN-US style='font-size:14.0pt'>p</span></i><span style='font-size:14.0pt'>)
+= 2</span><sup><span lang=EN-US style='font-size:14.0pt'>p</span></sup><span
+style='font-size:14.0pt'> -1 = 2<sup>13</sup> -1 = 8191.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>Для пункта 4 число шагов в цикле будет равно находится
+в интервале <span style='color:black'><sub><img width=27 height=25
+src="Mersen.files/image011.gif"></sub>.</span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>Представим шаги работы алгоритма на основе
+трассировочной таблицы (табл. 1):</span></p>
+
+<p class=MsoNormal align=right style='text-align:right;text-indent:27.0pt'><span
+style='font-size:14.0pt'>                                                                             Таблица
+1</span></p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='margin-left:36.0pt;border-collapse:collapse'>
+ <tr style='height:16.5pt'>
+  <td width=116 style='width:87.25pt;border:solid windowtext 1.5pt;padding:
+  0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Шаг<span
+  lang=EN-US>, i</span></p>
+  </td>
+  <td width=119 style='width:89.15pt;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Условие<span
+  lang=EN-US>:</span><span lang=EN-US> </span><i>i</i><span style='font-family:
+  Symbol'>&pound;</span><i><span lang=EN-US>p</span></i><span lang=EN-US>-2</span></p>
+  </td>
+  <td width=92 style='width:69.15pt;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>S<sup>2</sup>
+  mod M</span></p>
+  </td>
+  <td width=128 style='width:95.8pt;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>(<span lang=EN-US>S<sup>2</sup>
+  mod M</span>) - 2</p>
+  </td>
+  <td width=106 style='width:79.6pt;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Условие<span
+  lang=EN-US>:</span></p>
+  <p class=MsoNormal align=center style='text-align:center'><i><span
+  lang=EN-US>S mod M=0?</span></i></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=116 style='width:87.25pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>до цикла</p>
+  </td>
+  <td width=119 style='width:89.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>-</p>
+  </td>
+  <td width=92 style='width:69.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>-</p>
+  </td>
+  <td width=128 style='width:95.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>4</p>
+  </td>
+  <td width=106 style='width:79.6pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>-</p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=116 style='width:87.25pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>1</span></p>
+  </td>
+  <td width=119 style='width:89.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Да: <span
+  lang=EN-US>1</span><span lang=EN-US style='font-family:Symbol'>&pound;</span><span
+  lang=EN-US>13-2</span></p>
+  </td>
+  <td width=92 style='width:69.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>16</p>
+  </td>
+  <td width=128 style='width:95.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>14</p>
+  </td>
+  <td width=106 style='width:79.6pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>нет</p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=116 style='width:87.25pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>2</span></p>
+  </td>
+  <td width=119 valign=top style='width:89.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Да: <span
+  lang=EN-US>2</span><span lang=EN-US style='font-family:Symbol'>&pound;</span><span
+  lang=EN-US>13-2</span></p>
+  </td>
+  <td width=92 style='width:69.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>196</p>
+  </td>
+  <td width=128 style='width:95.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>194</p>
+  </td>
+  <td width=106 style='width:79.6pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>нет</p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=116 style='width:87.25pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>3</span></p>
+  </td>
+  <td width=119 valign=top style='width:89.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Да: <span
+  lang=EN-US>3</span><span lang=EN-US style='font-family:Symbol'>&pound;</span><span
+  lang=EN-US>13-2</span></p>
+  </td>
+  <td width=92 style='width:69.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>4872</p>
+  </td>
+  <td width=128 style='width:95.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>4870</p>
+  </td>
+  <td width=106 valign=top style='width:79.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>нет</p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=116 style='width:87.25pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>4</span></p>
+  </td>
+  <td width=119 valign=top style='width:89.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Да: <span
+  lang=EN-US>4</span><span lang=EN-US style='font-family:Symbol'>&pound;</span><span
+  lang=EN-US>13-2</span></p>
+  </td>
+  <td width=92 style='width:69.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>3955</p>
+  </td>
+  <td width=128 style='width:95.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>3953</p>
+  </td>
+  <td width=106 valign=top style='width:79.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>нет</p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=116 style='width:87.25pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>5</span></p>
+  </td>
+  <td width=119 valign=top style='width:89.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Да: <span
+  lang=EN-US>5</span><span lang=EN-US style='font-family:Symbol'>&pound;</span><span
+  lang=EN-US>13-2</span></p>
+  </td>
+  <td width=92 style='width:69.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>5972</p>
+  </td>
+  <td width=128 style='width:95.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>5970</p>
+  </td>
+  <td width=106 valign=top style='width:79.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>нет</p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=116 style='width:87.25pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>6</span></p>
+  </td>
+  <td width=119 valign=top style='width:89.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Да: <span
+  lang=EN-US>6</span><span lang=EN-US style='font-family:Symbol'>&pound;</span><span
+  lang=EN-US>13-2</span></p>
+  </td>
+  <td width=92 style='width:69.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>1859</p>
+  </td>
+  <td width=128 style='width:95.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>1857</p>
+  </td>
+  <td width=106 valign=top style='width:79.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>нет</p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=116 style='width:87.25pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>7</span></p>
+  </td>
+  <td width=119 valign=top style='width:89.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Да: <span
+  lang=EN-US>7</span><span lang=EN-US style='font-family:Symbol'>&pound;</span><span
+  lang=EN-US>13-2</span></p>
+  </td>
+  <td width=92 style='width:69.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>38</p>
+  </td>
+  <td width=128 style='width:95.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>36</p>
+  </td>
+  <td width=106 valign=top style='width:79.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>нет</p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=116 style='width:87.25pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>8</p>
+  </td>
+  <td width=119 valign=top style='width:89.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Да: <span
+  lang=EN-US>8</span><span lang=EN-US style='font-family:Symbol'>&pound;</span><span
+  lang=EN-US>13-2</span></p>
+  </td>
+  <td width=92 style='width:69.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>1296</p>
+  </td>
+  <td width=128 style='width:95.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>1294</p>
+  </td>
+  <td width=106 valign=top style='width:79.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>нет</p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=116 style='width:87.25pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>9</span></p>
+  </td>
+  <td width=119 valign=top style='width:89.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Да: <span
+  lang=EN-US>9</span><span lang=EN-US style='font-family:Symbol'>&pound;</span><span
+  lang=EN-US>13-2</span></p>
+  </td>
+  <td width=92 style='width:69.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>3472</p>
+  </td>
+  <td width=128 style='width:95.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>3470</p>
+  </td>
+  <td width=106 valign=top style='width:79.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>нет</p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=116 style='width:87.25pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>10</span></p>
+  </td>
+  <td width=119 valign=top style='width:89.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Да: <span
+  lang=EN-US>10</span><span lang=EN-US style='font-family:Symbol'>&pound;</span><span
+  lang=EN-US>13-2</span></p>
+  </td>
+  <td width=92 style='width:69.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>130</p>
+  </td>
+  <td width=128 style='width:95.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>128</p>
+  </td>
+  <td width=106 valign=top style='width:79.6pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>нет</p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=116 style='width:87.25pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>1<span lang=EN-US>1</span></p>
+  </td>
+  <td width=119 valign=top style='width:89.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Да: <span
+  lang=EN-US>11</span><span lang=EN-US style='font-family:Symbol'>&pound;</span><span
+  lang=EN-US>13-2</span></p>
+  </td>
+  <td width=92 style='width:69.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>2</p>
+  </td>
+  <td width=128 style='width:95.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>0</p>
+  </td>
+  <td width=106 style='width:79.6pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>да</p>
+  </td>
+ </tr>
+ <tr style='height:16.5pt'>
+  <td width=116 style='width:87.25pt;border:solid windowtext 1.5pt;border-top:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>1<span lang=EN-US>2</span></p>
+  </td>
+  <td width=119 style='width:89.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Нет: 1<span
+  lang=EN-US>2&gt;</span>13-2: Выход</p>
+  </td>
+  <td width=92 style='width:69.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>-</p>
+  </td>
+  <td width=128 style='width:95.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>0</p>
+  </td>
+  <td width=106 style='width:79.6pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Да&#8594;простое</p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>В результате получаем, что число </span><i><span
+lang=EN-US style='font-size:14.0pt'>M</span></i><span style='font-size:14.0pt'>(</span><i><span
+lang=EN-US style='font-size:14.0pt'>p</span></i><span style='font-size:14.0pt'>)
+= 2<sup>13</sup> -1 = 8191 является простым.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>&nbsp;</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Задание><u><span style='font-size:14.0pt'>Задание</span></u></a><u><span
+style='font-size:14.0pt'>.</span></u></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>В данной лабораторной работе требуется освоить работу
+алгоритма проверки чисел Мерсенна на простоту. Для этого необходимо выполнить
+следующее (каждый студент индивидуально выполняет задание и оформляет отчет).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>1. Выполнить на бумаге расчет одного из примеров
+(ранее не рассмотренного).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>2. Программно реализовать данный алгоритм в виде
+программы на любом из следующих языков программирования: </span><span
+lang=EN-US style='font-size:14.0pt'>C</span><span style='font-size:14.0pt'>,
+С++, </span><span lang=EN-US style='font-size:14.0pt'>Pascal</span><span
+style='font-size:14.0pt'>. Текст программы должен содержать комментарии к
+каждой строке кода.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>3. Оформить отчет о выполненной работе, с приведением
+расчета из пункта 1, листингов программ и двух-трех тестов (в виде
+трассировочных таблиц, как в таблице 1).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>4. Выполнить сдачу работы руководителю лабораторного
+занятия (при этом существует возможность задания дополнительных вопросов).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Примечания><u><span style='font-size:14.0pt'>Примечания</span></u></a><span
+style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>Для возведения двойки в </span><i><span lang=EN-US
+style='font-size:14.0pt'>p</span></i><span style='font-size:14.0pt'>-ую степень
+</span>(2<b><i><sup><span lang=EN-US style='font-size:16.0pt'>p</span></sup></i></b>)<span
+style='font-size:14.0pt'>, <sub><img width=58 height=25
+src="Mersen.files/image012.gif"></sub>, можно единицу сдвинуть на </span><span
+lang=EN-US style='font-size:14.0pt'>p</span><span style='font-size:14.0pt'>
+позиций влево в двоичном представлении; в стандарте языка “</span><span
+lang=EN-US style='font-size:14.0pt'>C</span><span style='font-size:14.0pt'>”
+это вычисляется с помощью операции  (1&lt;&lt;</span><i><span lang=EN-US
+style='font-size:14.0pt'>p</span></i><span style='font-size:14.0pt'>), а в </span><span
+lang=EN-US style='font-size:14.0pt'>Pascal</span><span style='font-size:14.0pt'>
+– как (1 </span><span lang=EN-US style='font-size:14.0pt'>shl</span><span
+lang=EN-US style='font-size:14.0pt'> </span><i><span lang=EN-US
+style='font-size:14.0pt'>p</span></i><span style='font-size:14.0pt'>).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Типы_операций"><span style='font-size:14.0pt'>В <u>языках “</u></span></a><u><span
+lang=EN-US style='font-size:14.0pt'>C</span></u><u><span style='font-size:14.0pt'>”
+и “</span></u><u><span lang=EN-US style='font-size:14.0pt'>Pascal</span></u><u><span
+style='font-size:14.0pt'>”</span></u><span style='font-size:14.0pt'>
+используются следующие <u>команды и знаки операций</u>, которые можно использовать
+в данной работе (табл. 2):</span></p>
+
+<p class=MsoNormal align=center style='margin-left:318.6pt;text-align:center;
+text-indent:35.4pt'><span style='font-size:14.0pt'>Таблица 2</span></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='margin-left:14.4pt;border-collapse:collapse'>
+ <tr style='height:16.5pt'>
+  <td width=440 style='width:330.0pt;border:solid windowtext 1.5pt;padding:
+  0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Тип операции</p>
+  </td>
+  <td width=77 style='width:57.75pt;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Языки C, С++</p>
+  </td>
+  <td width=72 style='width:54.25pt;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Язык Pascal</p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=440 valign=bottom style='width:330.0pt;border-top:none;border-left:
+  solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;border-right:
+  solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal>Операция взятия остатка от деления x на y</p>
+  </td>
+  <td width=77 valign=bottom style='width:57.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>x % y</p>
+  </td>
+  <td width=72 valign=bottom style='width:54.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>x mod y</p>
+  </td>
+ </tr>
+ <tr style='height:16.5pt'>
+  <td width=440 valign=bottom style='width:330.0pt;border:solid windowtext 1.5pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal>Сдвиг числа x на y позиций влево с потерей значащих битов</p>
+  </td>
+  <td width=77 valign=bottom style='width:57.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>x &lt;&lt; y</p>
+  </td>
+  <td width=72 valign=bottom style='width:54.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>x shl y</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=ДопВопросы><u><span style='font-size:14.0pt'>Вопросы для самопроверки</span></u></a><u><span
+style='font-size:14.0pt'>.</span></u></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>1. Что такое числа Мерсенна?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>2. Если </span><i><span lang=EN-US style='font-size:
+14.0pt'>p</span></i><span style='font-size:14.0pt'> является составным или
+простым, то что можно сказать о числе </span><i><span lang=EN-US
+style='font-size:14.0pt'>M</span></i><span style='font-size:14.0pt'>(</span><i><span
+lang=EN-US style='font-size:14.0pt'>p</span></i><span style='font-size:14.0pt'>)?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>3. Почему, если </span><i><span lang=EN-US
+style='font-size:14.0pt'>p</span></i><span style='font-size:14.0pt'> является
+составным, то </span><i><span lang=EN-US style='font-size:14.0pt'>M</span></i><span
+style='font-size:14.0pt'>(</span><i><span lang=EN-US style='font-size:14.0pt'>p</span></i><span
+style='font-size:14.0pt'>) – составное?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>4. Поясните суть теста Люка-Лемера.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>5. Какие ограничения накладываются на входные значения
+теста Люка-Лемера?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>6. Сколько итераций выполняется данный?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>7. При каком условии пронимается решение о простоте
+числа </span><i><span lang=EN-US style='font-size:14.0pt'>M</span></i><span
+style='font-size:14.0pt'>(</span><i><span lang=EN-US style='font-size:14.0pt'>p</span></i><span
+style='font-size:14.0pt'>)?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>8. Какая ошибка может случиться при проверке большого
+числа на простоту?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>9. Для какого верхнего значения вам удалось проверить
+простоту </span><i><span lang=EN-US style='font-size:14.0pt'>M</span></i><span
+style='font-size:14.0pt'>(</span><i><span lang=EN-US style='font-size:14.0pt'>p</span></i><span
+style='font-size:14.0pt'>)?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>10. Как с помощью машинного слова можно выполнить
+возведение двойки в степень?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>11. Какие математические операции используются в тесте
+Люка-Лемера?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Литература><u><span style='font-size:14.0pt'>Литература для
+самостоятельной подготовки</span></u></a><span style='font-size:14.0pt'>:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>1. С. Коутинхо. Введение в теорию чисел. Алгоритм </span><span
+lang=EN-US style='font-size:14.0pt'>RSA</span><span style='font-size:14.0pt'>.
+– М.: Постмаркет, 2001. – 328 с.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>2. В.И. Нечаев. Элементы криптографии (Основы теории
+защиты информации): Учеб. пособие для ун-тов и пед. вузов / Под ред. В.А.
+Садовничего – М.: Высшая школа, 1999. – 109 с.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>3. Уэйт М., Прата С., Мартин Д. Язык Си. Руководство
+для начинающих: Пер. с англ. – М.: Мир, 1988. – 512 с., ил.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>4. Прайс Д. Программирование на языке Паскаль:
+Практическое руководство. Пер. с англ. – М.: Мир, 1987. – 232 с., ил.</span></p>
+
+</div>
+
+</body>
+
+</html>

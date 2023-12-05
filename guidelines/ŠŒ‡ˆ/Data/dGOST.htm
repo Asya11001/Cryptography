@@ -1,0 +1,711 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title>Отечественный стандарт цифровой подписи ГОСТ Р 34</title>
+
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:1.0cm 1.0cm 1.0cm 2.0cm;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+
+</head>
+
+<body lang=RU>
+
+<div class=Section1>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><b><span style='font-size:14.0pt;color:black'>Лабораторная
+работа</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><b><span style='font-size:14.0pt;color:black'>Отечественный
+стандарт цифровой подписи </span></b><b><span style='font-size:14.0pt;
+color:black'>ГОСТ Р 34.10-94</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><b><span style='font-size:14.0pt'>&nbsp;</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Цель_работы"><u><span style='font-size:14.0pt'>Цель работы</span></u></a><span
+style='font-size:14.0pt'>: изучение стандарта цифровой подписи ГОСТ Р 34.10-94
+и освоение практических методов реализации на языке программирования схем
+постановки и проверки цифровых подписей на данном стандарте. </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Описание_работы"><u><span style='font-size:14.0pt'>Описание работы</span></u></a><span
+style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Данный
+алгоритм цифровой подписи концептуально близок к алгоритму </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>DSA</span><span
+style='font-size:14.0pt;color:black'>. Стандарт вступил в действие с начала 1995 г. В настоящее время этот стандарт заменен на схему получения цифровой подписи с помощью
+эллиптических кривых.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Криптостойкость
+данного стандарта базируется на трудности вычисления дискретных логарифмов.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name=Алгоритм><span style='font-size:14.0pt;
+color:black'>Опишем <u>алгоритм</u></span></a><span style='font-size:14.0pt;
+color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Для подписания
+некоторого сообщения </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>M</span><span lang=EN-US style='font-size:14.0pt;color:black'> </span><i><u><span
+style='font-size:14.0pt;color:black'>пользователь </span></u></i><i><u><span
+lang=EN-US style='font-size:14.0pt;color:black'>A</span></u></i><i><u><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span></u></i><i><u><span
+style='font-size:14.0pt;color:black'>выполняет следующие шаги</span></u></i><span
+style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>1.
+Получение параметров алгоритма. Выбираем:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>- простое
+большое число р размерностью [509; 512] или [1020;1024] бит;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>- простой
+сомножитель </span><span lang=EN-US style='font-size:14.0pt;color:black'>q</span><span
+style='font-size:14.0pt;color:black'>  для числа (р - 1) размерностью [254; 256]
+бит (по крайней мере больше двух);</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>- а - число,
+удовлетворяющее условиям:</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span style='font-size:14.0pt;color:black'><span
+style='position:relative;top:17.0pt'><img width=136 height=69
+src="dGOST.files/image001.png"></span>;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span lang=EN-US style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'> - х –
+секретный ключ, меньший </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>q</span><span style='font-size:14.0pt;color:black'>;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>- открытый ключ у = а<sup>х</sup> </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>p</span><span style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>2.
+Нахождение значения хэш от сообщения: </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>m</span><span style='font-size:14.0pt;color:black'> = </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>H</span><span style='font-size:
+14.0pt;color:black'>(</span><span lang=EN-US style='font-size:14.0pt;
+color:black'>M</span><span style='font-size:14.0pt;color:black'>) </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>q</span><span style='font-size:14.0pt;color:black'>. Если </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>m</span><span style='font-size:
+14.0pt;color:black'> равно нулю, то устанавливают </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>m</span><span style='font-size:14.0pt;
+color:black'> = 1.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Для того
+чтобы подписать сообщение М, хешируется </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>M</span><span lang=EN-US style='font-size:
+14.0pt;color:black'> </span><span style='font-size:14.0pt;color:black'>с
+помощью хэш-функции </span><span lang=EN-US style='font-size:14.0pt;color:black'>h</span><span
+style='font-size:14.0pt;color:black'>(</span><span lang=EN-US style='font-size:
+14.0pt;color:black'>M</span><span style='font-size:14.0pt;color:black'>) в
+целое число </span><span lang=EN-US style='font-size:14.0pt;color:black'>m</span><span
+style='font-size:14.0pt;color:black'>, </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>m</span><span style='font-size:14.0pt;
+color:black'> = </span><span lang=EN-US style='font-size:14.0pt;color:black'>h</span><span
+style='font-size:14.0pt;color:black'>(</span><span lang=EN-US style='font-size:
+14.0pt;color:black'>M</span><span style='font-size:14.0pt;color:black'>), 0&lt;</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>m</span><span style='font-size:
+14.0pt;color:black'>&lt;(</span><span lang=EN-US style='font-size:14.0pt;
+color:black'>p</span><span style='font-size:14.0pt;color:black'>-1). В качестве
+</span><span lang=EN-US style='font-size:14.0pt;color:black'>h</span><span
+style='font-size:14.0pt;color:black'>(</span><span lang=EN-US style='font-size:
+14.0pt;color:black'>M</span><span style='font-size:14.0pt;color:black'>) применяется
+режим имитовставки алгоритма ГОСТ 28147-89. В рамках данной лабораторной
+работы, можно использовать операцию возведения в степень и операцию </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>xor</span><span
+style='font-size:14.0pt;color:black'> (исключающее или): возведение блока
+открытого текста в степень, являющуюся открытым ключом </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>y</span><span style='font-size:14.0pt;
+color:black'>, и сложение по </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>xor</span><span style='font-size:14.0pt;color:black'> с предыдущим
+значением хэш: </span><span lang=EN-US style='font-size:14.0pt;color:black'>m</span><span
+style='font-size:14.0pt;color:black'> = (</span><span lang=EN-US
+style='font-size:14.0pt;color:black'>m</span><span lang=EN-US style='font-size:
+14.0pt;color:black'> </span><span lang=EN-US style='font-size:14.0pt;
+font-family:Symbol;color:black'>&Aring;</span><span style='font-size:14.0pt;
+color:black'> (</span><span lang=EN-US style='font-size:14.0pt;color:black'>M<sub>i</sub><sup>Y</sup></span><span
+style='font-size:14.0pt;color:black'>) </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>mod</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>p</span><span style='font-size:14.0pt;color:black'>) </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>p</span><span style='font-size:14.0pt;color:black'>, при
+начальном </span><span lang=EN-US style='font-size:14.0pt;color:black'>m</span><span
+style='font-size:14.0pt;color:black'> = 0.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>3. Генерируется
+случайное число </span><span lang=EN-US style='font-size:14.0pt;color:black'>k</span><span
+style='font-size:14.0pt;color:black'>, причем 0 &lt; </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>k</span><span lang=EN-US style='font-size:
+14.0pt;color:black'> </span><span style='font-size:14.0pt;color:black'>&lt; </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>q</span><span style='font-size:
+14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>4. Вычисление
+составляющих электронной цифровой подписи (ЭЦП):</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-size:14.0pt;color:black'>r = (</span><span style='font-size:14.0pt;
+color:black'>а</span><sup><span lang=EN-US style='font-size:14.0pt;color:black'>k</span></sup><span
+lang=EN-US style='font-size:14.0pt;color:black'> mod p) mod q,</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-size:14.0pt;color:black'>s</span><span style='font-size:14.0pt;
+color:black'> = (</span><span lang=EN-US style='font-size:14.0pt;color:black'>x</span><span
+style='font-size:14.0pt;color:black'>*</span><span lang=EN-US style='font-size:
+14.0pt;color:black'>r</span><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span style='font-size:14.0pt;color:black'>+ </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>k</span><span style='font-size:
+14.0pt;color:black'>*</span><span lang=EN-US style='font-size:14.0pt;
+color:black'>m</span><span style='font-size:14.0pt;color:black'>)</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>q</span><span style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>Если </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>r</span><span lang=EN-US style='font-size:
+14.0pt;color:black'> </span><span style='font-size:14.0pt;color:black'>оказалось
+равным нулю, то повторяются пункты 3 (заново генерируется число </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>k</span><span style='font-size:
+14.0pt;color:black'>) и 4.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>5.
+Распространение открытых параметров </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>p</span><span style='font-size:14.0pt;color:black'>, </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>q</span><span style='font-size:
+14.0pt;color:black'>, </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>y</span><span style='font-size:14.0pt;color:black'> и а, </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>r</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span style='font-size:14.0pt;
+color:black'>и </span><span lang=EN-US style='font-size:14.0pt;color:black'>s</span><span
+style='font-size:14.0pt;color:black'>. Числа х и </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>k</span><span lang=EN-US style='font-size:
+14.0pt;color:black'> </span><span style='font-size:14.0pt;color:black'>являются
+сек­ретными.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><i><u><span style='font-size:14.0pt;color:black'>На
+стороне </span></u></i><i><u><span lang=EN-US style='font-size:14.0pt;
+color:black'>B</span></u></i><span style='font-size:14.0pt;color:black'>, осуществляющей
+проверку подписи, выполняются следующие вычисления.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span lang=EN-US style='font-size:14.0pt;color:black'>v = m<sup>q-2</sup>
+mod q,</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span lang=EN-US style='font-size:14.0pt;color:black'>z<sub>1</sub><i>
+</i></span><span lang=EN-US style='font-size:14.0pt;color:black'>= (s * v) mod
+q,</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span lang=EN-US style='font-size:14.0pt;color:black'>z<sub>2</sub>
+= ((q - r) * v) mod q,</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span lang=EN-US style='font-size:14.0pt;color:black'>u = ((a<sup>Z1</sup>
+*y<sup>Z2</sup>) mod p) mod q.</span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt'><span style='font-size:14.0pt'>Если
+</span><span lang=EN-US style='font-size:14.0pt'>u</span><span
+style='font-size:14.0pt'> = </span><span lang=EN-US style='font-size:14.0pt'>r</span><span
+style='font-size:14.0pt'>, то подпись считается верной.</span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt'><span style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt'><a name=Пример><u><span
+style='font-size:14.0pt'>Пример</span></u></a><span style='font-size:14.0pt'>.
+Поставить цифровую подпись на текст «ЭБФ» с помощью стандарта ГОСТ Р 34.10-94.</span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt'><i><span style='font-size:14.0pt'>Действия
+стороны </span></i><i><span lang=EN-US style='font-size:14.0pt'>A</span></i><i><span
+style='font-size:14.0pt'>, ставящей подпись</span></i><span style='font-size:
+14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt'><span style='font-size:14.0pt'>1.
+Выбираем модуль </span><span lang=EN-US style='font-size:14.0pt'>p</span><span
+style='font-size:14.0pt'> = 31, </span><span lang=EN-US style='font-size:14.0pt'>q</span><span
+style='font-size:14.0pt'> = 5.</span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt'><span style='font-size:14.0pt'>Для
+</span><span lang=EN-US style='font-size:14.0pt'>q</span><span lang=EN-US
+style='font-size:14.0pt'> </span><span style='font-size:14.0pt'>выполняются
+условия: </span><span lang=EN-US style='font-size:14.0pt'>q</span><span
+style='font-size:14.0pt'> &gt; 2 и ((</span><span lang=EN-US style='font-size:
+14.0pt'>p</span><span style='font-size:14.0pt'>-1) </span><span lang=EN-US
+style='font-size:14.0pt'>mod</span><span lang=EN-US style='font-size:14.0pt'> </span><span
+lang=EN-US style='font-size:14.0pt'>q</span><span style='font-size:14.0pt'>) =
+0.</span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt'><span style='font-size:14.0pt'>2.
+Задаем </span><span lang=EN-US style='font-size:14.0pt'>a</span><span
+style='font-size:14.0pt'> = 16, удовлетворяющее условиям </span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:14.0pt;color:black'><span style='position:relative;top:17.0pt'><img
+width=136 height=69 src="dGOST.files/image001.png"></span>.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt'><span style='font-size:14.0pt;
+color:black'>3. Вычисляем по секретному ключу </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>x</span><span style='font-size:14.0pt;
+color:black'> = 3 (</span><span lang=EN-US style='font-size:14.0pt;color:black'>x</span><span
+style='font-size:14.0pt;color:black'> &lt; </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>q</span><span style='font-size:14.0pt;
+color:black'>) открытый ключ </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>y</span><span style='font-size:14.0pt;color:black'> = </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>a<sup>x</sup></span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>mod</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>p</span><span style='font-size:14.0pt;color:black'> = 16<sup>3</sup>
+</span><span lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span
+style='font-size:14.0pt;color:black'> 31 = 4.</span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt'><span style='font-size:14.0pt;
+color:black'>4. Задаем число </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>k</span><span style='font-size:14.0pt;color:black'> = 4 (</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>k</span><span style='font-size:
+14.0pt;color:black'> &lt; </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>q</span><span style='font-size:14.0pt;color:black'>).</span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt'><span lang=EN-US
+style='font-size:14.0pt;color:black'>5. </span><span style='font-size:14.0pt;
+color:black'>Вычисляем</span><span style='font-size:14.0pt;color:black'> <span
+lang=EN-US>r = (a<sup>k</sup> mod p) mod q = 16<sup>4</sup> mod 31 mod 5 = 2. </span></span><span
+style='font-size:14.0pt;color:black'>Если </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>r</span><span style='font-size:14.0pt;
+color:black'> = 0, то необходимо задать новое </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>k</span><span style='font-size:14.0pt;
+color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>6. </span><span
+style='font-size:14.0pt'>Вычисление хеш. Пусть </span><span lang=EN-US
+style='font-size:14.0pt'>m</span><span style='font-size:14.0pt'> = 0. Тогда</span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white'><span
+style='font-size:14.0pt'>- при </span><span lang=EN-US style='font-size:14.0pt'>M</span><sub><span
+style='font-size:14.0pt'>0</span></sub><span style='font-size:14.0pt'> = 30: </span><span
+lang=EN-US style='font-size:14.0pt'>m</span><span style='font-size:14.0pt'> = </span><span
+lang=EN-US style='font-size:14.0pt'>m</span><span lang=EN-US style='font-size:
+14.0pt'> </span><span lang=EN-US style='font-size:14.0pt;font-family:Symbol'>&Aring;</span><span
+lang=EN-US style='font-size:14.0pt'>M</span><sub><span style='font-size:14.0pt'>0</span></sub><sup><span
+lang=EN-US style='font-size:14.0pt'>Y</span></sup><span lang=EN-US
+style='font-size:14.0pt'> </span><span lang=EN-US style='font-size:14.0pt'>mod</span><span
+lang=EN-US style='font-size:14.0pt'> </span><span lang=EN-US style='font-size:
+14.0pt'>p</span><span style='font-size:14.0pt'> = (0 </span><span lang=EN-US
+style='font-size:14.0pt;font-family:Symbol'>&Aring;</span><span
+style='font-size:14.0pt'> 30<sup>4</sup> </span><span lang=EN-US
+style='font-size:14.0pt'>mod</span><span style='font-size:14.0pt'> 31) </span><span
+lang=EN-US style='font-size:14.0pt'>mod</span><span style='font-size:14.0pt'>
+31 = (0 </span><span lang=EN-US style='font-size:14.0pt;font-family:Symbol'>&Aring;</span><span
+style='font-size:14.0pt'> 1)</span><span lang=EN-US style='font-size:14.0pt'>mod</span><span
+style='font-size:14.0pt'> 31 = 1.</span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white'><span
+lang=EN-US style='font-size:14.0pt'>- </span><span style='font-size:14.0pt'>при</span><span
+style='font-size:14.0pt'> <span lang=EN-US>M<sub>1</sub> = 2: m = m </span></span><span
+lang=EN-US style='font-size:14.0pt;font-family:Symbol'>&Aring;</span><span
+lang=EN-US style='font-size:14.0pt'>M<sub>1</sub><sup>Y</sup> mod p = (1 </span><span
+lang=EN-US style='font-size:14.0pt;font-family:Symbol'>&Aring;</span><span
+lang=EN-US style='font-size:14.0pt'> 2<sup>4</sup> mod 31) mod 31 = (1 </span><span
+lang=EN-US style='font-size:14.0pt;font-family:Symbol'>&Aring;</span><span
+lang=EN-US style='font-size:14.0pt'> 16) mod 31= 17.</span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white'><span
+lang=EN-US style='font-size:14.0pt'>- </span><span style='font-size:14.0pt'>при</span><span
+style='font-size:14.0pt'> <span lang=EN-US>M<sub>2</sub> = 21: m = m </span></span><span
+lang=EN-US style='font-size:14.0pt;font-family:Symbol'>&Aring;</span><span
+lang=EN-US style='font-size:14.0pt'>M<sub>2</sub><sup>Y</sup> mod p = (17 </span><span
+lang=EN-US style='font-size:14.0pt;font-family:Symbol'>&Aring;</span><span
+lang=EN-US style='font-size:14.0pt'> 21<sup>4</sup> mod 31) mod 31 = (17&nbsp;</span><span
+lang=EN-US style='font-size:14.0pt;font-family:Symbol'>&Aring;</span><span
+lang=EN-US style='font-size:14.0pt'> 18) mod 31= 3.</span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt'><span style='font-size:14.0pt'>Хэш
+равно </span><span lang=EN-US style='font-size:14.0pt'>m</span><span
+style='font-size:14.0pt'> = 3. Если бы (</span><span lang=EN-US
+style='font-size:14.0pt'>m</span><span lang=EN-US style='font-size:14.0pt'> </span><span
+lang=EN-US style='font-size:14.0pt'>mod</span><span lang=EN-US
+style='font-size:14.0pt'> </span><span lang=EN-US style='font-size:14.0pt'>q</span><span
+style='font-size:14.0pt'>) = 0, то приняли бы </span><span lang=EN-US
+style='font-size:14.0pt'>m</span><span style='font-size:14.0pt'> = 1.</span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt'><span lang=EN-US
+style='font-size:14.0pt'>7. </span><span style='font-size:14.0pt'>Вычисление</span><span
+style='font-size:14.0pt'> <span lang=EN-US style='color:black'>s = (x*r +
+k*m)mod q = (3*2 + 4*3) mod 5 = 3.</span></span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt'><span style='font-size:14.0pt;
+color:black'>8. Передача стороне </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>B</span><span lang=EN-US style='font-size:14.0pt;color:black'> </span><span
+style='font-size:14.0pt;color:black'>чисел </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>p</span><span style='font-size:14.0pt;
+color:black'>, </span><span lang=EN-US style='font-size:14.0pt;color:black'>q</span><span
+style='font-size:14.0pt;color:black'>, </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>a</span><span style='font-size:14.0pt;
+color:black'>, </span><span lang=EN-US style='font-size:14.0pt;color:black'>y</span><span
+style='font-size:14.0pt;color:black'>, </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>r</span><span style='font-size:14.0pt;
+color:black'>, </span><span lang=EN-US style='font-size:14.0pt;color:black'>s</span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span style='font-size:
+14.0pt;color:black'>и открытого текста </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>M</span><span style='font-size:14.0pt;
+color:black'>.</span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt'><i><span style='font-size:14.0pt;
+color:black'>Действия стороны </span></i><i><span lang=EN-US style='font-size:
+14.0pt;color:black'>B</span></i><i><span style='font-size:14.0pt;color:black'>
+(проверка подписи)</span></i><span style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt'><span style='font-size:14.0pt;
+color:black'>1. Вычисление хэш из открытого текста, аналогично пункту 6 стороны
+А: </span><span lang=EN-US style='font-size:14.0pt;color:black'>m</span><span
+style='font-size:14.0pt;color:black'> = 3.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt'>2. Вычисление </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>v</span><span style='font-size:
+14.0pt;color:black'> = </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>m<sup>q</sup></span><sup><span style='font-size:14.0pt;color:black'>-2</span></sup><span
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>mod</span><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span lang=EN-US style='font-size:14.0pt;color:black'>q</span><span
+style='font-size:14.0pt;color:black'> = 3<sup>3</sup> </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>mod</span><span style='font-size:14.0pt;
+color:black'> 5 = 2,</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span lang=EN-US style='font-size:14.0pt;color:black'>z<sub>1</sub><i>
+</i></span><span lang=EN-US style='font-size:14.0pt;color:black'>= (s * v) mod
+q = (3*2) mod 5 = 1,</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span lang=EN-US style='font-size:14.0pt;color:black'>z<sub>2</sub>
+= ((q - r) * v) mod q = ((5-2)*2) mod 5 = 1,</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:14.0pt;color:black'>u = ((a<sup>Z1</sup> *y<sup>Z2</sup>)
+mod p) mod q = ((16<sup>1</sup> * 4<sup>1</sup>) mod 31) mod 5 = ((16*4) mod
+31) mod 5 = 2.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>3. Проверка: если </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>u</span><span style='font-size:14.0pt;
+color:black'> = </span><span lang=EN-US style='font-size:14.0pt;color:black'>r</span><span
+style='font-size:14.0pt;color:black'> = 2, то подпись верна, иначе, неверна.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name=ДопПримеры><u><span style='font-size:14.0pt'>Дополнительные
+примеры</span></u></a><span style='font-size:14.0pt'>: выполните постановку
+подписи для первых букв своих фамилии, имени и отчества.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Задание><u><span style='font-size:14.0pt'>Задание</span></u></a><u><span
+style='font-size:14.0pt'>.</span></u></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>В данной лабораторной работе требуется освоить работу алгоритма
+цифровой подписи ГОСТ. Для этого необходимо выполнить следующее (каждый студент
+индивидуально выполняет задание и оформляет отчет).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>1. Выполнить на бумаге расчет постановки и проверки подписи,
+состоящей из первых букв из собственных инициалов (фамилии, имени, отчества).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>2. Программно реализовать (для чисел размерностью в
+машинное слово) данный алгоритм в виде программы на любом из следующих языков
+программирования: </span><span lang=EN-US style='font-size:14.0pt'>C</span><span
+style='font-size:14.0pt'>, С++, </span><span lang=EN-US style='font-size:14.0pt'>Pascal</span><span
+style='font-size:14.0pt'>. Текст программы должен содержать комментарии к
+каждой строке кода.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>3. Оформить отчет о выполненной работе, с приведением расчета
+из пункта 1, листингов программ и двух-трех тестов (как в первом пункте
+задания).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>4. Выполнить сдачу работы руководителю лабораторного
+занятия (при этом существует возможность задания дополнительных вопросов).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Примечание><u><span style='font-size:14.0pt;color:black'>Пояснения к
+вычислениям</span></u></a><span style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>Для вычисления операции исключающее или (</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>xor</span><span
+style='font-size:14.0pt;color:black'>) используется следующая таблица
+истинности </span><span style='font-size:14.0pt'>(табл. </span><span
+lang=EN-US style='font-size:14.0pt'>1</span><span style='font-size:14.0pt'>)<span
+style='color:black'>:</span></span></p>
+
+<p class=MsoNormal align=right style='text-align:right'><span style='font-size:
+14.0pt;color:black'>Таблица 1</span></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='margin-left:158.6pt;border-collapse:collapse;border:none'>
+ <tr style='height:19.5pt'>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.5pt;border-right:solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:19.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt;font-family:Symbol'>&Aring;</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:solid windowtext 1.5pt;
+  border-left:none;border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:19.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>0</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:19.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>1</span></p>
+  </td>
+ </tr>
+ <tr style='height:26.25pt'>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:26.25pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>0</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:26.25pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>0</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:26.25pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>1</span></p>
+  </td>
+ </tr>
+ <tr style='height:24.75pt'>
+  <td width=48 style='width:36.0pt;border:solid windowtext 1.5pt;border-top:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:24.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>1</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.5pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:24.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>1</span></p>
+  </td>
+  <td width=48 style='width:36.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.5pt;border-right:solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:24.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>0</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>Сложение чисел производится поразрядно, перенос не
+учитывается. Наиболее удобно производить данную операцию над числами,
+представленными в двоичном виде. Переменные в программах, созданных алгоритмическими
+языками, уже сразу хранятся в двоичном виде.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Типы_операций"><span style='font-size:14.0pt'>В <u>языках “</u></span></a><u><span
+lang=EN-US style='font-size:14.0pt'>C</span></u><u><span style='font-size:14.0pt'>”
+и “</span></u><u><span lang=EN-US style='font-size:14.0pt'>Pascal</span></u><u><span
+style='font-size:14.0pt'>”</span></u><span style='font-size:14.0pt'>
+используются следующие <u>команды и знаки операций</u>, которые можно применить
+в работе (табл. 2):</span></p>
+
+<p class=MsoNormal align=center style='margin-left:318.6pt;text-align:center;
+text-indent:35.4pt'><span style='font-size:14.0pt'>Таблица 2</span></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='margin-left:14.4pt;border-collapse:collapse'>
+ <tr style='height:16.5pt'>
+  <td width=440 style='width:330.0pt;border:solid windowtext 1.5pt;padding:
+  0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Тип операции</p>
+  </td>
+  <td width=77 style='width:57.75pt;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Языки C, С++</p>
+  </td>
+  <td width=72 style='width:54.25pt;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Язык Pascal</p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=440 valign=bottom style='width:330.0pt;border-top:none;border-left:
+  solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;border-right:
+  solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal>Операция взятия остатка от деления x на y</p>
+  </td>
+  <td width=77 valign=bottom style='width:57.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>x % y</p>
+  </td>
+  <td width=72 valign=bottom style='width:54.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>x mod y</p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=440 valign=bottom style='width:330.0pt;border-top:none;border-left:
+  solid windowtext 1.5pt;border-bottom:solid windowtext 2.25pt;border-right:
+  solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal>Операция «исключающего или» над числами x и y</p>
+  </td>
+  <td width=77 valign=bottom style='width:57.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>x <span lang=EN-US>^</span>
+  y</p>
+  </td>
+  <td width=72 valign=bottom style='width:54.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>x <span lang=EN-US>xor</span>
+  y</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>Для вычисления выражения вида (</span><span
+lang=EN-US style='font-size:14.0pt'>a<sup>x</sup></span><span lang=EN-US
+style='font-size:14.0pt'> </span><span lang=EN-US style='font-size:14.0pt'>mod</span><span
+lang=EN-US style='font-size:14.0pt'> </span><span lang=EN-US style='font-size:
+14.0pt'>p</span><span style='font-size:14.0pt'>) можно использовать схему
+Горнера, описанную в соответствующей лабораторной работе. </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=ДопВопросы><u><span style='font-size:14.0pt'>Вопросы для самопроверки</span></u></a><u><span
+style='font-size:14.0pt'>.</span></u></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>1. Назовите особенности алгоритма ЦП ГОСТ Р 34.10-94?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>2. В каких диапазона задаются входные параметры ЦП
+ГОСТ Р 34.10-94?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>3. Каким образом выполняется постановка подписи на
+документе?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>4. Каким образом выполняется проверка поставленной
+подписи?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>5. Какие элементы цифровой подписи являются открытыми?
+Какие элементы цифровой подписи становятся известными проверяющей стороне в
+момент проверки подписи?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>6. Какие алгоритмы, рассмотренные в курсе
+«Математические основы криптологии», используются в данной ЦП?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>7. Какие математические операции используются в данной
+ЦП?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Литература><u><span style='font-size:14.0pt'>Литература для
+самостоятельной подготовки</span></u></a><span style='font-size:14.0pt'>:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>1. Ю.В. Романец, П.А. Тимофеев, В.Ф. Шаньгин. Защита
+информации в компьютерных системах и сетях / Под ред. В.Ф. Шаньгина. – М.:
+Радио и связь, 1999. – 328 с.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>2. Уэйт М., Прата С., Мартин Д. Язык Си. Руководство
+для начинающих: Пер. с англ. – М.: Мир, 1988. – 512 с., ил.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>3. Прайс Д. Программирование на языке Паскаль:
+Практическое руководство. Пер. с англ. – М.: Мир, 1987. – 232 с., ил.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

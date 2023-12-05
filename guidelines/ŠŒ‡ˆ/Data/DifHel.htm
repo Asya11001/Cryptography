@@ -1,0 +1,641 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title>Открытое распределение ключей</title>
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:1.0cm 1.0cm 1.0cm 1.0cm;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+
+</head>
+
+<body lang=RU>
+
+<div class=Section1>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span
+style='font-size:14.0pt;color:black'>Лабораторная работа</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span
+style='font-size:14.0pt;color:black'>Алгоритмы открытого распределения ключей
+на базе схемы Диффи-Хеллмана</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name="Цель_работы"><u><span style='font-size:
+14.0pt'>Цель работы</span></u></a><span style='font-size:14.0pt'>: освоение
+практических методов использования и собственной программной реализации
+алгоритмов распределения ключей.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name="Описание_работы"><u><span style='font-size:
+14.0pt'>Описание работы</span></u></a><span style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>Открытое распределение ключей позволяет
+двум абонентам выработать общий секретный ключ путем динамического
+взаимодействия на основе обмена открытыми сообщениями без какой-либо общей
+секретной информации, распределяемой заранее. </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Алгоритм1></a><a name=Алгоритм><span style='font-size:14.0pt;color:black'>Первый
+алгоритм открытого распределения ключей был предложен У. Диффи и М. Хеллманом</span></a><span
+style='font-size:14.0pt;color:black'>. Здесь задачей для сторон является выработка
+общего ключа </span><i><span lang=EN-US style='font-size:14.0pt;color:black'>k</span></i><i><span
+style='font-size:14.0pt;color:black'>. </span></i><span style='font-size:14.0pt;
+color:black'>Стороны должны договориться о значениях большого простого числа <i>р
+</i>и натурального числа </span><span lang=EN-US style='font-size:14.0pt;
+font-family:Symbol;color:black'>a</span><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span style='font-size:14.0pt;font-family:Symbol;
+color:black'>&Icirc;</span><span style='font-size:14.0pt;color:black'>[1, ..., <i>р
+– </i>1]. Сторона </span><span lang=EN-US style='font-size:14.0pt;color:black'>A</span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span style='font-size:
+14.0pt;color:black'>генерирует случайное числа <i>х, </i>1 &#8804; <i>х</i> &#8804;
+<i>р </i>- 2, а сторона </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>B</span><span lang=EN-US style='font-size:14.0pt;color:black'> </span><span
+style='font-size:14.0pt;color:black'>- число </span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>y</span></i><i><span style='font-size:
+14.0pt;color:black'> , </span></i><span style='font-size:14.0pt;color:black'>1 &#8804;<i>
+у</i> &#8804; <i> р </i>- 2</span><span style='font-size:14.0pt;color:black'>. Далее
+стороны обмениваются сообщениями:</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span style='font-size:14.0pt;color:black'>(1) </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>A</span><span style='font-size:
+14.0pt;color:black'> &#8594; </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>B</span><span style='font-size:14.0pt;color:black'>: </span><span
+lang=EN-US style='font-size:14.0pt;color:black'><span style='position:relative;
+top:5.0pt'><img width=84 height=30 src="DifHel.files/image001.png"></span></span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span style='font-size:14.0pt;color:black'>(2) </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>B</span><span style='font-size:
+14.0pt;color:black'> &#8594; </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>A</span><span style='font-size:14.0pt;color:black'>: </span><span
+lang=EN-US style='font-size:14.0pt;color:black'><span style='position:relative;
+top:5.0pt'><img width=85 height=30 src="DifHel.files/image002.png"></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Общий
+ключ вычисляется по формулам:</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span style='font-size:14.0pt;color:black'>стороной </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>A</span><span style='font-size:
+14.0pt;color:black'>: </span><span lang=EN-US style='font-size:14.0pt;
+color:black'><span style='position:relative;top:5.0pt'><img width=140
+height=30 src="DifHel.files/image003.png"></span></span><span style='font-size:
+14.0pt;color:black'>;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span style='font-size:14.0pt;color:black'>стороной </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>B</span><span style='font-size:
+14.0pt;color:black'>: </span><span lang=EN-US style='font-size:14.0pt;
+color:black'><span style='position:relative;top:5.0pt'><img width=140
+height=30 src="DifHel.files/image004.png"></span></span><span style='font-size:
+14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><u><span
+style='font-size:14.0pt;color:black'>Преимущество</span></u><span
+style='font-size:14.0pt;color:black'>. Ни один из абонентов заранее не может
+определить значения ключа, так как ключ зависит от сообщений, передаваемых в
+процессе обмена.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><u><span style='font-size:14.0pt;color:black'>Недостаток</span></u><span
+style='font-size:14.0pt;color:black'>. Возможность реализации атаки
+&quot;злоумышленник в середине&quot;. Злоумышленник может подменить передаваемые
+сообщения абонентов. Выбрав числа <i>х</i><sup>*</sup><i> </i>и <i>у</i><sup>*</sup><i>
+</i>и подменив сообщения </span><i><span lang=EN-US style='font-size:14.0pt;
+font-family:Symbol;color:black'>a</span></i><i><sup><span lang=EN-US
+style='font-size:14.0pt;color:black'>x</span></sup></i><i><sup><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span></sup></i><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>mod</span></i><i><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span></i><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>p</span></i><i><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span></i><span
+style='font-size:14.0pt;color:black'>и </span><i><span lang=EN-US
+style='font-size:14.0pt;font-family:Symbol;color:black'>a</span></i><i><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span></i><i><sup><span
+style='font-size:14.0pt;color:black'>у </span></sup></i><i><span
+style='font-size:14.0pt;color:black'>то</span></i><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>d</span></i><i><span style='font-size:
+14.0pt;color:black'> р </span></i><span style='font-size:14.0pt;color:black'>на
+</span><i><span lang=EN-US style='font-size:14.0pt;font-family:Symbol;
+color:black'>a</span></i><i><sup><span lang=EN-US style='font-size:14.0pt;
+color:black'>x</span></sup></i><sup><span style='font-size:14.0pt;color:black'>*</span></sup><span
+style='font-size:14.0pt;color:black'> </span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>mod</span></i><i><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span></i><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>p</span></i><span style='font-size:14.0pt;
+color:black'> и </span><i><span lang=EN-US style='font-size:14.0pt;font-family:
+Symbol;color:black'>a</span></i><i><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span></i><i><sup><span lang=EN-US style='font-size:14.0pt;
+color:black'>y</span></sup></i><i><sup><span style='font-size:14.0pt;
+color:black'>*</span></sup></i><i><span style='font-size:14.0pt;color:black'> </span></i><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>mod</span></i><i><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span></i><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>p</span></i><i><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span></i><span
+style='font-size:14.0pt;color:black'>соответственно, он может сформировать
+ключи</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span lang=EN-US style='font-size:14.0pt'><span
+style='position:relative;top:5.0pt'><img width=151 height=30
+src="DifHel.files/image005.png"></span></span><span lang=EN-US
+style='font-size:14.0pt'> </span><span style='font-size:14.0pt'>для стороны </span><span
+lang=EN-US style='font-size:14.0pt'>A</span><span style='font-size:14.0pt'>,</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span lang=EN-US style='font-size:14.0pt'><span
+style='position:relative;top:5.0pt'><img width=154 height=30
+src="DifHel.files/image006.png"></span></span><span lang=EN-US
+style='font-size:14.0pt'> </span><span style='font-size:14.0pt'>для стороны </span><span
+lang=EN-US style='font-size:14.0pt'>B</span><span style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>В
+результате злоумышленник получает возможность полностью контролировать обмен
+сообщениями между абонентами <i>А и В</i>, при разных ключах обмена<i>. </i>Стороны
+не смогут обнаружить подмену и будут уверены, что связываются непосредственно
+друг с другом.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Две
+модификации алгоритма Диффи-Хеллмана устраняют этот недостаток: </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>STS</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span style='font-size:14.0pt;
+color:black'>и </span><span lang=EN-US style='font-size:14.0pt;color:black'>MTI</span><span
+style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name=Алгоритм2><b><span style='font-size:14.0pt;
+color:black'>Протокол </span></b></a><b><span lang=EN-US style='font-size:14.0pt;
+color:black'>STS</span></b><span lang=EN-US style='font-size:14.0pt;color:black'>
+</span><i><span style='font-size:14.0pt;color:black'>(</span></i><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>station</span></i><i><span
+style='font-size:14.0pt;color:black'>-</span></i><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>to</span></i><i><span style='font-size:
+14.0pt;color:black'>-</span></i><i><span lang=EN-US style='font-size:14.0pt;
+color:black'>station</span></i><i><span style='font-size:14.0pt;color:black'>) </span></i><span
+style='font-size:14.0pt;color:black'>предполагает, что пользователи применяют
+цифровую подпись, которой подписываются передаваемые по протоколу
+Диффи-Хеллмана сообщения:</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span lang=EN-US style='font-size:14.0pt;color:black'>(1)
+A &#8594; B: <span style='position:relative;top:5.0pt'><img width=84 height=30
+src="DifHel.files/image001.png"></span>,</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span lang=EN-US style='font-size:14.0pt;color:black'>(2)
+B &#8594; A: <span style='position:relative;top:5.0pt'><img width=85 height=30
+src="DifHel.files/image002.png"></span>, <i>E</i><sub>k</sub>(<i>S</i><sub>B</sub>(</span><span
+lang=EN-US style='font-size:14.0pt;font-family:Symbol;color:black'>a</span><sup><span
+lang=EN-US style='font-size:14.0pt;color:black'>x</span></sup><span lang=EN-US
+style='font-size:14.0pt;color:black'>, </span><span lang=EN-US
+style='font-size:14.0pt;font-family:Symbol;color:black'>a</span><sup><span
+lang=EN-US style='font-size:14.0pt;color:black'>y</span></sup><span lang=EN-US
+style='font-size:14.0pt;color:black'>)),</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span style='font-size:14.0pt;color:black'>(3) </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>A</span><span style='font-size:
+14.0pt;color:black'> &#8594; </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>B</span><span style='font-size:14.0pt;color:black'>: </span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>E</span></i><sub><span
+lang=EN-US style='font-size:14.0pt;color:black'>k</span></sub><span
+style='font-size:14.0pt;color:black'>(</span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>S</span></i><sub><span lang=EN-US
+style='font-size:14.0pt;color:black'>A</span></sub><span style='font-size:14.0pt;
+color:black'>(</span><span lang=EN-US style='font-size:14.0pt;font-family:Symbol;
+color:black'>a</span><sup><span lang=EN-US style='font-size:14.0pt;color:black'>x</span></sup><span
+style='font-size:14.0pt;color:black'>, </span><span lang=EN-US
+style='font-size:14.0pt;font-family:Symbol;color:black'>a</span><sup><span
+lang=EN-US style='font-size:14.0pt;color:black'>y</span></sup><span
+style='font-size:14.0pt;color:black'>)),</span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;text-autospace:
+none'><span style='font-size:14.0pt;color:black'>где </span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>E</span></i><sub><span
+lang=EN-US style='font-size:14.0pt;color:black'>k</span></sub><span
+style='font-size:14.0pt;color:black'> – шифрование на ключе </span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>k</span></i><span
+style='font-size:14.0pt;color:black'>, </span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>S<sub>A</sub></span></i><i><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span></i><span
+style='font-size:14.0pt;color:black'>и </span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>S<sub>B</sub></span></i><i><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span></i><span
+style='font-size:14.0pt;color:black'>- цифровые подписи пользователей <i>А </i>и
+<i>В </i>от числа, образованного конкатенацией чисел </span><span lang=EN-US
+style='font-size:14.0pt;font-family:Symbol;color:black'>a</span><sup><span
+lang=EN-US style='font-size:14.0pt;color:black'>x</span></sup><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span style='font-size:14.0pt;
+color:black'>и </span><span lang=EN-US style='font-size:14.0pt;font-family:
+Symbol;color:black'>a</span><sup><span lang=EN-US style='font-size:14.0pt;
+color:black'>y</span></sup><span style='font-size:14.0pt;color:black'>, </span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>k</span></i><i><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span></i><span
+style='font-size:14.0pt;color:black'>- искомый общий ключ. </span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>S<sub>A</sub></span></i><i><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span></i><span
+style='font-size:14.0pt;color:black'>и </span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>S<sub>B</sub></span></i><span
+style='font-size:14.0pt;color:black'> гарантируют достоверность получения переданных
+сообщений. Шифрование позволяет взаимно подтвердить правильно­сть вычисления
+ключа.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name=Алгоритм3><b><span style='font-size:14.0pt;
+color:black'>Протокол </span></b></a><b><span lang=EN-US style='font-size:14.0pt;
+color:black'>MTI</span></b><span lang=EN-US style='font-size:14.0pt;color:black'>
+</span><span style='font-size:14.0pt;color:black'>(Т. Мацумото, И. Такашима и </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>X</span><span style='font-size:
+14.0pt;color:black'>. Имаи), вместо цифровой подписи, использует
+модифицированную процедуру выработ­ки общего ключа.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Сторона </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>A</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span style='font-size:14.0pt;
+color:black'>г</span><span style='font-size:14.0pt;color:black'>енерирует
+случайные числа </span><span lang=EN-US style='font-size:14.0pt;color:black'>a</span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span style='font-size:
+14.0pt;color:black'>и <i>х, </i>1 &#8804; а &#8804; <i>р - </i>2, 1 &#8804; </span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>x</span></i><span
+style='font-size:14.0pt;color:black'> &#8804; <i>р - </i></span><span
+style='font-size:14.0pt;color:black'>2, и передает стороне </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>B</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span style='font-size:14.0pt;
+color:black'>числа </span><span lang=EN-US style='font-size:14.0pt;color:black'><span
+style='position:relative;top:5.0pt'><img width=84 height=30
+src="DifHel.files/image001.png"></span></span><span style='font-size:14.0pt;
+color:black'> и </span><i><span lang=EN-US style='font-size:14.0pt;color:black'>z<sub>A</sub></span></i><i><span
+style='font-size:14.0pt;color:black'>=</span></i><span lang=EN-US
+style='font-size:14.0pt;font-family:Symbol;color:black'>a</span><i><sup><span
+lang=EN-US style='font-size:14.0pt;color:black'>a</span></sup></i><i><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span></i><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>mod</span></i><i><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span></i><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>p</span></i><span
+style='font-size:14.0pt;color:black'>. Сторона </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>B</span><span lang=EN-US style='font-size:
+14.0pt;color:black'> </span><span style='font-size:14.0pt;color:black'>г</span><span
+style='font-size:14.0pt;color:black'>енерирует случайные числа </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>b</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span style='font-size:14.0pt;
+color:black'>и </span><i><span lang=EN-US style='font-size:14.0pt;color:black'>y</span></i><i><span
+style='font-size:14.0pt;color:black'>, </span></i><span style='font-size:14.0pt;
+color:black'>1 &#8804; </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>b</span><span style='font-size:14.0pt;color:black'> &#8804; <i>р -
+</i></span><span style='font-size:14.0pt;color:black'>2, 1 &#8804; </span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>y</span></i><span
+style='font-size:14.0pt;color:black'> &#8804; <i>р - </i></span><span
+style='font-size:14.0pt;color:black'>2, и передает стороне </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>A</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span style='font-size:14.0pt;
+color:black'>числа </span><span lang=EN-US style='font-size:14.0pt;color:black'><span
+style='position:relative;top:5.0pt'><img width=85 height=30
+src="DifHel.files/image002.png"></span></span><span style='font-size:14.0pt;
+color:black'> и </span><i><span lang=EN-US style='font-size:14.0pt;color:black'>z<sub>B</sub></span></i><i><span
+style='font-size:14.0pt;color:black'> = </span></i><span style='font-size:14.0pt;
+font-family:Symbol;color:black'>a</span><i><sup><span lang=EN-US
+style='font-size:14.0pt;color:black'>b</span></sup></i><i><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span></i><span lang=EN-US
+style='font-size:14.0pt;color:black'>mod</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>p</span></i><span style='font-size:14.0pt;
+color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Искомый
+общий ключ вычисляется сторонами по формулам:</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span lang=EN-US style='font-size:14.0pt'>A</span><span
+style='font-size:14.0pt'>: </span><span lang=EN-US style='font-size:14.0pt'><span
+style='position:relative;top:5.0pt'><img width=286 height=30
+src="DifHel.files/image007.png"></span></span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span lang=EN-US style='font-size:14.0pt'>B</span><span
+style='font-size:14.0pt'>: </span><span lang=EN-US style='font-size:14.0pt'><span
+style='position:relative;top:5.0pt'><img width=285 height=30
+src="DifHel.files/image008.png"></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>Любая подмена сообщений приведет к тому,
+что все стороны получат различные значения ключа, что приведет к невозможности
+чтения всей передаваемой информации.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Пример><u><span style='font-size:14.0pt;color:black'>Пример</span></u></a><span
+style='font-size:14.0pt;color:black'>. Получить общие ключи с помощью открытого
+распределения ключей по схеме Диффи-Хеллмана и </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>MTI</span><span style='font-size:14.0pt;
+color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>Пусть выбрано простое число </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>p</span><span style='font-size:
+14.0pt;color:black'> = 41 и задан параметр </span><span style='font-size:14.0pt;
+font-family:Symbol;color:black'>a</span><span style='font-size:14.0pt;
+color:black'> = 5.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><u><span
+style='font-size:14.0pt;color:black'>Схема Диффи-Хеллмана…</span></u></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>Сторона А создает и передает сообщение для
+</span><span lang=EN-US style='font-size:14.0pt;color:black'>B</span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span style='font-size:
+14.0pt;color:black'>при </span><i><span lang=EN-US style='font-size:14.0pt;
+color:black'>x</span></i><span style='font-size:14.0pt;color:black'> = 15: </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>mesA</span><span
+style='font-size:14.0pt;color:black'> = </span><span style='font-size:14.0pt;
+font-family:Symbol;color:black'>a</span><sup><span lang=EN-US style='font-size:
+14.0pt;color:black'>x</span></sup><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>p</span><span style='font-size:14.0pt;
+color:black'> = 5<sup>15</sup> </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>mod</span><span style='font-size:14.0pt;color:black'> 41 = 32.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>Сторона </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>B</span><span style='font-size:14.0pt;
+color:black'> создает и передает сообщение для </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>A</span><span lang=EN-US style='font-size:
+14.0pt;color:black'> </span><span style='font-size:14.0pt;color:black'>при </span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>y</span></i><span
+style='font-size:14.0pt;color:black'> = 7: </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>mesB</span><span style='font-size:14.0pt;
+color:black'> = </span><span style='font-size:14.0pt;font-family:Symbol;
+color:black'>a</span><sup><span lang=EN-US style='font-size:14.0pt;color:black'>y</span></sup><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>mod</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>p</span><span style='font-size:14.0pt;color:black'> = 5<sup>7</sup>
+</span><span lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span
+style='font-size:14.0pt;color:black'> 41 = 20.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>Вычисление общего ключа:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>для </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>A</span><span style='font-size:14.0pt;
+color:black'>: </span><span lang=EN-US style='font-size:14.0pt;color:black'>k</span><span
+style='font-size:14.0pt;color:black'> = </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>mesB<sup>x</sup></span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>mod</span><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span lang=EN-US style='font-size:14.0pt;color:black'>p</span><span
+style='font-size:14.0pt;color:black'> = 20<sup>15</sup> </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span
+style='font-size:14.0pt;color:black'> 41  = 9; </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>для</span><span style='font-size:14.0pt;
+color:black'> <span lang=EN-US>B: k = mesA<sup>y</sup> mod p = 32<sup>7</sup>
+mod 41  = 9.</span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>Общий          ключ одинаков.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><u><span
+style='font-size:14.0pt;color:black'>Схема </span></u><u><span lang=EN-US
+style='font-size:14.0pt;color:black'>MTI</span></u><u><span style='font-size:
+14.0pt;color:black'>…</span></u></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>Сообщения </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>mesA</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span style='font-size:14.0pt;
+color:black'>и </span><span lang=EN-US style='font-size:14.0pt;color:black'>mesB</span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span style='font-size:
+14.0pt;color:black'>уже вычислены.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>Сторона А создает и передает второе
+сообщение для </span><span lang=EN-US style='font-size:14.0pt;color:black'>B</span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span style='font-size:
+14.0pt;color:black'>при </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>a</span><span style='font-size:14.0pt;color:black'> = 29: </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>zA</span><span
+style='font-size:14.0pt;color:black'> = </span><span style='font-size:14.0pt;
+font-family:Symbol;color:black'>a</span><sup><span lang=EN-US style='font-size:
+14.0pt;color:black'>a</span></sup><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>p</span><span style='font-size:14.0pt;
+color:black'> = 5<sup>29</sup> </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>mod</span><span style='font-size:14.0pt;color:black'> 41 = 8.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>Сторона </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>B</span><span style='font-size:14.0pt;
+color:black'> создает и передает второе сообщение для </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>A</span><span lang=EN-US style='font-size:
+14.0pt;color:black'> </span><span style='font-size:14.0pt;color:black'>при </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>b</span><span style='font-size:
+14.0pt;color:black'> = 19: </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>zB</span><span style='font-size:14.0pt;color:black'> = </span><span
+style='font-size:14.0pt;font-family:Symbol;color:black'>a</span><sup><span
+lang=EN-US style='font-size:14.0pt;color:black'>b</span></sup><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>mod</span><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span lang=EN-US style='font-size:14.0pt;color:black'>p</span><span
+style='font-size:14.0pt;color:black'> = 5<sup>19</sup> </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>mod</span><span style='font-size:14.0pt;
+color:black'> 41 = 33.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>Вычисление общего ключа:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>для </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>A</span><span style='font-size:14.0pt;
+color:black'>: </span><span lang=EN-US style='font-size:14.0pt;color:black'>k</span><span
+style='font-size:14.0pt;color:black'> = ((</span><span lang=EN-US
+style='font-size:14.0pt;color:black'>mesB<sup>a</sup></span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>mod</span><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span lang=EN-US style='font-size:14.0pt;color:black'>p</span><span
+style='font-size:14.0pt;color:black'>) (</span><span lang=EN-US
+style='font-size:14.0pt;color:black'>zB<sup>x</sup></span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>mod</span><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span lang=EN-US style='font-size:14.0pt;color:black'>p</span><span
+style='font-size:14.0pt;color:black'>)) </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>mod</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>p</span><span style='font-size:14.0pt;color:black'> = (20<sup>29</sup>
+</span><span lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span
+style='font-size:14.0pt;color:black'> 41) (33<sup>15</sup> </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span
+style='font-size:14.0pt;color:black'> 41))</span><span lang=EN-US
+style='font-size:14.0pt;color:black'>mod</span><span style='font-size:14.0pt;
+color:black'> 41 = 2*9 </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>mod</span><span style='font-size:14.0pt;color:black'> 41 = 18;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>для</span><span style='font-size:14.0pt;
+color:black'> <span lang=EN-US>B: k = ((mesA<sup>b</sup> mod p) (zA<sup>y</sup>
+mod p)) mod p = (32<sup>19</sup> mod 41) (8<sup>7</sup> mod 41))mod 41 = 9*2 mod
+41 = 18.</span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>Общий          ключ одинаков.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name=ДопПримеры><u><span style='font-size:14.0pt'>Дополнительные
+примеры</span></u></a><span style='font-size:14.0pt'>: выполните постановку
+подписи для первых букв своих фамилии, имени и отчества.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Задание><u><span style='font-size:14.0pt'>Задание</span></u></a><u><span
+style='font-size:14.0pt'>.</span></u></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>В данной лабораторной работе требуется освоить работу алгоритмов
+распространения ключей Диффи-Хеллмана и </span><span lang=EN-US
+style='font-size:14.0pt'>MTI</span><span style='font-size:14.0pt'>. Для этого
+необходимо выполнить следующее (каждый студент индивидуально выполняет задание
+и оформляет отчет).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>1. Выполнить на бумаге расчет механизма передачи
+ключей, используя в виде ключей первые буквы из собственных инициалов (фамилии,
+имени, отчества).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>2. Программно реализовать (для чисел размерностью в
+машинное слово) данный алгоритм в виде программы на любом из следующих языков
+программирования: </span><span lang=EN-US style='font-size:14.0pt'>C</span><span
+style='font-size:14.0pt'>, С++, </span><span lang=EN-US style='font-size:14.0pt'>Pascal</span><span
+style='font-size:14.0pt'>. Текст программы должен содержать комментарии к
+каждой строке кода.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>3. Оформить отчет о выполненной работе, с приведением расчета
+из пункта 1, листингов программ и двух-трех тестов (как в первом пункте
+задания).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>4. Выполнить сдачу работы руководителю лабораторного
+занятия (при этом существует возможность задания дополнительных вопросов).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=ДопВопросы><u><span style='font-size:14.0pt'>Вопросы для самопроверки</span></u></a><u><span
+style='font-size:14.0pt'>.</span></u></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>1. Поясните предназначение алгоритмов на
+базе схемы Диффи-Хеллмана.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>2. Поясните работу схемы Диффи-Хеллмана.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>3. Какими преимуществами и недостатками
+обладает схема Диффи-Хеллмана?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>4. Каким образом можно реализовать атаку
+на систему, использующую схему Диффи-Хеллмана?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>5. Поясните работу протокола STS.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>6. Поясните работу протокола MTI.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>7. Как в STS и MTI решаются проблемы схемы
+Диффи-Хеллмана?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>8. Какие математические операции
+используются в алгоритмах на базе схемы Диффи-Хеллмана?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>9. Какие алгоритмы, рассмотренные в курсе
+«Математические основы криптологии», используются в алгоритмах на базе схемы
+Диффи-Хеллмана?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name=Литература><u><span style='font-size:14.0pt'>Литература
+для самостоятельной подготовки</span></u></a><span style='font-size:14.0pt'>: </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt'>1. Ю.В.Романец,
+П.А.Тимофеев, В.Ф. Шаньгин. Защита информации в компьютерных системах и сетях
+/Под ред. В.Ф. Шаньгина. - М.: Радио и связь,1999.-328 с.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt'>2. С.Коутинхо.
+Введение в теорию чисел. Алгоритм RSA.-М.:Постмаркет, 2001.-328с.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt'>3. Алферов А.П.,
+Зубов А.Ю., Кузьмин А.С., Черемушкин А.В. Основы криптографии: Учебное пособие,
+2-е изд., испр. И доп. – М.: Гелиос АРВ, 2002. – 480 с.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt'>4. Брюс Шнайер.
+Прикладная криптография. 2е изд.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt'>5. Уэйт М., Прата С.,
+Мартин Д. Язык Си. Руководство для начинающих: Пер. с англ. – М.: Мир, 1988. –
+512 с., ил.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt'>6. Прайс Д.
+Программирование на языке Паскаль: Практическое руководство. Пер. с англ. – М.:
+Мир, 1987. – 232 с., ил.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

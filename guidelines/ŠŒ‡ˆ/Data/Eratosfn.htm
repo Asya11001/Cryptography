@@ -1,0 +1,1370 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title>Лабораторная работа</title>
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:2.0cm 42.5pt 2.0cm 3.0cm;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+
+</head>
+
+<body lang=RU>
+
+<div class=Section1>
+
+<p class=MsoNormal align=center style='text-align:center'><a name="Цель_работы"><b><span
+style='font-size:14.0pt'>Лабораторная работа</span></b></a></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span style='font-size:14.0pt;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><b><span style='font-size:14.0pt;color:black'>Модифицированное
+«решето Эратосфена»</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span style='font-size:14.0pt;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><u><span style='font-size:14.0pt'>Цель работы</span></u><span
+style='font-size:14.0pt'>: </span><span style='font-size:14.0pt'>освоение алгоритма
+модифицированного «решета Эратосфена» на основе реализации алгоритма с помощью языка
+программирования.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name="Теоретическая_часть"><u><span
+style='font-size:14.0pt'>Описание работы</span></u></a><span style='font-size:
+14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>Поясним используемые обозначения. </span><span
+lang=EN-US style='font-size:14.0pt'>N</span><span style='font-size:14.0pt'> –
+множество натуральных чисел. Все операции производятся над целыми числами. Под
+формулой <sub><img width=53 height=26 src="Eratosfn.files/image001.gif"></sub> будет
+пониматься весь ряд целых чисел, лежащих в диапазоне от </span><b><i><span
+lang=EN-US style='font-size:14.0pt'>r</span></i></b><span style='font-size:
+14.0pt'> до </span><b><i><span lang=EN-US style='font-size:14.0pt'>k</span></i></b><span
+style='font-size:14.0pt'> включительно, и который может принимать переменная </span><b><i><span
+lang=EN-US style='font-size:14.0pt'>i</span></i></b><span style='font-size:
+14.0pt'>. <span style='color:black'>]</span></span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>k</span></i><span style='font-size:14.0pt;
+color:black'>[ - взятие от дробного числа </span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>k</span></i><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span style='font-size:14.0pt;
+color:black'>только целой части, без округления.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name="Понятие_решета"><i><span style='font-size:
+14.0pt;color:black'>Решето Эратосфена </span></i></a><span style='font-size:
+14.0pt;color:black'>— это древнейший способ выписывания простых чисел. В
+отличие от других методов, он не использует никакой специальной функции. </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>В
+названии алгоритма звучит слово «решето» потому, что он позволяет из ряда натуральных
+чисел «просеивать» составные числа, а простые – «задерживать». </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name="Цель_алгоритма"><i><span style='font-size:
+14.0pt;color:black'>Цель алгоритма</span></i></a><span style='font-size:14.0pt;
+color:black'> </span><span style='font-size:14.0pt;color:black'>- определить
+все положительные простые числа, меньшие некоторой верхней границы <i>п</i>, где
+</span><i><span lang=EN-US style='font-size:14.0pt;color:black'>n</span></i><span
+lang=EN-US style='font-size:14.0pt;font-family:Symbol;color:black'>&Icirc;</span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>N</span></i><span
+style='font-size:14.0pt;color:black'>. В алгоритме вначале выписываются все
+нечетные целые между 3 и </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>n</span><span style='font-size:14.0pt;color:black'>; четные не
+используются, так как все они, кроме 2, составные.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Далее ряд
+просеивается. Первое число в нем 3. Начиная со следующего числа в списке (это
+5), вычеркивается из него каждое число, кратное трем. Проделав это до конца, будут
+вычеркнуты все числа из списка, большие трех и кратные трем.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Теперь
+выбирается наименьшее число из списка, превосходящее 3, которое еще не было
+вычеркнуто – число 5. Вычеркивается каждое число из списка, кратное пяти,
+начиная с 7. Таким образом, все числа, кратные 5, кроме 5, будут вычеркнуты. Эта
+процедура продолжается до тех пор, пока не будут пройдены все числа до <i>п. </i></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>То есть </span><span
+style='font-size:14.0pt;color:black'>при вычеркивании чисел, кратных <i>р</i>,
+отсчет начинается с числа <i>р</i>+2, даже когда это число было вычеркнуто на
+предыдущих шагах.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name="Пример_работы_решета_Эратосфена"><i><span
+style='font-size:14.0pt;color:black'>Пример работы «решета Эратосфена»</span></i></a><span
+style='font-size:14.0pt;color:black'>. для <i>п = </i>41 список нечетных чисел следующий:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>3    
+5     7     9    11   13   15   17   19   21</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>23   25  
+27   29   31   33   35   37   39   41</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Вычеркнув
+каждое третье число, начиная с 5, получим</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>3    
+5     7     <s>9</s><i>   </i>11    13   <s>15</s><i>   </i>17   19   <s>21</s></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>23   25  
+<s>27</s>   29   31   <s>33</s>   35   37   <s>39</s>   41</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Теперь
+вычеркиваем каждое пятое число, начиная с 7, что дает</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>3    
+5     7     <s>9</s><i>   </i>11    13   <s>15</s><i>   </i>17   19   <s>21</s></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>23   <s>25</s>  
+<s>27</s>   29   31   <s>33</s>   <s>35</s>   37   <s>39</s>   41</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Далее, ни
+одно из чисел, оставшихся в списке после вычеркивания каждого пятого, не будет
+вычеркнуто ни на каком этапе просеивания. Таким образом, положительные нечетные
+простые числа, не превосходящие 41, это</span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;text-autospace:
+none'><span style='font-size:14.0pt;color:black'>3    5    7   11    13   
+17    19   23    29    31    37   41.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name="Замечания_обычному_алгоритму"><i><span
+style='font-size:14.0pt;color:black'>Замечания</span></i></a><span
+style='font-size:14.0pt;color:black'> к обычному алгоритму </span><span
+style='font-size:14.0pt;color:black'>«решето Эратосфена»</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>1.
+Некоторые числа вычеркиваются больше, чем один раз.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>2. Хотя
+следует повторять процесс вычеркивания вплоть до граничного числа <i>п</i>, но
+все составные числа исчезают раньше достижения этого числа.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name="Изменения_модификацией"><span
+style='font-size:14.0pt;color:black'>В модифицированном алгоритме производятся <i>следующие
+изменения</i>.</span></a></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>1. Простейшее
+усовершенствование - это начинать процесс вычеркивания не с <i>р </i>+ 2, а с
+наименьшего числа, кратного <i>р</i>, которое не делится на простое число,
+меньшее р. Найдем его.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Положительные
+числа, кратные <i>р</i>,<i> </i>записываются в виде </span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>k</span></i><i><span style='font-size:
+14.0pt;color:black'>р</span></i><span style='font-size:14.0pt;color:black'>,<i>
+</i></span><span style='font-size:14.0pt;color:black'>где </span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>k</span></i><i><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span></i><span
+style='font-size:14.0pt;color:black'>- натуральное. Если </span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>k</span></i><i><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span></i><span
+style='font-size:14.0pt;color:black'>&lt; <i>р</i>, то </span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>k</span></i><i><span
+style='font-size:14.0pt;color:black'>р </span></i><span style='font-size:14.0pt;
+color:black'>делится на число, меньшее <i>р</i>,<i> </i>а именно на </span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>k</span></i><span
+style='font-size:14.0pt;color:black'>. Но все числа, меньшие </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>p</span><span style='font-size:
+14.0pt;color:black'>, уже были рассмотрены. </span><span style='font-size:14.0pt;
+color:black'>Значит, </span><i><span lang=EN-US style='font-size:14.0pt;
+color:black'>k</span></i><span style='font-size:14.0pt;color:black'>=</span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>p</span></i><span
+style='font-size:14.0pt;color:black'> и первое кратное <i>р</i> число, которое
+не делится на простое число, меньшее <i>р</i>, есть <i>р</i><sup>2</sup><i>.</i></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Таким
+образом, достаточно вычеркивать все числа, кратные <i>р</i>, начиная с <i>р</i><sup>2</sup><i>.
+</i>Однако необходимо обратить внимание на то, что все равно будут оставаться числа,
+которые будут вычеркиваться не один раз.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>2. Можно закончить
+отсев раньше, чем дойдя до </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>n</span><span style='font-size:14.0pt;color:black'>-го шага. Пусть
+вычеркивается каждое <i>р</i>-ое число. Из пункта 1 следует, что первое число,
+подлежащее вычеркиванию, равно <i>р</i><sup>2</sup><i>. </i>Но если <i>р</i><sup>2</sup><i>
+</i>&gt;<i> п</i>, то<i> </i>такого числа нет в списке. Приемлемыми являются в
+диапазоне <i>р</i><sup>2</sup><i> </i>&#8804;<i> п</i> </span><span
+style='font-size:14.0pt;font-family:Symbol;color:black'>&THORN;</span><span
+style='font-size:14.0pt;color:black'> </span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>p</span></i><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;font-family:Symbol;color:black'>&Icirc;</span><span style='font-size:
+14.0pt;color:black'> [-<sub><img width=25 height=24
+src="Eratosfn.files/image002.gif"></sub>;<sub><img width=25 height=24
+src="Eratosfn.files/image002.gif"></sub>] и </span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>p</span></i><span lang=EN-US
+style='font-size:14.0pt;font-family:Symbol;color:black'>&Icirc;</span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>N</span></i><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span style='font-size:14.0pt;
+font-family:Symbol;color:black'>&THORN;</span><span style='font-size:14.0pt;
+color:black'> </span><i><span lang=EN-US style='font-size:14.0pt;color:black'>p</span></i><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span lang=EN-US
+style='font-size:14.0pt;font-family:Symbol;color:black'>&Icirc;</span><span
+style='font-size:14.0pt;color:black'> [1;<sub><img width=25 height=24
+src="Eratosfn.files/image002.gif"></sub>].</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>В итоге, необходимо
+вычеркивать каждое <i>р</i>-ое до тех пор, пока <i>р</i>&#8804;]<sub><img
+width=25 height=24 src="Eratosfn.files/image002.gif"></sub>[<i>.</i> В примере,
+разобранном выше, </span><span lang=EN-US style='font-size:14.0pt;color:black'>]</span><span
+style='font-size:14.0pt;color:black'><sub><img width=32 height=23
+src="Eratosfn.files/image003.gif"></sub></span><span lang=EN-US
+style='font-size:14.0pt;color:black'>[</span><span style='font-size:14.0pt;
+color:black'> = 6. Поэтому отбрасывание чисел, кратных 3 и 5, было достаточно
+для вычеркивания всех составных чисел из списка.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Вычеркиваются
+все нечетные числа, в диапазоне <sub><img width=25 height=25
+src="Eratosfn.files/image004.gif"></sub>. Тогда можно использовать вектор
+признаков «зачеркивания» </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>V</span><span lang=EN-US style='font-size:14.0pt;color:black'> </span><span
+style='font-size:14.0pt;color:black'>каждого числа. Для хранения признака 
+«зачеркивания» одного числа требуется 1 бит информации: два возможных значения
+- 1 или 0, не вычеркнуто или вычеркнуто. Вектор </span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>V</span></i><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span style='font-size:14.0pt;
+color:black'>состоит из (</span><i><span lang=EN-US style='font-size:14.0pt;
+color:black'>n</span></i><span style='font-size:14.0pt;color:black'>-1)/2 ячеек,
+по одной для каждого нечетного целого 2</span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>j</span></i><i><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span></i><span style='font-size:14.0pt;
+color:black'>+ 1. </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Инициализация
+вектора </span><i><span lang=EN-US style='font-size:14.0pt;color:black'>V</span></i><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span style='font-size:
+14.0pt;color:black'>заключается в проставлении единиц во всех ячейках. Для
+вычеркивания некоторого числа </span><i><span lang=EN-US style='font-size:14.0pt;
+color:black'>p</span></i><span lang=EN-US style='font-size:14.0pt;color:black'>
+</span><span style='font-size:14.0pt;color:black'>необходимо в ячейку с
+индексом (</span><i><span lang=EN-US style='font-size:14.0pt;color:black'>p</span></i><span
+style='font-size:14.0pt;color:black'>-3)/2 вектора </span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>V</span></i><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span style='font-size:14.0pt;
+color:black'>записать 0 (первая ячейка вектора имеет индекс 0).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><a
+name="Особенности_модификации"><i><span style='font-size:14.0pt;color:black'>Модифицированное
+«решето Эратосфена» имеет</span></i></a><span style='font-size:14.0pt;
+color:black'> следующие </span><i><span style='font-size:14.0pt'>особенности</span></i><span
+style='font-size:14.0pt'>:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>1. <span style='color:black'>Не требуется вычислять
+отдельные делители.</span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>2. В массиве хранятся не числа, а логические флаги
+зачеркивания числа, индексы массива задают число.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>3. Не хранятся четные числа.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>4. Зачеркиваются все кратные числа для чисел из
+диапазона <sub><img width=75 height=28 src="Eratosfn.files/image005.gif"></sub> (подразумевается,
+что диапазон включает все числа целые от 3 до <sub><img width=28 height=27
+src="Eratosfn.files/image006.gif"></sub> включительно).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>5. Для текущего выбранного числа </span><span
+lang=EN-US style='font-size:14.0pt'>p</span><span style='font-size:14.0pt'>,
+для которого будут вычеркиваться все кратные ему числа, процесс вычеркивания
+будет начинаться не с </span><span lang=EN-US style='font-size:14.0pt'>p</span><span
+style='font-size:14.0pt'>+2, а с </span><span lang=EN-US style='font-size:14.0pt'>p</span><sup><span
+style='font-size:14.0pt'>2</span></sup><span style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>7. Так как не учитываются четные числа, то для
+текущего числа </span><i><span lang=EN-US style='font-size:14.0pt'>p</span></i><span
+style='font-size:14.0pt'> вычеркиваются все кратные числа, получаемые из </span><span
+lang=EN-US style='font-size:14.0pt'>p</span><span style='font-size:14.0pt'>
+прибавлением 2</span><i><span lang=EN-US style='font-size:14.0pt'>p</span></i><span
+style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name="Ограничения_модификации"><i><span
+style='font-size:14.0pt;color:black'>Модифицированное «решето Эратосфена» имеет</span></i></a><span
+style='font-size:14.0pt;color:black'> следующие <i>ограничения</i>:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>1. Оно
+неэффективно при поиске очень больших простых чисел. Такой поиск невыполним,
+если граница слишком велика.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>2. Для работы алгоритма требуется большой
+объем компьютерной памяти.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>3. Необходимо проделать много витков
+цикла.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Алгоритм_работы"><u><span style='font-size:14.0pt'>Алгоритм работы</span></u></a><span
+style='font-size:14.0pt'>. </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>Представим алгоритм работы <span style='color:black'>модифицированного
+«решета Эратосфена».</span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>Пусть число <i>p</i> задается в векторе </span><i><span
+lang=EN-US style='font-size:14.0pt'>V</span></i><span lang=EN-US
+style='font-size:14.0pt'> </span><span style='font-size:14.0pt'>под индексом (<i>p</i>-3)/2,
+а отсчет в массиве начинается с нуля (нулевой элемент </span><i><span
+lang=EN-US style='font-size:14.0pt'>V</span></i><span lang=EN-US
+style='font-size:14.0pt'> </span><span style='font-size:14.0pt'>задает флаг
+простоты числа 3).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>1. Ввод числа <i>n</i>, до которого включительно надо
+найти простые числа.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>2. Если <i>n</i>&lt;2, то выход.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>3. Если <i>n</i>=2, то вывод простого числа 2, выход.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>4. Получение размера памяти, необходимого под вектор </span><i><span
+lang=EN-US style='font-size:14.0pt'>V</span></i><span style='font-size:14.0pt'>:
+size=(<i>n</i>-1)/2. (Можно задавать массив статичного размера. Тогда
+необходимо проверять, что размер </span><span lang=EN-US style='font-size:14.0pt'>size</span><span
+style='font-size:14.0pt'>, требуемый под вектор </span><i><span lang=EN-US
+style='font-size:14.0pt'>V</span></i><span style='font-size:14.0pt'>, не больше
+размера данного массива).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>5. Выделение памяти под вектор размера size, установка
+в каждой ячейки не нулевого значения.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>6. Если память не была выделена, то был запрошен
+слишком большой блок данных, выход.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>7. Для <sub><img width=75 height=28
+src="Eratosfn.files/image005.gif"></sub> (данную конструкцию лучше реализовать
+с помощью оператора цикла с предусловием, наподобие </span><span lang=EN-US
+style='font-size:14.0pt'>while</span><span style='font-size:14.0pt'>): </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>7.а. Если для данного числа p значение в векторе не
+нулевое (под индексом (<i>p</i>-3)/2): </span><i><span lang=EN-US
+style='font-size:14.0pt'>V</span></i><span style='font-size:14.0pt'>[(<i>p</i>-3)/2]
+&#8800; 0, то</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>7.а.1.Для <sub><img width=71 height=27
+src="Eratosfn.files/image007.gif"></sub> (данную конструкцию лучше реализовать
+с помощью оператора цикла с предусловием, наподобие </span><span lang=EN-US
+style='font-size:14.0pt'>while</span><span style='font-size:14.0pt'>),</span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;text-align:justify;text-indent:
+-18.0pt'><span style='font-size:14.0pt'>7.а.1.1. Если для текущего числа <i>t</i>
+соответствующее значение в векторе не равно нулю: </span><i><span lang=EN-US
+style='font-size:14.0pt'>V</span></i><span style='font-size:14.0pt'>[(</span><i><span
+lang=EN-US style='font-size:14.0pt'>t</span></i><span style='font-size:14.0pt'>-3)/2]
+&#8800; 0, то значение в ячейке заменяем на 0.</span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;text-align:justify;text-indent:
+-18.0pt'><span style='font-size:14.0pt'>7.а.1.2. Увеличиваем число <i>t</i> на
+2*<i>p</i>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>7.б. Увеличить счетчик <i>p</i> на 2.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>8. Вывод простых чисел, задаваемых ячейками вектора, в
+которых значения не нулевые.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>8.а. Вывод двойки.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>8.б. Для <sub><img width=96 height=25
+src="Eratosfn.files/image008.gif"></sub>: если </span><i><span lang=EN-US
+style='font-size:14.0pt'>V</span></i><span style='font-size:14.0pt'>[</span><i><span
+lang=EN-US style='font-size:14.0pt'>t</span></i><span style='font-size:14.0pt'>]
+&#8800; 0, то выводим число <span style='color:black'>2*</span></span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>t</span></i><span
+style='font-size:14.0pt;color:black'>+3.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt;color:black'>9. Выход.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt'><a
+name="Пример_работы_вышеописанного_алгоритма"><u><span style='font-size:14.0pt'>Пример
+работы вышеописанного алгоритма</span></u></a><span style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Найдем
+множество простых чисел до числа </span><i><span lang=EN-US style='font-size:
+14.0pt;color:black'>n</span></i><span style='font-size:14.0pt;color:black'> = 41
+включительно с помощью модифицированного «решета Эратосфена».</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Размер
+ячеек под вектор флагов зачеркнутых чисел </span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>V</span></i><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span style='font-size:14.0pt;
+color:black'>равен </span><span lang=EN-US style='font-size:14.0pt;color:black'>size</span><span
+style='font-size:14.0pt;color:black'> = (</span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>n</span></i><span style='font-size:14.0pt;
+color:black'>-1)/2 = 20.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Шаги
+работы алгоритма представлены с помощью трассировочной таблицы 1.</span></p>
+
+<p class=MsoNormal align=right style='text-align:right;text-indent:27.0pt;
+background:white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Таблица
+1</span></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=655
+ style='width:491.05pt;margin-left:4.65pt;border-collapse:collapse'>
+ <tr style='height:13.5pt'>
+  <td width=49 nowrap style='width:36.75pt;border:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:13.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Шаг,p</span></p>
+  </td>
+  <td width=81 nowrap style='width:60.45pt;border:solid windowtext 2.25pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:13.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>P&#8804;</span><span style='font-size:14.0pt;
+  color:black'><sub><img width=25 height=24 src="Eratosfn.files/image002.gif"></sub></span><span
+  style='font-size:10.0pt'>?</span></p>
+  </td>
+  <td width=87 nowrap style='width:65.55pt;border:solid windowtext 2.25pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:13.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>V[(p-3)/2]&#8800;0</span></p>
+  </td>
+  <td width=48 nowrap style='width:36.0pt;border:solid windowtext 2.25pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:13.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Шаг,t</span></p>
+  </td>
+  <td width=85 nowrap style='width:63.55pt;border:solid windowtext 2.25pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:13.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>t&#8804;n?</span></p>
+  </td>
+  <td width=89 nowrap style='width:66.75pt;border:solid windowtext 2.25pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:13.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>V[(t-3)/2]&#8800;0</span></p>
+  </td>
+  <td width=74 nowrap style='width:55.25pt;border:solid windowtext 2.25pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:13.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>V[(t-3)/2]</span></p>
+  </td>
+  <td width=87 nowrap style='width:65.3pt;border:solid windowtext 2.25pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:13.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>t=t+2*p</span></p>
+  </td>
+  <td width=55 nowrap style='width:41.45pt;border:solid windowtext 2.25pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:13.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>p=p+2</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=49 nowrap style='width:36.75pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>3</span></p>
+  </td>
+  <td width=81 nowrap style='width:60.45pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: 3&#8804;6</span></p>
+  </td>
+  <td width=87 nowrap style='width:65.55pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: V[0]&#8800;0</span></p>
+  </td>
+  <td width=48 nowrap style='width:36.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>9</span></p>
+  </td>
+  <td width=85 nowrap style='width:63.55pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: 9&#8804;41</span></p>
+  </td>
+  <td width=89 nowrap style='width:66.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: V[3]&#8800;0</span></p>
+  </td>
+  <td width=74 nowrap style='width:55.25pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>0</span></p>
+  </td>
+  <td width=87 nowrap style='width:65.3pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>15&#8592; 9+2*3</span></p>
+  </td>
+  <td width=55 nowrap style='width:41.45pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=49 nowrap style='width:36.75pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=81 nowrap style='width:60.45pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=87 nowrap style='width:65.55pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=48 nowrap style='width:36.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>15</span></p>
+  </td>
+  <td width=85 nowrap style='width:63.55pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: 15&#8804;41</span></p>
+  </td>
+  <td width=89 nowrap style='width:66.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: V[6]&#8800;0</span></p>
+  </td>
+  <td width=74 nowrap style='width:55.25pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>0</span></p>
+  </td>
+  <td width=87 nowrap style='width:65.3pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>21&#8592; 15+2*3</span></p>
+  </td>
+  <td width=55 nowrap style='width:41.45pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=49 nowrap style='width:36.75pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=81 nowrap style='width:60.45pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=87 nowrap style='width:65.55pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=48 nowrap style='width:36.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>21</span></p>
+  </td>
+  <td width=85 nowrap style='width:63.55pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: 21&#8804;41</span></p>
+  </td>
+  <td width=89 nowrap style='width:66.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: V[9]&#8800;0</span></p>
+  </td>
+  <td width=74 nowrap style='width:55.25pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>0</span></p>
+  </td>
+  <td width=87 nowrap style='width:65.3pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>27&#8592; 21+2*3</span></p>
+  </td>
+  <td width=55 nowrap style='width:41.45pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=49 nowrap style='width:36.75pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=81 nowrap style='width:60.45pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=87 nowrap style='width:65.55pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=48 nowrap style='width:36.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>27</span></p>
+  </td>
+  <td width=85 nowrap style='width:63.55pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: 27&#8804;41</span></p>
+  </td>
+  <td width=89 nowrap style='width:66.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: V[12]&#8800;0</span></p>
+  </td>
+  <td width=74 nowrap style='width:55.25pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>0</span></p>
+  </td>
+  <td width=87 nowrap style='width:65.3pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>33&#8592; 27+2*3</span></p>
+  </td>
+  <td width=55 nowrap style='width:41.45pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=49 nowrap style='width:36.75pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=81 nowrap style='width:60.45pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=87 nowrap style='width:65.55pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=48 nowrap style='width:36.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>33</span></p>
+  </td>
+  <td width=85 nowrap style='width:63.55pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: 33&#8804;41</span></p>
+  </td>
+  <td width=89 nowrap style='width:66.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: V[15]&#8800;0</span></p>
+  </td>
+  <td width=74 nowrap style='width:55.25pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>0</span></p>
+  </td>
+  <td width=87 nowrap style='width:65.3pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>39&#8592; 33+2*3</span></p>
+  </td>
+  <td width=55 nowrap style='width:41.45pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=49 nowrap style='width:36.75pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=81 nowrap style='width:60.45pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=87 nowrap style='width:65.55pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=48 nowrap style='width:36.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>39</span></p>
+  </td>
+  <td width=85 nowrap style='width:63.55pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: 39&#8804;41</span></p>
+  </td>
+  <td width=89 nowrap style='width:66.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: V[18]&#8800;0</span></p>
+  </td>
+  <td width=74 nowrap style='width:55.25pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>0</span></p>
+  </td>
+  <td width=87 nowrap style='width:65.3pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>45&#8592; 39+2*3</span></p>
+  </td>
+  <td width=55 nowrap style='width:41.45pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=49 nowrap style='width:36.75pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=81 nowrap style='width:60.45pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=87 nowrap style='width:65.55pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=48 nowrap style='width:36.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=85 nowrap style='width:63.55pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Нет: 45&gt;41</span></p>
+  </td>
+  <td width=89 nowrap style='width:66.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=74 nowrap style='width:55.25pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=87 nowrap style='width:65.3pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=55 nowrap style='width:41.45pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>5&#8592;3+2</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=49 nowrap style='width:36.75pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>5</span></p>
+  </td>
+  <td width=81 nowrap style='width:60.45pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: 5&#8804;6</span></p>
+  </td>
+  <td width=87 nowrap style='width:65.55pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: V[1]&#8800;0</span></p>
+  </td>
+  <td width=48 nowrap style='width:36.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>25</span></p>
+  </td>
+  <td width=85 nowrap style='width:63.55pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: 25&#8804;41</span></p>
+  </td>
+  <td width=89 nowrap style='width:66.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: V[11]&#8800;0</span></p>
+  </td>
+  <td width=74 nowrap style='width:55.25pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>0</span></p>
+  </td>
+  <td width=87 nowrap style='width:65.3pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>35&#8592; 25+2*5</span></p>
+  </td>
+  <td width=55 nowrap style='width:41.45pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=49 nowrap style='width:36.75pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=81 nowrap style='width:60.45pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=87 nowrap style='width:65.55pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=48 nowrap style='width:36.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>35</span></p>
+  </td>
+  <td width=85 nowrap style='width:63.55pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: 35&#8804;41</span></p>
+  </td>
+  <td width=89 nowrap style='width:66.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: V[16]&#8800;0</span></p>
+  </td>
+  <td width=74 nowrap style='width:55.25pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>0</span></p>
+  </td>
+  <td width=87 nowrap style='width:65.3pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>45&#8592; 35+2*5</span></p>
+  </td>
+  <td width=55 nowrap style='width:41.45pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=49 nowrap style='width:36.75pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=81 nowrap style='width:60.45pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=87 nowrap style='width:65.55pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=48 nowrap style='width:36.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=85 nowrap style='width:63.55pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Нет: 45&gt;41</span></p>
+  </td>
+  <td width=89 nowrap style='width:66.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=74 nowrap style='width:55.25pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=87 nowrap style='width:65.3pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=55 nowrap style='width:41.45pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>7&#8592;5+2</span></p>
+  </td>
+ </tr>
+ <tr style='height:13.5pt'>
+  <td width=49 nowrap style='width:36.75pt;border:solid windowtext 2.25pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:13.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>7</span></p>
+  </td>
+  <td width=81 nowrap style='width:60.45pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:13.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Нет: 7&gt;6</span></p>
+  </td>
+  <td width=87 nowrap style='width:65.55pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:13.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=48 nowrap style='width:36.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:13.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=85 nowrap style='width:63.55pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:13.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=89 nowrap style='width:66.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:13.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=74 nowrap style='width:55.25pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:13.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=87 nowrap style='width:65.3pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:13.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=55 nowrap style='width:41.45pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:13.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt'>При выписывании
+результатов получаем следующий ряд простых чисел:</span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;text-autospace:
+none'><span style='font-size:14.0pt;color:black'>3    5    7   11    13   
+17    19   23    29    31    37   41.</span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;text-autospace:
+none'><span style='font-size:14.0pt;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Задание><u><span style='font-size:14.0pt'>Задание.</span></u></a></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>Для выполнения данной лабораторной работы требуется
+освоить работу алгоритма модифицированного «решета Эратосфена». Для этого
+необходимо выполнить следующее</span> (<span style='font-size:14.0pt'>каждый
+студент индивидуально выполняет задание и оформляет отчет</span>)<span
+style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>1. Выполнить на бумаге расчет одного из примеров
+(ранее не рассмотренного).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>2. Программно реализовать данный алгоритм в виде
+программы на любом из следующих языков программирования: </span><span
+lang=EN-US style='font-size:14.0pt'>C</span><span style='font-size:14.0pt'>,
+С++, </span><span lang=EN-US style='font-size:14.0pt'>Pascal</span><span
+style='font-size:14.0pt'>. Текст программы должен содержать комментарии к
+каждой строке кода.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>3. Оформить отчет о выполненной работе, с приведением
+расчета из пункта 1, листингов программ и двух-трех тестов (в виде
+трассировочных таблиц, как в таблице 1).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>4. Выполнить сдачу работы руководителю лабораторного
+занятия (при этом существует возможность задания дополнительных вопросов).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Примечания><u><span style='font-size:14.0pt'>Примечания</span></u></a><span
+style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>Если число заключается в квадратные скобки, то данное
+число округляется к наименьшему целому.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Типы_операций"><span style='font-size:14.0pt'>В <u>языках “</u></span></a><u><span
+lang=EN-US style='font-size:14.0pt'>C</span></u><u><span style='font-size:14.0pt'>”
+и “</span></u><u><span lang=EN-US style='font-size:14.0pt'>Pascal</span></u><u><span
+style='font-size:14.0pt'>”</span></u><span style='font-size:14.0pt'>
+используются следующие <u>команды и знаки операций</u>, которые можно применить
+в работе (табл. 2):</span></p>
+
+<p class=MsoNormal align=center style='margin-left:318.6pt;text-align:center;
+text-indent:35.4pt'><span style='font-size:14.0pt'>Таблица 2</span></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=635
+ style='width:475.95pt;margin-left:14.4pt;border-collapse:collapse'>
+ <tr style='height:16.5pt'>
+  <td width=366 style='width:274.25pt;border:solid windowtext 1.5pt;padding:
+  0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Тип операции</p>
+  </td>
+  <td width=93 style='width:69.55pt;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Языки C, С++</p>
+  </td>
+  <td width=176 style='width:132.15pt;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Язык Pascal</p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=366 style='width:274.25pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal>Выделение памяти под данные</p>
+  </td>
+  <td width=93 style='width:69.55pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>функции <span
+  lang=EN-US>malloc, new</span></p>
+  </td>
+  <td width=176 style='width:132.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Описание статичного
+  массива</p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=366 style='width:274.25pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal>Округление числа <i><span lang=EN-US>x</span></i> к
+  наименьшему целому числу (без учета дробной части)</p>
+  </td>
+  <td width=93 style='width:69.55pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>(int)</span><i>x</i></p>
+  </td>
+  <td width=176 style='width:132.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>Int(</span><i>x</i><span
+  lang=EN-US>)</span></p>
+  </td>
+ </tr>
+ <tr style='height:16.5pt'>
+  <td width=366 style='width:274.25pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:none;border-right:solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.5pt'>
+  <p class=MsoNormal>Взятие квадратного корня из числа <i>x</i></p>
+  </td>
+  <td width=93 style='width:69.55pt;border:none;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>sqrt(</span><i>x</i><span
+  lang=EN-US>)</span></p>
+  </td>
+  <td width=176 style='width:132.15pt;border:none;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>sqrt(</span><i>x</i><span
+  lang=EN-US>)</span></p>
+  </td>
+ </tr>
+ <tr style='height:16.5pt'>
+  <td width=366 valign=bottom style='width:274.25pt;border:solid windowtext 1.5pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal>Операция взятия остатка от деления x на y</p>
+  </td>
+  <td width=93 valign=bottom style='width:69.55pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>x % y</p>
+  </td>
+  <td width=176 valign=bottom style='width:132.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>x mod y</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=ДопВопросы><u><span style='font-size:14.0pt'>Вопросы для самопроверки</span></u></a><u><span
+style='font-size:14.0pt'>.</span></u></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>1. Для чего предназначено решето Эратосфена?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>2. Поясните работу данного алгоритма.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>3. Какие изменения происходят для модификации решета
+Эрастосфена?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>4. До какой границы производится проверка числа n на
+простоту в модифицированном решете Эрастосфена?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>5. Поясните работу модифицированного решета
+Эрастосфена.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>6. Какими особенностями обладает модифицированное
+решето Эрастосфена?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>7. Какими ограничениями по использованию обладает
+модифицированное решето Эрастосфена?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>8. Какие ограничения накладываются на входные значения
+алгоритма?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>9. Для чего нужен вектор V?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>10. Как с помощью вектора V, после работы алгоритма,
+можно узнать, какие из чисел являются простыми?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>11. Какие математические операции используются в
+модифицированном решете Эрастосфена?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Литература_для_подготовки"><u><span style='font-size:14.0pt'>Литература
+для самостоятельной подготовки</span></u></a><span style='font-size:14.0pt'>:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>1. Бухштаб. Теория чисел.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>2. Уэйт М., Прата С., Мартин Д. Язык Си. Руководство
+для начинающих: Пер. с англ. – М.: Мир, 1988. – 512 с., ил.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>3. Прайс Д. Программирование на языке Паскаль:
+Практическое руководство. Пер. с англ. – М.: Мир, 1987. – 232 с., ил.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span lang=EN-US style='font-size:14.0pt'>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,1355 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title>Используемые алгоритмы</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Arial CYR";
+	panose-1:2 11 6 4 2 2 2 2 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:14.0pt;
+	font-family:"Times New Roman";
+	color:black;}
+p.Referat, li.Referat, div.Referat
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:27.0pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	color:black;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:17.0pt 17.0pt 17.0pt 42.55pt;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+
+</head>
+
+<body lang=RU>
+
+<div class=Section1>
+
+<p class=MsoNormal align=center style='text-align:center'><a
+name="Используемые_алгоритмы"><b>Используемые алгоритмы</b></a></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b>&nbsp;</b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><a
+name="Получение_сопровождающей_матрицы_примити"><b>Получение сопровождающей
+матрицы примитивного элемента</b></a></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Данный алгоритм используется для вычислений операций
+над векторами, представленными в нормальном базисе, в виде примитивных
+элементов, или для вычисления произведения двух полиномов, представленных в
+стандартном базисе.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>На вход алгоритма подается представленный в
+стандартном базисе вектор, задающий модуль, по которому будет ограничиваться
+результат вычислений, и полином, в котором будет сохранен результат.</span></p>
+
+<p class=Referat>Корректируется размер входной матрицы результата. Число строк
+и столбцов устанавливается в степень полинома-вектора. Осуществляется
+увеличение буфера под данные матрицы результата с обнулением ее ячеек.</p>
+
+<p class=Referat>Построение сопровождающей квадратной матрицы размерностью <span
+lang=EN-US>n</span><span lang=EN-US> </span><sup><span lang=EN-US>x</span></sup><span
+lang=EN-US> </span><span lang=EN-US>n</span>, где <span lang=EN-US>n</span> –
+степень входного полинома-модуля, проводится следующими действиями:</p>
+
+<p class=Referat>1. Заполняется единицами главная нижняя поддиагональ:</p>
+
+<p class=Referat>для <sub><img width=81 height=25
+src="GaluaFieldElems2.files/image001.gif"></sub>: <b>а</b><b><sub><span
+lang=EN-US>i</span>+1,</sub></b><b><sub><span lang=EN-US>i</span></sub></b> =
+1, где <b><span lang=EN-US>a<sub>i</sub></span><sub>,</sub></b><sub><span
+lang=EN-US>j</span></sub> – коэффициенты искомой сопровождающей матрицы <span
+lang=EN-US>A</span>; </p>
+
+<p class=Referat>2. Верхняя строка устанавливается значениями коэффициентов при
+степенях полинома-модуля в порядке убывания индексов:</p>
+
+<p class=Referat>для <sub><img width=58 height=25
+src="GaluaFieldElems2.files/image002.gif"></sub> : <b><span lang=EN-US>a</span><sub>1,</sub></b><b><sub><span
+lang=EN-US>i</span></sub></b> = <span lang=EN-US>s<sub>n</sub></span><sub>-</sub><sub><span
+lang=EN-US>i</span></sub>, где <sub><img width=60 height=25
+src="GaluaFieldElems2.files/image003.gif"></sub> – двоичный коэффициент
+полинома-модуля при (<span lang=EN-US>n</span>-<span lang=EN-US>i</span>)
+степени. </p>
+
+<p class=Referat>Сложность алгоритма построения сопровождающей матрицы равна <span
+lang=EN-US>Q</span>(<span lang=EN-US>n</span><sup>2</sup>+2<span lang=EN-US>n</span>).</p>
+
+<p class=Referat>Этот процесс можно представить в виде следующего рисунка 5.</p>
+
+<p class=Referat>
+
+<table cellpadding=0 cellspacing=0 align=left>
+ <tr>
+  <td width=0 height=11></td>
+ </tr>
+ <tr>
+  <td></td>
+  <td width=448 height=167 style='vertical-align:top'><span style='position:
+  absolute;left:0pt;z-index:1'>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td>
+    <div style='padding:3.6pt 7.2pt 3.6pt 7.2pt'>
+    <div align=center>
+    <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+     style='border-collapse:collapse'>
+     <tr style='height:18.75pt'>
+      <td width=63 valign=bottom style='width:47.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:18.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:10.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      18.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      lang=EN-US style='font-size:12.0pt'>s<sub>n-1</sub></span></b></p>
+      </td>
+      <td width=36 style='width:27.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:18.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      lang=EN-US style='font-size:12.0pt'>s<sub>n-2</sub></span></b></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      18.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      lang=EN-US style='font-size:12.0pt'>s<sub>n-3</sub></span></b></p>
+      </td>
+      <td width=36 valign=top style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:18.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      style='font-size:12.0pt'>…</span></b></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      18.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      lang=EN-US style='font-size:12.0pt'>s<sub>2</sub></span></b></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      18.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      lang=EN-US style='font-size:12.0pt'>s<sub>1</sub></span></b></p>
+      </td>
+      <td width=36 style='width:26.95pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:18.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      lang=EN-US style='font-size:12.0pt'>s<sub>0</sub></span></b></p>
+      </td>
+     </tr>
+     <tr style='height:15.0pt'>
+      <td width=63 valign=bottom style='width:47.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:10.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+      <td width=36 style='width:27.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 valign=top style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+     </tr>
+     <tr style='height:15.0pt'>
+      <td width=63 valign=bottom style='width:47.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt'>A<sub>n*n</sub> =</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:27.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 valign=top style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      style='font-size:12.0pt'>…</span></b></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+     </tr>
+     <tr style='height:15.0pt'>
+      <td width=63 valign=bottom style='width:47.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:10.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:27.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+      <td width=36 valign=top style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+     </tr>
+     <tr style='height:15.75pt'>
+      <td width=63 valign=bottom style='width:47.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:10.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=36 valign=top style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:15.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=36 valign=top style='width:27.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:15.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      style='font-size:12.0pt'>…</span></b></p>
+      </td>
+      <td width=36 valign=top style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:15.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></b></p>
+      </td>
+      <td width=36 valign=top style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:15.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      style='font-size:12.0pt'>…</span></b></p>
+      </td>
+      <td width=36 valign=top style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:15.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      style='font-size:12.0pt'>&nbsp;</span></b></p>
+      </td>
+      <td width=36 valign=top style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:15.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      style='font-size:12.0pt'>…</span></b></p>
+      </td>
+      <td width=36 valign=top style='width:26.95pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+      </td>
+     </tr>
+     <tr style='height:15.0pt'>
+      <td width=63 valign=bottom style='width:47.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:10.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:27.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 valign=top style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+     </tr>
+    </table>
+    </div>
+    <p class=Referat align=center style='text-align:center;text-indent:0cm'>Рис.5.
+    Структура сопровождающей матрицы</p>
+    </div>
+    </td>
+   </tr>
+  </table>
+  </span>&nbsp;</td>
+ </tr>
+</table>
+
+<span lang=EN-US>&nbsp;</span></p>
+
+<p class=Referat><span lang=EN-US>&nbsp;</span></p>
+
+<p class=Referat>&nbsp;</p>
+
+<p class=Referat>&nbsp;</p>
+
+<p class=Referat>&nbsp;</p>
+
+<p class=Referat>&nbsp;</p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=Referat align=center style='text-align:center'><a
+name="Алгоритм_сложения_полиномов"><b><span lang=EN-US style='font-size:14.0pt'>&nbsp;</span></b></a></p>
+
+<br clear=ALL>
+
+<p class=Referat align=center style='text-align:center'><b><span
+style='font-size:14.0pt'>Алгоритм сложения полиномов</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>На вход данного алгоритма подаются два полинома,
+представленные в бинарном виде (в стандартном базисе).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Шаги этого алгоритма можно представить в следующем
+изложении.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>1. Вектор, у которого степень полинома максимальна,
+становится первым операндом, а полином с наименьшей степенью – вторым.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>2. Создается промежуточный вектор </span><span
+lang=EN-US style='font-size:12.0pt'>Temp</span><span style='font-size:12.0pt'>,
+с таким же числом строк и столбцов, как у первого операнда. В </span><span
+lang=EN-US style='font-size:12.0pt'>Temp</span><span style='font-size:12.0pt'>
+копируется содержимое первого операнда.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>3. Определяется </span><span lang=EN-US
+style='font-size:12.0pt'>differ</span><span style='font-size:12.0pt'> - разница
+в степенях первого и второго операндов.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>4. Для <sub><img width=68 height=25
+src="GaluaFieldElems2.files/image004.gif"></sub>, где </span><span lang=EN-US
+style='font-size:12.0pt'>k</span><sub><span style='font-size:12.0pt'>2</span></sub><span
+style='font-size:12.0pt'> – длина второго операнда, осуществляется сложение по
+модулю два элемента (</span><span lang=EN-US style='font-size:12.0pt'>differ</span><span
+style='font-size:12.0pt'>+i) первого операнда с элементом </span><span
+lang=EN-US style='font-size:12.0pt'>i</span><span style='font-size:12.0pt'>
+второго операнда и запись результата в элемент (</span><span lang=EN-US
+style='font-size:12.0pt'>differ</span><span style='font-size:12.0pt'>+</span><span
+lang=EN-US style='font-size:12.0pt'>i</span><span style='font-size:12.0pt'>)
+вектора </span><span lang=EN-US style='font-size:12.0pt'>Temp</span><span
+style='font-size:12.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>5. С помощью алгоритма коррекции длины полинома
+устанавливается новая длина вектора </span><span lang=EN-US style='font-size:
+12.0pt'>Temp</span><span style='font-size:12.0pt'>. </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>6. Далее содержимое вектора </span><span lang=EN-US
+style='font-size:12.0pt'>Temp</span><span style='font-size:12.0pt'>, вместе с
+его параметрами, копируется в первый из полиномов, поступающих на вход данного
+алгоритма.</span></p>
+
+<p class=Referat>Сложение двух векторов можно представить в виде рисунка 6.
+Здесь входные вектора <span lang=EN-US>Alpha</span> = <span lang=EN-US>Alpha</span>(<span
+lang=EN-US>a</span><sub>0</sub>, <span lang=EN-US>a</span><sub>1</sub>, …, <span
+lang=EN-US>a<sub>k</sub></span><sub>-1</sub>), <span lang=EN-US>Beta</span> = <span
+lang=EN-US>Beta</span>(<span lang=EN-US>b</span><sub>0</sub>, <span lang=EN-US>b</span><sub>1</sub>,
+…, <span lang=EN-US>b<sub>n</sub></span><sub>-1</sub>), где <span lang=EN-US>k</span>
+и <span lang=EN-US>n</span> – максимальные степени полиномов <span lang=EN-US>Alpha</span>
+и <span lang=EN-US>Beta</span>; <span lang=EN-US>a<sub>i</sub></span>, <span
+lang=EN-US>b<sub>i</sub></span>, для<sub><img width=81 height=25
+src="GaluaFieldElems2.files/image005.gif"></sub> - двоичные элементы полиномов <span
+lang=EN-US>Alpha</span> и <span lang=EN-US>Beta</span>.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Из-за использования в данном алгоритме побитного
+выполнения операции сложения по модулю два, время работы алгоритма больше, чем
+в алгоритме, производящем сложение векторов целыми машинными словами. Но для
+алгоритма, оперирующего машинными словами, требуется обратный порядок хранения
+данных, с выравниванием векторов по одному краю, в сторону меньших степеней. А
+данная операция по времени сравнима с операцией побитного сложения векторов,
+без учета затрат времени на выполнение самой операции сложения.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:54.0pt'>
+
+<table cellpadding=0 cellspacing=0 align=left>
+ <tr>
+  <td width=0 height=6></td>
+ </tr>
+ <tr>
+  <td></td>
+  <td width=484 height=278 style='vertical-align:top'><span style='position:
+  absolute;left:0pt;z-index:3'>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td>
+    <div style='padding:3.6pt 7.2pt 3.6pt 7.2pt'>
+    <div align=center>
+    <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+     style='border-collapse:collapse'>
+     <tr style='height:20.25pt'>
+      <td width=119 style='width:89.35pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:10.0pt;font-family:Arial;color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=43 style='width:32.6pt;border-top:none;border-left:solid windowtext 1.0pt;
+      border-bottom:none;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'>a<sub>0</sub></p>
+      </td>
+      <td width=30 style='width:22.35pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:10.0pt;font-family:Arial;color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=43 style='width:32.5pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'>b<sub>0</sub></p>
+      </td>
+      <td width=26 style='width:19.3pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:10.0pt;font-family:Arial;color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=82 style='width:61.7pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'>a<sub>0</sub><span
+      style='font-family:Symbol'>&Aring;</span>b<sub>0</sub></p>
+      </td>
+     </tr>
+     <tr style='height:20.25pt'>
+      <td width=119 style='width:89.35pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:10.0pt;font-family:Arial;color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=43 style='width:32.6pt;border-top:none;border-left:solid windowtext 1.0pt;
+      border-bottom:none;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'>a<sub>1</sub></p>
+      </td>
+      <td width=30 style='width:22.35pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:10.0pt;font-family:Arial;color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=43 style='width:32.5pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'>b<sub>1</sub></p>
+      </td>
+      <td width=26 style='width:19.3pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:10.0pt;font-family:Arial;color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=82 style='width:61.7pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'>a<sub>1</sub><span
+      style='font-family:Symbol'>&Aring;</span>b<sub>1</sub></p>
+      </td>
+     </tr>
+     <tr style='height:20.25pt'>
+      <td width=119 valign=bottom style='width:89.35pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:20.25pt'>
+      <p class=MsoNormal><span lang=EN-US style='font-size:10.0pt;font-family:
+      Arial;color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=43 style='width:32.6pt;border-top:none;border-left:solid windowtext 1.0pt;
+      border-bottom:none;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US>a<sub>2</sub></span></p>
+      </td>
+      <td width=30 style='width:22.35pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:15.0pt;font-family:Symbol'>&nbsp;</span></p>
+      </td>
+      <td width=43 style='width:32.5pt;border-top:none;border-left:solid windowtext 1.0pt;
+      border-bottom:none;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US>b<sub>2</sub></span></p>
+      </td>
+      <td width=26 style='width:19.3pt;padding:0cm 5.4pt 0cm 5.4pt;height:20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:15.0pt'>&nbsp;</span></p>
+      </td>
+      <td width=82 style='width:61.7pt;border-top:none;border-left:solid windowtext 1.0pt;
+      border-bottom:none;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US>a<sub>2</sub></span><span lang=EN-US style='font-family:Symbol'>&Aring;</span><span
+      lang=EN-US>b<sub>2</sub></span></p>
+      </td>
+     </tr>
+     <tr style='height:18.75pt'>
+      <td width=119 valign=top style='width:89.35pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:18.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:10.0pt;font-family:Arial;color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=43 valign=top style='width:32.6pt;border-top:none;border-left:
+      solid windowtext 1.0pt;border-bottom:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:18.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US>. . .</span></p>
+      </td>
+      <td width=30 valign=top style='width:22.35pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:18.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:10.0pt;font-family:Arial;color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=43 valign=top style='width:32.5pt;border-top:none;border-left:
+      solid windowtext 1.0pt;border-bottom:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:18.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US>. . .</span></p>
+      </td>
+      <td width=26 valign=top style='width:19.3pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:18.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:10.0pt;font-family:Arial;color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=82 valign=top style='width:61.7pt;border-top:none;border-left:
+      solid windowtext 1.0pt;border-bottom:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:18.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US>. . .</span></p>
+      </td>
+     </tr>
+     <tr style='height:20.25pt'>
+      <td width=119 style='width:89.35pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US>Alpha</span><span lang=EN-US style='font-family:Symbol'>&Aring;</span><span
+      lang=EN-US>Beta=</span></p>
+      </td>
+      <td width=43 style='width:32.6pt;border-top:none;border-left:solid windowtext 1.0pt;
+      border-bottom:none;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US>a<sub>k-1</sub></span></p>
+      </td>
+      <td width=30 style='width:22.35pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:15.0pt;font-family:Symbol'>&Aring;</span></p>
+      </td>
+      <td width=43 style='width:32.5pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US>b<sub>k-1</sub></span></p>
+      </td>
+      <td width=26 style='width:19.3pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:20.25pt'>
+      <p class=MsoNormal><span lang=EN-US style='font-size:15.0pt'>=</span></p>
+      </td>
+      <td width=82 style='width:61.7pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US>a<sub>k-1</sub></span><span lang=EN-US style='font-family:
+      Symbol'>&Aring;</span><span lang=EN-US>b<sub>k-1</sub></span></p>
+      </td>
+     </tr>
+     <tr style='height:20.25pt'>
+      <td width=119 style='width:89.35pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:10.0pt;font-family:Arial;color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=43 style='width:32.6pt;border-top:none;border-left:solid windowtext 1.0pt;
+      border-bottom:none;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US>0</span></p>
+      </td>
+      <td width=30 style='width:22.35pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:10.0pt;font-family:Arial;color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=43 style='width:32.5pt;border-top:none;border-left:solid windowtext 1.0pt;
+      border-bottom:none;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US>b<sub>k</sub></span></p>
+      </td>
+      <td width=26 style='width:19.3pt;padding:0cm 5.4pt 0cm 5.4pt;height:20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:10.0pt;font-family:Arial;color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=82 style='width:61.7pt;border-top:none;border-left:solid windowtext 1.0pt;
+      border-bottom:none;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US>b<sub>k</sub></span></p>
+      </td>
+     </tr>
+     <tr style='height:18.75pt'>
+      <td width=119 valign=top style='width:89.35pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:18.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:10.0pt;font-family:Arial;color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=43 valign=top style='width:32.6pt;border-top:none;border-left:
+      solid windowtext 1.0pt;border-bottom:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:18.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US>. . .</span></p>
+      </td>
+      <td width=30 valign=top style='width:22.35pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:18.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:10.0pt;font-family:Arial;color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=43 valign=top style='width:32.5pt;border-top:none;border-left:
+      solid windowtext 1.0pt;border-bottom:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:18.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US>. . .</span></p>
+      </td>
+      <td width=26 valign=top style='width:19.3pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:18.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:10.0pt;font-family:Arial;color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=82 valign=top style='width:61.7pt;border-top:none;border-left:
+      solid windowtext 1.0pt;border-bottom:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:18.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US>. . .</span></p>
+      </td>
+     </tr>
+     <tr style='height:20.25pt'>
+      <td width=119 valign=bottom style='width:89.35pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:20.25pt'>
+      <p class=MsoNormal><span lang=EN-US style='font-size:10.0pt;font-family:
+      Arial;color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=43 style='width:32.6pt;border-top:none;border-left:solid windowtext 1.0pt;
+      border-bottom:none;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US>0</span></p>
+      </td>
+      <td width=30 valign=bottom style='width:22.35pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:20.25pt'>
+      <p class=MsoNormal><span lang=EN-US style='font-size:10.0pt;font-family:
+      Arial;color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=43 style='width:32.5pt;border-top:none;border-left:solid windowtext 1.0pt;
+      border-bottom:none;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US>b<sub>n-1</sub></span></p>
+      </td>
+      <td width=26 valign=bottom style='width:19.3pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:20.25pt'>
+      <p class=MsoNormal><span lang=EN-US style='font-size:10.0pt;font-family:
+      Arial;color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=82 style='width:61.7pt;border-top:none;border-left:solid windowtext 1.0pt;
+      border-bottom:none;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:20.25pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US>b<sub>n-1</sub></span></p>
+      </td>
+     </tr>
+    </table>
+    </div>
+    <p class=Referat align=center style='text-align:center'>Рис.6. Сложение по
+    модулю двух матриц</p>
+    </div>
+    </td>
+   </tr>
+  </table>
+  </span>&nbsp;</td>
+ </tr>
+</table>
+
+<span style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<br clear=ALL>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Сложность алгоритма сложения полиномов при
+оперировании машинными словами равна </span><span lang=EN-US style='font-size:
+12.0pt'>Q</span><span style='font-size:12.0pt'>(</span><span lang=EN-US
+style='font-size:12.0pt'>n</span><span style='font-size:12.0pt'>+3</span><span
+lang=EN-US style='font-size:12.0pt'>n</span><span style='font-size:12.0pt'>/</span><span
+lang=EN-US style='font-size:12.0pt'>m</span><span style='font-size:12.0pt'>),
+где </span><span lang=EN-US style='font-size:12.0pt'>n</span><span
+style='font-size:12.0pt'> – максимальная степень наибольшего полинома, </span><span
+lang=EN-US style='font-size:12.0pt'>m</span><span style='font-size:12.0pt'> –
+размерность  машинного слова, а в простом случае - </span><span lang=EN-US
+style='font-size:12.0pt'>Q</span><span style='font-size:12.0pt'>(3</span><span
+lang=EN-US style='font-size:12.0pt'>n</span><span style='font-size:12.0pt'>).</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b>&nbsp;</b></p>
+
+<p class=Referat align=center style='text-align:center;text-indent:0cm'><a
+name="Классический_алгоритм_умножения_полиномо"><b><span style='font-size:14.0pt'>Классический
+алгоритм умножения полиномов с взятием модуля</span></b></a></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Для работы алгоритма на вход подаются два полинома,
+представленные в бинарном виде (в стандартном базисе), а также вектор-модуль </span><span
+lang=EN-US style='font-size:12.0pt'>Modul</span><span style='font-size:12.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Классический алгоритм умножения полиномов включает в
+себя следующие действия.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>1. Определяется, какой из векторов наибольший и
+наименьший. Наибольший операнд становится первым операндом, а наименьший –
+вторым (наименьший операнд имеет меньшее число единичных элементов в векторном
+представлении).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>2. Производится последовательный поиск во втором
+операнде единиц: <sub><img width=68 height=25
+src="GaluaFieldElems2.files/image004.gif"></sub>, где </span><span lang=EN-US
+style='font-size:12.0pt'>k</span><sub><span style='font-size:12.0pt'>2</span></sub><span
+style='font-size:12.0pt'> – длина второго операнда.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>а) при нахождении единицы осуществляется суммирование
+результирующего полинома </span><span lang=EN-US style='font-size:12.0pt'>Rez</span><span
+style='font-size:12.0pt'> с первым операндом с того места, где был найден
+единичный коэффициент;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>б) если длина результата </span><span lang=EN-US
+style='font-size:12.0pt'>Rez</span><span style='font-size:12.0pt'> больше или
+равна максимальной степени </span><span lang=EN-US style='font-size:12.0pt'>Modul</span><span
+style='font-size:12.0pt'>, то осуществить поразрядное сложение по модулю 2
+векторов: </span><span lang=EN-US style='font-size:12.0pt'>Rez</span><span
+style='font-size:12.0pt'>= </span><span lang=EN-US style='font-size:12.0pt'>Rez</span><span
+style='font-size:12.0pt'>+</span><span lang=EN-US style='font-size:12.0pt'>Modul</span><span
+style='font-size:12.0pt'> и обнулить все коэффициенты полинома </span><span
+lang=EN-US style='font-size:12.0pt'>Rez</span><span lang=EN-US
+style='font-size:12.0pt'> </span><span style='font-size:12.0pt'>при степенях,
+больших степени </span><span lang=EN-US style='font-size:12.0pt'>Modul</span><span
+style='font-size:12.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>3. Длина результирующего вектора без взятия модуля
+имеет размерность </span><span lang=EN-US style='font-size:12.0pt'>k</span><sub><span
+style='font-size:12.0pt'>1</span></sub><span style='font-size:12.0pt'>+</span><span
+lang=EN-US style='font-size:12.0pt'>k</span><sub><span style='font-size:12.0pt'>2</span></sub><span
+style='font-size:12.0pt'>-1, где </span><span lang=EN-US style='font-size:12.0pt'>k<sub>i</sub></span><span
+style='font-size:12.0pt'>, <sub><img width=45 height=25
+src="GaluaFieldElems2.files/image006.gif"></sub>, - длины первого и второго
+операндов, а при взятии модуля равна максимальной степени модуля </span><span
+lang=EN-US style='font-size:12.0pt'>n</span><span style='font-size:12.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Сложность алгоритма равна </span><span lang=EN-US
+style='font-size:12.0pt'>Q</span><span style='font-size:12.0pt'>(3</span><span
+lang=EN-US style='font-size:12.0pt'>k</span><span style='font-size:12.0pt'>+4</span><span
+lang=EN-US style='font-size:12.0pt'>n</span><span style='font-size:12.0pt'>+</span><span
+lang=EN-US style='font-size:12.0pt'>kn</span><span style='font-size:12.0pt'>),
+где </span><span lang=EN-US style='font-size:12.0pt'>n</span><span
+style='font-size:12.0pt'> и </span><span lang=EN-US style='font-size:12.0pt'>k</span><span
+style='font-size:12.0pt'> – степени наибольшего и наименьшего полиномов.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Из-за представления данных в виде бинарных векторов
+усложняется выборка коэффициентов из определенных позиций операндов, так как в
+ЭВМ минимальной единицей работы с памятью является машинное слово (байт, слово
+(2 байта), или двойное слово (4 байта)). Также приходится производить сложение
+побитно, а не целыми машинными словами. Производить операцию сложения векторов,
+оперируя машинными словами, невозможно, в рамках данного алгоритма, так как
+позиции, с которых будут производиться сложение, в результирующем векторе могут
+быть не кратны длине машинного слова.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Данная задача может быть решена в модификациях
+классического алгоритма умножения полиномов.</span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal align=center style='margin-left:18.0pt;text-align:center'><a
+name="Алгоритм_возведения_полиномов_во_вторую"><b>Алгоритм возведения полиномов
+во вторую степень</b></a></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Для полиномов, заданных в бинарном виде, где единицы
+отображают индексы степеней векторов, применим следующий, эффективный по
+скорости, алгоритм возведения в квадрат.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Для этого первичный вектор разрежается нулями - нули
+вставляются между элементами полинома.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Пример. Вектор </span><span lang=EN-US
+style='font-size:12.0pt'>P</span><span style='font-size:12.0pt'>(</span><span
+lang=EN-US style='font-size:12.0pt'>x</span><span style='font-size:12.0pt'>) = </span><span
+lang=EN-US style='font-size:12.0pt'>x</span><sup><span style='font-size:12.0pt'>3</span></sup><span
+style='font-size:12.0pt'> + </span><span lang=EN-US style='font-size:12.0pt'>x</span><sup><span
+style='font-size:12.0pt'>2</span></sup><span style='font-size:12.0pt'> + 1
+представляется в бинарном виде        </span><span lang=EN-US style='font-size:
+12.0pt'>P</span><span style='font-size:12.0pt'>(</span><span lang=EN-US
+style='font-size:12.0pt'>x</span><sub><span style='font-size:12.0pt'>2</span></sub><span
+style='font-size:12.0pt'>) = 1101.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='position:absolute;z-index:2;left:0px;margin-left:437px;margin-top:7px;
+width:148px;height:152px'><img width=148 height=152
+src="GaluaFieldElems2.files/image007.gif"></span><span style='font-size:12.0pt'>Вставляются
+нули </span><span lang=EN-US style='font-size:12.0pt'>P</span><sup><span
+style='font-size:12.0pt'>2</span></sup><span style='font-size:12.0pt'>(</span><span
+lang=EN-US style='font-size:12.0pt'>x</span><sub><span style='font-size:12.0pt'>2</span></sub><span
+style='font-size:12.0pt'>) = 1  <u>0</u>  1  <u>0</u>  0  <u>0</u>  1.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Проверка. Возводим вектор </span><span lang=EN-US
+style='font-size:12.0pt'>P</span><span style='font-size:12.0pt'>(</span><span
+lang=EN-US style='font-size:12.0pt'>x</span><span style='font-size:12.0pt'>) в
+квадрат (рис.7).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Получаем тот же самый результат.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Сложность алгоритма составляет </span><span
+lang=EN-US style='font-size:12.0pt'>Q</span><span style='font-size:12.0pt'>(</span><span
+lang=EN-US style='font-size:12.0pt'>n</span><span style='font-size:12.0pt'>), </span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:12.0pt'>где
+</span><span lang=EN-US style='font-size:12.0pt'>n</span><span
+style='font-size:12.0pt'> – размерность первоначального полинома.</span></p>
+
+<p class=MsoNormal style='margin-left:18.0pt'>&nbsp;</p>
+
+<p class=MsoNormal align=center style='text-align:center'><a
+name="Алгоритм_арифметического_увеличения_поли"><b><span lang=EN-US>&nbsp;</span></b></a></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b>Алгоритм
+арифметического увеличения полинома на единицу</b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Данная функция может применяться в алгоритме проверки
+полинома на неприводимость (на не делимость полинома на все меньшие по длине
+другие вектора). Процедура производит арифметическое прибавление единицы на
+конце вектора с рекурсивным переносом возможного флага переноса на старшие
+разряды.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Этапы данного алгоритма следующие.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>1. Переменной </span><span lang=EN-US
+style='font-size:12.0pt'>Ostatok</span><span style='font-size:12.0pt'>
+присваивается единица.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>2. Для <sub><img width=21 height=17
+src="GaluaFieldElems2.files/image008.gif"></sub> в диапазоне от </span><span
+lang=EN-US style='font-size:12.0pt'>k</span><span style='font-size:12.0pt'> до
+1, где </span><span lang=EN-US style='font-size:12.0pt'>k</span><span
+style='font-size:12.0pt'> – максимальная степень многочлена, производятся
+действия:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>а) складываются значения переменной </span><span
+lang=EN-US style='font-size:12.0pt'>Ostatok</span><span style='font-size:12.0pt'>
+и элемента входного вектора с индексом </span><span lang=EN-US
+style='font-size:12.0pt'>i</span><span style='font-size:12.0pt'>, результат
+сохраняется в переменной </span><span lang=EN-US style='font-size:12.0pt'>Summa</span><span
+style='font-size:12.0pt'>;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>б) значение переменной </span><span lang=EN-US
+style='font-size:12.0pt'>Summa</span><span style='font-size:12.0pt'> берется по
+модулю два и результат записывается в элемент входного вектора с индексом </span><span
+lang=EN-US style='font-size:12.0pt'>i</span><span style='font-size:12.0pt'>;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>в) значение переменной </span><span lang=EN-US
+style='font-size:12.0pt'>Summa</span><span style='font-size:12.0pt'> делится на
+два и результат устанавливается в переменную </span><span lang=EN-US
+style='font-size:12.0pt'>Ostatok</span><span style='font-size:12.0pt'>;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>г) уменьшается на единицу переменная </span><span
+lang=EN-US style='font-size:12.0pt'>i</span><span style='font-size:12.0pt'> до
+тех пор, пока значение </span><span lang=EN-US style='font-size:12.0pt'>Ostatok</span><span
+lang=EN-US style='font-size:12.0pt'> </span><span style='font-size:12.0pt'>не
+станет равным 0. Если </span><span lang=EN-US style='font-size:12.0pt'>Ostatok</span><span
+style='font-size:12.0pt'> не равен 0, то осуществляется переход к пункту 2. а).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>3. Если значение переменной </span><span lang=EN-US
+style='font-size:12.0pt'>Ostatok</span><span style='font-size:12.0pt'> равно
+единице, то выполняются следующие пункты:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>а) увеличивается размер буфера, отводимого для
+хранения вектора, на единицу (алгоритм увеличения размера данных для полинома
+от одной переменной);</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>б) увеличивается на единицу переменная, хранящая
+максимальную степень полинома;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>в) для <sub><img width=81 height=25
+src="GaluaFieldElems2.files/image009.gif"></sub>, где </span><span lang=EN-US
+style='font-size:12.0pt'>k</span><span style='font-size:12.0pt'> – новая длина
+полинома, производится перенос значения векторного элемента с индексом </span><span
+lang=EN-US style='font-size:12.0pt'>i</span><span style='font-size:12.0pt'> на
+место элемента с индексом </span><span lang=EN-US style='font-size:12.0pt'>i</span><span
+style='font-size:12.0pt'>+1;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>г) на место первого элемента вектора записывается
+единица.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Данный алгоритм непосредственно изменяет входной
+вектор. Сложность алгоритма составляет </span><span lang=EN-US
+style='font-size:12.0pt'>Q</span><span style='font-size:12.0pt'>(2</span><span
+lang=EN-US style='font-size:12.0pt'>k</span><span style='font-size:12.0pt'>),
+где </span><span lang=EN-US style='font-size:12.0pt'>k</span><span
+style='font-size:12.0pt'> – максимальная степень многочлена.</span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal align=center style='text-align:center'><a
+name="Получение_примитивных_элементов_A"><b>Получение примитивных элементов
+через вычисление</b></a></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b>сопровождающей
+матрицы </b><b><span lang=EN-US>A</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Данный алгоритм может использоваться для вычисления
+множества примитивных элементов.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>На вход алгоритма подаются:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>- модуль-вектор, задающий размерность поля - </span><span
+lang=EN-US style='font-size:12.0pt'>Modul</span><span style='font-size:12.0pt'>;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>- степень примитивного элемента, на основе которой
+необходимо получить значение примитивного элемента - </span><span lang=EN-US
+style='font-size:12.0pt'>Degree</span><span style='font-size:12.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Возвращается вычисленное значение примитивного
+элемента в полиноме PrimEl.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Алгоритм подразделяется на следующие шаги.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>1. Осуществляется проверка модуль-вектора на граничные
+значения: если для данного модуля нельзя построить поле в нормальном базисе, то
+выход с выдачей ошибки.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>2. Если размеры вектора PrimEl малы, то расширить
+полином до размеров примитивного элемента. Обнуление буфера под данные вектора
+PrimEl.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>3. Если степень примитивного элемента равна
+неопределенности, то выход с выдачей положительного результата. Иначе пункт 4.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>4. Если степень примитивного элемента равна нулю, то в
+(</span><span lang=EN-US style='font-size:12.0pt'>n</span><span
+style='font-size:12.0pt'>-1) позицию (самую младшую часть полинома) вектора
+PrimEl устанавливается единица; </span><span lang=EN-US style='font-size:12.0pt'>n</span><span
+style='font-size:12.0pt'> – размерность полинома-модуля, а нумерация в векторе
+начинается в нуля. Выход с выдачей положительного результата. Иначе пункт 5.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>5. Если степень примитивного элемента равна единице,
+то в (</span><span lang=EN-US style='font-size:12.0pt'>n</span><span
+style='font-size:12.0pt'>-2) позицию  вектора PrimEl устанавливается единица.
+Выход с выдачей положительного результата. Иначе пункт 6.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>6. Получение двух сопровождающих матриц из
+полинома-модуля на основе алгоритма построения сопровождающей матрицы.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>7. Для <sub><img width=122 height=25
+src="GaluaFieldElems2.files/image010.gif"></sub> осуществляется перемножение
+сопровождающих матриц с записью результата в первую из них. Перемножение матриц
+производится с помощью операции умножения алгебры матриц.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>8. Из первой сопровождающей матрицы копируется в
+вектор PrimEl строка (</span><span lang=EN-US style='font-size:12.0pt'>n</span><span
+style='font-size:12.0pt'>-1), которая и содержит искомое значение примитивного
+элемента. Далее осуществляется выход из алгоритма с выдачей положительного
+результата.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Сложность алгоритма равна </span><span lang=EN-US
+style='font-size:12.0pt'>Q</span><span style='font-size:12.0pt'>(</span><span
+lang=EN-US style='font-size:12.0pt'>n</span><sup><span style='font-size:12.0pt'>3</span></sup><span
+style='font-size:12.0pt'>(2</span><sup><span lang=EN-US style='font-size:12.0pt'>n</span></sup><span
+style='font-size:12.0pt'>-1)+</span><span lang=EN-US style='font-size:12.0pt'>n</span><sup><span
+style='font-size:12.0pt'>2</span></sup><span style='font-size:12.0pt'>+3</span><span
+lang=EN-US style='font-size:12.0pt'>n</span><span style='font-size:12.0pt'>).</span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal align=center style='text-align:center'><a
+name="Получение_множества_элементов_регистры"><b>Получение множества
+примитивных элементов на регистрах</b></a></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b>&nbsp;</b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Данный алгоритм может использоваться для вычисления
+множества примитивных элементов поля.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>На вход алгоритма подается модуль-вектор, задающий
+размерность поля – </span><span lang=EN-US style='font-size:12.0pt'>Modul</span><span
+style='font-size:12.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Возвращается вычисленное множество значений
+примитивных элементов в матрице полиномов </span><span lang=EN-US
+style='font-size:12.0pt'>E</span><span style='font-size:12.0pt'>, где ее </span><span
+lang=EN-US style='font-size:12.0pt'>i</span><span style='font-size:12.0pt'>-ый
+номер строки задает порядковый номер элемента поля, <sub><img width=87
+height=26 src="GaluaFieldElems2.files/image011.gif"></sub>, </span><span
+lang=EN-US style='font-size:12.0pt'>n</span><span style='font-size:12.0pt'> –
+максимальная степень модуля, а в </span><span lang=EN-US style='font-size:12.0pt'>i</span><span
+style='font-size:12.0pt'>-ой строке располагается в векторном виде </span><span
+lang=EN-US style='font-size:12.0pt'>i</span><span style='font-size:12.0pt'>-ый
+примитивный элемент. Значения элементов в векторном виде записываются в прямом
+порядке: слева направо записываются коэффициенты от старших степеней
+неизвестных полиномиального представления к младшим.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Опишем данный алгоритм по шагам.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>1. В нулевую строку матрицы </span><span lang=EN-US
+style='font-size:12.0pt'>E</span><span style='font-size:12.0pt'> записывается
+нулевой вектор, а в первую строку вектор следующего вида 000…001.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>2. Для <sub><img width=87 height=26
+src="GaluaFieldElems2.files/image012.gif"></sub> осуществляются следующие
+действия:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>а) сдвиг (</span><span lang=EN-US style='font-size:
+12.0pt'>i</span><span style='font-size:12.0pt'>-1) элемента матрицы </span><span
+lang=EN-US style='font-size:12.0pt'>E</span><span lang=EN-US style='font-size:
+12.0pt'> </span><span style='font-size:12.0pt'>на один разряд влево и запись
+значения в </span><span lang=EN-US style='font-size:12.0pt'>P</span><span
+style='font-size:12.0pt'>;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>б) если длина вектора </span><span lang=EN-US
+style='font-size:12.0pt'>P</span><span style='font-size:12.0pt'> является
+большей или равной </span><span lang=EN-US style='font-size:12.0pt'>n</span><span
+style='font-size:12.0pt'>, то осуществить поэлементное сложение по модулю 2
+вектора </span><span lang=EN-US style='font-size:12.0pt'>P</span><span
+lang=EN-US style='font-size:12.0pt'> </span><span style='font-size:12.0pt'>и </span><span
+lang=EN-US style='font-size:12.0pt'>Modul</span><span style='font-size:12.0pt'>:
+</span><span lang=EN-US style='font-size:12.0pt'>P</span><span
+style='font-size:12.0pt'>= </span><span lang=EN-US style='font-size:12.0pt'>P</span><span
+style='font-size:12.0pt'>+</span><span lang=EN-US style='font-size:12.0pt'>Modul</span><span
+style='font-size:12.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>в) запись значения вектора </span><span lang=EN-US
+style='font-size:12.0pt'>P</span><span style='font-size:12.0pt'> в </span><span
+lang=EN-US style='font-size:12.0pt'>i</span><span style='font-size:12.0pt'>-ую
+строку матрицы </span><span lang=EN-US style='font-size:12.0pt'>E</span><span
+style='font-size:12.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Сложность алгоритма равна </span><span lang=EN-US
+style='font-size:12.0pt'>Q</span><span style='font-size:12.0pt'>(2</span><span
+lang=EN-US style='font-size:12.0pt'>n</span><span style='font-size:12.0pt'>+(3</span><span
+lang=EN-US style='font-size:12.0pt'>n</span><span style='font-size:12.0pt'>+1)(2</span><sup><span
+lang=EN-US style='font-size:12.0pt'>n</span></sup><span style='font-size:12.0pt'>-2)).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Задание><u>Задание</u></a><u>.</u></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Для выполнения данной лабораторной работы предлагается
+реализовать в виде программы один из следующих алгоритмов, выданных студенту
+преподавателем:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>- получение сопровождающей матрицы примитивного
+элемента;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>- алгоритм сложения полиномов;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>- классический алгоритм умножения полиномов по модулю;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>- алгоритм возведения полиномов во вторую степень;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>- алгоритм арифметического увеличения полинома на
+единицу;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>-получение примитивных элементов через вычисление
+сопровождающей матрицы A;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>- получение примитивных элементов на регистрах.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Для этого можно использовать следующие языки
+программирования: </span><span lang=EN-US style='font-size:12.0pt'>C</span><span
+style='font-size:12.0pt'>, С++, </span><span lang=EN-US style='font-size:12.0pt'>Pascal</span><span
+style='font-size:12.0pt'>. Текст программы должен содержать комментарии к
+каждой строке кода. Далее оформляется отчет о выполненной работе, с приведением
+листингов программ и нескольких тестов. В конце производится сдача работы
+руководителю лабораторного занятия.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Примечания><u>Примечания</u></a>.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Данные в векторах можно хранить как в виде битов, так
+и байт. В первом случае усложняется работа с отдельными элементами, но легче
+производить сложение целыми машинными словами.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Литература_для_самостоятельной_подготовк"><u>Литература для
+самостоятельной подготовки</u>: </a></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>&nbsp;</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>1. А.А. Болотов, С.Б. Гашков, А.Б. Фролов, А.А.
+Часовских. Алгоритмические основы эллиптической криптографии. - М.: МЭИ, 2000.
+- 100 </span><span lang=EN-US style='font-size:12.0pt'>c</span><span
+style='font-size:12.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>2. Р. Лидл, Г. Нидеррайтер. Конечные поля: В 2 т. /
+Перевод с англ. А.Е.Жукова, В.И.Петрова; Под ред. В.И.Нечаева. – М.: Мир, 1988.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>3. Ю.В. Романец, П.А. Тимофеев, В.Ф. Шаньгин. Защита
+информации в компьютерных системах и сетях / Под ред. В.Ф. Шаньгина. – М.:
+Радио и связь, 1999. – 328 с.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>4. В.П. Сигорский. Математический аппарат инженера. –
+Киев: «Техника», 1975. - 768 с.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>5. В.И. Нечаев. Элементы криптографии (Основы теории
+защиты информации): Учеб. пособие для ун-тов и пед. вузов / Под ред. В.А.
+Садовничего – М.: Высшая школа, 1999. – 109 с.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>6. Уэйт М., Прата С., Мартин Д. Язык Си. Руководство
+для начинающих: Пер. с англ. – М.: Мир, 1988. – 512 с., ил.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>7. Прайс Д. Программирование на языке Паскаль:
+Практическое руководство. Пер. с англ. – М.: Мир, 1987. – 232 с., ил.</span></p>
+
+</div>
+
+</body>
+
+</html>

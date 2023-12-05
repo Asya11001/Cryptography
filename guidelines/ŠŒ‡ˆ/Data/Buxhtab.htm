@@ -1,0 +1,1071 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title>Лабораторная работа</title>
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:2.0cm 42.5pt 2.0cm 3.0cm;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+
+</head>
+
+<body lang=RU>
+
+<div class=Section1>
+
+<p class=MsoNormal align=center style='text-align:center'><a name="Цель_работы"><b><span
+style='font-size:14.0pt'>Лабораторная работа</span></b></a></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span lang=EN-US
+style='font-size:14.0pt'>&nbsp;</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span
+style='font-size:14.0pt'>Разложение числа методом проб на два сомножителя</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span
+style='font-size:14.0pt'>(Метод Бухштаба)</span></b></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><u><span
+style='font-size:14.0pt'>Цель работы</span></u><span style='font-size:14.0pt'>:
+освоение метода разложения чисел на два сомножителя.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'> </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name="Теоретическая_часть"><u><span
+style='font-size:14.0pt'>Описание работы</span></u></a><span style='font-size:
+14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>Поясним используемые обозначения. </span><span
+lang=EN-US style='font-size:14.0pt'>N</span><span style='font-size:14.0pt'> –
+множество натуральных чисел. Все операции производятся над целыми числами. Под
+формулой <sub><img width=53 height=26 src="Buxhtab.files/image001.gif"></sub> будет
+пониматься весь ряд целых чисел, лежащих в диапазоне от </span><i><span
+lang=EN-US style='font-size:14.0pt'>r</span></i><span style='font-size:14.0pt'>
+до </span><i><span lang=EN-US style='font-size:14.0pt'>k</span></i><span
+style='font-size:14.0pt'> включительно, и который может принимать переменная </span><i><span
+lang=EN-US style='font-size:14.0pt'>i</span></i><span style='font-size:14.0pt'>.
+<span style='color:black'>]</span></span><i><span lang=EN-US style='font-size:
+14.0pt;color:black'>k</span></i><span style='font-size:14.0pt;color:black'>[ - взятие
+от дробного числа </span><i><span lang=EN-US style='font-size:14.0pt;
+color:black'>k</span></i><span style='font-size:14.0pt;color:black'> только
+целой части, без округления.</span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt'><span style='font-size:14.0pt'>Пусть
+задано натуральное число </span><i><span lang=EN-US style='font-size:14.0pt'>n</span></i><span
+style='font-size:14.0pt'>, </span><i><span lang=EN-US style='font-size:14.0pt'>n</span></i><span
+style='font-size:14.0pt'>&#8805;9, которое необходимо разложить на два
+сомножителя.</span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt'><span style='font-size:14.0pt'>Тогда
+итеративно вычисляем элементы </span><i><span lang=EN-US style='font-size:14.0pt'>N</span></i><sub><span
+lang=EN-US style='font-size:14.0pt'>s</span></sub><span style='font-size:14.0pt'>:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><i><span
+lang=EN-US style='font-size:14.0pt'>N</span></i><sub><span style='font-size:
+14.0pt'>0</span></sub><span style='font-size:14.0pt'>=</span><i><span
+lang=EN-US style='font-size:14.0pt'>n</span></i></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><i><span
+lang=EN-US style='font-size:14.0pt'>N</span></i><sub><span style='font-size:
+14.0pt'>1</span></sub><span style='font-size:14.0pt'>=</span><i><span
+lang=EN-US style='font-size:14.0pt'>N</span></i><sub><span style='font-size:
+14.0pt'>0</span></sub><span style='font-size:14.0pt'>+1</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><i><span
+lang=EN-US style='font-size:14.0pt'>N</span></i><sub><span style='font-size:
+14.0pt'>2</span></sub><span style='font-size:14.0pt'>=</span><i><span
+lang=EN-US style='font-size:14.0pt'>N</span></i><sub><span style='font-size:
+14.0pt'>1</span></sub><span style='font-size:14.0pt'>+3</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><i><span
+lang=EN-US style='font-size:14.0pt'>N</span></i><sub><span style='font-size:
+14.0pt'>3</span></sub><span style='font-size:14.0pt'>=</span><i><span
+lang=EN-US style='font-size:14.0pt'>N</span></i><sub><span style='font-size:
+14.0pt'>2</span></sub><span style='font-size:14.0pt'>+5</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>…..</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><i><span
+lang=EN-US style='font-size:14.0pt'>N</span></i><sub><span lang=EN-US
+style='font-size:14.0pt'>s</span></sub><span style='font-size:14.0pt'>=</span><i><span
+lang=EN-US style='font-size:14.0pt'>N</span></i><sub><span lang=EN-US
+style='font-size:14.0pt'>s</span></sub><span style='font-size:14.0pt'>-1+2</span><i><span
+lang=EN-US style='font-size:14.0pt'>s</span></i><span style='font-size:14.0pt'>-1</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>На каждом шаге к </span><i><span lang=EN-US
+style='font-size:14.0pt'>N</span></i><sub><span lang=EN-US style='font-size:
+14.0pt'>s</span></sub><span style='font-size:14.0pt'> прибавляются числа в
+порядке возрастания: для вычисления </span><i><span lang=EN-US
+style='font-size:14.0pt'>N</span></i><sub><span lang=EN-US style='font-size:
+14.0pt'>s</span></sub><span style='font-size:14.0pt'> к </span><i><span
+lang=EN-US style='font-size:14.0pt'>N</span></i><sub><span lang=EN-US
+style='font-size:14.0pt'>s</span></sub><sub><span style='font-size:14.0pt'>-1</span></sub><span
+style='font-size:14.0pt'> прибавляется число (2</span><i><span lang=EN-US
+style='font-size:14.0pt'>s</span></i><span style='font-size:14.0pt'>-1).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>Прибавляемые к </span><i><span lang=EN-US
+style='font-size:14.0pt'>N</span></i><sub><span lang=EN-US style='font-size:
+14.0pt'>s</span></sub><span style='font-size:14.0pt'> числа являются членами
+арифметической прогрессии:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>- начальный элемент равен </span><i><span lang=EN-US
+style='font-size:14.0pt'>a</span></i><sub><span style='font-size:14.0pt'>0</span></sub><span
+style='font-size:14.0pt'>=1,</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>- последний - </span><i><span lang=EN-US
+style='font-size:14.0pt'>a</span></i><sub><span lang=EN-US style='font-size:
+14.0pt'>s</span></sub><span style='font-size:14.0pt'>=2</span><i><span
+lang=EN-US style='font-size:14.0pt'>s</span></i><span style='font-size:14.0pt'>-1,</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>- число членов – </span><i><span lang=EN-US
+style='font-size:14.0pt'>m</span></i><span style='font-size:14.0pt'>=</span><i><span
+lang=EN-US style='font-size:14.0pt'>s</span></i></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>- шаг прогрессии равен 2.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>Тогда сумма чисел прибавленных к </span><i><span
+lang=EN-US style='font-size:14.0pt'>n</span></i><span style='font-size:14.0pt'>
+равна (по формуле суммы арифметической прогрессии) </span><i><span lang=EN-US
+style='font-size:14.0pt'>S</span></i><sub><span style='font-size:14.0pt'>прогрес</span></sub><span
+style='font-size:14.0pt'>= (</span><i><span lang=EN-US style='font-size:14.0pt'>a</span></i><sub><span
+style='font-size:14.0pt'>1</span></sub><span style='font-size:14.0pt'> +</span><i><span
+lang=EN-US style='font-size:14.0pt'>a</span></i><sub><span lang=EN-US
+style='font-size:14.0pt'>s</span></sub><span style='font-size:14.0pt'> )</span><i><span
+lang=EN-US style='font-size:14.0pt'>m</span></i><span style='font-size:14.0pt'>/2=(1+2</span><i><span
+lang=EN-US style='font-size:14.0pt'>s</span></i><span style='font-size:14.0pt'>-1)</span><i><span
+lang=EN-US style='font-size:14.0pt'>s</span></i><span style='font-size:14.0pt'>/2=2</span><i><span
+lang=EN-US style='font-size:14.0pt'>s</span></i><sup><span style='font-size:
+14.0pt'>2</span></sup><span style='font-size:14.0pt'>/2= </span><i><span
+lang=EN-US style='font-size:14.0pt'>s</span></i><sup><span style='font-size:
+14.0pt'>2</span></sup><span style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>Тогда элемент </span><i><span lang=EN-US
+style='font-size:14.0pt'>N</span></i><sub><span lang=EN-US style='font-size:
+14.0pt'>s</span></sub><span style='font-size:14.0pt'> равен </span><i><span
+lang=EN-US style='font-size:14.0pt'>N</span></i><sub><span lang=EN-US
+style='font-size:14.0pt'>s</span></sub><span style='font-size:14.0pt'> = </span><i><span
+lang=EN-US style='font-size:14.0pt'>N</span></i><sub><span style='font-size:
+14.0pt'>0</span></sub><span style='font-size:14.0pt'> + </span><i><span
+lang=EN-US style='font-size:14.0pt'>S</span></i><sub><span style='font-size:
+14.0pt'>прогрес </span></sub><span style='font-size:14.0pt'>= </span><i><span
+lang=EN-US style='font-size:14.0pt'>n</span></i><span style='font-size:14.0pt'>
++ </span><i><span lang=EN-US style='font-size:14.0pt'>S</span></i><sub><span
+style='font-size:14.0pt'>прогрес</span></sub><span style='font-size:14.0pt'>= </span><i><span
+lang=EN-US style='font-size:14.0pt'>n</span></i><span style='font-size:14.0pt'>
++ </span><i><span lang=EN-US style='font-size:14.0pt'>s</span></i><sup><span
+style='font-size:14.0pt'>2</span></sup><span style='font-size:14.0pt'>. Пусть </span><i><span
+lang=EN-US style='font-size:14.0pt'>N</span></i><sub><span lang=EN-US
+style='font-size:14.0pt'>s</span></sub><span style='font-size:14.0pt'> = </span><i><span
+lang=EN-US style='font-size:14.0pt'>t</span></i><sup><span style='font-size:
+14.0pt'>2</span></sup><span style='font-size:14.0pt'>, где </span><i><span
+lang=EN-US style='font-size:14.0pt'>t</span></i><span style='font-size:14.0pt'>
+– некоторое натуральное число, тогда </span><i><span lang=EN-US
+style='font-size:14.0pt'>N</span></i><sub><span lang=EN-US style='font-size:
+14.0pt'>s</span></sub><span style='font-size:14.0pt'> = </span><i><span
+lang=EN-US style='font-size:14.0pt'>t</span></i><sup><span style='font-size:
+14.0pt'>2</span></sup><span style='font-size:14.0pt'>= </span><i><span
+lang=EN-US style='font-size:14.0pt'>n</span></i><span style='font-size:14.0pt'>
++ </span><i><span lang=EN-US style='font-size:14.0pt'>s</span></i><sup><span
+style='font-size:14.0pt'>2  </span></sup><span style='font-size:14.0pt;
+font-family:Symbol'>&THORN;</span><span style='font-size:14.0pt'>  </span><i><span
+lang=EN-US style='font-size:14.0pt'>n</span></i><span style='font-size:14.0pt'>
+= </span><i><span lang=EN-US style='font-size:14.0pt'>N</span></i><sub><span
+lang=EN-US style='font-size:14.0pt'>s</span></sub><span style='font-size:14.0pt'>
+- </span><i><span lang=EN-US style='font-size:14.0pt'>s</span></i><sup><span
+style='font-size:14.0pt'>2</span></sup><span style='font-size:14.0pt'> = </span><i><span
+lang=EN-US style='font-size:14.0pt'>t</span></i><sup><span style='font-size:
+14.0pt'>2</span></sup><span style='font-size:14.0pt'>- </span><i><span
+lang=EN-US style='font-size:14.0pt'>s</span></i><sup><span style='font-size:
+14.0pt'>2</span></sup><span style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>Если при некотором </span><i><span lang=EN-US
+style='font-size:14.0pt'>s</span></i><span lang=EN-US style='font-size:14.0pt'>
+</span><span style='font-size:14.0pt'>будет возможно извлечение квадратного
+корня нацело из </span><i><span lang=EN-US style='font-size:14.0pt'>N</span></i><sub><span
+lang=EN-US style='font-size:14.0pt'>s</span></sub><span style='font-size:14.0pt'>=
+</span><i><span lang=EN-US style='font-size:14.0pt'>t</span></i><sup><span
+style='font-size:14.0pt'>2</span></sup><span style='font-size:14.0pt'>, то
+исходное число </span><i><span lang=EN-US style='font-size:14.0pt'>n</span></i><span
+style='font-size:14.0pt'> разлагается как </span><i><span lang=EN-US
+style='font-size:14.0pt'>n</span></i><span style='font-size:14.0pt'>=(</span><i><span
+lang=EN-US style='font-size:14.0pt'>t</span></i><sup><span style='font-size:
+14.0pt'>2</span></sup><span style='font-size:14.0pt'>-</span><i><span
+lang=EN-US style='font-size:14.0pt'>s</span></i><sup><span style='font-size:
+14.0pt'>2</span></sup><span style='font-size:14.0pt'>)=(</span><i><span
+lang=EN-US style='font-size:14.0pt'>t</span></i><span style='font-size:14.0pt'>-</span><i><span
+lang=EN-US style='font-size:14.0pt'>s</span></i><span style='font-size:14.0pt'>)(</span><i><span
+lang=EN-US style='font-size:14.0pt'>t</span></i><span style='font-size:14.0pt'>+</span><i><span
+lang=EN-US style='font-size:14.0pt'>s</span></i><span style='font-size:14.0pt'>),
+где числа (</span><i><span lang=EN-US style='font-size:14.0pt'>t</span></i><span
+style='font-size:14.0pt'>±</span><i><span lang=EN-US style='font-size:14.0pt'>s</span></i><span
+style='font-size:14.0pt'>) могут являться простыми.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>Если в диапазоне для </span><i><span lang=EN-US
+style='font-size:14.0pt'>s</span></i><span style='font-size:14.0pt'>: 1&#8804;</span><i><span
+lang=EN-US style='font-size:14.0pt'>s</span></i><span style='font-size:14.0pt'>&#8804;](</span><i><span
+lang=EN-US style='font-size:14.0pt'>n</span></i><span style='font-size:14.0pt'>-9)/6[
+не будет найдено </span><i><span lang=EN-US style='font-size:14.0pt'>t</span></i><sup><span
+style='font-size:14.0pt'>2</span></sup><span style='font-size:14.0pt'>, где из </span><i><span
+lang=EN-US style='font-size:14.0pt'>t</span></i><sup><span style='font-size:
+14.0pt'>2</span></sup><span style='font-size:14.0pt'> нацело извлекается
+квадратный корень, то процесс поиска двух сомножителей числа </span><span
+lang=EN-US style='font-size:14.0pt'>n</span><span style='font-size:14.0pt'>
+завершается.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Алгоритм><u><span style='font-size:14.0pt'>Описание алгоритма</span></u></a><span
+style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>1. Ввод числа </span><i><span lang=EN-US
+style='font-size:14.0pt'>n</span></i><span style='font-size:14.0pt'>. Если </span><i><span
+lang=EN-US style='font-size:14.0pt'>n</span></i><span style='font-size:14.0pt'>&lt;9,
+то задача данным методом не решается. Выход.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>2. </span><i><span lang=EN-US style='font-size:14.0pt'>N</span></i><span
+style='font-size:14.0pt'>=</span><i><span lang=EN-US style='font-size:14.0pt'>n</span></i><span
+style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>3. Для <sub><img width=97 height=48
+src="Buxhtab.files/image002.gif"></sub>:</span></p>
+
+<p class=MsoNormal style='margin-left:27.0pt;text-align:justify;text-indent:
+27.0pt'><span style='font-size:14.0pt'>3.а. </span><i><span lang=EN-US
+style='font-size:14.0pt'>N</span></i><span style='font-size:14.0pt'>=</span><i><span
+lang=EN-US style='font-size:14.0pt'>N</span></i><span style='font-size:14.0pt'>+2</span><i><span
+lang=EN-US style='font-size:14.0pt'>s</span></i><span style='font-size:14.0pt'>-1.</span></p>
+
+<p class=MsoNormal style='margin-left:27.0pt;text-align:justify;text-indent:
+27.0pt'><span style='font-size:14.0pt'>3.б. <sub><img width=57 height=25
+src="Buxhtab.files/image003.gif"></sub>.</span></p>
+
+<p class=MsoNormal style='margin-left:27.0pt;text-align:justify;text-indent:
+27.0pt'><span style='font-size:14.0pt'>3.в. Если </span><i><span lang=EN-US
+style='font-size:14.0pt'>t</span></i><sup><span style='font-size:14.0pt'>2</span></sup><span
+style='font-size:14.0pt'>=</span><i><span lang=EN-US style='font-size:14.0pt'>N</span></i><span
+style='font-size:14.0pt'>, то</span></p>
+
+<p class=MsoNormal style='margin-left:27.0pt;text-align:justify;text-indent:
+27.0pt'><span style='font-size:14.0pt'>              Вывод чисел (</span><i><span
+lang=EN-US style='font-size:14.0pt'>t</span></i><span style='font-size:14.0pt'>-</span><i><span
+lang=EN-US style='font-size:14.0pt'>s</span></i><span style='font-size:14.0pt'>)
+и (</span><i><span lang=EN-US style='font-size:14.0pt'>t</span></i><span
+style='font-size:14.0pt'>+</span><i><span lang=EN-US style='font-size:14.0pt'>s</span></i><span
+style='font-size:14.0pt'>). Выход</span><span style='font-size:14.0pt'> </span><span
+style='font-size:14.0pt'>из алгоритма.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>4. Разложить число </span><i><span lang=EN-US
+style='font-size:14.0pt'>n</span></i><span style='font-size:14.0pt'> не
+удалось. Выход</span><span style='font-size:14.0pt'> </span><span
+style='font-size:14.0pt'>из алгоритма.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Пример><u><span style='font-size:14.0pt'>Примеры работы вышеописанного
+алгоритма</span></u></a><span style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Пример1><u><span style='font-size:14.0pt'>Пример 1</span></u></a><span
+style='font-size:14.0pt'>.</span><span style='font-size:14.0pt'> Пусть </span><i><span
+lang=EN-US style='font-size:14.0pt'>n</span></i><span style='font-size:14.0pt'>=69.
+</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><i><span
+lang=EN-US style='font-size:14.0pt'>N</span></i><sub><span style='font-size:
+14.0pt'>0</span></sub><span style='font-size:14.0pt'>=</span><i><span
+lang=EN-US style='font-size:14.0pt'>n</span></i><span style='font-size:14.0pt'>=69;
+максимальное число шагов: </span><sub><img width=107 height=45
+src="Buxhtab.files/image004.gif"></sub><span style='font-size:14.0pt'>. </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>Шаги работы алгоритма представлены в трассировочной
+таблице 1.</span></p>
+
+<p class=MsoNormal style='margin-left:318.6pt;text-indent:35.4pt'><span
+style='font-size:14.0pt'>Таблица 1</span></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width=512
+ style='width:383.7pt;margin-left:41.4pt;border-collapse:collapse;border:none'>
+ <tr style='height:12.75pt'>
+  <td width=64 nowrap style='width:48.0pt;border:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Шаг, <i>s</i></p>
+  </td>
+  <td width=149 nowrap style='width:111.95pt;border:solid windowtext 2.25pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Условие:<sub><img
+  width=63 height=41 src="Buxhtab.files/image005.gif"></sub>?</p>
+  </td>
+  <td width=99 nowrap style='width:74.35pt;border:solid windowtext 2.25pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><i>N</i> = <i>N</i>+2<i>s</i>-1</p>
+  </td>
+  <td width=69 nowrap style='width:51.9pt;border:solid windowtext 2.25pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><sub><img width=59
+  height=25 src="Buxhtab.files/image006.gif"></sub></p>
+  </td>
+  <td width=130 nowrap style='width:97.5pt;border:solid windowtext 2.25pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Условие: <i>t</i><sup>2</sup>
+  =<i>N</i>?</p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=64 nowrap style='width:48.0pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>1</span></p>
+  </td>
+  <td width=149 nowrap style='width:111.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: 1</span>&#8804;<span style='font-size:10.0pt'>10</span></p>
+  </td>
+  <td width=99 nowrap style='width:74.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>70</span></p>
+  </td>
+  <td width=69 nowrap style='width:51.9pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>8</span></p>
+  </td>
+  <td width=130 nowrap style='width:97.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Нет: </span><span lang=EN-US style='font-size:10.0pt'>64</span><span
+  style='font-size:10.0pt'>&lt;&gt;</span><span lang=EN-US style='font-size:
+  10.0pt'>70</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=64 nowrap style='width:48.0pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>2</span></p>
+  </td>
+  <td width=149 nowrap style='width:111.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: 2</span>&#8804;<span style='font-size:10.0pt'>10</span></p>
+  </td>
+  <td width=99 nowrap style='width:74.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>73</span></p>
+  </td>
+  <td width=69 nowrap style='width:51.9pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>8</span></p>
+  </td>
+  <td width=130 nowrap style='width:97.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Нет: </span><span lang=EN-US style='font-size:10.0pt'>64</span><span
+  style='font-size:10.0pt'>&lt;&gt;</span><span lang=EN-US style='font-size:
+  10.0pt'>73</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=64 nowrap style='width:48.0pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>3</span></p>
+  </td>
+  <td width=149 nowrap style='width:111.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: 3</span>&#8804;<span style='font-size:10.0pt'>10</span></p>
+  </td>
+  <td width=99 nowrap style='width:74.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>78</span></p>
+  </td>
+  <td width=69 nowrap style='width:51.9pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>8</span></p>
+  </td>
+  <td width=130 nowrap style='width:97.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Нет: </span><span lang=EN-US style='font-size:10.0pt'>64</span><span
+  style='font-size:10.0pt'>&lt;&gt;</span><span lang=EN-US style='font-size:
+  10.0pt'>78</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=64 nowrap style='width:48.0pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>4</span></p>
+  </td>
+  <td width=149 nowrap style='width:111.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: 4</span>&#8804;<span style='font-size:10.0pt'>10</span></p>
+  </td>
+  <td width=99 nowrap style='width:74.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>85</span></p>
+  </td>
+  <td width=69 nowrap style='width:51.9pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>9</span></p>
+  </td>
+  <td width=130 nowrap style='width:97.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Нет: </span><span lang=EN-US style='font-size:10.0pt'>81</span><span
+  style='font-size:10.0pt'>&lt;&gt;</span><span lang=EN-US style='font-size:
+  10.0pt'>85</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=64 nowrap style='width:48.0pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>5</span></p>
+  </td>
+  <td width=149 nowrap style='width:111.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: 5</span>&#8804;<span style='font-size:10.0pt'>10</span></p>
+  </td>
+  <td width=99 nowrap style='width:74.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>94</span></p>
+  </td>
+  <td width=69 nowrap style='width:51.9pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>9</span></p>
+  </td>
+  <td width=130 nowrap style='width:97.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Нет: </span><span lang=EN-US style='font-size:10.0pt'>81</span><span
+  style='font-size:10.0pt'>&lt;&gt;</span><span lang=EN-US style='font-size:
+  10.0pt'>94</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=64 nowrap style='width:48.0pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>6</span></p>
+  </td>
+  <td width=149 nowrap style='width:111.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: 6</span>&#8804;<span style='font-size:10.0pt'>10</span></p>
+  </td>
+  <td width=99 nowrap style='width:74.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>105</span></p>
+  </td>
+  <td width=69 nowrap style='width:51.9pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>10</span></p>
+  </td>
+  <td width=130 nowrap style='width:97.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Нет: </span><span lang=EN-US style='font-size:10.0pt'>100</span><span
+  style='font-size:10.0pt'>&lt;&gt;</span><span lang=EN-US style='font-size:
+  10.0pt'>105</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=64 nowrap style='width:48.0pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>7</span></p>
+  </td>
+  <td width=149 nowrap style='width:111.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: 7</span>&#8804;<span style='font-size:10.0pt'>10</span></p>
+  </td>
+  <td width=99 nowrap style='width:74.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>118</span></p>
+  </td>
+  <td width=69 nowrap style='width:51.9pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>10</span></p>
+  </td>
+  <td width=130 nowrap style='width:97.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Нет: </span><span lang=EN-US style='font-size:10.0pt'>100</span><span
+  style='font-size:10.0pt'>&lt;&gt;</span><span lang=EN-US style='font-size:
+  10.0pt'>118</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=64 nowrap style='width:48.0pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>8</span></p>
+  </td>
+  <td width=149 nowrap style='width:111.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: 8</span>&#8804;<span style='font-size:10.0pt'>10</span></p>
+  </td>
+  <td width=99 nowrap style='width:74.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>133</span></p>
+  </td>
+  <td width=69 nowrap style='width:51.9pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>11</span></p>
+  </td>
+  <td width=130 nowrap style='width:97.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Нет: </span><span lang=EN-US style='font-size:10.0pt'>121</span><span
+  style='font-size:10.0pt'>&lt;&gt;</span><span lang=EN-US style='font-size:
+  10.0pt'>133</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=64 nowrap style='width:48.0pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>9</span></p>
+  </td>
+  <td width=149 nowrap style='width:111.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: 9</span>&#8804;<span style='font-size:10.0pt'>10</span></p>
+  </td>
+  <td width=99 nowrap style='width:74.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>150</span></p>
+  </td>
+  <td width=69 nowrap style='width:51.9pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>12</span></p>
+  </td>
+  <td width=130 nowrap style='width:97.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Нет: </span><span lang=EN-US style='font-size:10.0pt'>144</span><span
+  style='font-size:10.0pt'>&lt;&gt;</span><span lang=EN-US style='font-size:
+  10.0pt'>150</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=64 nowrap style='width:48.0pt;border:solid windowtext 2.25pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>10</span></p>
+  </td>
+  <td width=149 nowrap style='width:111.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: 10</span>&#8804;<span style='font-size:10.0pt'>10</span></p>
+  </td>
+  <td width=99 nowrap style='width:74.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>169</span></p>
+  </td>
+  <td width=69 nowrap style='width:51.9pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>13</span></p>
+  </td>
+  <td width=130 nowrap style='width:97.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Нет: </span><span lang=EN-US style='font-size:10.0pt'>169==169</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>Из числа </span><i><span lang=EN-US style='font-size:
+14.0pt'>N</span></i><sub><span style='font-size:14.0pt'>10</span></sub><span
+style='font-size:14.0pt'>= 169 можно извлечь квадратный корень: </span><i><span
+lang=EN-US style='font-size:14.0pt'>t</span></i><sup><span style='font-size:
+14.0pt'>2</span></sup><span style='font-size:14.0pt'>=13. Тогда</span><span
+style='font-size:14.0pt'> <i><span lang=EN-US>n</span></i><span lang=EN-US> = (<i>t</i><sup>2
+</sup>- <i>s</i><sup>2</sup>) =(<i>t</i> - <i>s</i>)*(<i>t</i> + <i>s</i>)=(13-10)*(13+10)=3*23.
+</span></span><span style='font-size:14.0pt'>Т.е. число 69 раскладывается на
+два числа: 3 и 23.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Пример2><u><span style='font-size:14.0pt'>Пример 2</span></u></a><span
+style='font-size:14.0pt'>. Пусть </span><i><span lang=EN-US style='font-size:
+14.0pt'>n</span></i><span style='font-size:14.0pt'>=23. </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><i><span
+lang=EN-US style='font-size:14.0pt'>N</span></i><sub><span style='font-size:
+14.0pt'>0</span></sub><span style='font-size:14.0pt'>=</span><i><span
+lang=EN-US style='font-size:14.0pt'>n</span></i><span style='font-size:14.0pt'>=23;
+максимальное число шагов: </span><i><span lang=EN-US style='font-size:14.0pt'>s</span></i><span
+style='font-size:14.0pt'>&#8804;]</span><sub><img width=39 height=41
+src="Buxhtab.files/image007.gif"></sub><span style='font-size:14.0pt'>[=2. </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>Шаги работы алгоритма представлены в трассировочной
+таблице 2.</span></p>
+
+<p class=MsoNormal style='margin-left:318.6pt;text-indent:35.4pt'><span
+style='font-size:14.0pt'>Таблица 2</span></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width=512
+ style='width:383.7pt;margin-left:41.4pt;border-collapse:collapse;border:none'>
+ <tr style='height:12.75pt'>
+  <td width=64 nowrap style='width:48.0pt;border:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Шаг, <i>s</i></p>
+  </td>
+  <td width=149 nowrap style='width:111.95pt;border:solid windowtext 2.25pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Условие:<sub><img
+  width=63 height=41 src="Buxhtab.files/image005.gif"></sub>?</p>
+  </td>
+  <td width=99 nowrap style='width:74.35pt;border:solid windowtext 2.25pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><i>N</i> = <i>N</i>+2<i>s</i>-1</p>
+  </td>
+  <td width=69 nowrap style='width:51.9pt;border:solid windowtext 2.25pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><sub><img width=59
+  height=25 src="Buxhtab.files/image006.gif"></sub></p>
+  </td>
+  <td width=130 nowrap style='width:97.5pt;border:solid windowtext 2.25pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Условие: <i>t</i><sup>2</sup>
+  =<i>N</i>?</p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=64 nowrap style='width:48.0pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>1</span></p>
+  </td>
+  <td width=149 nowrap style='width:111.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: 1</span>&#8804;<span style='font-size:10.0pt'>2</span></p>
+  </td>
+  <td width=99 nowrap style='width:74.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:10.0pt'>24</span></p>
+  </td>
+  <td width=69 nowrap style='width:51.9pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:10.0pt'>4</span></p>
+  </td>
+  <td width=130 nowrap style='width:97.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Нет: </span><span lang=EN-US style='font-size:10.0pt'>16</span><span
+  style='font-size:10.0pt'>&lt;&gt;</span><span lang=EN-US style='font-size:
+  10.0pt'>24</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=64 nowrap style='width:48.0pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>2</span></p>
+  </td>
+  <td width=149 nowrap style='width:111.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Да: 2</span>&#8804;<span style='font-size:10.0pt'>2</span></p>
+  </td>
+  <td width=99 nowrap style='width:74.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:10.0pt'>27</span></p>
+  </td>
+  <td width=69 nowrap style='width:51.9pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:10.0pt'>5</span></p>
+  </td>
+  <td width=130 nowrap style='width:97.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Нет: </span><span lang=EN-US style='font-size:10.0pt'>25</span><span
+  style='font-size:10.0pt'>&lt;&gt;</span><span lang=EN-US style='font-size:
+  10.0pt'>27</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=64 nowrap style='width:48.0pt;border:solid windowtext 2.25pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>3</span></p>
+  </td>
+  <td width=149 nowrap style='width:111.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Нет: 3</span><span lang=EN-US style='font-size:10.0pt'>&gt;</span><span
+  style='font-size:10.0pt'>2</span></p>
+  </td>
+  <td width=99 nowrap style='width:74.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:10.0pt'>-</span></p>
+  </td>
+  <td width=69 nowrap style='width:51.9pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:10.0pt'>-</span></p>
+  </td>
+  <td width=130 nowrap style='width:97.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:10.0pt'>-</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>Таким образом, число 23 не раскладывается данной
+методикой на два множителя.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Дополнительные_примеры_решения"><u><span style='font-size:14.0pt'>Дополнительные
+примеры для решения</span></u></a><span style='font-size:14.0pt'>:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>1. Разложите число </span><i><span lang=EN-US
+style='font-size:14.0pt'>n</span></i><span style='font-size:14.0pt'> = 391  на
+два сомножителя. (</span><i><span lang=EN-US style='font-size:14.0pt'>n</span></i><sub><span
+style='font-size:14.0pt'>1</span></sub><span style='font-size:14.0pt'>=17 и </span><i><span
+lang=EN-US style='font-size:14.0pt'>n</span></i><sub><span style='font-size:
+14.0pt'>2</span></sub><span style='font-size:14.0pt'>=23)</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>2. Разложите число </span><i><span lang=EN-US
+style='font-size:14.0pt'>n</span></i><span style='font-size:14.0pt'> = 58 на
+два сомножителя. (неопределенно)</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>3. Разложите число </span><i><span lang=EN-US
+style='font-size:14.0pt'>n</span></i><span style='font-size:14.0pt'> = 111 на
+два сомножителя. (</span><i><span lang=EN-US style='font-size:14.0pt'>n</span></i><sub><span
+style='font-size:14.0pt'>1</span></sub><span style='font-size:14.0pt'>=3 и </span><i><span
+lang=EN-US style='font-size:14.0pt'>n</span></i><sub><span style='font-size:
+14.0pt'>2</span></sub><span style='font-size:14.0pt'>=37)</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>4. Разложите число </span><i><span lang=EN-US
+style='font-size:14.0pt'>n</span></i><span style='font-size:14.0pt'> = 112 на
+два сомножителя. (</span><i><span lang=EN-US style='font-size:14.0pt'>n</span></i><sub><span
+style='font-size:14.0pt'>1</span></sub><span style='font-size:14.0pt'>=8 и </span><i><span
+lang=EN-US style='font-size:14.0pt'>n</span></i><sub><span style='font-size:
+14.0pt'>2</span></sub><span style='font-size:14.0pt'>=14)</span><a
+name=Задание></a></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><u><span
+style='font-size:14.0pt'>Задание</span></u><span style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>В данной лабораторной работе требуется освоить работу алгоритма
+Бухштаба разложения натурального числа на два сомножителя методом проб. Для
+этого необходимо выполнить следующее (каждый студент индивидуально выполняет
+задание и оформляет отчет).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>1. Выполнить на бумаге расчет одного из примеров
+(ранее не рассмотренного).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>2. Программно реализовать данный алгоритм в виде
+программы на любом из следующих языков программирования: </span><span
+lang=EN-US style='font-size:14.0pt'>C</span><span style='font-size:14.0pt'>,
+С++, </span><span lang=EN-US style='font-size:14.0pt'>Pascal</span><span
+style='font-size:14.0pt'>. Текст программы должен содержать комментарии к
+каждой строке кода.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>3. Оформить отчет о выполненной работе, с приведением
+расчета из пункта 1, листингов программ и двух-трех тестов (в виде
+трассировочных таблиц, как в таблицах 1 и 2).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>4. Выполнить сдачу работы руководителю лабораторного
+занятия (при этом существует возможность задания дополнительных вопросов).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Примечания><u><span style='font-size:14.0pt'>Примечания</span></u></a><span
+style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>Если число заключается в квадратные скобки, то данное
+число округляется к наименьшему целому.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Типы_операций"><span style='font-size:14.0pt'>В <u>языках “</u></span></a><u><span
+lang=EN-US style='font-size:14.0pt'>C</span></u><u><span style='font-size:14.0pt'>”
+и “</span></u><u><span lang=EN-US style='font-size:14.0pt'>Pascal</span></u><u><span
+style='font-size:14.0pt'>”</span></u><span style='font-size:14.0pt'>
+используются следующие <u>команды и знаки операций</u>, которые можно применить
+в работе (табл. 3):</span></p>
+
+<p class=MsoNormal align=center style='margin-left:318.6pt;text-align:center;
+text-indent:35.4pt'><span style='font-size:14.0pt'>Таблица 3</span></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='margin-left:14.4pt;border-collapse:collapse'>
+ <tr style='height:16.5pt'>
+  <td width=440 style='width:330.0pt;border:solid windowtext 1.5pt;padding:
+  0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Тип операции</p>
+  </td>
+  <td width=77 style='width:57.75pt;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Языки C, С++</p>
+  </td>
+  <td width=72 style='width:54.25pt;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>Язык Pascal</p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=440 valign=bottom style='width:330.0pt;border-top:none;border-left:
+  solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;border-right:
+  solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal>Округление числа <i><span lang=EN-US>x</span></i><span
+  lang=EN-US> </span>к наименьшему целому числу (без учета дробной части)</p>
+  </td>
+  <td width=77 style='width:57.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>(int)</span><i>x</i></p>
+  </td>
+  <td width=72 style='width:54.25pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>Int(</span><i>x</i><span
+  lang=EN-US>)</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=440 style='width:330.0pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal>Взятие квадратного корня из числа <i>x</i></p>
+  </td>
+  <td width=77 style='width:57.75pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>sqrt(</span><i>x</i><span
+  lang=EN-US>)</span></p>
+  </td>
+  <td width=72 style='width:54.25pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>sqrt(</span><i>x</i><span
+  lang=EN-US>)</span></p>
+  </td>
+ </tr>
+ <tr style='height:16.5pt'>
+  <td width=440 valign=bottom style='width:330.0pt;border:solid windowtext 1.5pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal>Операция взятия остатка от деления x на y</p>
+  </td>
+  <td width=77 valign=bottom style='width:57.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>x % y</p>
+  </td>
+  <td width=72 valign=bottom style='width:54.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'>x mod y</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Литература_для_подготовки"><span style='font-size:14.0pt'>&nbsp;</span></a></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=ДопВопросы><u><span style='font-size:14.0pt'>Вопросы для самопроверки</span></u></a><span
+style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>1. Какую задачу решает метод Бухштаба?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>2. Поясните суть метода Бухштаба.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>3. Поясните, для чего в методе Бухштаба используется
+арифметическая прогрессия.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>4. На основе каких условий принимается решение, что
+задача решена?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>5. Какие математические операции используются в методе
+Бухштаба?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><u><span
+style='font-size:14.0pt'>Литература для самостоятельной подготовки</span></u><span
+style='font-size:14.0pt'>:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>1. Бухштаб. Теория чисел.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>2. Уэйт М., Прата С., Мартин Д. Язык Си. Руководство
+для начинающих: Пер. с англ. – М.: Мир, 1988. – 512 с., ил.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>3. Прайс Д. Программирование на языке Паскаль:
+Практическое руководство. Пер. с англ. – М.: Мир, 1987. – 232 с., ил.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:14.0pt'>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

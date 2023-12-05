@@ -1,0 +1,1100 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title>Лабораторная работа</title>
+
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:2.0cm 42.5pt 2.0cm 3.0cm;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+
+</head>
+
+<body lang=RU>
+
+<div class=Section1>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span
+style='font-size:14.0pt'>Лабораторная работа</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><b><span style='font-size:14.0pt;color:black'>Схема
+шифрования Эль-Гамаля</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span lang=EN-US style='font-size:14.0pt;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Цель_работы"><u><span style='font-size:14.0pt'>Цель работы</span></u></a><span
+style='font-size:14.0pt'>: освоение практических методов использования и
+собственной программной реализации алгоритмов ассиметричного шифрования на
+примере схемы Эль-Гамаля. </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name="Описание_работы"><u><span style='font-size:
+14.0pt;color:black'>Описание работы</span></u></a><span style='font-size:14.0pt;
+color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Схема Эль-Гамаля,
+предложенная в 1985 г., используется для шифрования и для цифровых подписей.
+Безопасность схемы Эль-Гамаля обусловлена сложностью вычисления дискретных
+логарифмов в конечном поле. В реальных схемах шифрования используется в
+качестве модуля Р простое число размерностью в [512; 1024] бит.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Выберем
+большое простое число </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>P</span><span style='font-size:14.0pt;color:black'> и два больших
+целых числа </span><span lang=EN-US style='font-size:14.0pt;color:black'>G</span><span
+style='font-size:14.0pt;color:black'> и </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>X</span><span style='font-size:14.0pt;
+color:black'>, меньших </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>P</span><span style='font-size:14.0pt;color:black'>: </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>G</span><span style='font-size:
+14.0pt;color:black'> &lt; Р, </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>X</span><span style='font-size:14.0pt;color:black'> &lt; Р. Выберем
+случайное целое число К, удовлетворяющее условиям:</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span style='font-size:14.0pt;color:black'>1 &lt; К &lt;
+Р-1,</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span style='font-size:14.0pt;color:black'>НОД(</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>K</span><span style='font-size:
+14.0pt;color:black'>, </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>P</span><span style='font-size:14.0pt;color:black'>-1)=1 (взаимно
+простые).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Числа </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>P</span><span style='font-size:
+14.0pt;color:black'> и </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>G</span><span style='font-size:14.0pt;color:black'> являются
+открытой информацией, а </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>X</span><span style='font-size:14.0pt;color:black'> и </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>K</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span style='font-size:14.0pt;
+color:black'>– секретные.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Далее
+вычислим открытый ключ </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>Y</span><span style='font-size:14.0pt;color:black'> = </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>G<sup>x</sup></span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>mod</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>P</span><span style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Для передачи
+сообщения М вычисляем два числа, образующих шифротекст:</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span lang=EN-US style='font-size:14.0pt;color:black'>a =
+G<sup>K</sup> mod P</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span lang=EN-US style='font-size:14.0pt;color:black'>b =
+Y<sup>K</sup> M mod P.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>В результате шифротекст по длине в 2 раза
+больше открытого текста М.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>Возведем уравнение для </span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>a</span></i><span
+style='font-size:14.0pt;color:black'> в степень </span><i><span lang=EN-US
+style='font-size:14.0pt;color:black'>x</span></i><span style='font-size:14.0pt;
+color:black'>: </span><span lang=EN-US style='font-size:14.0pt;color:black'>a<sup>x</sup></span><sup><span
+lang=EN-US style='font-size:14.0pt;color:black'>  </span></sup><span
+style='font-size:14.0pt;color:black'>= </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>G<sup>xk</sup></span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>mod</span><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span lang=EN-US style='font-size:14.0pt;color:black'>P</span><span
+style='font-size:14.0pt;color:black'>. </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>Изменим выражение </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>b</span><span style='font-size:14.0pt;
+color:black'>: так как </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>Y</span><span style='font-size:14.0pt;color:black'> = </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>G<sup>x</sup></span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>mod</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>P</span><span style='font-size:14.0pt;color:black'>, то </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>b</span><span style='font-size:
+14.0pt;color:black'> = </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>Y<sup>K</sup></span><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span lang=EN-US style='font-size:14.0pt;color:black'>M</span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>mod</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>P</span><span style='font-size:14.0pt;color:black'> = (</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>G<sup>x</sup></span><span
+style='font-size:14.0pt;color:black'>)</span><sup><span lang=EN-US
+style='font-size:14.0pt;color:black'>k</span></sup><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>M</span><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>P</span><span style='font-size:14.0pt;
+color:black'> = </span><span lang=EN-US style='font-size:14.0pt;color:black'>G<sup>xk</sup></span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>M</span><span lang=EN-US style='font-size:
+14.0pt;color:black'> </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>mod</span><span lang=EN-US style='font-size:14.0pt;color:black'> </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>P</span><span style='font-size:
+14.0pt;color:black'>. Так как </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>a<sup>x</sup></span><sup><span style='font-size:14.0pt;color:black'> 
+</span></sup><span style='font-size:14.0pt;color:black'>= </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>G<sup>xk</sup></span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>mod</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>P</span><span style='font-size:14.0pt;color:black'>, то </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>b</span><span style='font-size:
+14.0pt;color:black'> = </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>G<sup>xk</sup></span><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span lang=EN-US style='font-size:14.0pt;color:black'>M</span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>mod</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>P</span><span style='font-size:14.0pt;color:black'> = </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>a<sup>x</sup></span><sup><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span></sup><span lang=EN-US
+style='font-size:14.0pt;color:black'>M</span><span lang=EN-US style='font-size:
+14.0pt;color:black'> </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>mod</span><span lang=EN-US style='font-size:14.0pt;color:black'> </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>P</span><span style='font-size:
+14.0pt;color:black'>. Тогда восстановим открытый текст </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>M</span><span style='font-size:14.0pt;
+color:black'>: </span><span lang=EN-US style='font-size:14.0pt;color:black'>M</span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span style='font-size:
+14.0pt;color:black'>= </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>b</span><span style='font-size:14.0pt;color:black'> / </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>a<sup>x</sup></span><sup><span
+lang=EN-US style='font-size:14.0pt;color:black'>  </span></sup><span
+lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>P</span><span style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>Для нахождения </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>M</span><span lang=EN-US style='font-size:
+14.0pt;color:black'> </span><span style='font-size:14.0pt;color:black'>нужно
+решить сложное сравнение </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>b</span><span style='font-size:14.0pt;color:black'> = </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>a<sup>x</sup></span><sup><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span></sup><span lang=EN-US
+style='font-size:14.0pt;color:black'>M</span><span lang=EN-US style='font-size:
+14.0pt;color:black'> </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>mod</span><span lang=EN-US style='font-size:14.0pt;color:black'> </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>P</span><span style='font-size:
+14.0pt;color:black'> или </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>a<sup>x</sup></span><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span lang=EN-US style='font-size:14.0pt;color:black'>M</span><span
+style='font-size:14.0pt;color:black'>/</span><span lang=EN-US style='font-size:
+14.0pt;color:black'>b</span><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span style='font-size:14.0pt;color:black'> = 1 </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>P</span><span style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>Для <u>решения сложного сравнения</u> вида
+</span><span lang=EN-US style='font-size:14.0pt;color:black'>a</span><span
+style='font-size:14.0pt;color:black'>*</span><span lang=EN-US style='font-size:
+14.0pt;color:black'>x</span><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span style='font-size:14.0pt;color:black'>&#8801; </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>b</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>mod</span><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span lang=EN-US style='font-size:14.0pt;color:black'>n</span><span
+style='font-size:14.0pt;color:black'> применим метод замены: </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>z</span><span style='font-size:
+14.0pt;color:black'> = </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>x</span><span style='font-size:14.0pt;color:black'>/</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>b</span><span style='font-size:
+14.0pt;color:black'>. Тогда </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>a</span><span style='font-size:14.0pt;color:black'>*</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>z</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span style='font-size:14.0pt;
+color:black'>&#8801; 1 </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>mod</span><span lang=EN-US style='font-size:14.0pt;color:black'> </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>n</span><span style='font-size:
+14.0pt;color:black'>, где </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>z</span><span lang=EN-US style='font-size:14.0pt;color:black'> </span><span
+style='font-size:14.0pt;color:black'>является обратным элементом для </span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>a</span></i><span
+style='font-size:14.0pt;color:black'>. Число </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>z</span><span lang=EN-US style='font-size:
+14.0pt;color:black'> </span><span style='font-size:14.0pt;color:black'>определяется
+с помощью расширенного алгоритма Евклида.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>Тогда из </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>z</span><span style='font-size:14.0pt;
+color:black'> = </span><span lang=EN-US style='font-size:14.0pt;color:black'>x</span><span
+style='font-size:14.0pt;color:black'>/</span><span lang=EN-US style='font-size:
+14.0pt;color:black'>b</span><span lang=EN-US style='font-size:14.0pt;
+color:black'>  </span><span style='font-size:14.0pt;color:black'>=&gt; </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>x</span><span style='font-size:
+14.0pt;color:black'> = </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>z</span><span style='font-size:14.0pt;color:black'>*</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>b</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>mod</span><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span lang=EN-US style='font-size:14.0pt;color:black'>n</span><span
+style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>Применим данную схему для нахождения
+открытого текста </span><span lang=EN-US style='font-size:14.0pt;color:black'>M</span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span style='font-size:
+14.0pt;color:black'>в </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>a<sup>x</sup>M</span><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span style='font-size:14.0pt;color:black'>= </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>b</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>mod</span><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span lang=EN-US style='font-size:14.0pt;color:black'>P</span><span
+style='font-size:14.0pt;color:black'>. Обозначим за </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>z</span><span lang=EN-US style='font-size:
+14.0pt;color:black'> </span><span style='font-size:14.0pt;color:black'>выражение
+</span><span lang=EN-US style='font-size:14.0pt;color:black'>z</span><span
+style='font-size:14.0pt;color:black'> = </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>M</span><span style='font-size:14.0pt;
+color:black'>/</span><span lang=EN-US style='font-size:14.0pt;color:black'>b</span><span
+style='font-size:14.0pt;color:black'>, которое будет обратным элементом для </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>a<sup>x</sup></span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span style='font-size:
+14.0pt;color:black'>по модулю </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>P: a<sup>x </sup>z &#8801; 1 mod P. </span><span style='font-size:
+14.0pt;color:black'>Тогда</span><span style='font-size:14.0pt;color:black'> <span
+lang=EN-US>M = z*b mod P = a<sup>-x</sup>*b mod P.</span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name=Алгоритм><u><span style='font-size:14.0pt;
+color:black'>Механизм использования схемы Эль-Гамаля</span></u></a><span
+style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Предлагается
+реализовать данные алгоритм для чисел размерностью в машинное слово (до 32 бит
+– 2<sup>32</sup> комбинаций), задавая в качестве исходного открытого текста
+буквы русского алфавита, и выбирая модуль, соизмеримый с размером алфавита
+(если модуль будет меньше, то результат расшифровки будет отличаться от
+исходного открытого текста).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Пусть
+пользователь А собирается передать пользователю В сообщение в зашифрованном
+виде, используя схему Эль-Гамаля. Пользователь А выступает в роли отправителя
+сообщения, а пользователь В - в роли получателя. Элементы схемы Эль-Гамаля
+должен формировать получатель сообщения - пользователь В. Рассмотрим
+последовательность действий пользователя В и пользователя А.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><i><span style='font-size:14.0pt;color:black'>Действия
+пользователя </span></i><i><span lang=EN-US style='font-size:14.0pt;color:black'>B</span></i><span
+style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>1.   Выбирает
+произвольное большое простое числа Р.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>2.  Выбирает
+случайное </span><span lang=EN-US style='font-size:14.0pt;color:black'>G</span><span
+style='font-size:14.0pt;color:black'>, </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>G</span><span style='font-size:14.0pt;
+color:black'> &lt; </span><span lang=EN-US style='font-size:14.0pt;color:black'>P</span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span style='font-size:
+14.0pt;color:black'>и секретный ключ </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>X</span><span style='font-size:14.0pt;color:black'>, </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>X</span><span style='font-size:
+14.0pt;color:black'> &lt; </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>P</span><span style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>3. Вычисляется
+открытый ключ </span><span lang=EN-US style='font-size:14.0pt;color:black'>Y</span><span
+style='font-size:14.0pt;color:black'> = </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>G<sup>x</sup></span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>mod</span><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span lang=EN-US style='font-size:14.0pt;color:black'>P</span><span
+style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>4. Стороне
+</span><span lang=EN-US style='font-size:14.0pt;color:black'>A</span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span style='font-size:
+14.0pt;color:black'>передаются числа </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>G</span><span style='font-size:14.0pt;color:black'>, </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>P</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span style='font-size:14.0pt;
+color:black'>и </span><span lang=EN-US style='font-size:14.0pt;color:black'>Y</span><span
+style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><i><span style='font-size:14.0pt;color:black'>Действия
+пользователя </span></i><i><span lang=EN-US style='font-size:14.0pt;color:black'>A</span></i><span
+style='font-size:14.0pt;color:black'>, передающего пользователю В сообщение М.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>5. 
+Пользователь А разбивает исходный открытый текст М на блоки, каждый из
+которых   может   быть   представлен в виде последовательности чисел </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>M<sub>i</sub></span><span
+style='font-size:14.0pt;color:black'> = 0, 1, …, </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>n</span><span style='font-size:14.0pt;
+color:black'>-1.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>6.
+Случайно выбирается </span><span lang=EN-US style='font-size:14.0pt;color:black'>K</span><span
+style='font-size:14.0pt;color:black'>, удовлетворяющее условиям</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span style='font-size:14.0pt;color:black'>1 &lt; К &lt;
+Р-1 и НОД(</span><span lang=EN-US style='font-size:14.0pt;color:black'>K</span><span
+style='font-size:14.0pt;color:black'>, </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>P</span><span style='font-size:14.0pt;
+color:black'>-1)=1.</span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;background:white;text-autospace:
+none'><span style='font-size:14.0pt'>7. Вычисляется первая часть шифротекста: </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>a</span><span style='font-size:
+14.0pt;color:black'> = </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>G<sup>K</sup></span><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>P</span><span style='font-size:14.0pt;
+color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt'>8. <span
+style='color:black'>Пользователь А шифрует текст, представленный в виде
+последовательности чисел </span></span><span lang=EN-US style='font-size:14.0pt;
+color:black'>b<sub>i</sub></span><span style='font-size:14.0pt;color:black'> по
+формуле </span><span lang=EN-US style='font-size:14.0pt;color:black'>b<sub>i</sub></span><span
+style='font-size:14.0pt;color:black'> = </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>Y<sup>K</sup></span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>M<sub>i</sub></span><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>P</span><span style='font-size:14.0pt;
+color:black'> (схема Горнера) и отправляет криптограмму (</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>a</span><span style='font-size:
+14.0pt;color:black'>, </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>b</span><sub><span style='font-size:14.0pt;color:black'>1</span></sub><span
+style='font-size:14.0pt;color:black'>, </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>b</span><sub><span style='font-size:14.0pt;
+color:black'>2</span></sub><span style='font-size:14.0pt;color:black'>, …, </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>b<sub>i</sub></span><span
+style='font-size:14.0pt;color:black'>,…) пользователю В.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><i><span style='font-size:14.0pt;color:black'>Действия
+пользователя </span></i><i><span lang=EN-US style='font-size:14.0pt;color:black'>B</span></i><span
+style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>8. Находит
+обратный элемент для </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>a<sup>x</sup></span><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span style='font-size:14.0pt;color:black'>по модулю </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>P.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span lang=EN-US style='font-size:14.0pt;color:black'>9.
+</span><span style='font-size:14.0pt;color:black'>Расшифровывает </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>M<sub>i</sub></span><span
+style='font-size:14.0pt;color:black'> = </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>b<sub>i</sub>*a<sup>-x</sup> mod P, <span
+style='position:relative;top:5.0pt'><img width=100 height=31
+src="ElGamal.files/image001.png"></span>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>В
+результате будет получена последовательность чисел М</span><sub><span
+lang=EN-US style='font-size:14.0pt;color:black'>i</span></sub><span
+style='font-size:14.0pt;color:black'>, которые представляют собой исходное
+сообщение М. </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name=Пример><u><span style='font-size:14.0pt;
+color:black'>Пример</span></u></a><span style='font-size:14.0pt;color:black'>.
+Проведем шифрование и расшифровку сообщения “ЭБФ”. Будем использовать русские
+прописные буквы (перевод буквы алфавита в число представлен на таблице 1).</span></p>
+
+<p class=MsoNormal align=right style='text-align:right;text-indent:27.0pt;
+background:white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Таблица
+1.</span></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=468
+ style='width:351.2pt;margin-left:59.4pt;border-collapse:collapse'>
+ <tr style='height:12.75pt'>
+  <td width=29 nowrap style='width:21.95pt;border-top:2.25pt;border-left:2.25pt;
+  border-bottom:1.0pt;border-right:1.0pt;border-color:windowtext;border-style:
+  solid;padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>1</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>2</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>3</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>4</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>5</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>6</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>7</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>8</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>9</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>10</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>11</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>12</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>13</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>14</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>15</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>16</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>А</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Б</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>В</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Г</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Д</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Е</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Ж</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>З</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>И</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Й</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>К</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Л</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>М</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Н</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>О</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>П</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>17</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>18</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>19</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>20</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>21</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>22</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>23</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>24</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>25</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>26</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>27</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>28</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>29</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>30</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>31</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>32</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Р</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>С</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Т</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>У</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Ф</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Х</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Ц</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Ч</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Ш</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Щ</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Ъ</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Ы</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Ь</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Э</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Ю</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Я</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><i><span style='font-size:14.0pt;color:black'>Действия
+пользователя В.</span></i></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>1. Выберем </span><span lang=EN-US style='font-size:
+14.0pt'>P</span><span style='font-size:14.0pt'> = 37, <span
+ lang=EN-US>G</span> = 2, секретный ключ </span><span lang=EN-US
+style='font-size:14.0pt'>X</span><span style='font-size:14.0pt'> = 8.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>2. Вычисляем открытый ключ </span><span lang=EN-US
+style='font-size:14.0pt'>Y</span><span style='font-size:14.0pt'> = </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>G<sup>x</sup></span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>mod</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>P</span><span style='font-size:14.0pt;color:black'> = 2<sup>8</sup>
+</span><span lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span
+style='font-size:14.0pt;color:black'> 37 = 34.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>3. Передача А числа </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>P</span><span style='font-size:
+14.0pt;color:black'>, </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>G</span><span style='font-size:14.0pt;color:black'>, </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>Y</span><span style='font-size:
+14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><i><span
+style='font-size:14.0pt;color:black'>Действия пользователя </span></i><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>A</span></i><i><span
+style='font-size:14.0pt;color:black'>.</span></i></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;background:white;text-autospace:
+none'><span style='font-size:14.0pt;color:black'>4. Выбирает число </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>K</span><span style='font-size:
+14.0pt;color:black'> = 7. Оно 1 &lt; К &lt; Р-1 и НОД(</span><span lang=EN-US
+style='font-size:14.0pt;color:black'>K</span><span style='font-size:14.0pt;
+color:black'>, </span><span lang=EN-US style='font-size:14.0pt;color:black'>P</span><span
+style='font-size:14.0pt;color:black'>-1)=1.</span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;background:white;text-autospace:
+none'><span lang=EN-US style='font-size:14.0pt;color:black'>5. </span><span
+style='font-size:14.0pt;color:black'>Вычисляется</span><span style='font-size:
+14.0pt;color:black'> <span lang=EN-US>a = G<sup>K</sup> mod P = 2<sup>7</sup>
+mod 37 = 17.</span></span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;background:white;text-autospace:
+none'><span style='font-size:14.0pt;color:black'>6. Шифруем </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>M</span><span style='font-size:
+14.0pt;color:black'> и передаем </span><span style='font-size:14.0pt'>стороне </span><span
+lang=EN-US style='font-size:14.0pt'>B</span><span style='font-size:14.0pt;
+color:black'>:</span></p>
+
+<p class=MsoNormal style='text-indent:45.0pt;background:white;text-autospace:
+none'><span lang=EN-US style='font-size:14.0pt;color:black'>M<sub>0</sub>= 30: b<sub>0</sub>
+= M<sub>0</sub>Y<sup>K</sup>mod P = 30*34<sup>7</sup> mod 37 = 30*33 mod 37= 28.</span></p>
+
+<p class=MsoNormal style='text-indent:45.0pt;background:white;text-autospace:
+none'><span lang=EN-US style='font-size:14.0pt;color:black'>M<sub>1</sub>= 2: b<sub>1</sub>
+= M<sub>1</sub>Y<sup>K</sup>mod P = 2*34<sup>7</sup> mod 37 = 2*33 mod 37= 29.</span></p>
+
+<p class=MsoNormal style='text-indent:45.0pt;background:white;text-autospace:
+none'><span lang=EN-US style='font-size:14.0pt;color:black'>M<sub>2</sub>= 21: b<sub>2</sub>
+= M<sub>2</sub>Y<sup>K</sup>mod P = 21*34<sup>7</sup> mod 37 = 21*33 mod 37= 27.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><i><span style='font-size:14.0pt;color:black'>Действия
+пользователя В.</span></i></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;background:white;text-autospace:
+none'><span style='font-size:14.0pt'>7. <span style='color:black'>Находит
+обратный элемент для </span></span><span lang=EN-US style='font-size:14.0pt;
+color:black'>a<sup>x</sup></span><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span style='font-size:14.0pt;color:black'>по модулю </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>P: a<sup>x</sup> *a<sup>-x</sup></span><span
+style='font-size:14.0pt;color:black'> &#8801;1 </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>mod P.</span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;background:white;text-autospace:
+none'><span lang=EN-US style='font-size:14.0pt;color:black'>a<sup>x</sup> = a<sup>x</sup>
+mod P = 17<sup>8</sup> mod 37 = 33. </span><span style='font-size:14.0pt;
+color:black'>Его обратным элементом является </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>a</span><sup><span style='font-size:14.0pt;
+color:black'>-</span></sup><sup><span lang=EN-US style='font-size:14.0pt;
+color:black'>x</span></sup><span style='font-size:14.0pt;color:black'> = 9
+(расширенный алгоритм Евклида).</span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;background:white;text-autospace:
+none'><span style='font-size:14.0pt;color:black'>8. Расшифровываем шифротекст:</span></p>
+
+<p class=MsoNormal style='text-indent:45.0pt;background:white;text-autospace:
+none'><span lang=EN-US style='font-size:14.0pt;color:black'>b</span><sub><span
+style='font-size:14.0pt;color:black'>0</span></sub><span style='font-size:14.0pt;
+color:black'>= 30: </span><span lang=EN-US style='font-size:14.0pt;color:black'>M</span><sub><span
+style='font-size:14.0pt;color:black'>0</span></sub><span style='font-size:14.0pt;
+color:black'> = </span><span lang=EN-US style='font-size:14.0pt;color:black'>b</span><sub><span
+style='font-size:14.0pt;color:black'>0</span></sub><span lang=EN-US
+style='font-size:14.0pt;color:black'>a</span><sup><span style='font-size:14.0pt;
+color:black'>-</span></sup><sup><span lang=EN-US style='font-size:14.0pt;
+color:black'>x</span></sup><span lang=EN-US style='font-size:14.0pt;color:black'>
+</span><span lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>P</span><span style='font-size:14.0pt;
+color:black'> = 28*9 </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>mod</span><span style='font-size:14.0pt;color:black'> 37 = 30*33 </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span
+style='font-size:14.0pt;color:black'> 37= 30.</span></p>
+
+<p class=MsoNormal style='text-indent:45.0pt;background:white;text-autospace:
+none'><span lang=EN-US style='font-size:14.0pt;color:black'>b<sub>1</sub>= 2: M<sub>
+1</sub> = b<sub>1</sub> a<sup>-x</sup> mod P = 29*9 mod 37 = 2*33 mod 37= 2.</span></p>
+
+<p class=MsoNormal style='text-indent:45.0pt;background:white;text-autospace:
+none'><span lang=EN-US style='font-size:14.0pt;color:black'>b<sub>2</sub>= 21: M<sub>
+2</sub> = b<sub>2</sub> a<sup>-x</sup> mod P = 27*9 mod 37 = 21*33 mod 37= 21.</span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;background:white;text-autospace:
+none'><span style='font-size:14.0pt;color:black'>Восстановили сообщение </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>“</span><span style='font-size:
+14.0pt;color:black'>ЭБФ</span><span lang=EN-US style='font-size:14.0pt;
+color:black'>”</span><span style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;background:white;text-autospace:
+none'><span style='font-size:14.0pt;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=ДопПримеры><u><span style='font-size:14.0pt'>Дополнительные примеры для
+решения</span></u></a><span style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>Используйте первые буквы своих инициалов для развития
+умений использования схемы Эль-Гамаля.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Задание><span style='font-size:14.0pt'>&nbsp;</span></a></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><u><span
+style='font-size:14.0pt'>Задание</span></u><u><span style='font-size:14.0pt'>.</span></u></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>В данной лабораторной работе требуется освоить работу схемы
+Эль-Гамаля. Для этого необходимо выполнить следующее (каждый студент индивидуально
+выполняет задание и оформляет отчет).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>1. Выполнить на бумаге расчет шифрования и расшифровки
+первых букв из собственных инициалов (фамилии, имени, отчества).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>2. Программно реализовать (для чисел размерностью в
+машинное слово) схему Эль-Гамаля в виде программы на любом из следующих языков
+программирования: </span><span lang=EN-US style='font-size:14.0pt'>C</span><span
+style='font-size:14.0pt'>, С++, </span><span lang=EN-US style='font-size:14.0pt'>Pascal</span><span
+style='font-size:14.0pt'>. Текст программы должен содержать комментарии к
+каждой строке кода.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>3. Оформить отчет о выполненной работе, с приведением расчета
+из пункта 1, листингов программ и двух-трех тестов (как в первом пункте
+задания).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>4. Выполнить сдачу работы руководителю лабораторного
+занятия (при этом существует возможность задания дополнительных вопросов).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=ДопВопросы><u><span style='font-size:14.0pt'>Вопросы для самопроверки</span></u></a><u><span
+style='font-size:14.0pt'>.</span></u></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>1. В чем суть алгоритма Эль-Гамаля?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>2. Поясните схему работы алгоритма Эль-Гамаля?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>3. По каким условиям выбираются параметры алгоритма
+Эль-Гамаля?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>4. Каким образом выполняется шифрование данных по
+алгоритму Эль-Гамаля?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>5. Каким образом выполняется расшифрование данных по
+алгоритму Эль-Гамаля?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>6. Что составляет цифровую подпись? Какие элементы
+подписи являются открытыми и секретными для сторон?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>7. Каким образом решаются сложные сравнения вида a*x
+&#8801; b mod n?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>8. Какие математические операции используются в
+алгоритме Эль-Гамаля?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>9. Какие алгоритмы, рассмотренные в курсе
+«Математические основы криптологии», используются в алгоритме Эль-Гамаля?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Литература><u><span style='font-size:14.0pt'>Литература для
+самостоятельной подготовки</span></u></a><span style='font-size:14.0pt'>: </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>1. Ю.В.Романец, П.А.Тимофеев, В.Ф. Шаньгин. Защита
+информации в компьютерных системах и сетях /Под ред. В.Ф. Шаньгина. - М.: Радио
+и связь,1999.-328 с.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>2. Алферов А.П., Зубов А.Ю., Кузьмин А.С., Черемушкин
+А.В. Основы криптографии: Учебное пособие, 2-е изд., испр. И доп. – М.: Гелиос
+АРВ, 2002. – 480 с.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:14.0pt'>3</span><span style='font-size:14.0pt'>. Р.
+Лидл, Г. Нидеррайтер. Конечные поля: В 2 т. / Перевод с англ. А.Е.Жукова,
+В.И.Петрова; Под ред. В.И.Нечаева. – М.: Мир, 1988.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>4. Уэйт М., Прата С., Мартин Д. Язык Си. Руководство
+для начинающих: Пер. с англ. – М.: Мир, 1988. – 512 с., ил.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>5. Прайс Д. Программирование на языке Паскаль:
+Практическое руководство. Пер. с англ. – М.: Мир, 1987. – 232 с., ил.</span></p>
+
+</div>
+
+</body>
+
+</html>

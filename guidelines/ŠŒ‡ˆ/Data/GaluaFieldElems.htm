@@ -1,0 +1,3211 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title>Лабораторная работа</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Arial CYR";
+	panose-1:2 11 6 4 2 2 2 2 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:14.0pt;
+	font-family:"Times New Roman";
+	color:black;}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:1.0cm;
+	font-size:14.0pt;
+	font-family:"Times New Roman";}
+p.Referat, li.Referat, div.Referat
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	color:black;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:17.0pt 1.0cm 17.0pt 42.55pt;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+
+</head>
+
+<body lang=RU>
+
+<div class=Section1>
+
+<p class=MsoNormal align=center style='text-align:center'><a name="Цель_работы"><b>Лабораторная
+работа</b></a></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b>&nbsp;</b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><a
+name="Вычисление_элементов_полей_Галуа"><b>Вычисление элементов полей Галуа</b></a></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><u>Цель работы</u>:
+Изучение методов построения элементов полей Галуа.</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>&nbsp;</p>
+
+<p class=MsoNormal align=center style='text-align:center'><b>Описание работы</b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'>&nbsp;</p>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center;text-indent:
+0cm'><a name="Понятие_конечного_поля"><b>Понятие конечного поля</b></a></p>
+
+<p class=MsoBodyTextIndent><a name=Группа><u><span style='font-size:12.0pt'>Множество
+</span></u></a><u><span lang=EN-US style='font-size:12.0pt'>G</span></u><span
+style='font-size:12.0pt'> называется <u>группой</u></span><span
+style='font-size:12.0pt'>, если для любой пары элементов &#945; и &#946; є </span><span
+lang=EN-US style='font-size:12.0pt'>G</span><span style='font-size:12.0pt'>
+определена операция “*” и <a name="Свойства_Группы">выполняются следующие
+четыре аксиомы</a>:</span></p>
+
+<p class=MsoBodyTextIndent style='text-indent:27.0pt'><span style='font-size:
+12.0pt'>1. Замкнутость: для любых &#945; и &#946; є </span><span lang=EN-US
+style='font-size:12.0pt'>G</span><span style='font-size:12.0pt'> элемент
+&#945;*&#946; принадлежит </span><span lang=EN-US style='font-size:12.0pt'>G</span><span
+style='font-size:12.0pt'>.</span></p>
+
+<p class=MsoBodyTextIndent style='text-indent:27.0pt'><span style='font-size:
+12.0pt'>2. Ассоциативность: для любых &#945;, &#946; и &#947; є </span><span
+lang=EN-US style='font-size:12.0pt'>G</span></p>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center;text-indent:
+27.0pt'><span style='font-size:12.0pt'>(&#945; * &#946;) * &#947; = &#945; *
+(&#946; * &#947;).</span></p>
+
+<p class=MsoBodyTextIndent style='text-indent:27.0pt'><span style='font-size:
+12.0pt'>3. </span><span lang=EN-US style='font-size:12.0pt'>G</span><span
+style='font-size:12.0pt'> содержит единственный элемент е, называемый единицей
+группы </span><span lang=EN-US style='font-size:12.0pt'>G</span><span
+style='font-size:12.0pt'>, такой, что для любого &#945; є </span><span
+lang=EN-US style='font-size:12.0pt'>G</span></p>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center;text-indent:
+27.0pt'><span style='font-size:12.0pt'>е*&#945; = &#945;*е = &#945;.</span></p>
+
+<p class=MsoBodyTextIndent style='text-indent:27.0pt'><span style='font-size:
+12.0pt'>4. Для любого &#945; є </span><span lang=EN-US style='font-size:12.0pt'>G</span><span
+style='font-size:12.0pt'> существует единственный элемент &#945;<sup>-1</sup> є
+</span><span lang=EN-US style='font-size:12.0pt'>G</span><span
+style='font-size:12.0pt'> и называемый элементом, обратным элементу &#945;,
+такой, что </span></p>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center;text-indent:
+27.0pt'><span style='font-size:12.0pt'>&#945;*&#945;<sup>-1</sup> = &#945;<sup>-1</sup>*&#945;
+= е.</span></p>
+
+<p class=MsoBodyTextIndent style='text-indent:27.0pt'><span style='font-size:
+12.0pt'>Группа </span><span lang=EN-US style='font-size:12.0pt'>G</span><span
+style='font-size:12.0pt'> называется абелевой, если выполняется аксиома
+коммутативности: для любых &#945; и &#946; є </span><span lang=EN-US
+style='font-size:12.0pt'>G</span></p>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center;text-indent:
+27.0pt'><span style='font-size:12.0pt'>&#945;*&#946; = &#946;*&#945;.</span></p>
+
+<p class=MsoBodyTextIndent><span style='font-size:12.0pt'>Если операция *
+является сложением (+), то <u>группа </u></span><u><span lang=EN-US
+style='font-size:12.0pt'>G</span></u><span style='font-size:12.0pt'> называется
+<u>аддитивной</u>. Для элементов е, &#945;<sup>-1</sup>, и &#945;+(&#946;<sup>-1</sup>)
+приняты следующие обозначения: 0, -&#945;, &#945; – &#946;.</span></p>
+
+<p class=MsoBodyTextIndent><span style='font-size:12.0pt'>Если операция *
+является умножением (&#903;), то <u>группа </u></span><u><span lang=EN-US
+style='font-size:12.0pt'>G</span></u><span style='font-size:12.0pt'> называется
+<u>мультипликативной</u> и элемент е обычно обозначается символом 1 (единичный
+элемент). <u>Порядком элемента &#945;</u> мультипликативной группы называется
+наименьшее целое число </span><span lang=EN-US style='font-size:12.0pt'>i</span><span
+style='font-size:12.0pt'>, такое, что &#945;</span><sup><span lang=EN-US
+style='font-size:12.0pt'>i</span></sup><span style='font-size:12.0pt'>=&#945;&#903;&#945;&#903;…&#903;&#945;=1.</span></p>
+
+<p class=MsoBodyTextIndent><a name=Кольцо><u><span style='font-size:12.0pt'>Множество
+</span></u></a><u><span lang=EN-US style='font-size:12.0pt'>R</span></u><span
+style='font-size:12.0pt'> называется <u>кольцом</u></span><span
+style='font-size:12.0pt'>, если сложение и умножение определены для любой пары
+элементов из </span><span lang=EN-US style='font-size:12.0pt'>R</span><span
+style='font-size:12.0pt'> и <a name="Свойства_Кольца">выполняются следующие
+аксиомы</a>:</span></p>
+
+<p class=MsoBodyTextIndent style='text-indent:27.0pt'><span style='font-size:
+12.0pt'>1. Множество </span><span lang=EN-US style='font-size:12.0pt'>R</span><span
+style='font-size:12.0pt'> является аддитивной абелевой группой.</span></p>
+
+<p class=MsoBodyTextIndent style='text-indent:27.0pt'><span style='font-size:
+12.0pt'>2. Замкнутость: для любых &#945; и &#946; є </span><span lang=EN-US
+style='font-size:12.0pt'>R</span><span style='font-size:12.0pt'> элемент
+&#945;*&#946; є </span><span lang=EN-US style='font-size:12.0pt'>R</span><span
+style='font-size:12.0pt'>.</span></p>
+
+<p class=MsoBodyTextIndent style='text-indent:27.0pt'><span style='font-size:
+12.0pt'>3. Ассоциативность: для любых </span><span lang=EN-US style='font-size:
+12.0pt'>&#945;</span><span style='font-size:12.0pt'>, </span><span lang=EN-US
+style='font-size:12.0pt'>&#946;</span><span style='font-size:12.0pt'> и </span><span
+lang=EN-US style='font-size:12.0pt'>&#947;</span><span style='font-size:12.0pt'>
+є </span><span lang=EN-US style='font-size:12.0pt'>R</span></p>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center;text-indent:
+0cm'><span style='font-size:12.0pt'>&#945;(&#946;&#947;) =
+(&#945;&#946;)&#947;.</span></p>
+
+<p class=MsoBodyTextIndent style='text-indent:27.0pt'><span style='font-size:
+12.0pt'>4. Дистрибутивность: для любых </span><span lang=EN-US
+style='font-size:12.0pt'>&#945;</span><span style='font-size:12.0pt'>, </span><span
+lang=EN-US style='font-size:12.0pt'>&#946;</span><span style='font-size:12.0pt'>
+и </span><span lang=EN-US style='font-size:12.0pt'>&#947;</span><span
+style='font-size:12.0pt'> є </span><span lang=EN-US style='font-size:12.0pt'>R</span></p>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center;text-indent:
+0cm'><span lang=EN-US style='font-size:12.0pt'>&#945;</span><span
+style='font-size:12.0pt'>(</span><span lang=EN-US style='font-size:12.0pt'>&#946;</span><span
+style='font-size:12.0pt'>+</span><span lang=EN-US style='font-size:12.0pt'>&#947;</span><span
+style='font-size:12.0pt'>) = </span><span lang=EN-US style='font-size:12.0pt'>&#945;&#946;</span><span
+lang=EN-US style='font-size:12.0pt'> </span><span style='font-size:12.0pt'>+ </span><span
+lang=EN-US style='font-size:12.0pt'>&#945;&#947;</span><span style='font-size:
+12.0pt'>   и   (</span><span lang=EN-US style='font-size:12.0pt'>&#946;</span><span
+style='font-size:12.0pt'>+</span><span lang=EN-US style='font-size:12.0pt'>&#947;</span><span
+style='font-size:12.0pt'>)</span><span lang=EN-US style='font-size:12.0pt'>&#945;</span><span
+style='font-size:12.0pt'> = </span><span lang=EN-US style='font-size:12.0pt'>&#946;&#945;</span><span
+style='font-size:12.0pt'>+</span><span lang=EN-US style='font-size:12.0pt'>&#947;&#945;</span><span
+style='font-size:12.0pt'>.</span></p>
+
+<p class=MsoBodyTextIndent style='text-indent:27.0pt'><span style='font-size:
+12.0pt'>5. Кольцо </span><span lang=EN-US style='font-size:12.0pt'>R</span><span
+style='font-size:12.0pt'> называется коммутативным, если выполняется аксиома
+коммутативности: для любых </span><span lang=EN-US style='font-size:12.0pt'>&#945;</span><span
+style='font-size:12.0pt'>, </span><span lang=EN-US style='font-size:12.0pt'>&#946;</span><span
+style='font-size:12.0pt'> и </span><span lang=EN-US style='font-size:12.0pt'>&#947;</span><span
+style='font-size:12.0pt'> є </span><span lang=EN-US style='font-size:12.0pt'>R</span></p>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center;text-indent:
+0cm'><span style='font-size:12.0pt'>&#945;&#946; = &#946;&#945;.</span></p>
+
+<p class=MsoBodyTextIndent><span style='font-size:12.0pt'>Коммутативное кольцо </span><u><span
+lang=EN-US style='font-size:12.0pt'>F</span></u><span style='font-size:12.0pt'>
+называется <a name=Поле><u>полем</u></a>, если <a name="Свойства_Поля">выполняются
+следующие аксиомы</a>:</span></p>
+
+<p class=MsoBodyTextIndent style='text-indent:27.0pt'><span style='font-size:
+12.0pt'>1. Кольцо </span><span lang=EN-US style='font-size:12.0pt'>F</span><span
+style='font-size:12.0pt'> содержит элемент 1, такой, что для любого &#945; є </span><span
+lang=EN-US style='font-size:12.0pt'>F</span></p>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center;text-indent:
+0cm'><span style='font-size:12.0pt'>1&#903;&#945; = &#945;&#903;1 = &#945;.</span></p>
+
+<p class=MsoBodyTextIndent style='text-indent:27.0pt'><span style='font-size:
+12.0pt'>2. Для любого ненулевого &#945; є </span><span lang=EN-US
+style='font-size:12.0pt'>F</span><span style='font-size:12.0pt'> существует
+элемент &#945;<sup>-1</sup>, также принадлежащий </span><span lang=EN-US
+style='font-size:12.0pt'>F</span><span style='font-size:12.0pt'>, такой, что</span></p>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center;text-indent:
+0cm'><span style='font-size:12.0pt'>&#945;&#903;&#945;<sup>-1</sup> = &#945;<sup>-1</sup>&#903;&#945;
+= 1.</span></p>
+
+<p class=MsoBodyTextIndent style='text-indent:27.0pt'><span style='font-size:
+12.0pt'>В таблице 1 приведены наиболее используемые алгебраические системы (“*”
+обозначает, что данная система обладает данным свойством или элементом).</span></p>
+
+<p class=MsoBodyTextIndent align=center style='margin-top:0cm;margin-right:
+35.75pt;margin-bottom:0cm;margin-left:354.0pt;margin-bottom:.0001pt;text-align:
+center;text-indent:0cm'>Таблица 1</p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse'>
+ <tr style='page-break-inside:avoid;height:12.75pt'>
+  <td width=252 rowspan=3 style='width:189.0pt;border:solid windowtext 1.0pt;
+  border-bottom:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><a
+  name="Виды_алгебраических_систем"><span style='font-size:10.0pt;color:windowtext'>Название
+  алгебраических систем</span></a></p>
+  </td>
+  <td width=160 colspan=4 style='width:120.0pt;border-top:solid windowtext 1.0pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>Аддитивные множества</span></p>
+  </td>
+  <td width=184 colspan=4 style='width:138.0pt;border-top:solid windowtext 1.0pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>Мультипликативные множества</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid;height:12.75pt'>
+  <td width=80 colspan=2 style='width:60.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>Свойства</span></p>
+  </td>
+  <td width=80 colspan=2 style='width:60.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>Элементы</span></p>
+  </td>
+  <td width=91 colspan=2 style='width:68.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>Свойства</span></p>
+  </td>
+  <td width=93 colspan=2 style='width:70.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>Элементы</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid;height:44.25pt'>
+  <td width=46 style='width:34.65pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:44.25pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:9.0pt;color:windowtext'>Ассоци</span><span lang=EN-US
+  style='font-size:9.0pt;color:windowtext'>-</span><span style='font-size:9.0pt;
+  color:windowtext'>атив</span><span lang=EN-US style='font-size:9.0pt;
+  color:windowtext'>-</span></p>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:9.0pt;color:windowtext'>ность</span></p>
+  </td>
+  <td width=34 style='width:25.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:44.25pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:8.0pt;color:windowtext'>Комму</span><span lang=EN-US
+  style='font-size:8.0pt;color:windowtext'>-</span></p>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:8.0pt;color:windowtext'>татив</span><span lang=EN-US
+  style='font-size:8.0pt;color:windowtext'>-</span></p>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:8.0pt;color:windowtext'>ность</span></p>
+  </td>
+  <td width=40 style='width:30.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:44.25pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:9.0pt;color:windowtext'>Нейт-ральный</span></p>
+  </td>
+  <td width=40 style='width:30.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:44.25pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:9.0pt;color:windowtext'>Симмет-ричный</span></p>
+  </td>
+  <td width=44 style='width:33.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:44.25pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:9.0pt;color:windowtext'>Ассоциа-тивность</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:44.25pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:9.0pt;color:windowtext'>Коммута-тивность</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:44.25pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:9.0pt;color:windowtext'>Нейт-ральный</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:44.25pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:9.0pt;color:windowtext'>Симмет-ричный</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=252 valign=bottom style='width:189.0pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;color:windowtext'>Полугруппа
+  (моноид)</span></p>
+  </td>
+  <td width=46 style='width:34.65pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=34 style='width:25.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=40 style='width:30.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=40 style='width:30.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=44 style='width:33.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=252 valign=bottom style='width:189.0pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;color:windowtext'>Абелева
+  (коммутативная) полугруппа</span></p>
+  </td>
+  <td width=46 style='width:34.65pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=34 style='width:25.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=40 style='width:30.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=40 style='width:30.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=44 style='width:33.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=252 valign=bottom style='width:189.0pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;color:windowtext'>Полугруппа
+  с нулем (единицей)</span></p>
+  </td>
+  <td width=46 style='width:34.65pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=34 style='width:25.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=40 style='width:30.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=40 style='width:30.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=44 style='width:33.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=252 valign=bottom style='width:189.0pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;color:windowtext'>Абелева
+  полугруппа с нулем (единицей)</span></p>
+  </td>
+  <td width=46 style='width:34.65pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=34 style='width:25.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=40 style='width:30.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=40 style='width:30.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=44 style='width:33.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=252 valign=bottom style='width:189.0pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;color:windowtext'>Группа</span></p>
+  </td>
+  <td width=46 style='width:34.65pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=34 style='width:25.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=40 style='width:30.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=40 style='width:30.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=44 style='width:33.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=252 valign=bottom style='width:189.0pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;color:windowtext'>Абелева
+  (коммутативная) группа</span></p>
+  </td>
+  <td width=46 style='width:34.65pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=34 style='width:25.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=40 style='width:30.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=40 style='width:30.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=44 style='width:33.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=252 valign=bottom style='width:189.0pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;color:windowtext'>Ассоциативное
+  кольцо</span></p>
+  </td>
+  <td width=46 style='width:34.65pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=34 style='width:25.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=40 style='width:30.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=40 style='width:30.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=44 style='width:33.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=252 valign=bottom style='width:189.0pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;color:windowtext'>Абелево
+  (коммутативное) кольцо</span></p>
+  </td>
+  <td width=46 style='width:34.65pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=34 style='width:25.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=40 style='width:30.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=40 style='width:30.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=44 style='width:33.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=252 valign=bottom style='width:189.0pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;color:windowtext'>Кольцо с
+  единицей (унитарное кольцо)</span></p>
+  </td>
+  <td width=46 style='width:34.65pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=34 style='width:25.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=40 style='width:30.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=40 style='width:30.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=44 style='width:33.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=252 valign=bottom style='width:189.0pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;color:windowtext'>Абелево
+  кольцо с единицей</span></p>
+  </td>
+  <td width=46 style='width:34.65pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=34 style='width:25.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=40 style='width:30.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=40 style='width:30.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=44 style='width:33.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=252 valign=bottom style='width:189.0pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;color:windowtext'>Тело</span></p>
+  </td>
+  <td width=46 style='width:34.65pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=34 style='width:25.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=40 style='width:30.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=40 style='width:30.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=44 style='width:33.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+ </tr>
+ <tr style='height:13.5pt'>
+  <td width=252 valign=bottom style='width:189.0pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:13.5pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt;color:windowtext'>Поле (коммутативное
+  тело)</span></p>
+  </td>
+  <td width=46 style='width:34.65pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:13.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=34 style='width:25.35pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:13.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=40 style='width:30.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:13.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=40 style='width:30.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:13.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=44 style='width:33.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:13.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:13.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:13.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+  <td width=47 style='width:35.0pt;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:13.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;color:windowtext'>*</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center;text-indent:
+0cm'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center;text-indent:
+0cm'><a name="Расширения_полей"><b>Расширения полей</b></a></p>
+
+<p class=MsoBodyTextIndent><span lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoBodyTextIndent><span style='font-size:12.0pt'>Многочленом
+относительно </span><span lang=EN-US style='font-size:12.0pt'>x</span><span
+style='font-size:12.0pt'> над полем </span><span lang=EN-US style='font-size:
+12.0pt'>F</span><span style='font-size:12.0pt'>=</span><span lang=EN-US
+style='font-size:12.0pt'>GF</span><span style='font-size:12.0pt'>(2) 
+называется выражение </span><span lang=EN-US style='font-size:12.0pt'>f</span><span
+style='font-size:12.0pt'>(</span><span lang=EN-US style='font-size:12.0pt'>x</span><span
+style='font-size:12.0pt'>) = </span><span lang=EN-US style='font-size:12.0pt'>&#945;</span><sub><span
+style='font-size:12.0pt'>0</span></sub><span style='font-size:12.0pt'>+</span><span
+lang=EN-US style='font-size:12.0pt'>&#945;</span><sub><span style='font-size:
+12.0pt'>1</span></sub><span lang=EN-US style='font-size:12.0pt'>x</span><span
+style='font-size:12.0pt'>+…+</span><span lang=EN-US style='font-size:12.0pt'>&#945;<sub>n</sub>x<sup>n</sup></span><span
+style='font-size:12.0pt'> , &#945;</span><sub><span lang=EN-US
+style='font-size:12.0pt'>i</span></sub><span style='font-size:12.0pt'> є </span><span
+lang=EN-US style='font-size:12.0pt'>F</span><span style='font-size:12.0pt'>, <span
+style='position:relative;top:5.0pt'><img width=60 height=25
+src="GaluaFieldElems.files/image001.png"></span>. <u>Степенью многочлена </u></span><u><span
+lang=EN-US style='font-size:12.0pt'>f</span></u><u><span style='font-size:12.0pt'>(x)</span></u><span
+style='font-size:12.0pt'> называется наибольшее число </span><span lang=EN-US
+style='font-size:12.0pt'>i</span><span style='font-size:12.0pt'>, при котором
+&#945;</span><sub><span lang=EN-US style='font-size:12.0pt'>i</span></sub><span
+style='font-size:12.0pt'> = 1. Многочлен нулевой степени называется <u>константой</u>.</span></p>
+
+<p class=MsoBodyTextIndent><u><span style='font-size:12.0pt'>Многочлен </span></u><u><span
+lang=EN-US style='font-size:12.0pt'>f</span></u><span style='font-size:12.0pt'>
+над полем </span><span lang=EN-US style='font-size:12.0pt'>F</span><span
+style='font-size:12.0pt'>=</span><span lang=EN-US style='font-size:12.0pt'>GF</span><span
+style='font-size:12.0pt'>(2)  называется <a name="неприводимый_многочлен"><u>неприводимым</u></a>,
+если он имеет положительную степень и равенство </span><span lang=EN-US
+style='font-size:12.0pt'>f</span><span style='font-size:12.0pt'>=</span><span
+lang=EN-US style='font-size:12.0pt'>g&#903;h</span><span style='font-size:12.0pt'>,
+</span><span lang=EN-US style='font-size:12.0pt'>g</span><span
+style='font-size:12.0pt'>, </span><span lang=EN-US style='font-size:12.0pt'>h</span><span
+style='font-size:12.0pt'> є </span><span lang=EN-US style='font-size:12.0pt'>F</span><span
+style='font-size:12.0pt'>, может выполняться лишь в том случае, когда </span><span
+lang=EN-US style='font-size:12.0pt'>g</span><span style='font-size:12.0pt'> или
+</span><span lang=EN-US style='font-size:12.0pt'>h</span><span
+style='font-size:12.0pt'> является константой, т.е. </span><span lang=EN-US
+style='font-size:12.0pt'>f</span><span style='font-size:12.0pt'> не имеет делителей,
+кроме себя и единичного полинома. Для любого </span><span lang=EN-US
+style='font-size:12.0pt'>n</span><span style='font-size:12.0pt'> существует,
+хотя бы один неприводимый многочлен </span><span lang=EN-US style='font-size:
+12.0pt'>n</span><span style='font-size:12.0pt'>-й степени. Многочлен,
+являющийся делителем многочлена степени 2</span><sup><span lang=EN-US
+style='font-size:12.0pt'>n</span></sup><span style='font-size:12.0pt'>-1, то
+есть <span style='position:relative;top:2.0pt'><img width=60 height=24
+src="GaluaFieldElems.files/image002.png"></span>, называется <a
+name="примитивный_многочлен"><u>примитивным многочленом</u></a>. Неприводимые многочлены
+являются также примитивными.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:12.0pt'>Число элементов поля </span><span lang=EN-US
+style='font-size:12.0pt'>k</span><span style='font-size:12.0pt'> называется <u>порядком
+поля</u>. К <u>бесконечным полям</u> принадлежит множество рациональных чисел,
+а к <u>конечным</u> -  поле бинарных элементов {0,1} с операциями сложения по
+модулю 2 и умножения. Конечные поля называются <a name="поле_Галуа"><u>полями
+Галуа</u></a>. Поле Галуа порядка </span><span lang=EN-US style='font-size:
+12.0pt'>k</span><span style='font-size:12.0pt'> обозначается как </span><span
+lang=EN-US style='font-size:12.0pt'>GF</span><span style='font-size:12.0pt'>(</span><span
+lang=EN-US style='font-size:12.0pt'>q<sup>k</sup></span><span style='font-size:
+12.0pt'>).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><a
+name="Таблицы_операций_сложения_и_умножения"><span style='font-size:12.0pt'>Определим
+в случае простейшего поля Галуа </span></a><span lang=EN-US style='font-size:
+12.0pt'>GF</span><span style='font-size:12.0pt'>(2)  операции сложения по
+модулю 2 и умножения (рис.1).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'>
+
+<table cellpadding=0 cellspacing=0 align=left>
+ <tr>
+  <td width=30 height=0></td>
+ </tr>
+ <tr>
+  <td></td>
+  <td><img width=568 height=147 src="GaluaFieldElems.files/image003.png"></td>
+ </tr>
+</table>
+
+<span style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<br clear=ALL>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:12.0pt'>Однозначно определяется операция деления, так как для
+элемента поля <b>а</b> существует единственный обратный элемент <b>а<sup>-1</sup></b>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:12.0pt'>Поле Галуа называется <a name="расширенное_поле"><u>расширенным
+полем</u></a>, если оно основывается на арифметике по модулю неприводимых
+многочленов степени </span><span lang=EN-US style='font-size:12.0pt'>n</span><span
+style='font-size:12.0pt'>, коэффициенты которых являются целыми числами по
+модулю простого числа </span><span lang=EN-US style='font-size:12.0pt'>q</span><span
+style='font-size:12.0pt'>. Эти поля Галуа обозначаются как </span><span
+lang=EN-US style='font-size:12.0pt'>GF</span><span style='font-size:12.0pt'>(</span><span
+lang=EN-US style='font-size:12.0pt'>q<sup>n</sup></span><span style='font-size:
+12.0pt'>). Они имеют элементы, которые описываются многочленами степени не выше
+(</span><span lang=EN-US style='font-size:12.0pt'>n</span><span
+style='font-size:12.0pt'>-1) в форме</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><span
+lang=EN-US style='font-size:12.0pt'>a</span><span style='font-size:12.0pt'>(</span><span
+lang=EN-US style='font-size:12.0pt'>x</span><span style='font-size:12.0pt'>)=</span><span
+lang=EN-US style='font-size:12.0pt'>a<sub>n</sub></span><sub><span
+style='font-size:12.0pt'>-1</span></sub><span lang=EN-US style='font-size:12.0pt'>x<sup>n</sup></span><sup><span
+style='font-size:12.0pt'>-1</span></sup><span style='font-size:12.0pt'>+ …+</span><span
+lang=EN-US style='font-size:12.0pt'>a</span><sub><span style='font-size:12.0pt'>1</span></sub><span
+lang=EN-US style='font-size:12.0pt'>x</span><span style='font-size:12.0pt'>+</span><span
+lang=EN-US style='font-size:12.0pt'>a</span><sub><span style='font-size:12.0pt'>0</span></sub><span
+style='font-size:12.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:12.0pt'>Каждый элемент </span><span lang=EN-US
+style='font-size:12.0pt'>a</span><span style='font-size:12.0pt'>(</span><span
+lang=EN-US style='font-size:12.0pt'>x</span><span style='font-size:12.0pt'>)
+является вычетом по модулю </span><span lang=EN-US style='font-size:12.0pt'>p</span><span
+style='font-size:12.0pt'>(</span><span lang=EN-US style='font-size:12.0pt'>x</span><span
+style='font-size:12.0pt'>), где </span><span lang=EN-US style='font-size:12.0pt'>p</span><span
+style='font-size:12.0pt'>(</span><span lang=EN-US style='font-size:12.0pt'>x</span><span
+style='font-size:12.0pt'>) – неприводимый многочлен степени </span><span
+lang=EN-US style='font-size:12.0pt'>n</span><span style='font-size:12.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:12.0pt'>Арифметические действия над коэффициентами </span><span
+lang=EN-US style='font-size:12.0pt'>a<sub>i</sub></span><span style='font-size:
+12.0pt'> выполняются по модулю </span><span lang=EN-US style='font-size:12.0pt'>q</span><span
+style='font-size:12.0pt'>, а наивысшая степень </span><span lang=EN-US
+style='font-size:12.0pt'>x</span><span style='font-size:12.0pt'> равна (</span><span
+lang=EN-US style='font-size:12.0pt'>n</span><span style='font-size:12.0pt'>-1),
+так как выполняется приведение по модулю многочлена </span><span lang=EN-US
+style='font-size:12.0pt'>p</span><span style='font-size:12.0pt'>(</span><span
+lang=EN-US style='font-size:12.0pt'>x</span><span style='font-size:12.0pt'>),
+имеющего старшую степень </span><span lang=EN-US style='font-size:12.0pt'>n</span><span
+style='font-size:12.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:1.0cm'><span
+style='font-size:12.0pt'>Интерес представляют поля </span><span lang=EN-US
+style='font-size:12.0pt'>GF</span><span style='font-size:12.0pt'>(2</span><sup><span
+lang=EN-US style='font-size:12.0pt'>n</span></sup><span style='font-size:12.0pt'>),
+где коэффициентами </span><span lang=EN-US style='font-size:12.0pt'>a<sub>i</sub></span><span
+style='font-size:12.0pt'> являются бинарные элементы. Многочлен </span><span
+lang=EN-US style='font-size:12.0pt'>a</span><span style='font-size:12.0pt'>(</span><span
+lang=EN-US style='font-size:12.0pt'>x</span><span style='font-size:12.0pt'>)
+степени не выше (</span><span lang=EN-US style='font-size:12.0pt'>n</span><span
+style='font-size:12.0pt'>-1) можно представить как вектор из </span><span
+lang=EN-US style='font-size:12.0pt'>n</span><span style='font-size:12.0pt'>
+двоичных цифр:</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:1.0cm'><b><span
+lang=EN-US style='font-size:12.0pt'>a<sub>n</sub></span></b><b><sub><span
+style='font-size:12.0pt'>-1</span></sub></b><b><sub><span style='font-size:
+12.0pt'> </span></sub></b><b><span lang=EN-US style='font-size:12.0pt'>a<sub>n</sub></span></b><b><sub><span
+style='font-size:12.0pt'>-2</span></sub></b><b><span style='font-size:12.0pt'>…</span></b><b><span
+lang=EN-US style='font-size:12.0pt'>a</span></b><b><sub><span style='font-size:
+12.0pt'>1</span></sub></b><b><sub><span style='font-size:12.0pt'> </span></sub></b><b><span
+lang=EN-US style='font-size:12.0pt'>a</span></b><b><sub><span style='font-size:
+12.0pt'>0</span></sub></b><span style='font-size:12.0pt'>.</span></p>
+
+<p class=MsoBodyTextIndent><span style='font-size:12.0pt'>Вычисления в поле </span><span
+lang=EN-US style='font-size:12.0pt'>GF</span><span style='font-size:12.0pt'>(2</span><sup><span
+lang=EN-US style='font-size:12.0pt'>n</span></sup><span style='font-size:12.0pt'>)
+обладают следующими достоинствами:</span></p>
+
+<p class=MsoBodyTextIndent><span style='font-size:12.0pt'>- все элементы поля
+Галуа имеют конечный размер, деление элементов не имеет каких либо ошибок
+округления;</span></p>
+
+<p class=MsoBodyTextIndent><span style='font-size:12.0pt'>- сложение и
+вычитание элементов поля Галуа не требует деления на модуль;</span></p>
+
+<p class=MsoBodyTextIndent><span style='font-size:12.0pt'>- алгоритмы
+вычислений в поле Галуа допускают параллельную реализацию.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b>&nbsp;</b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><a
+name="Способы_представления_элементов_поля"><b>Способы представления элементов
+поля </b></a><b><span lang=EN-US>GF</span>(2</b><b><sup><span lang=EN-US>n</span></sup>)</b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Для представления векторов, имеющих бинарные
+коэффициенты, в полях Галуа существуют различные подходы. Используемые методы 
+приведены ниже.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>1. <a name="Стандартный_базис"><u>Стандартный базис</u></a>.
+Вектора представляются в двоичном виде следующим образом. Запись данных ведется
+в последовательном порядке. Просматривается весь полином: если коэффициент у
+степени переменной вектора равен единице, то в бинарный вектор записывается
+единичный бит, иначе – нулевой.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Может варьироваться метод расположения старших
+степеней вектора: слева направо, как математическая форма записи многочлена,
+где слева располагается максимальная степень полинома (данное расположение
+удобно для операций деления и сдвига векторов, для получения требуемого индекса
+вектора), или справа налево – обратный порядок (оптимальна для проведения
+операций умножения и сложения векторов).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Каждый коэффициент полинома можно представить в виде
+двух состояний – 1 или 0. Тогда для хранения полинома можно использовать
+бинарные вектора. Данный способ позволяет более рационально использовать
+оперативную память, но для выборки определенного коэффициента требуется
+дополнительное время процессора ЭВМ. Так как процессор ЭВМ работает только с
+единицей машинного слова, кратной байту, то данная операция разбивается на ряд
+других. Сначала находится байт, содержащий требуемый бит, затем данный байт
+сдвигается так, чтобы искомый бит оказался на младшей позиции машинного слова,
+и далее осуществляется логическое умножение байта на единицу для обнуления
+остальных бит и демаскирования нужного. </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Стандартный базис используется для представления
+элементов поля, заданного полиномом от одной неизвестной, используемых в
+операциях сложения, умножения, деления и возведения в степень. Также данный
+базис применяется для операций над эллиптическими кривыми (многочленов с
+несколькими неизвестными), например, для вычисления матрицы коэффициентов </span><span
+lang=EN-US style='font-size:12.0pt'>A</span><span style='font-size:12.0pt'> для
+полинома от двух неизвестных вида </span></p>
+
+<p class=MsoNormal align=center style='text-align:center'>
+
+<table cellpadding=0 cellspacing=0 align=left>
+ <tr>
+  <td width=136 height=0></td>
+ </tr>
+ <tr>
+  <td></td>
+  <td><img width=351 height=46 src="GaluaFieldElems.files/image004.png"></td>
+ </tr>
+</table>
+
+<span lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US
+style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US
+style='font-size:12.0pt'>&nbsp;</span></p>
+
+<br clear=ALL>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:12.0pt'>для
+перевода в друг друга двух типов представления данных нормального базиса: из
+степени примитивного элемента в значение примитивного элемента и обратно.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>2. <a name="Нормальный_базис"><u>Нормальный базис</u></a>.
+Многочлен представляется в виде списка бинарных векторов – степеней
+примитивного элемента, представленных в стандартном базисе. Для представления
+вектора в степени </span><span lang=EN-US style='font-size:12.0pt'>n</span><span
+style='font-size:12.0pt'> требуется вычислить и хранить (2</span><sup><span
+lang=EN-US style='font-size:12.0pt'>n</span></sup><sup><span style='font-size:
+12.0pt'>-1</span></sup><span style='font-size:12.0pt'> - 1) примитивных
+элементов, с длиной, равной </span><span lang=EN-US style='font-size:12.0pt'>n</span><span
+style='font-size:12.0pt'>-1.</span></p>
+
+<p class=MsoBodyTextIndent><span style='font-size:12.0pt'>Представление всех
+элементов поля </span><span lang=EN-US style='font-size:12.0pt'>GF</span><span
+style='font-size:12.0pt'>(2</span><sup><span lang=EN-US style='font-size:12.0pt'>n</span></sup><span
+style='font-size:12.0pt'>) можно записать в виде множества: </span><span
+lang=EN-US style='font-size:12.0pt'>GF</span><span style='font-size:12.0pt'>(2</span><sup><span
+lang=EN-US style='font-size:12.0pt'>n</span></sup><span style='font-size:12.0pt'>)=(0,
+1, &#958;, &#958;<sup>2</sup>, …., &#958;<sup>2</sup></span><sup><span
+lang=EN-US style='font-size:12.0pt'>n</span></sup><sup><span style='font-size:
+12.0pt'>-2</span></sup><span style='font-size:12.0pt'>, &#958;<sup>2</sup></span><sup><span
+lang=EN-US style='font-size:12.0pt'>n</span></sup><sup><span style='font-size:
+12.0pt'>-2</span></sup><span style='font-size:12.0pt'>), где &#958; – корень
+примитивного многочлена</span></p>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center;text-indent:
+0cm'><span lang=EN-US style='font-size:12.0pt'>P</span><span style='font-size:
+12.0pt'>(</span><span lang=EN-US style='font-size:12.0pt'>x</span><span
+style='font-size:12.0pt'>)=</span><span style='font-size:12.0pt;font-family:
+Symbol'>a</span><sub><span style='font-size:12.0pt'>0</span></sub><span
+style='font-size:12.0pt'>+</span><span style='font-size:12.0pt;font-family:
+Symbol'>a</span><sub><span style='font-size:12.0pt'>1</span></sub><span
+lang=EN-US style='font-size:12.0pt'>x</span><span style='font-size:12.0pt'>+</span><span
+lang=EN-US style='font-size:12.0pt;font-family:Symbol'>a</span><sub><span
+style='font-size:12.0pt'>2</span></sub><span lang=EN-US style='font-size:12.0pt'>x</span><sup><span
+style='font-size:12.0pt'>2</span></sup><span style='font-size:12.0pt'>+…+</span><span
+style='font-size:12.0pt;font-family:Symbol'>a</span><sub><span lang=EN-US
+style='font-size:12.0pt'>n</span></sub><sub><span style='font-size:12.0pt'>-1</span></sub><span
+lang=EN-US style='font-size:12.0pt'>x<sup>n</sup></span><sup><span
+style='font-size:12.0pt'>-1</span></sup><span style='font-size:12.0pt'>+</span><span
+lang=EN-US style='font-size:12.0pt'>x<sup>n</sup></span><span style='font-size:
+12.0pt'>,</span></p>
+
+<p class=MsoBodyTextIndent align=left style='text-align:left;text-indent:0cm'><span
+style='font-size:12.0pt'>а </span><span lang=EN-US style='font-size:12.0pt;
+font-family:Symbol'>a</span><sub><span lang=EN-US style='font-size:12.0pt'>i</span></sub><span
+style='font-size:12.0pt'> - коэффициенты при переменных </span><b><i><span
+lang=EN-US style='font-size:12.0pt'>x</span></i></b><span style='font-size:
+12.0pt'>, <span style='position:relative;top:5.0pt'><img width=82 height=25
+src="GaluaFieldElems.files/image005.png"></span>.</span></p>
+
+<p class=MsoBodyTextIndent><span style='font-size:12.0pt'>Например, построим
+поле </span><span lang=EN-US style='font-size:12.0pt'>GF</span><span
+style='font-size:12.0pt'>(2</span><sup><span lang=EN-US style='font-size:12.0pt'>n</span></sup><span
+style='font-size:12.0pt'>). Пусть &#958; является корнем неприводимого
+многочлена </span><span lang=EN-US style='font-size:12.0pt'>m</span><span
+style='font-size:12.0pt'>(</span><span lang=EN-US style='font-size:12.0pt'>x</span><span
+style='font-size:12.0pt'>)=</span><span lang=EN-US style='font-size:12.0pt'>x</span><sup><span
+style='font-size:12.0pt'>3</span></sup><span style='font-size:12.0pt'>+</span><span
+lang=EN-US style='font-size:12.0pt'>x</span><span style='font-size:12.0pt'>+1.
+Тогда </span><span lang=EN-US style='font-size:12.0pt'>GF</span><span
+style='font-size:12.0pt'>(2<sup>3</sup>)=(0, 1, </span><span lang=EN-US
+style='font-size:12.0pt'>&#958;</span><span style='font-size:12.0pt'>, </span><span
+lang=EN-US style='font-size:12.0pt'>&#958;</span><sup><span style='font-size:
+12.0pt'>2</span></sup><span style='font-size:12.0pt'>, </span><span lang=EN-US
+style='font-size:12.0pt'>&#958;</span><sup><span style='font-size:12.0pt'>3</span></sup><span
+style='font-size:12.0pt'>, </span><span lang=EN-US style='font-size:12.0pt'>&#958;</span><sup><span
+style='font-size:12.0pt'>4</span></sup><span style='font-size:12.0pt'>, </span><span
+lang=EN-US style='font-size:12.0pt'>&#958;</span><sup><span style='font-size:
+12.0pt'>5</span></sup><span style='font-size:12.0pt'>, </span><span lang=EN-US
+style='font-size:12.0pt'>&#958;</span><sup><span style='font-size:12.0pt'>6</span></sup><span
+style='font-size:12.0pt'>). Пусть &#958;<sup>3</sup>+&#958;+1=0. Элементы поля </span><span
+lang=EN-US style='font-size:12.0pt'>GF</span><span style='font-size:12.0pt'>(2<sup>3</sup>)
+в нормальном базисе можно представить следующим образом:</span></p>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center;text-indent:
+0cm'><span style='position:absolute;z-index:1;margin-left:0px;margin-top:0px;
+width:367px;height:104px'><img width=367 height=104
+src="GaluaFieldElems.files/image006.png"></span><img width=363 height=100
+src="GaluaFieldElems.files/image007.png"></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Вычислять примитивные элементы можно как эвристически,
+используя математические преобразования над исходным полиномом-модулем, так и
+на основе программирования действий по получению примитивных элементов. Этот
+способ базируется на методе представления элементов поля в виде сопровождающих
+матриц </span><span lang=EN-US style='font-size:12.0pt'>A<sub>n</sub></span><sub><span
+style='font-size:12.0pt'>*</span></sub><sub><span lang=EN-US style='font-size:
+12.0pt'>n</span></sub><span style='font-size:12.0pt'>. Сначала осуществляется
+построение сопровождающей матрицы (способ построения матрицы </span><span
+lang=EN-US style='font-size:12.0pt'>A</span><span style='font-size:12.0pt'>
+описан в алгоритме построения сопровождающей матрицы). Далее для нахождения
+элемента &#958;</span><sup><span lang=EN-US style='font-size:12.0pt'>i</span></sup><span
+style='font-size:12.0pt'> производится возведение матрицы </span><span
+lang=EN-US style='font-size:12.0pt'>A</span><span style='font-size:12.0pt'> в </span><span
+lang=EN-US style='font-size:12.0pt'>i</span><span style='font-size:12.0pt'>-ую
+степень и выборка из результирующей матрицы нижней строки – вектора (</span><span
+lang=EN-US style='font-size:12.0pt'>a<sub>n</sub></span><sub><span
+style='font-size:12.0pt'>1</span></sub><span style='font-size:12.0pt'>, …, </span><span
+lang=EN-US style='font-size:12.0pt'>a<sub>nn</sub></span><span
+style='font-size:12.0pt'>), где </span><span lang=EN-US style='font-size:12.0pt'>n</span><span
+style='font-size:12.0pt'> – размерность вектора-модуля, нормирующего результаты
+вычислений. Данный вектор (</span><span lang=EN-US style='font-size:12.0pt'>a<sub>n</sub></span><sub><span
+style='font-size:12.0pt'>1</span></sub><span style='font-size:12.0pt'>, …, </span><span
+lang=EN-US style='font-size:12.0pt'>a<sub>nn</sub></span><span
+style='font-size:12.0pt'>) и является значением примитивного элемента &#958;</span><sup><span
+lang=EN-US style='font-size:12.0pt'>i</span></sup><span style='font-size:12.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Способ представления данных с помощью нормального
+базиса нерационален, так как необходимо хранить большое количество информации.
+Этот метод хранения данных используется при вычислении операций над полиномами
+от нескольких неизвестных.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Алгоритм вычисления примитивных элементов приводится в
+пункте «Алгоритм вычисления степеней примитивных элементов».</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Способы_хранения_прим_элементов"><span style='font-size:12.0pt'>Данные
+примитивные элементы можно хранить следующими способами.</span></a></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>а) <a name="Хранение_значения_примитивного_элемента">Хранение
+<u>значения примитивного элемента</u></a>. Примитивный элемент в некоторой
+степени представляется в виде бинарного вектора. В результате, для хранения
+поля </span><span lang=EN-US style='font-size:12.0pt'>GF</span><span
+style='font-size:12.0pt'>(2</span><sup><span lang=EN-US style='font-size:12.0pt'>n</span></sup><span
+style='font-size:12.0pt'>) = (0, 1, </span><span lang=EN-US style='font-size:
+12.0pt'>&#958;</span><span style='font-size:12.0pt'>, …, </span><span
+lang=EN-US style='font-size:12.0pt'>&#958;<sup>i</sup></span><span
+style='font-size:12.0pt'>, …, &#958;<sup>2</sup></span><sup><span lang=EN-US
+style='font-size:12.0pt'>n</span></sup><sup><span style='font-size:12.0pt'>-2</span></sup><span
+style='font-size:12.0pt'>) будет использоваться двумерный вектор – матрица,
+строка которой задает элемент поля в </span><span lang=EN-US style='font-size:
+12.0pt'>i</span><span style='font-size:12.0pt'>-ой степени, а столбец -
+некоторый двоичный коэффициент данного примитивного элемента поля.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>б) <a name="Хранение_степени_примитивного_элемента">Хранение
+<u>степени примитивного элемента</u></a>. В данном способе осуществляется
+хранение степени примитивного элемента, а не самого значения примитивного
+элемента.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Для хранения элемента </span><span lang=EN-US
+style='font-size:12.0pt'>&#958;<sup>i</sup></span><sup><span lang=EN-US
+style='font-size:12.0pt'> </span></sup><span style='font-size:12.0pt'> требуется
+знать только степень </span><span lang=EN-US style='font-size:12.0pt'>i</span><span
+style='font-size:12.0pt'>. Если элемент равен 1, то можно представить единицу в
+виде </span><span lang=EN-US style='font-size:12.0pt'>&#958;</span><sup><span
+style='font-size:12.0pt'>0</span></sup><span style='font-size:12.0pt'> - 
+получим степень “0”. Если значение примитивного элемента равно 0, то
+принимается, что степень примитивного элемента равна неопределенности или
+бесконечности, обозначенной символом “</span><span style='font-size:12.0pt;
+font-family:Symbol'>&yen;</span><span style='font-size:12.0pt'>”. </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Использование данного метода хранения примитивных
+элементов дает выигрыш в памяти, так как для использования данного элемента
+требуется хранить не вектор-полином, а целое число, для которого потребуется
+только одно машинное слово. Если размерность поля составляет (2<sup>14</sup>),
+то можно задать  (2<sup>14</sup>-1) примитивных элементов, что соответствует 14
+битам. При округлении под длину машинного слова получаем, что длина переменной,
+отводимой под хранение степени примитивного элемента, равна 16 бит или 2 байта
+(машинное слово).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Но в операциях полей Галуа участвуют в основном не
+степени примитивных элементов, а сами значения элементов. Поэтому требуется
+система перевода степени примитивного элемента в значение элемента. Для этого
+требуется создать матрицу, содержащую множество всех примитивных элементов </span><span
+lang=EN-US style='font-size:12.0pt'>EnsemblePrimEl</span><span
+style='font-size:12.0pt'>, где степень примитивного элемента будет задавать
+строку, содержащую значение примитивного элемента в виде бинарного вектора,
+представленного в стандартном базисе.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Размерности данной матрицы будут следующими:
+количество строк (примитивных элементов) равно 2</span><sup><span lang=EN-US
+style='font-size:12.0pt'>n</span></sup><span style='font-size:12.0pt'>-1,
+количество столбцов </span><span lang=EN-US style='font-size:12.0pt'>n</span><span
+style='font-size:12.0pt'>, где </span><span lang=EN-US style='font-size:12.0pt'>n</span><span
+style='font-size:12.0pt'> – максимальная степень полинома-модуля. В результате
+получается размерность (2</span><sup><span lang=EN-US style='font-size:12.0pt'>n</span></sup><span
+style='font-size:12.0pt'>-1)*</span><span lang=EN-US style='font-size:12.0pt'>n</span><span
+style='font-size:12.0pt'> единиц.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>При необходимости вычисления некоторой операции при
+использовании степенного представления элементов, находится двоичное числовое представление
+примитивного элемента. Далее производится выполнение операции над бинарными
+полиномами.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Для экономии памяти, полученный результат обратно
+представляется в виде степени. Результирующий бинарный вектор последовательно
+ищется в матрице </span><span lang=EN-US style='font-size:12.0pt'>EnsemblePrimEl</span><span
+style='font-size:12.0pt'>. При нахождении данного элемента определяется индекс
+строки – этот индекс и задает искомую степень примитивного элемента.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Таким образом, хранение примитивных элементов в виде
+их степеней по критерию объема памяти оптимален, так как требуется хранить только
+число, а не целый вектор. Данные расхождения могут оказаться значительными при
+создании матриц размерами 2</span><sup><span lang=EN-US style='font-size:12.0pt'>n</span></sup><span
+style='font-size:12.0pt'>*2</span><sup><span lang=EN-US style='font-size:12.0pt'>n</span></sup><span
+style='font-size:12.0pt'>*</span><span lang=EN-US style='font-size:12.0pt'>n</span><span
+style='font-size:12.0pt'> единиц памяти. Например, для </span><span lang=EN-US
+style='font-size:12.0pt'>n</span><span style='font-size:12.0pt'>=14 потребуется
+2<sup>28</sup>*14=2<sup>29</sup>*7=3&nbsp;758&nbsp;096&nbsp;384 единиц памяти,
+объем, который уже сравним с объемом виртуальной памяти операционной системы </span><span
+lang=EN-US style='font-size:12.0pt'>Windows</span><span style='font-size:12.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Но хранение степени увеличивает суммарное время работы
+алгоритмов, так как существует необходимость преобразования степени в значение
+примитивного элемента для проведения некоторой операции и конвертирование
+значения в степень при окончании и сжатии результата. </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>3. <a name="Представление_векторов_в_виде_параллельн"><u>Представление
+векторов в виде параллельных массивов</u></a>, элементы первого из которых
+хранят степени полинома, а элементы второго – коэффициенты при степенях
+переменной.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Данный способ будет оптимален для полиномов, имеющих
+неравномерное распределение одних двоичных коэффициентов относительно других.
+Тогда будет достаточно хранить коэффициенты и степени полиномов только для
+степеней, при которых находится коэффициенты, общее количество которых меньше
+относительно количества противоположных коэффициентов.</span></p>
+
+<p class=MsoBodyTextIndent><span style='font-size:12.0pt'>4. <a
+name="Представление_через_сопровож_матрицу">Представления <u>элементов
+конечного поля </u></a></span><u><span lang=EN-US style='font-size:12.0pt'>GF</span></u><u><span
+style='font-size:12.0pt'>(2</span></u><u><sup><span lang=EN-US
+style='font-size:12.0pt'>n</span></sup></u><u><span style='font-size:12.0pt'>)
+при помощи сопровождающей матрицы </span></u><u><span lang=EN-US
+style='font-size:12.0pt'>A</span></u><span style='font-size:12.0pt'>,
+задаваемой </span><span style='font-size:12.0pt'>на основе примитивного
+многочлена </span><span lang=EN-US style='font-size:12.0pt'>m</span><span
+style='font-size:12.0pt'>(</span><span lang=EN-US style='font-size:12.0pt'>x</span><span
+style='font-size:12.0pt'>)=</span><span lang=EN-US style='font-size:12.0pt'>&#945;</span><sub><span
+style='font-size:12.0pt'>0</span></sub><span style='font-size:12.0pt'>+</span><span
+lang=EN-US style='font-size:12.0pt'>&#945;</span><sub><span style='font-size:
+12.0pt'>1</span></sub><span lang=EN-US style='font-size:12.0pt'>x</span><span
+style='font-size:12.0pt'>+</span><span lang=EN-US style='font-size:12.0pt'>&#945;</span><sub><span
+style='font-size:12.0pt'>2</span></sub><span lang=EN-US style='font-size:12.0pt'>x</span><sup><span
+style='font-size:12.0pt'>2</span></sup><span style='font-size:12.0pt'>+…+</span><span
+lang=EN-US style='font-size:12.0pt'>&#945;<sub>n</sub></span><sub><span
+style='font-size:12.0pt'>-1</span></sub><span lang=EN-US style='font-size:12.0pt'>x<sup>n</sup></span><sup><span
+style='font-size:12.0pt'>-1</span></sup><span style='font-size:12.0pt'>+</span><span
+lang=EN-US style='font-size:12.0pt'>x<sup>n</sup></span><span style='font-size:
+12.0pt'>. Построение данных матриц рассматривается в пункте «Получение
+сопровождающей матрицы примитивного элемента». Пусть на рисунке 2 задается
+сопровождающая матрица для полинома </span><span lang=EN-US style='font-size:
+12.0pt'>m</span><span style='font-size:12.0pt'>(</span><span lang=EN-US
+style='font-size:12.0pt'>x</span><span style='font-size:12.0pt'>). Степени этой
+матрицы  </span><span lang=EN-US style='font-size:12.0pt'>A</span><span
+style='font-size:12.0pt'>, </span><span lang=EN-US style='font-size:12.0pt'>A</span><sup><span
+style='font-size:12.0pt'>2</span></sup><span style='font-size:12.0pt'>, …, </span><span
+lang=EN-US style='font-size:12.0pt'>A</span><sup><span style='font-size:12.0pt'>2</span></sup><sup><span
+lang=EN-US style='font-size:12.0pt'>n</span></sup><sup><span style='font-size:
+12.0pt'>-1 </span></sup><span style='font-size:12.0pt'>вместе с нулевой
+матрицей образуют поле </span><span lang=EN-US style='font-size:12.0pt'>GF</span><span
+style='font-size:12.0pt'>(2</span><sup><span lang=EN-US style='font-size:12.0pt'>n</span></sup><span
+style='font-size:12.0pt'>).</span></p>
+
+<p class=MsoBodyTextIndent><span style='font-size:12.0pt'>Нижняя строка матрицы
+А</span><sup><span lang=EN-US style='font-size:12.0pt'>i</span></sup><span
+style='font-size:12.0pt'> в виде вектора (р<sub>0</sub>, р<sub>1</sub>, …. , р</span><sub><span
+lang=EN-US style='font-size:12.0pt'>n</span></sub><sub><span style='font-size:
+12.0pt'>-1</span></sub><span style='font-size:12.0pt'>) будет задавать
+соответствующий примитивный элемент &#958;</span><sup><span lang=EN-US
+style='font-size:12.0pt'>i</span></sup><span style='font-size:12.0pt'> поля </span><span
+lang=EN-US style='font-size:12.0pt'>F</span><span style='font-size:12.0pt'>, <span
+style='position:relative;top:5.0pt'><img width=89 height=26
+src="GaluaFieldElems.files/image008.png"></span>.</span></p>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center;text-indent:
+0cm'><span lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center;text-indent:
+0cm'><span lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center;text-indent:
+0cm'><span lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center;text-indent:
+0cm'><span lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center;text-indent:
+0cm'>
+
+<table cellpadding=0 cellspacing=0 align=left>
+ <tr>
+  <td width=0 height=2></td>
+ </tr>
+ <tr>
+  <td></td>
+  <td width=381 height=165 style='vertical-align:top'><span style='position:
+  absolute;left:0pt;z-index:2'>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td>
+    <div style='padding:3.6pt 7.2pt 3.6pt 7.2pt'>
+    <div align=center>
+    <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+     style='border-collapse:collapse'>
+     <tr style='height:18.75pt'>
+      <td width=63 valign=bottom style='width:47.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:18.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:10.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      18.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      lang=EN-US style='font-size:11.0pt'>&#945;<sub>n-1</sub></span></b></p>
+      </td>
+      <td width=36 style='width:27.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:18.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      lang=EN-US style='font-size:11.0pt'>&#945;<sub>n-2</sub></span></b></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      18.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      lang=EN-US style='font-size:11.0pt'>&#945;<sub>n-3</sub></span></b></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      18.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      style='font-size:11.0pt'>…</span></b></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      18.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      lang=EN-US style='font-size:11.0pt'>&#945;<sub> 2</sub></span></b></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      18.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      lang=EN-US style='font-size:11.0pt'>&#945;<sub> 1</sub></span></b></p>
+      </td>
+      <td width=36 style='width:26.95pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:18.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      lang=EN-US style='font-size:11.0pt'>&#945;<sub> 0</sub></span></b></p>
+      </td>
+     </tr>
+     <tr style='height:15.0pt'>
+      <td width=63 valign=bottom style='width:47.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:10.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+      <td width=36 style='width:27.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 valign=top style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+     </tr>
+     <tr style='height:15.0pt'>
+      <td width=63 valign=bottom style='width:47.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt'>A<sub>n*n</sub> =</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:27.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 valign=top style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      style='font-size:12.0pt'>…</span></b></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+     </tr>
+     <tr style='height:15.0pt'>
+      <td width=63 valign=bottom style='width:47.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:10.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:27.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+      <td width=36 valign=top style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+     </tr>
+     <tr style='height:15.75pt'>
+      <td width=63 valign=bottom style='width:47.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:10.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=36 valign=top style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:15.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=36 valign=top style='width:27.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:15.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      style='font-size:12.0pt'>…</span></b></p>
+      </td>
+      <td width=36 valign=top style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:15.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=36 valign=top style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:15.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      style='font-size:12.0pt'>…</span></b></p>
+      </td>
+      <td width=36 valign=top style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:15.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      style='font-size:12.0pt'>&nbsp;</span></b></p>
+      </td>
+      <td width=36 valign=top style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:15.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      style='font-size:12.0pt'>…</span></b></p>
+      </td>
+      <td width=36 valign=top style='width:26.95pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+      </td>
+     </tr>
+     <tr style='height:15.0pt'>
+      <td width=63 valign=bottom style='width:47.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:10.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:27.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 valign=top style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;
+      height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+     </tr>
+    </table>
+    </div>
+    <p class=Referat>Рис. 2. Структура сопровождающей матрицы</p>
+    </div>
+    </td>
+   </tr>
+  </table>
+  </span>&nbsp;</td>
+ </tr>
+</table>
+
+<span style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center;text-indent:
+0cm'><span style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center;text-indent:
+0cm'><span style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center;text-indent:
+0cm'><span style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center;text-indent:
+0cm'><span style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center;text-indent:
+0cm'><span style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center;text-indent:
+0cm'><span style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center;text-indent:
+0cm'><span style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center;text-indent:
+0cm'><span style='font-size:12.0pt'>&nbsp;</span></p>
+
+<br clear=ALL>
+
+<p class=MsoBodyTextIndent><span style='font-size:12.0pt'>Представим элементы
+поля </span><span lang=EN-US style='font-size:12.0pt'>GF</span><span
+style='font-size:12.0pt'>(2<sup>3</sup>) в виде матриц. Для многочлена </span><span
+lang=EN-US style='font-size:12.0pt'>p</span><span style='font-size:12.0pt'>(</span><span
+lang=EN-US style='font-size:12.0pt'>x</span><span style='font-size:12.0pt'>)=</span><span
+lang=EN-US style='font-size:12.0pt'>x</span><sup><span style='font-size:12.0pt'>3</span></sup><span
+style='font-size:12.0pt'>+</span><span lang=EN-US style='font-size:12.0pt'>x</span><span
+style='font-size:12.0pt'>+1 сопровождающая матрица имеет вид (рис.3):</span></p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse'>
+ <tr style='height:12.1pt'>
+  <td width=58 style='width:43.25pt;border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.1pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+  </td>
+  <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:12.1pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt'>0</span></p>
+  </td>
+  <td width=36 style='width:27.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:12.1pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt'>1</span></p>
+  </td>
+  <td width=36 style='width:26.95pt;border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.1pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt'>1</span></p>
+  </td>
+ </tr>
+ <tr style='height:7.1pt'>
+  <td width=58 style='width:43.25pt;border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.1pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt'>A</span><sub><span style='font-size:12.0pt'>3</span></sub><sub><span
+  lang=EN-US style='font-size:12.0pt'>*</span></sub><sub><span
+  style='font-size:12.0pt'>3</span></sub><span lang=EN-US style='font-size:
+  12.0pt'> =</span></p>
+  </td>
+  <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:7.1pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+  </td>
+  <td width=36 style='width:27.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:7.1pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+  </td>
+  <td width=36 style='width:26.95pt;border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.1pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.0pt'>
+  <td width=58 style='width:43.25pt;border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+  </td>
+  <td width=36 style='width:27.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+  </td>
+  <td width=36 style='width:26.95pt;border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center;text-indent:
+0cm'><span style='font-size:12.0pt'>Рис. 3. Сопровождающая матрица для полинома
+</span><span lang=EN-US style='font-size:12.0pt'>p</span><span
+style='font-size:12.0pt'>(</span><span lang=EN-US style='font-size:12.0pt'>x</span><span
+style='font-size:12.0pt'>)=</span><span lang=EN-US style='font-size:12.0pt'>x</span><sup><span
+style='font-size:12.0pt'>3</span></sup><span style='font-size:12.0pt'>+</span><span
+lang=EN-US style='font-size:12.0pt'>x</span><span style='font-size:12.0pt'>+1</span></p>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center;text-indent:
+0cm'><span lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoBodyTextIndent align=center style='text-align:center'><span
+style='font-size:12.0pt'>Тогда поле </span><span lang=EN-US style='font-size:
+12.0pt'>GF</span><span style='font-size:12.0pt'>(2<sup>3</sup>)=(0, А, А<sup>2</sup>,
+А<sup>3</sup>, А<sup>4</sup>, А<sup>5</sup>, А<sup>6</sup>, А<sup>7</sup> ).
+Или в явном виде (рис.4.):</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:27.0pt'>
+
+<table cellpadding=0 cellspacing=0 align=left>
+ <tr>
+  <td width=0 height=0></td>
+ </tr>
+ <tr>
+  <td></td>
+  <td width=508 height=292 style='vertical-align:top'><span style='position:
+  absolute;left:0pt;z-index:5'>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td>
+    <div style='padding:3.6pt 7.2pt 3.6pt 7.2pt'>
+    <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+     style='border-collapse:collapse'>
+     <tr style='height:12.1pt'>
+      <td width=58 valign=bottom style='width:43.3pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:10.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt'>0</span></p>
+      </td>
+      <td width=36 style='width:27.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt'>0</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt'>0</span></p>
+      </td>
+      <td width=36 valign=bottom style='width:26.9pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:10.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=35 style='width:26.4pt;border:none;padding:0cm 5.4pt 0cm 5.4pt;
+      height:12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt'>0</span></p>
+      </td>
+      <td width=35 style='width:26.4pt;padding:0cm 5.4pt 0cm 5.4pt;height:12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt'>1</span></p>
+      </td>
+      <td width=35 style='width:26.4pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt'>1</span></p>
+      </td>
+      <td width=40 valign=bottom style='width:30.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:10.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=35 style='width:26.4pt;border:none;padding:0cm 5.4pt 0cm 5.4pt;
+      height:12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt'>1</span></p>
+      </td>
+      <td width=35 style='width:26.4pt;padding:0cm 5.4pt 0cm 5.4pt;height:12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt'>1</span></p>
+      </td>
+      <td width=35 style='width:26.4pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt'>0</span></p>
+      </td>
+     </tr>
+     <tr style='height:7.1pt'>
+      <td width=58 valign=bottom style='width:43.3pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      style='font-size:12.0pt'>0</span></b><span style='font-size:12.0pt'> =</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:27.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 valign=bottom style='width:26.9pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      lang=EN-US style='font-size:12.0pt'>A</span></b><span style='font-size:
+      12.0pt'>=</span></p>
+      </td>
+      <td width=35 style='width:26.4pt;border:none;padding:0cm 5.4pt 0cm 5.4pt;
+      height:7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+      <td width=35 style='width:26.4pt;padding:0cm 5.4pt 0cm 5.4pt;height:7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=35 style='width:26.4pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=40 valign=bottom style='width:30.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      lang=EN-US style='font-size:12.0pt'>A<sup>2</sup></span></b><span
+      lang=EN-US style='font-size:12.0pt'>=</span></p>
+      </td>
+      <td width=35 style='width:26.4pt;border:none;padding:0cm 5.4pt 0cm 5.4pt;
+      height:7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=35 style='width:26.4pt;padding:0cm 5.4pt 0cm 5.4pt;height:7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+      <td width=35 style='width:26.4pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+     </tr>
+     <tr style='height:15.0pt'>
+      <td width=58 valign=bottom style='width:43.3pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt'>&nbsp;</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:27.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 valign=bottom style='width:26.9pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt'>&nbsp;</span></p>
+      </td>
+      <td width=35 style='width:26.4pt;border:none;padding:0cm 5.4pt 0cm 5.4pt;
+      height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=35 style='width:26.4pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+      <td width=35 style='width:26.4pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=40 valign=bottom style='width:30.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt'>&nbsp;</span></p>
+      </td>
+      <td width=35 style='width:26.4pt;border:none;padding:0cm 5.4pt 0cm 5.4pt;
+      height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+      <td width=35 style='width:26.4pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=35 style='width:26.4pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+     </tr>
+    </table>
+    <p class=MsoNormal>&nbsp;</p>
+    <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+     style='border-collapse:collapse'>
+     <tr style='height:12.1pt'>
+      <td width=58 valign=bottom style='width:43.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:10.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt'>1</span></p>
+      </td>
+      <td width=36 style='width:27.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt'>1</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt'>1</span></p>
+      </td>
+      <td width=40 valign=bottom style='width:30.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:10.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=34 style='width:25.85pt;border:none;padding:0cm 5.4pt 0cm 5.4pt;
+      height:12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt'>1</span></p>
+      </td>
+      <td width=34 style='width:25.85pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt'>0</span></p>
+      </td>
+      <td width=34 style='width:25.85pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt'>1</span></p>
+      </td>
+      <td width=40 valign=bottom style='width:30.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:10.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=34 style='width:25.85pt;border:none;padding:0cm 5.4pt 0cm 5.4pt;
+      height:12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt'>0</span></p>
+      </td>
+      <td width=34 style='width:25.85pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt'>0</span></p>
+      </td>
+      <td width=34 style='width:25.85pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt'>1</span></p>
+      </td>
+     </tr>
+     <tr style='height:7.1pt'>
+      <td width=58 valign=bottom style='width:43.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      lang=EN-US style='font-size:12.0pt'>A<sup>3</sup></span></b><span
+      lang=EN-US style='font-size:12.0pt'>=</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+      <td width=36 style='width:27.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=40 valign=bottom style='width:30.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      lang=EN-US style='font-size:12.0pt'>A<sup>4</sup></span></b><span
+      lang=EN-US style='font-size:12.0pt'>=</span></p>
+      </td>
+      <td width=34 style='width:25.85pt;border:none;padding:0cm 5.4pt 0cm 5.4pt;
+      height:7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+      <td width=34 style='width:25.85pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+      <td width=34 style='width:25.85pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+      <td width=40 valign=bottom style='width:30.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      lang=EN-US style='font-size:12.0pt'>A<sup>5</sup></span></b><span
+      lang=EN-US style='font-size:12.0pt'>=</span></p>
+      </td>
+      <td width=34 style='width:25.85pt;border:none;padding:0cm 5.4pt 0cm 5.4pt;
+      height:7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+      <td width=34 style='width:25.85pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=34 style='width:25.85pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+     </tr>
+     <tr style='height:15.0pt'>
+      <td width=58 valign=bottom style='width:43.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt'>&nbsp;</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:27.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+      <td width=40 valign=bottom style='width:30.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt'>&nbsp;</span></p>
+      </td>
+      <td width=34 style='width:25.85pt;border:none;padding:0cm 5.4pt 0cm 5.4pt;
+      height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+      <td width=34 style='width:25.85pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+      <td width=34 style='width:25.85pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=40 valign=bottom style='width:30.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt'>&nbsp;</span></p>
+      </td>
+      <td width=34 style='width:25.85pt;border:none;padding:0cm 5.4pt 0cm 5.4pt;
+      height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+      <td width=34 style='width:25.85pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+      <td width=34 style='width:25.85pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+     </tr>
+    </table>
+    <p class=MsoNormal>&nbsp;</p>
+    <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+     style='border-collapse:collapse'>
+     <tr style='height:12.1pt'>
+      <td width=58 valign=bottom style='width:43.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:10.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt'>0</span></p>
+      </td>
+      <td width=36 style='width:27.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt'>1</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt'>0</span></p>
+      </td>
+      <td width=40 valign=bottom style='width:30.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:10.0pt;font-family:"Arial CYR";color:windowtext'>&nbsp;</span></p>
+      </td>
+      <td width=34 style='width:25.85pt;border:none;padding:0cm 5.4pt 0cm 5.4pt;
+      height:12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt'>1</span></p>
+      </td>
+      <td width=34 style='width:25.85pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt'>0</span></p>
+      </td>
+      <td width=34 style='width:25.85pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:12.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt'>0</span></p>
+      </td>
+     </tr>
+     <tr style='height:7.1pt'>
+      <td width=58 valign=bottom style='width:43.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      lang=EN-US style='font-size:12.0pt'>A<sup>6</sup></span></b><span
+      lang=EN-US style='font-size:12.0pt'>=</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:27.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+      <td width=40 valign=bottom style='width:30.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><b><span
+      lang=EN-US style='font-size:12.0pt'>A<sup>7</sup></span></b><span
+      lang=EN-US style='font-size:12.0pt'>=</span></p>
+      </td>
+      <td width=34 style='width:25.85pt;border:none;padding:0cm 5.4pt 0cm 5.4pt;
+      height:7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=34 style='width:25.85pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+      <td width=34 style='width:25.85pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:7.1pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+     </tr>
+     <tr style='height:15.0pt'>
+      <td width=58 valign=bottom style='width:43.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt'>&nbsp;</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+      <td width=36 style='width:27.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=36 style='width:26.95pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+      <td width=40 valign=bottom style='width:30.25pt;border:none;border-right:
+      solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt'>&nbsp;</span></p>
+      </td>
+      <td width=34 style='width:25.85pt;border:none;padding:0cm 5.4pt 0cm 5.4pt;
+      height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=34 style='width:25.85pt;padding:0cm 5.4pt 0cm 5.4pt;height:
+      15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>0</span></p>
+      </td>
+      <td width=34 style='width:25.85pt;border:none;border-right:solid windowtext 1.0pt;
+      padding:0cm 5.4pt 0cm 5.4pt;height:15.0pt'>
+      <p class=MsoNormal align=center style='text-align:center'><span
+      lang=EN-US style='font-size:12.0pt;font-family:"Arial CYR";color:windowtext'>1</span></p>
+      </td>
+     </tr>
+    </table>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='font-size:12.0pt'>&nbsp;</span></p>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='font-size:12.0pt'>Рис. 4. Представление поля </span><span
+    lang=EN-US style='font-size:12.0pt'>GF</span><span style='font-size:12.0pt'>(2<sup>3</sup>)
+    через матрицу </span><span lang=EN-US style='font-size:12.0pt'>A</span></p>
+    <p class=MsoNormal align=center style='text-align:center'><span
+    style='font-size:12.0pt'>для многочлена </span><span lang=EN-US
+    style='font-size:12.0pt'>p</span><span style='font-size:12.0pt'>(</span><span
+    lang=EN-US style='font-size:12.0pt'>x</span><span style='font-size:12.0pt'>)=</span><span
+    lang=EN-US style='font-size:12.0pt'>x</span><sup><span style='font-size:
+    12.0pt'>3</span></sup><span style='font-size:12.0pt'>+</span><span
+    lang=EN-US style='font-size:12.0pt'>x</span><span style='font-size:12.0pt'>+1</span></p>
+    </div>
+    </td>
+   </tr>
+  </table>
+  </span>&nbsp;</td>
+ </tr>
+</table>
+
+<span lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:12.0pt'>&nbsp;</span></p>
+
+<br clear=ALL>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Для хранения всего поля для данного полинома-вектора
+требуется объем машинной памяти, равный 2</span><sup><span lang=EN-US
+style='font-size:12.0pt'>n</span></sup><span style='font-size:12.0pt'>*</span><span
+lang=EN-US style='font-size:12.0pt'>n</span><span style='font-size:12.0pt'>*</span><span
+lang=EN-US style='font-size:12.0pt'>n</span><span style='font-size:12.0pt'>=2</span><sup><span
+lang=EN-US style='font-size:12.0pt'>n</span></sup><span style='font-size:12.0pt'>*</span><span
+lang=EN-US style='font-size:12.0pt'>n</span><sup><span style='font-size:12.0pt'>2</span></sup><span
+style='font-size:12.0pt'> единиц.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Для операций, редко использующих все значения степеней
+матрицы </span><span lang=EN-US style='font-size:12.0pt'>A</span><span
+style='font-size:12.0pt'> достаточно хранить лишь матрицу </span><span
+lang=EN-US style='font-size:12.0pt'>A</span><span style='font-size:12.0pt'> в
+первой степени. При вычислении матрицы </span><span lang=EN-US
+style='font-size:12.0pt'>A<sup>i</sup></span><span style='font-size:12.0pt'>, <span
+style='position:relative;top:5.0pt'><img width=89 height=26
+src="GaluaFieldElems.files/image009.png"></span>, потребуется выполнить (</span><span
+lang=EN-US style='font-size:12.0pt'>n</span><span style='font-size:12.0pt'>-1)*</span><span
+lang=EN-US style='font-size:12.0pt'>n</span><sup><span style='font-size:12.0pt'>2</span></sup><span
+style='font-size:12.0pt'>*(</span><span lang=EN-US style='font-size:12.0pt'>i</span><span
+style='font-size:12.0pt'>-1) операций сложения и </span><span lang=EN-US
+style='font-size:12.0pt'>n</span><span style='font-size:12.0pt'>*</span><span
+lang=EN-US style='font-size:12.0pt'>n</span><sup><span style='font-size:12.0pt'>2</span></sup><span
+style='font-size:12.0pt'>*(</span><span lang=EN-US style='font-size:12.0pt'>i</span><span
+style='font-size:12.0pt'>-1) операций умножения, где (</span><span lang=EN-US
+style='font-size:12.0pt'>i</span><span style='font-size:12.0pt'>-1) –
+количество последовательных возведений в степень,  </span><span lang=EN-US
+style='font-size:12.0pt'>n</span><sup><span style='font-size:12.0pt'>2</span></sup><span
+style='font-size:12.0pt'> - количество операций, необходимых для получения
+одного элемента результирующей матрицы при поэлементном умножении двух матриц </span><span
+lang=EN-US style='font-size:12.0pt'>A<sup>i</sup></span><sup><span
+style='font-size:12.0pt'>-1</span></sup><span style='font-size:12.0pt'> и </span><span
+lang=EN-US style='font-size:12.0pt'>A</span><span style='font-size:12.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Данный способ представления поля используется для
+вычисления умножения двух полиномов с разделением на подвектора и с взятием
+модуля (метод </span><span lang=EN-US style='font-size:12.0pt'>Paar</span><span
+style='font-size:12.0pt'>), а также для получения значений примитивных
+элементов, представленных в нормальном базисе.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Пример_Различных_способов_представления"><span style='font-size:12.0pt'>В
+табл.2 представлены <u>в различных формах элементы поля </u></span></a><u><span
+lang=EN-US style='font-size:12.0pt'>GF</span></u><u><span style='font-size:
+12.0pt'>(2</span></u><u><sup><span lang=EN-US style='font-size:12.0pt'>n</span></sup></u><u><span
+style='font-size:12.0pt'>)</span></u><span style='font-size:12.0pt'> для
+модуля-полинома </span><span lang=EN-US style='font-size:12.0pt'>m</span><span
+style='font-size:12.0pt'>(</span><b><i><span lang=EN-US style='font-size:12.0pt'>x</span></i></b><span
+style='font-size:12.0pt'>)=</span><b><i><span lang=EN-US style='font-size:12.0pt'>x</span></i></b><sup><span
+style='font-size:12.0pt'>4 </span></sup><span style='font-size:12.0pt'>+<b><i> </i></b></span><b><i><span
+lang=EN-US style='font-size:12.0pt'>x</span></i></b><b><i><span lang=EN-US
+style='font-size:12.0pt'> </span></i></b><span style='font-size:12.0pt'>+ 1.</span></p>
+
+<p class=MsoNormal align=center style='margin-left:212.4pt;text-align:center;
+text-indent:35.4pt'>Таблица 2.</p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=654
+ style='width:490.35pt;border-collapse:collapse'>
+ <tr style='height:16.5pt'>
+  <td width=72 style='width:53.85pt;border:solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>Номер элемента</span></p>
+  </td>
+  <td width=106 style='width:79.4pt;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>Степенное &#958;<sup>i</sup></span></p>
+  </td>
+  <td width=76 style='width:2.0cm;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>Векторное &#945;<sup>3</sup>&#945;<sup>2</sup>&#945;<sup>1</sup>&#945;<sup>0</sup></span></p>
+  </td>
+  <td width=264 style='width:198.15pt;border:solid windowtext 1.5pt;border-left:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>Полиномиальное</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=72 style='width:53.85pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>0</span></p>
+  </td>
+  <td width=106 style='width:79.4pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>&#958;</span><sup><span
+  style='font-size:12.0pt;font-family:Symbol;color:windowtext'>&yen;</span></sup></p>
+  </td>
+  <td width=76 style='width:2.0cm;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>0000</span></p>
+  </td>
+  <td width=264 style='width:198.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>0</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=72 style='width:53.85pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>1</span></p>
+  </td>
+  <td width=106 style='width:79.4pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>&#958;</span><sup><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>0</span></sup></p>
+  </td>
+  <td width=76 style='width:2.0cm;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>0001</span></p>
+  </td>
+  <td width=264 style='width:198.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>1</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=72 style='width:53.85pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>2</span></p>
+  </td>
+  <td width=106 style='width:79.4pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>&#958;</span><sup><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>1</span></sup></p>
+  </td>
+  <td width=76 style='width:2.0cm;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>0010</span></p>
+  </td>
+  <td width=264 style='width:198.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><i><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>X</span></i></b></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=72 style='width:53.85pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>3</span></p>
+  </td>
+  <td width=106 style='width:79.4pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>&#958;</span><sup><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>2</span></sup></p>
+  </td>
+  <td width=76 style='width:2.0cm;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>0100</span></p>
+  </td>
+  <td width=264 style='width:198.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><i><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>x</span></i></b><sup><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>2</span></sup></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=72 style='width:53.85pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>4</span></p>
+  </td>
+  <td width=106 style='width:79.4pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>&#958;</span><sup><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>3</span></sup></p>
+  </td>
+  <td width=76 style='width:2.0cm;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>1000</span></p>
+  </td>
+  <td width=264 style='width:198.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><i><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>x</span></i></b><sup><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>3</span></sup></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=72 style='width:53.85pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>5</span></p>
+  </td>
+  <td width=106 style='width:79.4pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>&#958;</span><sup><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>4</span></sup></p>
+  </td>
+  <td width=76 style='width:2.0cm;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>0011</span></p>
+  </td>
+  <td width=264 style='width:198.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><i><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>x</span></i></b><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>+1</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=72 style='width:53.85pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>6</span></p>
+  </td>
+  <td width=106 style='width:79.4pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>&#958;</span><sup><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>5</span></sup><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'> </span><span style='font-size:
+  12.0pt;color:windowtext'>= &#958;</span><sup><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>4</span></sup><span
+  style='font-size:12.0pt;color:windowtext'>&#958;</span></p>
+  </td>
+  <td width=76 style='width:2.0cm;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>0110</span></p>
+  </td>
+  <td width=264 style='width:198.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>(<i>x</i>+1)<i>x = x</i></span></b><sup><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>2</span></sup><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>+<b><i>x</i></b></span></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=72 style='width:53.85pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>7</span></p>
+  </td>
+  <td width=106 style='width:79.4pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>&#958;</span><sup><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>6</span></sup><span
+  style='font-size:12.0pt;color:windowtext'>= &#958;<sup>5</sup>&#958;</span></p>
+  </td>
+  <td width=76 style='width:2.0cm;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>1100</span></p>
+  </td>
+  <td width=264 style='width:198.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>(<i>x</i></span></b><sup><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>2</span></sup><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>+<b><i>x</i>)<i>x =</i></b></span><b><i><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'> </span></i></b><b><i><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>x</span></i></b><sup><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>3</span></sup><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>+<b><i>x</i></b><sup>2</sup></span></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=72 style='width:53.85pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>8</span></p>
+  </td>
+  <td width=106 style='width:79.4pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>&#958;</span><sup><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>7</span></sup><span
+  style='font-size:12.0pt;color:windowtext'>= &#958;</span><sup><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>6</span></sup><span
+  style='font-size:12.0pt;color:windowtext'>&#958;</span><sup><span
+  style='font-size:12.0pt;color:windowtext'> </span></sup><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>mod <i>m</i>(<i>x</i>)</span></p>
+  </td>
+  <td width=76 style='width:2.0cm;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>1011</span></p>
+  </td>
+  <td width=264 style='width:198.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>(<i>x</i></span></b><sup><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>3</span></sup><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>+<b><i>x</i></b><sup>2</sup><b>)<i>x</i>
+  = (<i>x</i></b><sup>4</sup>+<b><i>x</i></b><sup>3</sup>)mod <b><i>m</i></b>(<b><i>x</i></b>)
+  = <b><i>x</i></b><sup>3</sup>+<b><i>x</i></b>+1</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=72 style='width:53.85pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>9</span></p>
+  </td>
+  <td width=106 style='width:79.4pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>&#958;</span><sup><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>8 </span></sup><span
+  style='font-size:12.0pt;color:windowtext'>= &#958;</span><sup><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>7</span></sup><span
+  style='font-size:12.0pt;color:windowtext'>&#958;</span><sup><span
+  style='font-size:12.0pt;color:windowtext'> </span></sup><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>mod <i>m</i>(<i>x</i>)</span></p>
+  </td>
+  <td width=76 style='width:2.0cm;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>0101</span></p>
+  </td>
+  <td width=264 style='width:198.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>(<b><i>x</i></b><sup>3</sup>+<b><i>x</i></b>+1)<b><i>x</i>
+  = (<i>x</i></b><sup>4</sup>+<b><i>x</i></b><sup>2</sup>+<b><i>x</i></b>)mod <i>m</i>(<i>x</i>)
+  = <b><i>x</i></b><sup>2</sup>+1</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=72 style='width:53.85pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>10</span></p>
+  </td>
+  <td width=106 style='width:79.4pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>&#958;</span><sup><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>9 </span></sup><span
+  style='font-size:12.0pt;color:windowtext'>= &#958;</span><sup><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>8</span></sup><span
+  style='font-size:12.0pt;color:windowtext'>&#958;</span></p>
+  </td>
+  <td width=76 style='width:2.0cm;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>1010</span></p>
+  </td>
+  <td width=264 style='width:198.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>(<i>x</i></span></b><sup><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>2</span></sup><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>+1<b>)<i>x =</i></b></span><b><i><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'> </span></i></b><b><i><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>x</span></i></b><sup><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>3</span></sup><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>+<b><i>x</i></b></span></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=72 style='width:53.85pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>11</span></p>
+  </td>
+  <td width=106 style='width:79.4pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>&#958;</span><sup><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>10</span></sup><span
+  style='font-size:12.0pt;color:windowtext'>= &#958;</span><sup><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>9</span></sup><span
+  style='font-size:12.0pt;color:windowtext'>&#958;</span><sup><span
+  style='font-size:12.0pt;color:windowtext'> </span></sup><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>mod <i>m</i>(<i>x</i>)</span></p>
+  </td>
+  <td width=76 style='width:2.0cm;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>0111</span></p>
+  </td>
+  <td width=264 style='width:198.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>(<b><i>x</i></b><sup>3</sup>+<b><i>x</i></b>)<b><i>x</i></b>
+  = (<b><i>x</i></b><sup>4</sup>+<b><i>x</i></b><sup>2</sup>)mod <i>m</i>(<i>x</i>)
+  = <b><i>x</i></b><sup>2</sup>+<b><i>x</i></b>+1</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=72 style='width:53.85pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>12</span></p>
+  </td>
+  <td width=106 style='width:79.4pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>&#958;</span><sup><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>11</span></sup><span
+  style='font-size:12.0pt;color:windowtext'>= &#958;</span><sup><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>10</span></sup><span
+  style='font-size:12.0pt;color:windowtext'>&#958;</span></p>
+  </td>
+  <td width=76 style='width:2.0cm;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>1110</span></p>
+  </td>
+  <td width=264 style='width:198.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>(<b><i>x</i></b><sup>2</sup>+<b><i>x</i></b>+1)<b><i>x</i></b>
+  = <b><i>x</i></b><sup>3</sup>+<b><i>x</i></b><sup>2</sup>+<b><i>x</i></b></span></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=72 style='width:53.85pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>13</span></p>
+  </td>
+  <td width=106 style='width:79.4pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>&#958;</span><sup><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>12</span></sup><span
+  style='font-size:12.0pt;color:windowtext'>=&#958;</span><sup><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>11</span></sup><span
+  style='font-size:12.0pt;color:windowtext'>&#958;</span><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'> mod <i>m</i>(<i>x</i>)</span></p>
+  </td>
+  <td width=76 style='width:2.0cm;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>1111</span></p>
+  </td>
+  <td width=264 style='width:198.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>(<b><i>x</i></b><sup>3</sup>+<b><i>x</i></b><sup>2</sup>+<b><i>x</i></b>)<b><i>x</i></b>
+  = (<b><i>x</i></b><sup>4</sup>+<b><i>x</i></b><sup>3</sup>+<b><i>x</i></b><sup>2</sup>)
+  mod <i>m</i>(<i>x</i>) = <b><i>x</i></b><sup>3</sup>+<b><i>x</i></b><sup>2</sup>+<b><i>x</i></b>+1</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.75pt'>
+  <td width=72 style='width:53.85pt;border-top:none;border-left:solid windowtext 1.5pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>14</span></p>
+  </td>
+  <td width=106 style='width:79.4pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>&#958;</span><sup><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>13</span></sup><span
+  style='font-size:12.0pt;color:windowtext'>=&#958;</span><sup><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>12</span></sup><span
+  style='font-size:12.0pt;color:windowtext'>&#958;</span><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'> mod <i>m</i>(<i>x</i>)</span></p>
+  </td>
+  <td width=76 style='width:2.0cm;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>1101</span></p>
+  </td>
+  <td width=264 style='width:198.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>(<b><i>x</i></b><sup>3</sup>+<b><i>x</i></b><sup>2</sup>+<b><i>x</i></b>+1)<b><i>x
+  = </i></b>(<b><i>x</i></b><sup>4</sup>+<b><i>x</i></b><sup>3</sup>+<b><i>x</i></b><sup>2</sup>+<b><i>x</i></b>)
+  mod <i>m</i>(<i>x</i>)= <b><i>x</i></b><sup>3</sup>+<b><i>x</i></b><sup>2</sup>+1</span></p>
+  </td>
+ </tr>
+ <tr style='height:16.5pt'>
+  <td width=72 style='width:53.85pt;border:solid windowtext 1.5pt;border-top:
+  none;padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>15</span></p>
+  </td>
+  <td width=106 style='width:79.4pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:12.0pt;color:windowtext'>&#958;</span><sup><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>14</span></sup><span
+  style='font-size:12.0pt;color:windowtext'>=&#958;</span><sup><span
+  lang=EN-US style='font-size:12.0pt;color:windowtext'>13</span></sup><span
+  style='font-size:12.0pt;color:windowtext'>&#958;</span><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'> mod <i>m</i>(<i>x</i>)</span></p>
+  </td>
+  <td width=76 style='width:2.0cm;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.5pt;border-right:solid windowtext 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>1001</span></p>
+  </td>
+  <td width=264 style='width:198.15pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.5pt;border-right:solid windowtext 1.5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.5pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:12.0pt;color:windowtext'>(<b><i>x</i></b><sup>3</sup>+<b><i>x</i></b><sup>2</sup>+1)<b><i>x
+  = </i></b>(<b><i>x</i></b><sup>4</sup>+<b><i>x</i></b><sup>3</sup>+<b><i>x</i></b>)
+  mod <i>m</i>(<i>x</i>) = <b><i>x</i></b><sup>3</sup>+1</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>В полиномиальном представлении следующий элемент
+получается путем умножения предыдущего элемента на </span><b><i><span
+lang=EN-US style='font-size:12.0pt'>x</span></i></b><span style='font-size:
+12.0pt'>. Если максимальная степень результата операции получается равной или
+большей степени модуля, то производится поразрядное сложение векторных
+представлений модуля и результата. Коэффициенты, получаемые в старших разрядах,
+выходящих за границы модуля, отбрасываются, т.е. все коэффициенты степеней,
+больших или равных степени модуля.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>Например, для получения 9-ого элемента
+рассматриваемого случая 8-ой элемент умножается на </span><b><i><span
+lang=EN-US style='font-size:12.0pt'>x</span></i></b><span style='font-size:
+12.0pt'>: (</span><b><i><span lang=EN-US style='font-size:12.0pt;color:windowtext'>x</span></i></b><sup><span
+style='font-size:12.0pt;color:windowtext'>3</span></sup><span style='font-size:
+12.0pt;color:windowtext'>+</span><b><i><span lang=EN-US style='font-size:12.0pt;
+color:windowtext'>x</span></i></b><span style='font-size:12.0pt;color:windowtext'>+1)*</span><b><i><span
+lang=EN-US style='font-size:12.0pt;color:windowtext'>x</span></i></b><span
+style='font-size:12.0pt;color:windowtext'>=<b><i> </i></b></span><b><i><span
+lang=EN-US style='font-size:12.0pt;color:windowtext'>x</span></i></b><sup><span
+style='font-size:12.0pt;color:windowtext'>4</span></sup><span style='font-size:
+12.0pt;color:windowtext'>+</span><b><i><span lang=EN-US style='font-size:12.0pt;
+color:windowtext'>x</span></i></b><sup><span style='font-size:12.0pt;
+color:windowtext'>2</span></sup><span style='font-size:12.0pt;color:windowtext'>+</span><b><i><span
+lang=EN-US style='font-size:12.0pt;color:windowtext'>x</span></i></b><span
+style='font-size:12.0pt;color:windowtext'>. Складываем в векторном виде </span><b><i><span
+lang=EN-US style='font-size:12.0pt;color:windowtext'>x</span></i></b><sup><span
+style='font-size:12.0pt;color:windowtext'>4</span></sup><span style='font-size:
+12.0pt;color:windowtext'>+</span><b><i><span lang=EN-US style='font-size:12.0pt;
+color:windowtext'>x</span></i></b><sup><span style='font-size:12.0pt;
+color:windowtext'>2</span></sup><span style='font-size:12.0pt;color:windowtext'>+</span><b><i><span
+lang=EN-US style='font-size:12.0pt;color:windowtext'>x</span></i></b><span
+style='font-size:12.0pt;color:windowtext'> =10110 и </span><b><i><span
+lang=EN-US style='font-size:12.0pt'>x</span></i></b><sup><span
+style='font-size:12.0pt'>4 </span></sup><span style='font-size:12.0pt'>+<b><i> </i></b></span><b><i><span
+lang=EN-US style='font-size:12.0pt'>x</span></i></b><b><i><span lang=EN-US
+style='font-size:12.0pt'> </span></i></b><span style='font-size:12.0pt'>+
+1=10011:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>                           </span><span
+style='font-size:12.0pt;color:windowtext'>10110</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt;color:windowtext'>                        </span><span
+style='font-size:12.0pt;font-family:Symbol;color:windowtext'>&Aring;</span><u><span
+style='font-size:12.0pt'>10011</span></u></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>                           00101.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:12.0pt'>В итоге получаем 9-ый элемент, равный в векторном виде
+0101 или в полиномиальном  </span><b><i><span lang=EN-US style='font-size:12.0pt;
+color:windowtext'>x</span></i></b><sup><span style='font-size:12.0pt;
+color:windowtext'>2</span></sup><span style='font-size:12.0pt;color:windowtext'>+1</span><span
+style='font-size:12.0pt'>.</span></p>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,1391 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title>Алгоритм RSA предложили в 1978 г</title>
+
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:2.0cm 42.5pt 2.0cm 3.0cm;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=RU>
+
+<div class=Section1>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span
+style='font-size:14.0pt'>Лабораторная работа</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span
+style='font-size:14.0pt'>Алгоритм ассиметричного шифрования </span></b><b><span
+lang=EN-US style='font-size:14.0pt'>RSA</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span lang=EN-US
+style='font-size:14.0pt'>&nbsp;</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Цель_работы"><u><span style='font-size:14.0pt'>Цель работы</span></u></a><span
+style='font-size:14.0pt'>: освоение практических методов использования и
+собственной программной реализации алгоритмов ассиметричного шифрования на
+примере алгоритма </span><span lang=EN-US style='font-size:14.0pt'>RSA</span><span
+style='font-size:14.0pt'>. </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name="Описание_работы"><u><span style='font-size:14.0pt;color:black'>Теоретическая
+часть</span></u></a><span style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>Алгоритм </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>RSA</span><span style='font-size:14.0pt;
+color:black'> предложили в 1978 г. три автора: Райвест (</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>Rivest</span><span
+style='font-size:14.0pt;color:black'>), Шамир (</span><span lang=EN-US
+style='font-size:14.0pt;color:black'>Shamir</span><span style='font-size:14.0pt;
+color:black'>) и Адлеман (</span><span lang=EN-US style='font-size:14.0pt;
+color:black'>Adleman</span><span style='font-size:14.0pt;color:black'>).
+Алгоритм получил свое название по первым буквам фамилий его авторов. </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>RSA</span><span
+style='font-size:14.0pt;color:black'> стал первым полноценным алгоритмом с
+открытым ключом, который может работать как в режиме шифрования данных, так и в
+режиме электронной цифровой подписи. Системы с открытым ключом позволяют
+исключить явную передачу по открытым каналам секретных постоянных данных –
+паролей и секретных ключей для шифрования.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt;color:black'>Надежность алгоритма основывается на
+трудности факторизации больших чисел и трудности вычисления дискретных
+логарифмов.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:14.0pt;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Пусть
+выбираются случайные большие простые числа Р и </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>Q</span><span style='font-size:14.0pt;
+color:black'>, равной длины, которые являются секретом. Данные числа образуют
+модуль </span><span lang=EN-US style='font-size:14.0pt;color:black'>N</span><span
+style='font-size:14.0pt;color:black'>, используемый для нормирования
+результатов: </span><span lang=EN-US style='font-size:14.0pt;color:black'>N</span><span
+style='font-size:14.0pt;color:black'> = </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>P</span><span style='font-size:14.0pt;
+color:black'>*</span><span lang=EN-US style='font-size:14.0pt;color:black'>Q</span><span
+style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Открытый
+ключ К<sub>о</sub> выбирают случайным образом так, чтобы выполнялись условия:</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span style='font-size:14.0pt;color:black'>1&lt; </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>K</span><sub><span
+style='font-size:14.0pt;color:black'>о</span></sub><span style='font-size:14.0pt;
+color:black'> &#8804; </span><span style='font-size:14.0pt;font-family:Symbol;
+color:black'>j</span><span style='font-size:14.0pt;color:black'>(</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>N</span><span style='font-size:
+14.0pt;color:black'>),</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span style='font-size:14.0pt;color:black'>НОД(</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>K</span><sub><span
+style='font-size:14.0pt;color:black'>о</span></sub><span style='font-size:14.0pt;
+color:black'>, </span><span style='font-size:14.0pt;font-family:Symbol;
+color:black'>j</span><span style='font-size:14.0pt;color:black'>(</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>N</span><span style='font-size:
+14.0pt;color:black'>)) = 1 (числа </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>K</span><sub><span style='font-size:14.0pt;color:black'>о</span></sub><span
+style='font-size:14.0pt;color:black'> и </span><span style='font-size:14.0pt;
+font-family:Symbol;color:black'>j</span><span style='font-size:14.0pt;
+color:black'>(</span><span lang=EN-US style='font-size:14.0pt;color:black'>N</span><span
+style='font-size:14.0pt;color:black'>) взаимнопросты),</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span style='font-size:14.0pt;font-family:Symbol;
+color:black'>j</span><span style='font-size:14.0pt;color:black'>(</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>N</span><span style='font-size:
+14.0pt;color:black'>)=(</span><span lang=EN-US style='font-size:14.0pt;
+color:black'>P</span><span style='font-size:14.0pt;color:black'>-1)(</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>Q</span><span style='font-size:
+14.0pt;color:black'>-1),</span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;text-autospace:
+none'><span style='font-size:14.0pt;color:black'>где </span><span
+style='font-size:14.0pt;font-family:Symbol;color:black'>j</span><span
+style='font-size:14.0pt;color:black'>(</span><span lang=EN-US style='font-size:
+14.0pt;color:black'>N</span><span style='font-size:14.0pt;color:black'>) -
+функция Эйлера. Функция Эйлера </span><span style='font-size:14.0pt;font-family:
+Symbol;color:black'>j</span><span style='font-size:14.0pt;color:black'>(</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>N</span><span style='font-size:
+14.0pt;color:black'>) указывает количество положительных целых чисел в интервале
+от 1 до </span><span lang=EN-US style='font-size:14.0pt;color:black'>N</span><span
+style='font-size:14.0pt;color:black'>, которые взаимнопросты с N. Второе
+условие означает, что открытый ключ </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>K</span><sub><span style='font-size:14.0pt;color:black'>о</span></sub><span
+style='font-size:14.0pt;color:black'> и </span><span style='font-size:14.0pt;
+font-family:Symbol;color:black'>j</span><span style='font-size:14.0pt;
+color:black'>(</span><span lang=EN-US style='font-size:14.0pt;color:black'>N</span><span
+style='font-size:14.0pt;color:black'>) должны быть взаимно простыми
+(использование алгоритма Евклида).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Далее,
+используя расширенный алгоритм Евклида, вычис­ляется секретный ключ </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>K</span><sub><span
+style='font-size:14.0pt;color:black'>с</span></sub><span style='font-size:14.0pt;
+color:black'> как обратный элемент к  </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>K</span><sub><span style='font-size:14.0pt;color:black'>о</span></sub><span
+style='font-size:14.0pt;color:black'>, такой, что</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span lang=EN-US style='font-size:14.0pt;color:black'>K<sub>c</sub></span><span
+style='font-size:14.0pt;color:black'> * К<sub>о</sub> &#8801; 1 </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span style='font-size:14.0pt;
+font-family:Symbol;color:black'>j</span><span style='font-size:14.0pt;
+color:black'>(</span><span lang=EN-US style='font-size:14.0pt;color:black'>N</span><span
+style='font-size:14.0pt;color:black'>) или </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>K<sub>c</sub></span><span
+style='font-size:14.0pt;color:black'> = К<sub>о</sub><sup>-1</sup> </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span
+style='font-size:14.0pt;color:black'>(</span><span lang=EN-US style='font-size:
+14.0pt;color:black'>P</span><span style='font-size:14.0pt;color:black'>-1)(</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>Q</span><span style='font-size:
+14.0pt;color:black'>-1).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt'>Символ <span
+style='color:black'>&#8801; обозначает сравнимость левой и правой частей
+уравнения. Два целых числа </span></span><span lang=EN-US style='font-size:
+14.0pt;color:black'>a</span><span style='font-size:14.0pt;color:black'> и </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>b</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><i><span style='font-size:14.0pt;
+color:black'>сравнимы</span></i><span style='font-size:14.0pt;color:black'> по
+модулю </span><span lang=EN-US style='font-size:14.0pt;color:black'>n</span><span
+style='font-size:14.0pt;color:black'>, если (</span><span lang=EN-US
+style='font-size:14.0pt;color:black'>a</span><span style='font-size:14.0pt;
+color:black'> - </span><span lang=EN-US style='font-size:14.0pt;color:black'>b</span><span
+style='font-size:14.0pt;color:black'>) делится на </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>n</span><span style='font-size:14.0pt;
+color:black'>, то есть</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span lang=EN-US style='font-size:14.0pt;color:black'>a</span><span
+style='font-size:14.0pt;color:black'> &#8801; </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>b</span><span lang=EN-US style='font-size:
+14.0pt;color:black'> </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>mod</span><span lang=EN-US style='font-size:14.0pt;color:black'> </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>n</span><span style='font-size:
+14.0pt;color:black'>   или  </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>a</span><span style='font-size:14.0pt;color:black'> - </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>b</span><span style='font-size:
+14.0pt;color:black'> = </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>n</span><span style='font-size:14.0pt;color:black'>*</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>t</span><span style='font-size:
+14.0pt;color:black'>, </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>t</span><span style='font-size:14.0pt;color:black'> – положительное
+целое число.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Открытый
+ключ </span><span lang=EN-US style='font-size:14.0pt;color:black'>K</span><sub><span
+style='font-size:14.0pt;color:black'>о</span></sub><span style='font-size:14.0pt;
+color:black'> используют для шифрования данных, а секретный ключ </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>K<sub>c</sub></span><span
+style='font-size:14.0pt;color:black'> - для расшифрования.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt'>Открытый текст </span><span
+lang=EN-US style='font-size:14.0pt'>M</span><span style='font-size:14.0pt'>
+перед шифрованием разбивается на блоки чисел, сравнимые с модулем </span><span
+lang=EN-US style='font-size:14.0pt'>N</span><span style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Преобразование
+шифрования определяет шифрованный текст С через пару (открытый ключ К<sub>о</sub>,
+сообщение М) в соответствии со следующей формулой (возведение в степень с
+нормированием результата с помощью схемы Горнера):</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span lang=EN-US style='font-size:14.0pt;color:black;
+text-transform:uppercase'>C</span><span style='font-size:14.0pt;color:black;
+text-transform:uppercase'> = </span><span lang=EN-US style='font-size:14.0pt;
+color:black;text-transform:uppercase'>M<sup>K</sup></span><sup><span
+style='font-size:14.0pt;color:black;text-transform:uppercase'>о </span></sup><span
+lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span lang=EN-US
+style='font-size:14.0pt;color:black;text-transform:uppercase'> </span><span
+lang=EN-US style='font-size:14.0pt;color:black;text-transform:uppercase'>N</span><span
+style='font-size:14.0pt;color:black;text-transform:uppercase'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Задача
+расшифрования криптограммы С решается с использованием пары (секретный ключ </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>K<sub>c</sub></span><span
+style='font-size:14.0pt;color:black'>, криптограмма С) по формуле:</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span style='font-size:14.0pt;color:black'>М = </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>C<sup>Kc</sup></span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>mod</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>N</span><span style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Процесс
+расшифрования можно записать как </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>D</span><span style='font-size:14.0pt;color:black'>(</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>E</span><span style='font-size:
+14.0pt;color:black'>(</span><span lang=EN-US style='font-size:14.0pt;
+color:black'>M</span><span style='font-size:14.0pt;color:black'>)) = </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>M</span><span style='font-size:
+14.0pt;color:black'> (</span><span lang=EN-US style='font-size:14.0pt;
+color:black'>D</span><span style='font-size:14.0pt;color:black'> – операция
+расшифрования, </span><span lang=EN-US style='font-size:14.0pt;color:black'>E</span><span
+style='font-size:14.0pt;color:black'> – операция шифрования).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Формулу </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>K<sub>c</sub></span><span
+style='font-size:14.0pt;color:black'> * К<sub>о</sub> &#8801; 1 </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span style='font-size:14.0pt;
+font-family:Symbol;color:black'>j</span><span style='font-size:14.0pt;
+color:black'>(</span><span lang=EN-US style='font-size:14.0pt;color:black'>N</span><span
+style='font-size:14.0pt;color:black'>), используя определение операции
+сравнения, можно переписать в следующем виде: </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>K<sub>c</sub></span><span
+style='font-size:14.0pt;color:black'> * К<sub>о</sub> = 1 + </span><span
+style='font-size:14.0pt;font-family:Symbol;color:black'>j</span><span
+style='font-size:14.0pt;color:black'>(</span><span lang=EN-US style='font-size:
+14.0pt;color:black'>N</span><span style='font-size:14.0pt;color:black'>)*</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>t</span><span style='font-size:
+14.0pt;color:black'>. Тогда </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>D</span><span style='font-size:14.0pt;color:black'>(</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>E</span><span style='font-size:
+14.0pt;color:black'>(</span><span lang=EN-US style='font-size:14.0pt;
+color:black'>M</span><span style='font-size:14.0pt;color:black'>)) = (</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>M<sup>Kc</sup></span><span
+style='font-size:14.0pt;color:black'>)</span><sup><span lang=EN-US
+style='font-size:14.0pt;color:black'>K</span></sup><sup><span style='font-size:
+14.0pt;color:black'>о</span></sup><span style='font-size:14.0pt;color:black'> </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>N</span><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span style='font-size:14.0pt;color:black'>= </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>M<sup>Kc</sup></span><sup><span
+style='font-size:14.0pt;color:black'>*</span></sup><sup><span lang=EN-US
+style='font-size:14.0pt;color:black'>K</span></sup><sup><span style='font-size:
+14.0pt;color:black'>о</span></sup><span style='font-size:14.0pt;color:black'> </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>N</span><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span style='font-size:14.0pt;color:black'>= </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>M</span><sup><span
+style='font-size:14.0pt;color:black'>1 + </span></sup><sup><span
+style='font-size:14.0pt;font-family:Symbol;color:black'>j</span></sup><sup><span
+style='font-size:14.0pt;color:black'>(</span></sup><sup><span lang=EN-US
+style='font-size:14.0pt;color:black'>N</span></sup><sup><span style='font-size:
+14.0pt;color:black'>)*</span></sup><sup><span lang=EN-US style='font-size:14.0pt;
+color:black'>t</span></sup><span lang=EN-US style='font-size:14.0pt;color:black'>
+</span><span lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>N</span><span style='font-size:14.0pt;
+color:black'>. При </span><span lang=EN-US style='font-size:14.0pt;color:black'>t</span><span
+style='font-size:14.0pt;color:black'> = 0 </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>D</span><span style='font-size:14.0pt;
+color:black'>(</span><span lang=EN-US style='font-size:14.0pt;color:black'>E</span><span
+style='font-size:14.0pt;color:black'>(</span><span lang=EN-US style='font-size:
+14.0pt;color:black'>M</span><span style='font-size:14.0pt;color:black'>)) = </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>M</span><sup><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span></sup><span lang=EN-US
+style='font-size:14.0pt;color:black'>mod</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>N</span><span style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>В
+криптосистеме </span><span lang=EN-US style='font-size:14.0pt;color:black'>RSA</span><span
+style='font-size:14.0pt;color:black'> открытый ключ К<sub>о</sub>, секретный
+ключ К<sub>с</sub>, сообщение М и криптограмма С принадлежат множеству
+положительных целых чисел [0; </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>N</span><span style='font-size:14.0pt;color:black'>-1], где N -
+модуль. Данное множество с операциями сложения и умножения по модулю N, с
+существованием обратного и единичного элементов, образует арифметику поля по
+модулю N.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Открытыми
+элементами являются элементы </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>K<sub>o</sub></span><span style='font-size:14.0pt;color:black'>,
+модуль </span><span lang=EN-US style='font-size:14.0pt;color:black'>N</span><span
+style='font-size:14.0pt;color:black'> и шифротекст </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>C</span><span style='font-size:14.0pt;
+color:black'>. А закрытыми – секретный ключ </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>K<sub>c</sub></span><span
+style='font-size:14.0pt;color:black'>, простые числа </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>P</span><span style='font-size:14.0pt;
+color:black'> и </span><span lang=EN-US style='font-size:14.0pt;color:black'>Q</span><span
+style='font-size:14.0pt;color:black'>, и открытый текст </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>M</span><span style='font-size:
+14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><u><span style='font-size:14.0pt;color:black'>Особенности
+алгоритма </span></u><u><span lang=EN-US style='font-size:14.0pt;color:black'>RSA</span></u><span
+style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Чтобы
+алгоритм </span><span lang=EN-US style='font-size:14.0pt;color:black'>RSA</span><span
+style='font-size:14.0pt;color:black'> имел практическую ценность, необходимо
+иметь возможность без существенных затрат генерировать большие простые числа,
+уметь оперативно вычислять значения ключей К</span><sub><span lang=EN-US
+style='font-size:14.0pt;color:black'>c</span></sub><span style='font-size:14.0pt;
+color:black'> и К</span><sub><span lang=EN-US style='font-size:14.0pt;
+color:black'>o</span></sub><span style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt'>Для нахождения чисел </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>P</span><span style='font-size:
+14.0pt;color:black'> и </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>Q</span><span style='font-size:14.0pt;color:black'> из </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>N</span><span style='font-size:
+14.0pt;color:black'> для злоумышленника встает задача разложения числа </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>N</span><span style='font-size:
+14.0pt;color:black'> на множители. Для получения открытого текста </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>M</span><span style='font-size:
+14.0pt;color:black'> из закрытого текста </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>C</span><span style='font-size:14.0pt;
+color:black'>, без знания секретного ключа </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>K<sub>c</sub></span><span
+style='font-size:14.0pt;color:black'>, возникает проблема нахождения
+дискретного логарифма. Обе эти задачи имеют вычислительную экспоненциальную
+сложность.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Аппаратная
+реализация </span><span lang=EN-US style='font-size:14.0pt;color:black'>RSA</span><span
+style='font-size:14.0pt;color:black'> примерно в 1000 раз медленнее аппаратной
+реа­лизации симметричного алгоритма </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>DES</span><span style='font-size:14.0pt;color:black'>. А
+программная реализация - в 100 раз медленнее программной реализации </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>DES</span><span
+style='font-size:14.0pt;color:black'>. То есть, из-за большого числа
+вычислений, асимметричная криптосистема </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>RSA</span><span style='font-size:14.0pt;
+color:black'> работает медленнее симметричных криптосистем. </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Предлагаются
+следующие оценки длин ключей для ассиметричных алгоритмов, с учетом прогресса
+развития вычислительной техники (рис.1).</span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;background:white;text-autospace:
+none'><u><span style='font-size:14.0pt;color:black'>Алгоритм вычисления
+обратного элемента для небольших чисел</span></u><span style='font-size:14.0pt;
+color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Для
+упрощения ручного счета обратный элемент для числа в модулярной арифметике
+можно находить по следующему алгоритму, вместо расширенного алгоритма Евклида. Для
+чисел, сравнимых с размерностью машинного слова, можно вычислять обратный
+элемент итеративно с помощью следующего алгоритма.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Если
+числа </span><span lang=EN-US style='font-size:14.0pt;color:black'>a</span><span
+style='font-size:14.0pt;color:black'> и </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>n</span><span style='font-size:14.0pt;
+color:black'> взаимнопросты (НОД(</span><span lang=EN-US style='font-size:14.0pt;
+color:black'>a</span><span style='font-size:14.0pt;color:black'>, </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>n</span><span style='font-size:
+14.0pt;color:black'>) = 1), то выражение </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>a</span><span style='font-size:14.0pt;
+color:black'> * </span><span lang=EN-US style='font-size:14.0pt;color:black'>a</span><sup><span
+style='font-size:14.0pt;color:black'>-1</span></sup><span style='font-size:
+14.0pt;color:black'> &#8801; 1 </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>mod</span><span lang=EN-US style='font-size:14.0pt;color:black'> </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>n</span><span style='font-size:
+14.0pt;color:black'>  можно записать в виде </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>a</span><span style='font-size:14.0pt;
+color:black'> * </span><span lang=EN-US style='font-size:14.0pt;color:black'>a</span><sup><span
+style='font-size:14.0pt;color:black'>-1</span></sup><span style='font-size:
+14.0pt;color:black'> - 1 = </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>n</span><span style='font-size:14.0pt;color:black'>*</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>t</span><span style='font-size:
+14.0pt;color:black'>, </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>t</span><span style='font-size:14.0pt;color:black'> –
+положительное целое число из множества [0, +</span><span style='font-size:14.0pt;
+font-family:Symbol;color:black'>&yen;</span><span style='font-size:14.0pt;
+color:black'>). Числа </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>a</span><span lang=EN-US style='font-size:14.0pt;color:black'> </span><span
+style='font-size:14.0pt;color:black'>и </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>n</span><span style='font-size:14.0pt;
+color:black'> заданы, неизвестны </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>t</span><span lang=EN-US style='font-size:14.0pt;color:black'> </span><span
+style='font-size:14.0pt;color:black'>и </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>a</span><sup><span style='font-size:14.0pt;
+color:black'>-1</span></sup><span style='font-size:14.0pt;color:black'>. Тогда
+нужно найти такое </span><span lang=EN-US style='font-size:14.0pt;color:black'>t</span><span
+style='font-size:14.0pt;color:black'>, при котором </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>a</span><sup><span style='font-size:14.0pt;
+color:black'>-1</span></sup><span style='font-size:14.0pt;color:black'> будет
+удовлетворять условию обратного элемента: </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>a</span><span style='font-size:14.0pt;
+color:black'> * </span><span lang=EN-US style='font-size:14.0pt;color:black'>a</span><sup><span
+style='font-size:14.0pt;color:black'>-1</span></sup><span style='font-size:
+14.0pt;color:black'> &#8801; 1 </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>mod</span><span lang=EN-US style='font-size:14.0pt;color:black'> </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>n</span><span style='font-size:
+14.0pt;color:black'>. Перепишем выражение </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>a</span><span style='font-size:14.0pt;
+color:black'> * </span><span lang=EN-US style='font-size:14.0pt;color:black'>a</span><sup><span
+style='font-size:14.0pt;color:black'>-1</span></sup><span style='font-size:
+14.0pt;color:black'> - 1 = </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>n</span><span style='font-size:14.0pt;color:black'>*</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>t</span><span style='font-size:
+14.0pt;color:black'> как <span style='position:relative;top:12.0pt'><img
+width=99 height=51 src="RSA.files/image001.png"></span>.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span style='font-size:14.0pt;color:black'><img width=568
+height=340 src="RSA.files/image002.png"></span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span style='font-size:14.0pt;color:black'>Рис. 1.</span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;text-autospace:
+none'><span style='font-size:14.0pt;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name=Алгоритм><u><span style='font-size:14.0pt;
+color:black'>Описание алгоритма </span></u></a><u><span lang=EN-US
+style='font-size:14.0pt;color:black'>RSA</span></u><span style='font-size:14.0pt;
+color:black'>. Предлагается реализовать данные алгоритм для чисел размерностью
+в машинное слово (до 2<sup>32</sup>), задавая в качестве исходного открытого
+текста буквы русского алфавита, и выбирая модуль, соизмеримый с размером
+алфавита (если модуль будет меньше, то результат расшифровки будет отличаться
+от исходного открытого текста). Опишем шаги алгоритма.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>1. Если
+НОД(</span><span lang=EN-US style='font-size:14.0pt;color:black'>a</span><span
+style='font-size:14.0pt;color:black'>, </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>n</span><span style='font-size:14.0pt;
+color:black'>) </span><span style='font-size:14.0pt;font-family:Symbol;
+color:black'>&sup1;</span><span style='font-size:14.0pt;color:black'> 1
+(алгоритм Евклида), то выход. Обратный элемент не существует.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>2. Для
+любого </span><span lang=EN-US style='font-size:14.0pt;color:black'>t</span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span lang=EN-US
+style='font-size:14.0pt;font-family:Symbol;color:black'>&Icirc;</span><span
+style='font-size:14.0pt;color:black'>[0, +</span><span style='font-size:14.0pt;
+font-family:Symbol;color:black'>&yen;</span><span style='font-size:14.0pt;
+color:black'>) вычисляем действия.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>2.а. Если
+значение выражения <span style='position:relative;top:12.0pt'><img width=51
+height=51 src="RSA.files/image003.png"></span> не является натуральным числом,
+то переход к пункту 2. Иначе это выражение задает обратный элемент: <span
+style='position:relative;top:12.0pt'><img width=99 height=51
+src="RSA.files/image001.png"></span>, выход.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Данный
+алгоритм будет конечным тогда, когда выполняется условие взаимной простоты двух
+чисел </span><span lang=EN-US style='font-size:14.0pt;color:black'>a</span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span style='font-size:
+14.0pt;color:black'>и </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>n</span><span style='font-size:14.0pt;color:black'> (условие
+существование обратного элемента).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><u><span style='font-size:14.0pt;color:black'>Механизм
+использования алгоритма </span></u><u><span lang=EN-US style='font-size:14.0pt;
+color:black'>RSA</span></u><span style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Пусть пользователь
+А хочет передать пользователю В сообщение в зашифрованном виде, используя
+криптосистему </span><span lang=EN-US style='font-size:14.0pt;color:black'>RSA</span><span
+style='font-size:14.0pt;color:black'>. Пользователь А выступает в роли
+отправителя сообщения, а пользователь В - в роли получателя. Элементы криптосистемы
+</span><span lang=EN-US style='font-size:14.0pt;color:black'>RSA</span><span
+style='font-size:14.0pt;color:black'> должен формировать получатель сообщения -
+пользователь В. Рассмотрим последовательность действий пользователя В и
+пользователя А.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><i><span style='font-size:14.0pt;color:black'>Действия
+пользователя </span></i><i><span lang=EN-US style='font-size:14.0pt;color:black'>B</span></i><span
+lang=EN-US style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>1.  
+Пользователь В выбирает два произвольных больших простых числа Р и </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>Q</span><span style='font-size:
+14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>2. 
+Пользователь В вычисляет значение модуля N = Р * </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>Q</span><span style='font-size:14.0pt;
+color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>3. 
+Пользователь В вычисляет функцию Эйлера: </span><span style='font-size:14.0pt;
+font-family:Symbol;color:black'>j</span><span style='font-size:14.0pt;
+color:black'>(</span><span lang=EN-US style='font-size:14.0pt;color:black'>N</span><span
+style='font-size:14.0pt;color:black'>) = (</span><span lang=EN-US
+style='font-size:14.0pt;color:black'>P</span><span style='font-size:14.0pt;
+color:black'>-1) (</span><span lang=EN-US style='font-size:14.0pt;color:black'>Q</span><span
+style='font-size:14.0pt;color:black'>-1).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>и
+выбирает случайным образом значение открытого ключа К<sub>о</sub> с учетом
+выполнения условий:</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span style='font-size:14.0pt;color:black'>1&lt; </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>K</span><sub><span
+style='font-size:14.0pt;color:black'>о</span></sub><span style='font-size:14.0pt;
+color:black'> &#8804; </span><span style='font-size:14.0pt;font-family:Symbol;
+color:black'>j</span><span style='font-size:14.0pt;color:black'>(</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>N</span><span style='font-size:
+14.0pt;color:black'>),</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span style='font-size:14.0pt;color:black'>НОД(</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>K</span><sub><span
+style='font-size:14.0pt;color:black'>о</span></sub><span style='font-size:14.0pt;
+color:black'>, </span><span style='font-size:14.0pt;font-family:Symbol;
+color:black'>j</span><span style='font-size:14.0pt;color:black'>(</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>N</span><span style='font-size:
+14.0pt;color:black'>)) = 1 (алгоритм Евклида)</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>4. 
+Пользователь В вычисляет значение секретного ключа </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>K<sub>c</sub></span><span
+style='font-size:14.0pt;color:black'>, используя расширенный алгоритм Евклида
+при решении сра­внения:</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span lang=EN-US style='font-size:14.0pt;color:black'>K<sub>c</sub></span><span
+style='font-size:14.0pt;color:black'> = К<sub>о</sub><sup>-1</sup> </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span style='font-size:14.0pt;
+font-family:Symbol;color:black'>j</span><span style='font-size:14.0pt;
+color:black'>(</span><span lang=EN-US style='font-size:14.0pt;color:black'>N</span><span
+style='font-size:14.0pt;color:black'>).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>5. 
+Пользователь В пересылает пользователю А пару чисел (</span><span lang=EN-US
+style='font-size:14.0pt;color:black'>N</span><span style='font-size:14.0pt;
+color:black'>, К<sub>о</sub>) по незащищенному каналу.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><i><span style='font-size:14.0pt;color:black'>Действия
+пользователя </span></i><i><span lang=EN-US style='font-size:14.0pt;color:black'>A</span></i><span
+style='font-size:14.0pt;color:black'>, передающего пользователю В сообщение М.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>6. 
+Пользователь А разбивает исходный открытый текст М на блоки, каждый из
+которых   может   быть   представлен в виде последовательности чисел </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>M<sub>i</sub></span><span
+style='font-size:14.0pt;color:black'> = 0, 1, …, </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>n</span><span style='font-size:14.0pt;
+color:black'>-1.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>7. Пользователь
+А шифрует текст, представленный в виде последовательности чисел М</span><sub><span
+lang=EN-US style='font-size:14.0pt;color:black'>i</span></sub><span
+style='font-size:14.0pt;color:black'> по формуле С</span><sub><span lang=EN-US
+style='font-size:14.0pt;color:black'>i</span></sub><span style='font-size:14.0pt;
+color:black'> = М</span><sub><span lang=EN-US style='font-size:14.0pt;
+color:black'>i</span></sub><sup><span style='font-size:14.0pt;color:black'>К</span></sup><sup><span
+lang=EN-US style='font-size:14.0pt;color:black'>o</span></sup><span lang=EN-US
+style='font-size:14.0pt;color:black'>mod</span><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>N</span><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span style='font-size:14.0pt;color:black'>(схема Горнера)
+и отправляет криптограмму </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>C</span><sub><span style='font-size:14.0pt;color:black'>1</span></sub><span
+style='font-size:14.0pt;color:black'>, С<sub>2</sub>, ..., С</span><sub><span
+lang=EN-US style='font-size:14.0pt;color:black'>i</span></sub><span
+style='font-size:14.0pt;color:black'>... пользователю В.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><i><span style='font-size:14.0pt;color:black'>Действия
+пользователя </span></i><i><span lang=EN-US style='font-size:14.0pt;color:black'>B</span></i><span
+style='font-size:14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>8. 
+Пользователь    В    расшифровывает    принятую    криптограмму</span><span
+style='font-size:14.0pt'> </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>C</span><sub><span style='font-size:14.0pt;color:black'>1</span></sub><span
+style='font-size:14.0pt;color:black'>, С<sub>2</sub>, ..., С</span><sub><span
+lang=EN-US style='font-size:14.0pt;color:black'>i</span></sub><span
+style='font-size:14.0pt;color:black'>,... используя секретный ключ </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>K<sub>c</sub></span><span
+style='font-size:14.0pt;color:black'>, по формуле </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>M<sub>i</sub></span><span
+style='font-size:14.0pt;color:black'> = С</span><sub><span lang=EN-US
+style='font-size:14.0pt;color:black'>i</span></sub><sup><span style='font-size:
+14.0pt;color:black'>К</span></sup><sup><span lang=EN-US style='font-size:14.0pt;
+color:black'>c</span></sup><span lang=EN-US style='font-size:14.0pt;color:black'>
+</span><span lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>N</span><span style='font-size:14.0pt;
+color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>В
+результате будет получена последовательность чисел М</span><sub><span
+lang=EN-US style='font-size:14.0pt;color:black'>i</span></sub><span
+style='font-size:14.0pt;color:black'>, которые представляют собой исходное
+сообщение М. </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name=Пример><u><span style='font-size:14.0pt;
+color:black'>Пример</span></u></a><span style='font-size:14.0pt;color:black'>.
+Проведем шифрование и расшифрование сообщения “ЭБФ”. Будем использовать русские
+прописные буквы (перевод буквы алфавита в число представлен на таблице 1).</span></p>
+
+<p class=MsoNormal align=right style='text-align:right;text-indent:27.0pt;
+background:white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Таблица
+1.</span></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=468
+ style='width:351.2pt;margin-left:59.4pt;border-collapse:collapse'>
+ <tr style='height:12.75pt'>
+  <td width=29 nowrap style='width:21.95pt;border-top:2.25pt;border-left:2.25pt;
+  border-bottom:1.0pt;border-right:1.0pt;border-color:windowtext;border-style:
+  solid;padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>1</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>2</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>3</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>4</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>5</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>6</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>7</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>8</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>9</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>10</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>11</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>12</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>13</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>14</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>15</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>16</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>А</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Б</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>В</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Г</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Д</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Е</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Ж</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>З</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>И</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Й</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>К</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Л</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>М</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Н</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>О</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>П</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>17</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>18</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>19</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>20</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>21</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>22</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>23</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>24</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>25</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>26</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>27</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>28</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>29</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>30</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>31</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>32</span></p>
+  </td>
+ </tr>
+ <tr style='height:12.75pt'>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:solid windowtext 2.25pt;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Р</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>С</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Т</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>У</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Ф</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Х</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Ц</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Ч</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Ш</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Щ</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Ъ</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Ы</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Ь</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Э</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Ю</span></p>
+  </td>
+  <td width=29 nowrap style='width:21.95pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 2.25pt;border-right:solid windowtext 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.75pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:10.0pt'>Я</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Действия
+пользователя В.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>1. 
+Выбираются некоторые Р = 3 и </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>Q</span><span style='font-size:14.0pt;color:black'> = 11.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>2. 
+Вычисляется модуль N = </span><span lang=EN-US style='font-size:14.0pt;
+color:black'>P</span><span style='font-size:14.0pt;color:black'>*</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>Q</span><span style='font-size:
+14.0pt;color:black'> = 3*11 =33 (модуль может любым).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>3. 
+Вычисляется значение функции Эйлера для N = 33:</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span style='font-size:14.0pt;font-family:Symbol;
+color:black'>j</span><span style='font-size:14.0pt;color:black'>(</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>N</span><span style='font-size:
+14.0pt;color:black'>) = </span><span style='font-size:14.0pt;font-family:Symbol;
+color:black'>j</span><span style='font-size:14.0pt;color:black'>(33) = (Р-1)(</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>Q</span><span style='font-size:
+14.0pt;color:black'>-1) = 2*10 = 20.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Выбирается
+в качестве открытого ключа К</span><sub><span lang=EN-US style='font-size:14.0pt;
+color:black'>o</span></sub><span style='font-size:14.0pt;color:black'>
+произвольное число, с учетом выполне­ния условий: 1 &lt; К</span><sub><span
+lang=EN-US style='font-size:14.0pt;color:black'>o</span></sub><span
+style='font-size:14.0pt;color:black'> &#8804; 20,   НОД(К</span><sub><span
+lang=EN-US style='font-size:14.0pt;color:black'>o</span></sub><span
+style='font-size:14.0pt;color:black'>, 20) = 1.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Пусть К</span><sub><span
+lang=EN-US style='font-size:14.0pt;color:black'>o</span></sub><span
+style='font-size:14.0pt;color:black'>= 7.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>4. 
+Вычисляется значение секретного ключа К</span><sub><span lang=EN-US
+style='font-size:14.0pt;color:black'>c</span></sub><span style='font-size:14.0pt;
+color:black'>, при использовании расширенного ал­горитма Евклида при решении
+сравнения</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span style='font-size:14.0pt;color:black'>К<sub>с</sub></span><i><span
+style='font-size:14.0pt;color:black'> <span lang=EN-US>= </span></span></i><span
+style='font-size:14.0pt;color:black'>К</span><sub><span lang=EN-US
+style='font-size:14.0pt;color:black'>o</span></sub><sup><span lang=EN-US
+style='font-size:14.0pt;color:black'>-1</span></sup><span lang=EN-US
+style='font-size:14.0pt;color:black'> mod  </span><span style='font-size:14.0pt;
+font-family:Symbol;color:black'>j</span><span lang=EN-US style='font-size:14.0pt;
+color:black'>(N) = 7<sup>-1</sup> mod 20 = 3.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>5. 
+Пересылается пользователю А пара чисел (</span><span lang=EN-US
+style='font-size:14.0pt;color:black'>N</span><span style='font-size:14.0pt;
+color:black'> = 33, К</span><sub><span lang=EN-US style='font-size:14.0pt;
+color:black'>o</span></sub><span style='font-size:14.0pt;color:black'>= 7).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Действия
+пользователя А.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>6.  Шифруемое
+сообщение представляется как последовательность целых чисел в диапазоне 0 ...
+32. Пусть буква А представляется как число 1, буква Б - как число 2, буква В -
+как число 3. Тогда сообщение “ЭБФ” можно представить как по­следовательность
+чисел 30 02 21, то есть М<sub>1</sub> = 30, М<sub>2</sub>= 2, М<sub>3</sub>= 21.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>7. 
+Шифруется текст, представленный в виде последовательности чисел  </span><span
+lang=EN-US style='font-size:14.0pt;color:black'>M</span><sub><span
+style='font-size:14.0pt;color:black'>1</span></sub><span style='font-size:14.0pt;
+color:black'>, М<sub>2</sub> и М<sub>3</sub>, при использовании ключа К<sub>о</sub>=
+7 и N = 33, по формуле</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;background:white;
+text-autospace:none'><span lang=EN-US style='font-size:14.0pt;color:black'>C<sub>i</sub>
+= </span><span style='font-size:14.0pt;color:black'>М<sup>Ко</sup></span><sup><span
+style='font-size:14.0pt;color:black'> </span></sup><span lang=EN-US
+style='font-size:14.0pt;color:black'>mod N = M<sup>7</sup>(mod 33).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Получается</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>С</span><sub><span
+lang=EN-US style='font-size:14.0pt;color:black'>1</span></sub><span lang=EN-US
+style='font-size:14.0pt;color:black'> = 30<sup>7</sup> (mod 33) = 24,</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span lang=EN-US style='font-size:14.0pt;color:black'>C<sub>2</sub>
+=2 <sup>7</sup> (mod 33) = 29,</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span lang=EN-US style='font-size:14.0pt;color:black'>C<sub>3</sub>
+= 21<sup>7</sup> (mod 33) = 21. </span><span style='font-size:14.0pt;
+color:black'>Пользователю В отправляется криптограмма </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>C</span><sub><span style='font-size:14.0pt;
+color:black'>1</span></sub><span lang=EN-US style='font-size:14.0pt;color:black'>C</span><sub><span
+style='font-size:14.0pt;color:black'>2</span></sub><span lang=EN-US
+style='font-size:14.0pt;color:black'>C</span><sub><span style='font-size:14.0pt;
+color:black'>3</span></sub><span style='font-size:14.0pt;color:black'> = 24, 29,
+21.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Действия
+пользователя В.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>8. 
+Расшифровка принятой криптограмму С<sub>1</sub>С<sub>2</sub>С<sub>3</sub> на основе
+секретного ключа </span><span lang=EN-US style='font-size:14.0pt;color:black'>K<sub>c</sub></span><span
+style='font-size:14.0pt;color:black'>= 3, по формуле </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>M<sub>i</sub></span><span
+style='font-size:14.0pt;color:black'> = С</span><sub><span lang=EN-US
+style='font-size:14.0pt;color:black'>i</span></sub><sup><span lang=EN-US
+style='font-size:14.0pt;color:black'>Kc</span></sup><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span><span lang=EN-US style='font-size:
+14.0pt;color:black'>mod</span><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span><span lang=EN-US style='font-size:14.0pt;color:black'>N</span><span
+style='font-size:14.0pt;color:black'> = </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>C<sub>i</sub></span><sup><span
+style='font-size:14.0pt;color:black'>3</span></sup><span style='font-size:14.0pt;
+color:black'> (</span><span lang=EN-US style='font-size:14.0pt;color:black'>mod</span><span
+style='font-size:14.0pt;color:black'> 33).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Получается</span><span
+style='font-size:14.0pt;color:black'> </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span lang=EN-US style='font-size:14.0pt;color:black'>M<sub>1</sub>
+= 24<sup>3</sup> mod 33 = 13824 (mod 33) = 30,</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span lang=EN-US style='font-size:14.0pt;color:black'>M<sub>2</sub>=29<sup>3
+</sup>mod 33 = 24389  (mod 33) = 2,</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span lang=EN-US style='font-size:14.0pt;color:black'>M<sub>3</sub>
+= 21<sup>3</sup> mod 33 = 9261 (mod 33) = 21.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Таким
+образом, восстановлено исходное сообщение: “ЭБФ”.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=ДопПримеры><u><span style='font-size:14.0pt'>Дополнительные примеры для
+решения</span></u></a><span style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>Используйте первые буквы своих инициалов для развития
+умений использования алгоритма </span><span lang=EN-US style='font-size:14.0pt'>RSA</span><span
+style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Задание><span style='font-size:14.0pt'>&nbsp;</span></a></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><u><span
+style='font-size:14.0pt'>Задание</span></u><u><span style='font-size:14.0pt'>.</span></u></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>В данной лабораторной работе требуется освоить работу
+алгоритма </span><span lang=EN-US style='font-size:14.0pt'>RSA</span><span
+style='font-size:14.0pt'>. Для этого необходимо выполнить следующее (каждый студент
+индивидуально выполняет задание и оформляет отчет).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>- Выполнить на бумаге расчет шифрования и
+расшифрования первых букв из собственных инициалов (фамилии, имени, отчества).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>- Программно реализовать (для чисел размерностью в
+машинное слово) алгоритм </span><span lang=EN-US style='font-size:14.0pt'>RSA</span><span
+lang=EN-US style='font-size:14.0pt'> </span><span style='font-size:14.0pt'>в
+виде программы на любом из следующих языков программирования: </span><span
+lang=EN-US style='font-size:14.0pt'>C</span><span style='font-size:14.0pt'>,
+С++, </span><span lang=EN-US style='font-size:14.0pt'>Pascal</span><span
+style='font-size:14.0pt'>. Текст программы должен содержать комментарии к
+каждой строке кода.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>- Оформить отчет о выполненной работе, с приведением расчета
+из пункта 1, листингов программ и двух-трех тестов (как в первом пункте
+задания).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>- Выполнить сдачу работы руководителю лабораторного
+занятия (при этом существует возможность задания дополнительных вопросов).</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+lang=EN-US style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=ДопВопросы><u><span style='font-size:14.0pt'>Вопросы для самопроверки</span></u></a><u><span
+style='font-size:14.0pt'>.</span></u></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>1. Для чего предназначен алгоритм </span><span
+lang=EN-US style='font-size:14.0pt'>RSA</span><span style='font-size:14.0pt'>?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>2. На сложности разрешения каких математических задач
+базируется </span><span lang=EN-US style='font-size:14.0pt'>RSA</span><span
+style='font-size:14.0pt'>?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>3. Какие параметры формирует шифрующая сторона?
+Условия, накладываемые на них?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>4. Что такое функция Эйлера?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>5. Как вычисляется секретный ключ в </span><span
+lang=EN-US style='font-size:14.0pt'>RSA</span><span style='font-size:14.0pt'>?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>6. Какие параметры </span><span lang=EN-US
+style='font-size:14.0pt'>RSA</span><span style='font-size:14.0pt'> являются
+открытыми и секретными?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>7. Как производится шифрование информации?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>8. Как производится расшифрование информации?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>9. Какими особенностями обладает алгоритм </span><span
+lang=EN-US style='font-size:14.0pt'>RSA</span><span style='font-size:14.0pt'>?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>10. Поясните суть упрощенного алгоритма вычисления
+обратных элементов?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>11. Какая тенденция по размеру используемых ключей
+наблюдается в информационно мире?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>12. Какие алгоритмы, рассмотренные в курсе
+«Математические основы криптологии», используются в данном алгоритме?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>13. Какие математические операции используются в
+данной алгоритме?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><a
+name=Литература><u><span style='font-size:14.0pt'>Литература для
+самостоятельной подготовки</span></u></a><span style='font-size:14.0pt'>: </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>1. Ю.В.Романец, П.А.Тимофеев, В.Ф. Шаньгин. Защита
+информации в компьютерных системах и сетях /Под ред. В.Ф. Шаньгина. - М.: Радио
+и связь,1999.-328 с.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>2. С.Коутинхо. Введение в теорию чисел. Алгоритм </span><span
+lang=EN-US style='font-size:14.0pt'>RSA</span><span style='font-size:14.0pt'>.-М.:Постмаркет,
+2001.-328с.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>3. Алферов А.П., Зубов А.Ю., Кузьмин А.С., Черемушкин
+А.В. Основы криптографии: Учебное пособие, 2-е изд., испр. И доп. – М.: Гелиос
+АРВ, 2002. – 480 с.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>4. Брюс Шнайер. Прикладная криптография. 2е изд.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>5. Р. Лидл, Г. Нидеррайтер. Конечные поля: В 2 т. /
+Перевод с англ. А.Е.Жукова, В.И.Петрова; Под ред. В.И.Нечаева. – М.: Мир, 1988.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>6. Уэйт М., Прата С., Мартин Д. Язык Си. Руководство
+для начинающих: Пер. с англ. – М.: Мир, 1988. – 512 с., ил.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>7. Прайс Д. Программирование на языке Паскаль:
+Практическое руководство. Пер. с англ. – М.: Мир, 1987. – 232 с., ил.</span></p>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,149 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title>Решето Эратосфена — это древнейший способ выписывания простых чисел</title>
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:2.0cm 42.5pt 2.0cm 3.0cm;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+
+</head>
+
+<body lang=RU>
+
+<div class=Section1>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name="Понятие_решета"><i><span style='font-size:
+14.0pt;color:black'>Простыми числами</span></i></a><span style='font-size:14.0pt;
+color:black'> называются натуральные числа, которые делятся только на себя или
+на единицу.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><i><span style='font-size:14.0pt;color:black'>Решето
+Эратосфена </span></i><span style='font-size:14.0pt;color:black'>— это древнейший
+способ выписывания простых чисел. Производится итеративное вычеркивание кратных
+чисел для простых найденных чисел.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name=НОД><i><span style='font-size:14.0pt;
+color:black'>&nbsp;</span></i></a></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><i><span style='font-size:14.0pt;color:black'>Наибольший
+общий делитель </span></i><span style='font-size:14.0pt;color:black'>чисел <i>а
+</i>и </span><span lang=EN-US style='font-size:14.0pt;color:black'>b</span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'> </span></i><span
+style='font-size:14.0pt;color:black'>- это наибольшее целое число </span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>d</span></i><i><span
+style='font-size:14.0pt;color:black'>, </span></i><span style='font-size:14.0pt;
+color:black'>на которое и а, и </span><i><span lang=EN-US style='font-size:
+14.0pt;color:black'>b</span></i><i><span lang=EN-US style='font-size:14.0pt;
+color:black'> </span></i><span style='font-size:14.0pt;color:black'>делятся: </span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>d</span></i><i><span
+style='font-size:14.0pt;color:black'> = </span></i><span style='font-size:14.0pt;
+color:black'>НОД(а, </span><span lang=EN-US style='font-size:14.0pt;color:black'>b</span><span
+style='font-size:14.0pt;color:black'>)<i>.</i></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><span style='font-size:14.0pt;color:black'>Числа<i> а
+</i></span><span style='font-size:14.0pt;color:black'>и </span><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>b</span></i><i><span
+style='font-size:14.0pt;color:black'> взаимно простые</span></i><span
+style='font-size:14.0pt;color:black'>, если их НОД(а, </span><span lang=EN-US
+style='font-size:14.0pt;color:black'>b</span><span style='font-size:14.0pt;
+color:black'>)<i> = </i></span><span style='font-size:14.0pt;color:black'>1<i>.</i></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><i><span style='font-size:14.0pt;color:black'>&nbsp;</span></i></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><i><span style='font-size:14.0pt;color:black'>Алгоритм
+Эвклида</span></i><span style='font-size:14.0pt;color:black'> предназначен для
+вычисления наибольшего общего делителя двух натуральных чисел.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><i><span
+style='font-size:14.0pt'>&nbsp;</span></i></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><i><span
+style='font-size:14.0pt'>Расширенный алгоритм Евклида</span></i><span
+style='font-size:14.0pt'> позволяет находить для заданного модуля обратный
+элемент для числа </span><span lang=EN-US style='font-size:14.0pt'>a</span><span
+style='font-size:14.0pt'>. </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><span
+style='font-size:14.0pt'>Если числа </span><b><i><span lang=EN-US
+style='font-size:14.0pt'>a</span></i></b><span style='font-size:14.0pt'> и </span><b><i><span
+lang=EN-US style='font-size:14.0pt'>n</span></i></b><span style='font-size:
+14.0pt'> взаимнопросты, то для числа </span><b><i><span lang=EN-US
+style='font-size:14.0pt'>a</span></i></b><span style='font-size:14.0pt'>
+существует единственный <i>обратный элемент</i> </span><b><i><span lang=EN-US
+style='font-size:14.0pt'>a</span></i></b><sup><span style='font-size:14.0pt'>-1</span></sup><span
+style='font-size:14.0pt'>, при этом числа </span><b><i><span lang=EN-US
+style='font-size:14.0pt'>a</span></i></b><span style='font-size:14.0pt'> и </span><b><i><span
+lang=EN-US style='font-size:14.0pt'>a</span></i></b><sup><span
+style='font-size:14.0pt'>-1</span></sup><span style='font-size:14.0pt'>
+удовлетворяют условию (</span><b><i><span lang=EN-US style='font-size:14.0pt'>a</span></i></b><b><i><span
+lang=EN-US style='font-size:14.0pt'> </span></i></b><span style='font-size:
+14.0pt'>* </span><b><i><span lang=EN-US style='font-size:14.0pt'>a</span></i></b><sup><span
+style='font-size:14.0pt'>-1</span></sup><span style='font-size:14.0pt'>) </span><span
+lang=EN-US style='font-size:14.0pt'>mod</span><span lang=EN-US
+style='font-size:14.0pt'> </span><b><i><span lang=EN-US style='font-size:14.0pt'>n</span></i></b><sup><span
+lang=EN-US style='font-size:14.0pt'> </span></sup><span style='font-size:14.0pt'>=1.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><i><span style='font-size:14.0pt;color:black'>Числами
+Мерсенна</span></i><span style='font-size:14.0pt;color:black'> называются числа
+вида </span><i><span style='font-size:14.0pt;color:black'>М(</span></i><i><span
+lang=EN-US style='font-size:14.0pt;color:black'>p</span></i><i><span
+style='font-size:14.0pt;color:black'>) = 2</span></i><sup><span lang=EN-US
+style='font-size:14.0pt;color:black'>p</span></sup><i><span lang=EN-US
+style='font-size:14.0pt;color:black'> </span></i><span style='font-size:14.0pt;
+color:black'>- 1, </span><span lang=EN-US style='font-size:14.0pt;color:black'>p</span><span
+lang=EN-US style='font-size:14.0pt;font-family:Symbol;color:black'>&Icirc;</span><span
+lang=EN-US style='font-size:14.0pt;color:black'>N</span><span style='font-size:
+14.0pt;color:black'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt;background:
+white;text-autospace:none'><a name="Задача_чисел_Мерсенна"><i><span
+style='font-size:14.0pt;color:black'>Задача для чисел Мерсенна</span></i></a><span
+style='font-size:14.0pt;color:black'> – определение среди этих чисел ряда
+простых чисел.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><i><span
+style='font-size:14.0pt'>&nbsp;</span></i></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><i><span
+style='font-size:14.0pt'>Схемы Горнера</span></i><span style='font-size:14.0pt'>
+позволяет возводить целых чисел в большие степени, превосходящие размерность
+машинного слова: </span><a name="Задача_схемы_Горнера"><span style='position:
+relative;top:6.0pt'><img width=134 height=31 src="Понятия.files/image001.png"></span></a><span
+style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:27.0pt'><i><span
+style='font-size:14.0pt'>Схема Горнера</span></i><span style='font-size:14.0pt'>
+использует следующее преобразование:<a name="Формула_вычисления_схемы_Горнера"></a></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='position:absolute;z-index:-1;left:0px;margin-left:0px;margin-top:0px;
+width:626px;height:100px'><img width=626 height=100
+src="Понятия.files/image002.png"></span><a name="Понятие_чисел"></a></p>
+
+</div>
+
+</body>
+
+</html>
