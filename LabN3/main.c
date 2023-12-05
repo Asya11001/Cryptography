@@ -21,11 +21,21 @@ int getInverseNumber(int a, int m) {
     }
     return -1;
 }
-
+/*
 // Функция для шифрования сообщения
 void encrypt(char* message, int* encrypted, int length, int publicKey, int modulus) {
     for (int i = 0; i < length; i++) {
         encrypted[i] = fmod(pow(message[i], publicKey), modulus);
+    }
+}
+*/
+void encrypt(char* message, int* encrypted, int length, int publicKey, int modulus) {
+    for (int i = 0; i < length; i++) {
+        double result = 1.0;
+        for (int j = 0; j < publicKey; j++) {
+            result = fmod(result * message[i], modulus);
+        }
+        encrypted[i] = (int)result;
     }
 }
 
@@ -52,7 +62,7 @@ int main() {
     int publicKey = 5;  // открытый ключ
     int privateKey = getInverseNumber(publicKey, valueFromEulerFunction);  // закрытый ключ
 
-    char message[] = "IOG";
+    char message[] = "Some important information here";
     int messageLength = strlen(message);
 
     // Выделяем память под массивы для шифрованного и расшифрованного сообщения
