@@ -59,7 +59,7 @@ void generate_key_pair(long long p, long long g, long long *private_key, long lo
 }
 
 // Function to sign a message using ElGamal
-void sign_message(long long p, long long g, long long x, long long k, long long hash, long long *a, long long *b) {
+void sign_message(long long p, long long g, long long private_key, long long k, long long hash, long long *a, long long *b) {
     *a = mod_exp(g, k, p);
     if (*a == 0) {
         // Handle the case where a is zero (avoid division by zero)
@@ -75,7 +75,7 @@ void sign_message(long long p, long long g, long long x, long long k, long long 
         return;
     }
 
-    *b = (k_inv * (hash - x * (*a) + (p - 1) * (p - 1))) % (p - 1);
+    *b = (k_inv * (hash - private_key * (*a) + (p - 1) * (p - 1))) % (p - 1);
     if (*b < 0) {
         *b += (p - 1);
     }
