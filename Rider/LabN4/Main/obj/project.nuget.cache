@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "+KqaZxBDZ03JPlwSV6SwjDiKGJjpQMetHKV7Hvg6puJRuA6AG90QEO6uQpDb6gjUCot0QBUAB0o4+SQwpCyt9Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\arsen\\Documents\\Cryptography\\Rider\\LabN4\\Main\\Main.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\arsen\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.25\\microsoft.netcore.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\arsen\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.25\\microsoft.windowsdesktop.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\arsen\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.25\\microsoft.aspnetcore.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\arsen\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.25\\microsoft.netcore.app.host.win-x64.6.0.25.nupkg.sha512"
+  ],
+  "logs": []
+}
