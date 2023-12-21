@@ -18,7 +18,7 @@ class Program
             var signature2 = SignMessage(message2, rsa);
 
             // Verify the signature using the public key
-            if (VerifySignature(message, signature, rsa))
+            if (VerifySignature(message, signature2, rsa))
             {
                 Console.WriteLine("Signature is valid.");
             }

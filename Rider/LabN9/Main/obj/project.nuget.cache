@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "Uy2oj7g7IW3v5WxoOZlCjyRjOWn9hIT9FhPEcY8dyS14UHQTGxb/5dy1RYjvdQDU/ZYtQIPq2OguvpWx1hA3HQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\arsen\\Documents\\Cryptography\\Rider\\LabN9\\Main\\Main.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\arsen\\.nuget\\packages\\portable.bouncycastle\\1.9.0\\portable.bouncycastle.1.9.0.nupkg.sha512",
+    "C:\\Users\\arsen\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.25\\microsoft.netcore.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\arsen\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.25\\microsoft.windowsdesktop.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\arsen\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.25\\microsoft.aspnetcore.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\arsen\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.25\\microsoft.netcore.app.host.win-x64.6.0.25.nupkg.sha512"
+  ],
+  "logs": []
+}
